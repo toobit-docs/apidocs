@@ -1,16 +1,9 @@
-# Huobi API Documentation Project
+# API Documentation Project
 
 ## Introduction
 
-This is the project for the official API documents of Huobi. This README will introduce how this project is structured and how to work with it.
+This is the project for the official API documents . This README will introduce how this project is structured and how to work with it.
 
-## API Tool
-
-Huobi's API documentation is generated with Slate. This project is an fork of <https://github.com/lord/slate> slate.
-
-## Repo Structure and Overall Workflow
-
-Huobi currently supports two versions of API (v1, v2) and two languages of API documents (English, Chinese), so we have a total of four versions of API documents sit in four branches: v1_en, v1_cn, v2_en, v2_cn. To access the web page of a specific version you can visit <https://huobi.github.io/api_doc/{version}/{language}>, e.g. for v1 english version visit https://huobi.github.io/api_doc/v1/en.
 
 ### *Recommended way to make a change by CI*
 
