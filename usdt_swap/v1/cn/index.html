@@ -1,0 +1,350 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <title>API Documentation</title>
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <header>
+      <div class="flex_box">
+        <img src="images/logo.svg" class="logo" alt="Logo" />
+        <div class="nav_box">
+          <span class="nav_cell" style="display: none">
+            <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
+            <ul class="nav_ul">
+              <li>
+                <a href="/docs/spot/v1/en/" id="v1_url">v1</a>
+              </li>
+            </ul>
+          </span>
+          <span class="nav_cell nav_tab">
+            <a href="/docs/spot/v1/en/" id="btn_spot">现货</a>
+          </span>
+          <span class="nav_cell nav_tab">
+            <a href="/docs/dm/v1/en/" id="btn_dm">币本位交割合约</a>
+          </span>
+          <span class="nav_cell nav_tab">
+            <a href="/docs/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
+          </span>
+          <span class="nav_cell nav_tab">
+            <a href="/docs/usdt_swap/v1/en/" id="btn_usdt_swap">U本位合约</a>
+          </span>
+          <!--
+          <span class="nav_cell nav_tab">
+            <a href="/docs/option/v1/en/" id="btn_option">期权合约</a>
+          </span>
+           <span class="nav_cell nav_tab">
+            <a href="/docs/swap/v1/en/" id="btn_swap">永续合约</a>
+          </span> -->
+        </div>
+      </div>
+      <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">简体中文</a>
+    </header>
+    <div class="toc-wrapper">
+      <ul id="toc" class="toc-list-h1">
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+    <script>
+      const lang_btn = document.getElementById('lang_box');
+      const btn_spot = document.getElementById('btn_spot');
+      const btn_dm = document.getElementById('btn_dm');
+      const btn_coin_margined_swap = document.getElementById('btn_coin_margined_swap');
+      const btn_usdt_swap = document.getElementById('btn_usdt_swap');
+    //  const btn_option = document.getElementById('btn_option');
+      const v1_url = document.getElementById('v1_url');
+      const url = GetUrlRelativePath();
+
+      if(url.indexOf('cn') != -1){
+        //如果是中文环境
+        lang_btn.innerHTML = 'English';
+        btn_spot.innerHTML = '现货';
+        btn_dm.innerHTML = '币本位交割合约';
+        btn_coin_margined_swap.innerHTML = '币本位永续合约';
+        btn_usdt_swap.innerHTML = 'U本位合约';
+      //  btn_option.innerHTML = '期权合约';
+        lang_btn.href = url.replace('cn/', 'en/');
+        btn_spot.href = btn_spot.href.replace('en/', 'cn/');
+        btn_dm.href = btn_dm.href.replace('en/', 'cn/');
+        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'cn/');
+        btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'cn/');
+      //  btn_option.href = btn_option.href.replace('en/', 'cn/');
+        v1_url.href = '/docs/spot/v1/cn/';
+      }else{
+        //如果是英文环境
+        lang_btn.innerHTML = '中文';
+        btn_spot.innerHTML = 'Spot';
+        btn_dm.innerHTML = 'Coin-M Futures';
+        // btn_swap.innerHTML = 'SWAP API';
+        btn_coin_margined_swap.innerHTML = 'Coin-M Swaps';
+        btn_usdt_swap.innerHTML = 'USDT-M';
+      //  btn_option.innerHTML = 'Option';
+        lang_btn.href = url.replace('en/', 'cn/');
+        btn_spot.href = btn_spot.href.replace('cn/', 'en/');
+        btn_dm.href = btn_dm.href.replace('cn/', 'en/');
+        // btn_swap.href = btn_swap.href.replace('cn/', 'en/');
+        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('cn/', 'en/');
+        btn_usdt_swap.href = btn_usdt_swap.href.replace('cn/', 'en/');
+      //  btn_option.href = btn_option.href.replace('cn/', 'en/');
+        v1_url.href = '/docs/spot/v1/en/';
+      }
+
+      if(location.href.indexOf('docs/dm/v') > 0){
+        btn_spot.className = '';
+        btn_dm.className = 'current';
+        btn_coin_margined_swap.className = '';
+        btn_usdt_swap.className = '';
+      //  btn_option.className = '';
+      }
+      else if(location.href.indexOf('docs/coin_margined_swap/v') > 0){
+        btn_spot.className = '';
+        btn_dm.className = '';
+        btn_coin_margined_swap.className = 'current';
+        btn_usdt_swap.className = '';
+      //  btn_option.className = '';
+      } else if(location.href.indexOf('docs/usdt_swap/v') > 0){
+        btn_spot.className = '';
+        btn_dm.className = '';
+        btn_coin_margined_swap.className = '';
+        btn_usdt_swap.className = 'current';
+      //  btn_option.className = '';
+      // } else if(location.href.indexOf('docs/option/v') > 0){
+      //   btn_spot.className = '';
+      //   btn_coin_margined_swap.className = '';
+      //   btn_usdt_swap.className = '';
+      //   btn_dm.className = '';
+      //   btn_option.className = 'current';
+      } else {
+        btn_spot.className = 'current';
+        btn_coin_margined_swap.className = '';
+        btn_usdt_swap.className = '';
+        btn_dm.className = '';
+      //  btn_option.className = '';
+      }
+      //显示语言切换按钮
+      lang_btn.style.display = 'block';
+      function GetUrlRelativePath(){
+        let url = document.location.toString();
+        let arrUrl = url.split("//");
+        let start = arrUrl[1].indexOf("/");
+        let relUrl = arrUrl[1].substring(start);
+        if(relUrl.indexOf("?") != -1){
+          relUrl = relUrl.split("?")[0];
+        }
+        if(relUrl.indexOf("#") != -1){
+          relUrl = relUrl.split("#")[0];
+        }
+        return relUrl;
+  　　}
+    </script>
+  </body>
+</html>
