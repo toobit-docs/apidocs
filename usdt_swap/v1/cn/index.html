@@ -6,7 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
-    <title>API Documentation</title>
+    <title>U本位合约 API 文档</title>
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -198,10 +198,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+      <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         <img src="images/navbar.png" alt="Navbar" />
@@ -215,43 +215,187 @@
             <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
             <ul class="nav_ul">
               <li>
-                <a href="/docs/spot/v1/en/" id="v1_url">v1</a>
+                <a href="/apidocs/spot/v1/en/" id="v1_url">v1</a>
               </li>
             </ul>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/docs/spot/v1/en/" id="btn_spot">现货</a>
+            <a href="/apidocs/spot/v1/en/" id="btn_spot">现货</a>
+          </span>
+          <!-- 
+          <span class="nav_cell nav_tab">
+            <a href="/apidocs/dm/v1/en/" id="btn_dm">币本位交割合约</a>
           </span>
           <span class="nav_cell nav_tab">
-            <a href="/docs/dm/v1/en/" id="btn_dm">币本位交割合约</a>
+            <a href="/apidocs/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
           </span>
+          -->
           <span class="nav_cell nav_tab">
-            <a href="/docs/coin_margined_swap/v1/en/" id="btn_coin_margined_swap">币本位永续合约</a>
-          </span>
-          <span class="nav_cell nav_tab">
-            <a href="/docs/usdt_swap/v1/en/" id="btn_usdt_swap">U本位合约</a>
+            <a href="/apidocs/usdt_swap/v1/en/" id="btn_usdt_swap">U本位合约</a>
           </span>
           <!--
           <span class="nav_cell nav_tab">
-            <a href="/docs/option/v1/en/" id="btn_option">期权合约</a>
+            <a href="/apidocs/option/v1/en/" id="btn_option">期权合约</a>
           </span>
            <span class="nav_cell nav_tab">
-            <a href="/docs/swap/v1/en/" id="btn_swap">永续合约</a>
+            <a href="/apidocs/swap/v1/en/" id="btn_swap">永续合约</a>
           </span> -->
         </div>
       </div>
       <a href="/docs/spot/v1/cn/" class="lang" id="lang_box">简体中文</a>
     </header>
     <div class="toc-wrapper">
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#5ea2e0cde2" class="toc-h1 toc-link" data-title="简介">简介</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#u-api" class="toc-h2 toc-link" data-title="U本位合约API简介">U本位合约API简介</a>
+                  </li>
+                  <li>
+                    <a href="#6ac6895b3f" class="toc-h2 toc-link" data-title="做市商项目">做市商项目</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1-6-9-2022-11-10-u" class="toc-h2 toc-link" data-title="1.6.9 2022年11月10日 【U本位接口新增】">1.6.9 2022年11月10日 【U本位接口新增】</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ff2f540895" class="toc-h2 toc-link" data-title="账户类型查询">账户类型查询</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
+        <ul class="toc-footer">
+            <li><a href='https://baidu.com'>baidu </a></li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        
+        <h1 id='5ea2e0cde2'>简介</h1><h2 id='u-api'>U本位合约API简介</h2>
+<p>欢迎使用火必U本位合约 API！ 你可以使用此 API 获得市场行情数据，进行交易，并且管理你的账户。</p>
+<h2 id='6ac6895b3f'>做市商项目</h2><h1 id='185368440e'>更新日志</h1><h2 id='1-6-9-2022-11-10-u'>1.6.9 2022年11月10日 【U本位接口新增】</h2><h3 id='1'>1、新增 账户类型查询</h3>
+<ul>
+<li>接口名称：账户类型查询</li>
+<li>接口URL：/linear-swap-api/v3/swap_unified_account_type</li>
+</ul>
+
+<p>## 访问地址</p>
+
+<table><thead>
+<tr>
+<th>访问地址</th>
+<th>适用站点</th>
+<th>适用功能</th>
+<th>适用交易对</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>https://baidu</td>
+<td>合约</td>
+<td>API</td>
+<td>合约的交易品种</td>
+</tr>
+</tbody></table>
+<h1 id='41654e0268'>基础信息</h1><h2 id='ff2f540895'>账户类型查询</h2>
+<ul>
+<li>GET <code>/linear-swap-api/v3/swap_unified_account_type</code></li>
+</ul>
+<h4 id='e0361480e3'>备注</h4>
+<ul>
+<li>此接口用于客户查询的账号类型，当前U本位合约有统一账户和非统一账户（全仓逐仓账户）类型。统一账户类型资产放在USDT一个账户上，全仓逐仓账户类型资产放在不同的币对。</li>
+<li>统一账户类型为最新升级的，当前不支持API下单。若需要用用API下单请切换账户类型为非统一账户。</li>
+</ul>
+<h3 id='1f9ac54b15'>请求参数</h3>
+<p>无</p>
+
+<blockquote>
+<p>Response: </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"msg"</span><span class="p">:</span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="s2">"account_type"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1668057324200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='70bdef7e25'>返回参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>true</td>
+<td>int</td>
+<td>状态码</td>
+<td></td>
+</tr>
+<tr>
+<td>msg</td>
+<td>true</td>
+<td>string</td>
+<td>结果描述</td>
+<td></td>
+</tr>
+<tr>
+<td>ts</td>
+<td>true</td>
+<td>long</td>
+<td>时间戳</td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;data&gt;</td>
+<td>true</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>true</td>
+<td>int</td>
+<td>账户类型</td>
+<td>1:非统一账户（全仓逐仓账户）2:统一账户</td>
+</tr>
+<tr>
+<td>&lt;/data&gt;</td>
+<td>true</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
       </div>
     </div>
     <script>
