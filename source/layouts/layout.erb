@@ -150,8 +150,8 @@ under the License.
     <script>
       const lang_btn = document.getElementById('lang_box');
       const btn_spot = document.getElementById('btn_spot');
-      const btn_dm = document.getElementById('btn_dm');
-      const btn_coin_margined_swap = document.getElementById('btn_coin_margined_swap');
+    // const btn_dm = document.getElementById('btn_dm');
+    //  const btn_coin_margined_swap = document.getElementById('btn_coin_margined_swap');
       const btn_usdt_swap = document.getElementById('btn_usdt_swap');
     //  const btn_option = document.getElementById('btn_option');
       const v1_url = document.getElementById('v1_url');
@@ -161,14 +161,14 @@ under the License.
         //如果是中文环境
         lang_btn.innerHTML = 'English';
         btn_spot.innerHTML = '现货';
-        btn_dm.innerHTML = '币本位交割合约';
-        btn_coin_margined_swap.innerHTML = '币本位永续合约';
+      //  btn_dm.innerHTML = '币本位交割合约';
+      //  btn_coin_margined_swap.innerHTML = '币本位永续合约';
         btn_usdt_swap.innerHTML = 'U本位合约';
       //  btn_option.innerHTML = '期权合约';
         lang_btn.href = url.replace('cn/', 'en/');
         btn_spot.href = btn_spot.href.replace('en/', 'cn/');
-        btn_dm.href = btn_dm.href.replace('en/', 'cn/');
-        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'cn/');
+      //  btn_dm.href = btn_dm.href.replace('en/', 'cn/');
+      //  btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('en/', 'cn/');
         btn_usdt_swap.href = btn_usdt_swap.href.replace('en/', 'cn/');
       //  btn_option.href = btn_option.href.replace('en/', 'cn/');
         v1_url.href = '/docs/spot/v1/cn/';
@@ -176,16 +176,16 @@ under the License.
         //如果是英文环境
         lang_btn.innerHTML = '中文';
         btn_spot.innerHTML = 'Spot';
-        btn_dm.innerHTML = 'Coin-M Futures';
+      //  btn_dm.innerHTML = 'Coin-M Futures';
         // btn_swap.innerHTML = 'SWAP API';
-        btn_coin_margined_swap.innerHTML = 'Coin-M Swaps';
+      //  btn_coin_margined_swap.innerHTML = 'Coin-M Swaps';
         btn_usdt_swap.innerHTML = 'USDT-M';
       //  btn_option.innerHTML = 'Option';
         lang_btn.href = url.replace('en/', 'cn/');
         btn_spot.href = btn_spot.href.replace('cn/', 'en/');
-        btn_dm.href = btn_dm.href.replace('cn/', 'en/');
+      //  btn_dm.href = btn_dm.href.replace('cn/', 'en/');
         // btn_swap.href = btn_swap.href.replace('cn/', 'en/');
-        btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('cn/', 'en/');
+      //  btn_coin_margined_swap.href = btn_coin_margined_swap.href.replace('cn/', 'en/');
         btn_usdt_swap.href = btn_usdt_swap.href.replace('cn/', 'en/');
       //  btn_option.href = btn_option.href.replace('cn/', 'en/');
         v1_url.href = '/docs/spot/v1/en/';
@@ -193,21 +193,21 @@ under the License.
 
       if(location.href.indexOf('docs/dm/v') > 0){
         btn_spot.className = '';
-        btn_dm.className = 'current';
-        btn_coin_margined_swap.className = '';
+      //  btn_dm.className = 'current';
+      //  btn_coin_margined_swap.className = '';
         btn_usdt_swap.className = '';
       //  btn_option.className = '';
       }
       else if(location.href.indexOf('docs/coin_margined_swap/v') > 0){
         btn_spot.className = '';
-        btn_dm.className = '';
-        btn_coin_margined_swap.className = 'current';
+      //  btn_dm.className = '';
+      //  btn_coin_margined_swap.className = 'current';
         btn_usdt_swap.className = '';
       //  btn_option.className = '';
       } else if(location.href.indexOf('docs/usdt_swap/v') > 0){
         btn_spot.className = '';
-        btn_dm.className = '';
-        btn_coin_margined_swap.className = '';
+      //  btn_dm.className = '';
+      //  btn_coin_margined_swap.className = '';
         btn_usdt_swap.className = 'current';
       //  btn_option.className = '';
       // } else if(location.href.indexOf('docs/option/v') > 0){
@@ -218,9 +218,9 @@ under the License.
       //   btn_option.className = 'current';
       } else {
         btn_spot.className = 'current';
-        btn_coin_margined_swap.className = '';
+      //  btn_coin_margined_swap.className = '';
         btn_usdt_swap.className = '';
-        btn_dm.className = '';
+      //  btn_dm.className = '';
       //  btn_option.className = '';
       }
       //显示语言切换按钮
