@@ -1,5 +1,5 @@
 ---
-title: U本位合约 API 文档
+title: U本位合约 API 文档 ENGLISH
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -15,7 +15,7 @@ search: true
 
 ## U本位合约API简介
 
-欢迎使用火必U本位合约 API！ 你可以使用此 API 获得市场行情数据，进行交易，并且管理你的账户。
+欢迎使用U本位合约 API！ 你可以使用此 API 获得市场行情数据，进行交易，并且管理你的账户。
 
 ## 做市商项目
 
