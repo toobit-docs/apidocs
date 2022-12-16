@@ -73,6 +73,7 @@ if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
 
 ### POST /api/v1/spot/order的示例
 以下是在linux bash环境下使用 echo openssl 和curl工具实现的一个调用接口下单的示例 apikey、secret仅供示范
+
 | Key    | Value | 
 | --------- | ---- | 
 | apiKey| SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq |
@@ -88,9 +89,8 @@ if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
 | price| 4000 |
 | recvWindow| 100000 |
 | timestamp| 1668481902307|
+
 #### 示例 1: 所有参数通过 query string 发送
-- **queryString**
-symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307
 ``` shell
 示例1:
 HMAC SHA256 签名:
@@ -104,10 +104,19 @@ curl 调用:
 $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
 
 ```
+- **queryString**
+symbol=BTCUSDT <br>
+&side=SELL <br>
+&type=LIMIT <br>
+&timeInForce=GTC <br>
+&quantity=1 <br>
+&price=400 <br>
+&recvWindow=100000 <br>
+&timestamp=1668481902307
+
+
 
 #### 示例 2: 所有参数通过 request body 发送
-- **requestBody**
-symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307
 
 ``` shell
 示例2:
@@ -121,11 +130,23 @@ curl 调用:
 (HMAC SHA256)
 $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
 ```
+- **requestBody**
+symbol=BTCUSDT <br>
+&side=SELL <br>
+&type=LIMIT <br>
+&timeInForce=GTC <br>
+&quantity=1 <br>
+&price=400 <br>
+&recvWindow=100000 <br>
+&timestamp=1668481902307
+
+
 
 #### 示例 3: 混合使用 query string 与 request body
 
 - **queryString**:symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC
 - **requestBody**:quantity=1&price=400&recvWindow=100000&timestamp=1668481902307
+
 ``` shell
 示例3:
 HMAC SHA256 签名:
@@ -183,7 +204,8 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 
 #### K线间隔:
 m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
-- 1m
+
+- 1m 
 - 3m
 - 5m
 - 15m
