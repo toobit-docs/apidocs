@@ -456,7 +456,14 @@
 <h4 id='1-query-string'>示例 1: 所有参数通过 query string 发送</h4>
 <ul>
 <li><strong>queryString</strong>
-symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307</li>
+symbol=BTCUSDT
+&amp;side=SELL
+&amp;type=LIMIT
+&amp;timeInForce=GTC
+&amp;quantity=1
+&amp;price=400
+&amp;recvWindow=100000
+&amp;timestamp=1668481902307</li>
 </ul>
 <pre class="highlight shell tab-shell"><code>示例1:
 HMAC SHA256 签名:
@@ -469,7 +476,14 @@ HMAC SHA256 签名:
 </code></pre><h4 id='2-request-body'>示例 2: 所有参数通过 request body 发送</h4>
 <ul>
 <li><strong>requestBody</strong>
-symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307</li>
+symbol=BTCUSDT
+&amp;side=SELL
+&amp;type=LIMIT
+&amp;timeInForce=GTC
+&amp;quantity=1
+&amp;price=400
+&amp;recvWindow=100000
+&amp;timestamp=1668481902307</li>
 </ul>
 <pre class="highlight shell tab-shell"><code>示例2:
 HMAC SHA256 签名:
@@ -481,15 +495,13 @@ HMAC SHA256 签名:
 </code></pre><h4 id='3-query-string-request-body'>示例 3: 混合使用 query string 与 request body</h4>
 <ul>
 <li><strong>queryString</strong>:symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC</li>
-<li><strong>requestBody</strong>:quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307
-<code>shell
-示例3:
-HMAC SHA256 签名:
-$ echo -n &quot;symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTCquantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&quot; | openssl dgst -sha256 -hmac &quot;30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2&quot;
-(stdin)= 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
-</code></li>
+<li><strong>requestBody</strong>:quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307</li>
 </ul>
-<pre class="highlight shell"><code>curl 调用:
+<pre class="highlight shell tab-shell"><code>示例3:
+HMAC SHA256 签名:
+<span class="gp">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTCquantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307"</span> | openssl dgst -sha256 -hmac <span class="s2">"30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"</span>
+<span class="o">(</span>stdin<span class="o">)=</span> 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
+</code></pre><pre class="highlight shell"><code>curl 调用:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
 <span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order?symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC'</span> -d <span class="s1">'quantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&amp;signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'</span>
 
