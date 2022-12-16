@@ -254,27 +254,57 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#5ea2e0cde2" class="toc-h1 toc-link" data-title="简介">简介</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#u-api" class="toc-h2 toc-link" data-title="U本位合约API简介">U本位合约API简介</a>
-                  </li>
-                  <li>
-                    <a href="#6ac6895b3f" class="toc-h2 toc-link" data-title="做市商项目">做市商项目</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#1-6-9-2022-11-10-u" class="toc-h2 toc-link" data-title="1.6.9 2022年11月10日 【U本位接口新增】">1.6.9 2022年11月10日 【U本位接口新增】</a>
+                    <a href="#2022-12-16" class="toc-h2 toc-link" data-title="2022-12-16">2022-12-16</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#rest" class="toc-h2 toc-link" data-title="Rest 基本信息">Rest 基本信息</a>
+                  </li>
+                  <li>
+                    <a href="#12907e94be" class="toc-h2 toc-link" data-title="访问限制">访问限制</a>
+                  </li>
+                  <li>
+                    <a href="#a573a19f9c" class="toc-h2 toc-link" data-title="接口鉴权类型">接口鉴权类型</a>
+                  </li>
+                  <li>
+                    <a href="#trade-user_data" class="toc-h2 toc-link" data-title="需要签名的接口 (TRADE 与 USER_DATA)">需要签名的接口 (TRADE 与 USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="公开API参数">公开API参数</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#ed913b7357" class="toc-h1 toc-link" data-title="行情接口">行情接口</a>
+          </li>
+          <li>
+            <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket 行情推送接口">Websocket 行情推送接口</a>
+          </li>
+          <li>
+            <a href="#93d49cc2e5" class="toc-h1 toc-link" data-title="账户和交易接口">账户和交易接口</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1045de04a1" class="toc-h2 toc-link" data-title="划转">划转</a>
+                  </li>
+                  <li>
+                    <a href="#87a7130ac5" class="toc-h2 toc-link" data-title="获取划转历史">获取划转历史</a>
+                  </li>
+                  <li>
+                    <a href="#trade" class="toc-h2 toc-link" data-title="更改持仓模式(TRADE)">更改持仓模式(TRADE)</a>
+                  </li>
+                  <li>
+                    <a href="#user_data" class="toc-h2 toc-link" data-title="查询持仓模式(USER_DATA)">查询持仓模式(USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#trade-2" class="toc-h2 toc-link" data-title="下单 (TRADE)">下单 (TRADE)</a>
+                  </li>
                   <li>
                     <a href="#ff2f540895" class="toc-h2 toc-link" data-title="账户类型查询">账户类型查询</a>
                   </li>
@@ -288,32 +318,249 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='5ea2e0cde2'>简介</h1><h2 id='u-api'>U本位合约API简介</h2>
-<p>欢迎使用火必U本位合约 API！ 你可以使用此 API 获得市场行情数据，进行交易，并且管理你的账户。</p>
-<h2 id='6ac6895b3f'>做市商项目</h2><h1 id='185368440e'>更新日志</h1><h2 id='1-6-9-2022-11-10-u'>1.6.9 2022年11月10日 【U本位接口新增】</h2><h3 id='1'>1、新增 账户类型查询</h3>
+        <h1 id='185368440e'>更新日志</h1><h2 id='2022-12-16'>2022-12-16</h2>
 <ul>
-<li>接口名称：账户类型查询</li>
-<li>接口URL：/linear-swap-api/v3/swap_unified_account_type</li>
+<li>接口</li>
 </ul>
-
-<p>## 访问地址</p>
+<h1 id='41654e0268'>基础信息</h1><h2 id='rest'>Rest 基本信息</h2>
+<ul>
+<li>接口可能需要用户的 API Key，如何创建API-KEY请参考<a href=''>这里</a></li>
+<li>本篇列出REST接口的baseurl <strong>https://fapi.</strong></li>
+<li>所有接口的响应都是JSON格式</li>
+<li>所有时间、时间戳均为UNIX时间，单位为毫秒</li>
+<li>所有数据类型采用JAVA的数据类型定义</li>
+</ul>
+<h2 id='12907e94be'>访问限制</h2>
+<ul>
+<li>在  <code>/api/v1/exchangeInfo</code>的<code>rateLimits</code> 数组里包含有REST接口(不限于本篇的REST接口)的访问限制。包括带权重的访问频次限制、下单速率限制</li>
+<li>违反上述任何一个访问限制都会收到HTTP 429，这是一个警告</li>
+<li>每条线路有一个weight特性，这个决定了这个请求占用多少容量（比如weight=2说明这个请求占用两个请求的量）。返回数据多的端点或者在多个symbol执行任务的端点可能有更高的weight</li>
+<li>多次反复违反频率限制和/或者没有在收到429后停止发送请求的用户将会被收到封禁IP（错误码418）</li>
+<li>IP封禁会被跟踪和 调整封禁时长（对于反复违反规定的用户，时间从 2分钟到3天不等）</li>
+</ul>
+<h2 id='a573a19f9c'>接口鉴权类型</h2>
+<ul>
+<li>每个接口都有自己的鉴权类型，鉴权类型决定了访问时应当进行何种鉴权</li>
+<li>如果需要 API-key, 应当在HTTP头中以X-BB-APIKEY字段传递</li>
+<li>API-key 与 API-secret 是大小写敏感的</li>
+<li>可以在网页用户中心修改API-key 所具有的权限，例如读取账户信息、发送交易指令、发送提现指令</li>
+</ul>
 
 <table><thead>
 <tr>
-<th>访问地址</th>
-<th>适用站点</th>
-<th>适用功能</th>
-<th>适用交易对</th>
+<th>鉴权类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>https://baidu</td>
-<td>合约</td>
-<td>API</td>
-<td>合约的交易品种</td>
+<td>NONE</td>
+<td>不需要鉴权的接口</td>
+</tr>
+<tr>
+<td>TRADE</td>
+<td>需要有效的API-KEY和签名</td>
+</tr>
+<tr>
+<td>USER_DATA</td>
+<td>需要有效的API-KEY和签名</td>
+</tr>
+<tr>
+<td>USER_STREAM</td>
+<td>需要有效的API-KEY</td>
+</tr>
+<tr>
+<td>MARKET_DATA</td>
+<td>需要有效的API-KEY</td>
 </tr>
 </tbody></table>
-<h1 id='41654e0268'>基础信息</h1><h2 id='ff2f540895'>账户类型查询</h2>
+<h2 id='trade-user_data'>需要签名的接口 (TRADE 与 USER_DATA)</h2>
+<ul>
+<li>调用这些接口时，除了接口本身所需的参数外，还需要传递<code>signature</code>即签名参数</li>
+<li>签名使用<code>HMAC SHA256</code>算法. API-KEY所对应的API-Secret作为 <code>HMAC SHA256</code> 的密钥，其他所有参数作为<code>HMAC SHA256</code>的操作对象，得到的输出即为签名</li>
+<li>签名大小写不敏感</li>
+<li>当同时使用query string和request body时，<code>HMAC SHA256</code>的输入query string在前，request body在后
+### 时间同步安全</li>
+<li>签名接口均需要传递timestamp参数, 其值应当是请求发送时刻的unix时间戳(毫秒)</li>
+<li>服务器收到请求时会判断请求中的时间戳，如果是5000毫秒之前发出的，则请求会被认为无效。这个时间窗口值可以通过发送可选参数<code>recvWindow</code>来自定义</li>
+<li>另外，如果服务器计算得出客户端时间戳在服务器时间的‘未来’一秒以上，也会拒绝请求。</li>
+</ul>
+<pre class="highlight javascript tab-javascript"><code><span class="err">逻辑伪代码：</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">timestamp</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nx">serverTime</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">serverTime</span> <span class="o">-</span> <span class="nx">timestamp</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nx">recvWindow</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// process request</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// reject request</span>
+<span class="p">}</span>
+</code></pre>
+<p><strong>关于交易时效性</strong> 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到币安服务器的时延会有抖动. 这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
+<aside class="notice">
+不推荐使用5秒以上的recvWindow
+</aside></p>
+<h3 id='post-api-v1-spot-order'>POST /api/v1/spot/order的示例</h3>
+<p>以下是在linux bash环境下使用 echo openssl 和curl工具实现的一个调用接口下单的示例 apikey、secret仅供示范
+| Key    | Value | 
+| --------- | ---- | 
+| apiKey| SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq |
+| secretKey| 30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2 |</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>取值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>BTCUSDT</td>
+</tr>
+<tr>
+<td>side</td>
+<td>SELL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>LIMIT</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>GTC</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>1</td>
+</tr>
+<tr>
+<td>price</td>
+<td>4000</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>1668481902307</td>
+</tr>
+</tbody></table>
+<h4 id='1-query-string'>示例 1: 所有参数通过 query string 发送</h4>
+<ul>
+<li><strong>queryString</strong>
+symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307
+<code>shell
+示例1:
+HMAC SHA256 签名:
+$ echo -n &quot;symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&quot; | openssl dgst -sha256 -hmac &quot;30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2&quot;
+(stdin)= 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
+</code></li>
+</ul>
+<pre class="highlight shell"><code>curl 调用:
+<span class="o">(</span>HMAC SHA256<span class="o">)</span>
+<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order'</span> -d <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
+
+</code></pre><h4 id='2-request-body'>示例 2: 所有参数通过 request body 发送</h4>
+<ul>
+<li><strong>requestBody</strong>
+symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307</li>
+</ul>
+<pre class="highlight shell tab-shell"><code>示例2:
+HMAC SHA256 签名:
+<span class="gp">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307"</span> | openssl dgst -sha256 -hmac <span class="s2">"30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"</span>
+<span class="o">(</span>stdin<span class="o">)=</span> 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
+</code></pre><pre class="highlight shell"><code>curl 调用:
+<span class="o">(</span>HMAC SHA256<span class="o">)</span>
+<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order'</span> -d <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
+</code></pre><h4 id='3-query-string-request-body'>示例 3: 混合使用 query string 与 request body</h4>
+<ul>
+<li><strong>queryString</strong>:symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC</li>
+<li><strong>requestBody</strong>:quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307
+<code>shell
+示例3:
+HMAC SHA256 签名:
+$ echo -n &quot;symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTCquantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&quot; | openssl dgst -sha256 -hmac &quot;30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2&quot;
+(stdin)= 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
+</code></li>
+</ul>
+<pre class="highlight shell"><code>curl 调用:
+<span class="o">(</span>HMAC SHA256<span class="o">)</span>
+<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order?symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC'</span> -d <span class="s1">'quantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&amp;signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'</span>
+
+</code></pre>
+<p>注意在例子3里有一点不一样，&quot;GTC&quot;和&quot;quantity=1&quot;之间没有&amp;。</p>
+<h2 id='api'>公开API参数</h2><h3 id='6db415da2a'>术语解释</h3>
+<ul>
+<li><code>base asset</code> 指一个交易对的交易对象，即写在靠前部分的资产名</li>
+<li><code>quote asset</code> 指一个交易对的定价资产，即写在靠后部分资产名</li>
+</ul>
+<h3 id='8c6d51826c'>枚举定义</h3><h4 id='b27394abe0'>交易对类型:</h4>
+<ul>
+<li>FUTURE 期货
+#### 资产类型:</li>
+<li>CASH - 现金</li>
+<li>MARGIN - 保证金
+#### 订单状态:</li>
+<li>NEW - 新订单，暂无成交</li>
+<li>PARTIALLY_FILLED - 部分成交</li>
+<li>FILLED - 完全成交</li>
+<li>CANCELED - 已取消</li>
+<li>PENDING_CANCEL - 等待取消</li>
+<li>REJECTED - 被拒绝</li>
+</ul>
+<h4 id='ccc1043a13'>订单类型:</h4>
+<ul>
+<li>LIMIT - 限价单</li>
+<li>MARKET - 市价单</li>
+<li>LIMIT_MAKER - maker限价单</li>
+<li>STOP_LOSS (unavailable now) - 暂无</li>
+<li>STOP_LOSS_LIMIT (unavailable now) - 暂无</li>
+<li>TAKE_PROFIT (unavailable now) - 暂无</li>
+<li>TAKE_PROFIT_LIMIT (unavailable now) - 暂无</li>
+<li>MARKET_OF_PAYOUT (unavailable now) - 暂无
+#### 订单方向:</li>
+<li>BUY - 买单</li>
+<li>SELL - 卖单
+#### 有效方式:</li>
+<li>GTC - Good Till Cancel 成交为止</li>
+<li>IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销</li>
+<li>FOK - Fill or Kill 无法全部立即成交就撤销</li>
+</ul>
+<h4 id='k'>K线间隔:</h4>
+<p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月
+- 1m
+- 3m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 8h
+- 12h
+- 1d
+- 3d
+- 1w
+- 1M</p>
+<h4 id='6c2a2ea1f1'>频率限制类型：</h4>
+<ul>
+<li>REQUESTS_WEIGHT</li>
+<li>ORDERS</li>
+</ul>
+<h4 id='5ab44df604'>频率限制区间</h4>
+<ul>
+<li>SECOND</li>
+<li>MINUTE</li>
+<li>DAY</li>
+</ul>
+<h1 id='ed913b7357'>行情接口</h1><h1 id='websocket'>Websocket 行情推送接口</h1><h1 id='93d49cc2e5'>账户和交易接口</h1>
+<aside class="warning">
+ 考虑到剧烈行情下, RESTful接口可能存在查询延迟，我们强烈建议您优先从Websocket user data stream推送的消息来获取订单，成交，仓位等信息。
+</aside>
+<h2 id='1045de04a1'>划转</h2>
+<p>执行现货账户与合约账户之间的划转, <a href="#">详情请见这里</a></p>
+<h2 id='87a7130ac5'>获取划转历史</h2>
+<p>获取现货账户与合约账户之间的资金划转历史记录,<a href="#">详情请见这里</a></p>
+<h2 id='trade'>更改持仓模式(TRADE)</h2><h2 id='user_data'>查询持仓模式(USER_DATA)</h2><h2 id='trade-2'>下单 (TRADE)</h2>
+<p><code>POST /api/v1/futures/order</code></p>
+<h3 id='749d765242'>参数</h3><h2 id='ff2f540895'>账户类型查询</h2>
 <ul>
 <li>GET <code>/linear-swap-api/v3/swap_unified_account_type</code></li>
 </ul>
