@@ -283,6 +283,17 @@
           </li>
           <li>
             <a href="#ed913b7357" class="toc-h1 toc-link" data-title="行情接口">行情接口</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ping" class="toc-h2 toc-link" data-title="测试服务器连通性 PING">测试服务器连通性 PING</a>
+                  </li>
+                  <li>
+                    <a href="#3f1907847c" class="toc-h2 toc-link" data-title="获取服务器时间">获取服务器时间</a>
+                  </li>
+                  <li>
+                    <a href="#0f3f2d5ee7" class="toc-h2 toc-link" data-title="获取交易规则和交易对">获取交易规则和交易对</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket 行情推送接口">Websocket 行情推送接口</a>
@@ -545,22 +556,25 @@ HMAC SHA256 签名:
 <li>FOK - Fill or Kill 无法全部立即成交就撤销</li>
 </ul>
 <h4 id='k'>K线间隔:</h4>
-<p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月
-- 1m
-- 3m
-- 5m
-- 15m
-- 30m
-- 1h
-- 2h
-- 4h
-- 6h
-- 8h
-- 12h
-- 1d
-- 3d
-- 1w
-- 1M</p>
+<p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
+
+<ul>
+<li>1m </li>
+<li>3m</li>
+<li>5m</li>
+<li>15m</li>
+<li>30m</li>
+<li>1h</li>
+<li>2h</li>
+<li>4h</li>
+<li>6h</li>
+<li>8h</li>
+<li>12h</li>
+<li>1d</li>
+<li>3d</li>
+<li>1w</li>
+<li>1M</li>
+</ul>
 <h4 id='6c2a2ea1f1'>频率限制类型：</h4>
 <ul>
 <li>REQUESTS_WEIGHT</li>
@@ -572,7 +586,374 @@ HMAC SHA256 签名:
 <li>MINUTE</li>
 <li>DAY</li>
 </ul>
-<h1 id='ed913b7357'>行情接口</h1><h1 id='websocket'>Websocket 行情推送接口</h1><h1 id='93d49cc2e5'>账户和交易接口</h1>
+<h1 id='ed913b7357'>行情接口</h1><h2 id='ping'>测试服务器连通性 PING</h2>
+<ul>
+<li> <code>GET /api/v1/ping</code>
+测试能否联通
+### 权重: 1
+### 参数：NONE
+&gt; 响应: </li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+
+</span></code></pre><h2 id='3f1907847c'>获取服务器时间</h2>
+<ul>
+<li><code>GET /api/v1/time</code>
+获取服务器时间
+### 权重: 1
+### 参数: NONE
+&gt; 响应: </li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1538323200000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='0f3f2d5ee7'>获取交易规则和交易对</h2>
+<ul>
+<li><code>GET /api/v1/exchangeInfo</code>
+获取交易规则和交易对
+### 权重：1
+### 参数：NONE
+&gt; 响应:</li>
+</ul>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668407511495"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brokerFilters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"symbols"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isAggregate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isAggregate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRPUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRPUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isAggregate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"rateLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rateLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_WEIGHT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINUTE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intervalUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rateLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SECOND"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intervalUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDTUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inverse"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"contractMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"riskLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000133"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000134"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000135"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000136"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inverse"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"contractMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"riskLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000137"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000138"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000139"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000140"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName (tokenFullName)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName (tokenFullName)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TetherUS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"chainType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minDepositQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"chainType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRC20"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"chainType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uniswap"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName (tokenFullName)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName (tokenFullName)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"orgId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName (tokenFullName)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre><h1 id='websocket'>Websocket 行情推送接口</h1><h1 id='93d49cc2e5'>账户和交易接口</h1>
 <aside class="warning">
  考虑到剧烈行情下, RESTful接口可能存在查询延迟，我们强烈建议您优先从Websocket user data stream推送的消息来获取订单，成交，仓位等信息。
 </aside>
