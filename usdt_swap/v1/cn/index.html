@@ -323,6 +323,9 @@
                     <a href="#trade-3" class="toc-h2 toc-link" data-title="撤销订单 (TRADE)">撤销订单 (TRADE)</a>
                   </li>
                   <li>
+                    <a href="#trade-4" class="toc-h2 toc-link" data-title="撤销全部订单 (TRADE)">撤销全部订单 (TRADE)</a>
+                  </li>
+                  <li>
                     <a href="#user_data-3" class="toc-h2 toc-link" data-title="查看当前全部挂单 (USER_DATA)">查看当前全部挂单 (USER_DATA)</a>
                   </li>
                   <li>
@@ -1080,9 +1083,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
 </ul>
-
-<p>### 权重：1</p>
-
+<h3 id='1-4'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1145,74 +1146,114 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 
-<p>注意: <br>
-- <code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</p>
+<p>注意: <br></p>
+
+<ul>
+<li><code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</li>
+</ul>
 <h2 id='trade-3'>撤销订单 (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/futures/order</code></li>
 </ul>
-
-<p>### 权重：1</p>
-
+<h3 id='1-5'>权重：1</h3>
 <blockquote>
-<p>响应：
-``` json
-同步撤单响应：</p>
+<p>响应：</p>
 </blockquote>
+<pre class="highlight json tab-json"><code><span class="err">同步撤单响应：</span><span class="w">
 
-<p>{
-    &quot;time&quot;: &quot;1668418485058&quot;, // 订单生成时的时间戳
-    &quot;updateTime&quot;: &quot;1668418485058&quot;, // 订单上次更新的时间戳
-    &quot;orderId&quot;: &quot;1289182123551455488&quot;, //订单ID
-    &quot;clientOrderId&quot;: &quot;test1115&quot;, //用户定义的订单ID
-    &quot;symbol&quot;: &quot;BTC-SWAP-USDT&quot;, //交易对
-    &quot;price&quot;: &quot;19000&quot;, //订单价格
-    &quot;leverage&quot;: &quot;2&quot;, //订单杠杆
-    &quot;origQty&quot;: &quot;10&quot;, //订单数量
-    &quot;executedQty&quot;: &quot;0&quot;, //订单已执行数量
-    &quot;avgPrice&quot;: &quot;0&quot;, //平均交易价格
-    &quot;marginLocked&quot;: &quot;9.5&quot;, //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
-    &quot;type&quot;: &quot;LIMIT&quot;, // 订单类型（LIMIT和STOP）
-    &quot;side&quot;: &quot;BUY_OPEN&quot;, // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    &quot;timeInForce&quot;: &quot;GTC&quot;, // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
-    &quot;status&quot;: &quot;NEW&quot;, //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
-    &quot;priceType&quot;: &quot;INPUT&quot; //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
-}</p>
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668418485058"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单生成时的时间戳</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668418485058"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单上次更新的时间戳</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1289182123551455488"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单ID</span><span class="w">
+    </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1115"</span><span class="p">,</span><span class="w"> </span><span class="err">//用户定义的订单ID</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易对</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19000"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单价格</span><span class="w">
+    </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单杠杆</span><span class="w">
+    </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单数量</span><span class="w">
+    </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单已执行数量</span><span class="w">
+    </span><span class="s2">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//平均交易价格</span><span class="w">
+    </span><span class="s2">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
+    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
+    </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
+    </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<p>异步撤单响应：</p>
+</span><span class="err">异步撤单响应：</span><span class="w">
 
-<p>{
-  &quot;isCancelled&quot;:true  //订单是否还在book上存在，如果本来就不在book上 返回true。所以除非连接match 超时，其他情况返回均为true
-}</p>
-<pre class="highlight plaintext"><code>
- ### 参数
- | 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| orderId | LONG | NO | 订单ID |
-| origClientOrderId | STRING | NO | 用户定义的订单ID |
-| type | ENUM | NO | 订单类型（LIMIT和STOP） |
-| fastCancel | INT | NO | 默认`0`(同步撤单)，`1`异步撤单 |
-| symbol | STRING | NO | 交易对 |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"isCancelled"</span><span class="p">:</span><span class="kc">true</span><span class="w">  </span><span class="err">//订单是否还在book上存在，如果本来就不在book上</span><span class="w"> </span><span class="err">返回</span><span class="kc">true</span><span class="err">。所以除非连接match</span><span class="w"> </span><span class="err">超时，其他情况返回均为</span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-注意：&lt;br&gt;
-- `orderId` 或者 `origClientOrderId` 必须发送其中之一
+</span></code></pre><h3 id='749d765242-3'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>用户定义的订单ID</td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>订单类型（LIMIT和STOP）</td>
+</tr>
+<tr>
+<td>fastCancel</td>
+<td>INT</td>
+<td>NO</td>
+<td>默认<code>0</code>(同步撤单)，<code>1</code>异步撤单</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
 
-## 撤销全部订单 (TRADE)
-
-- `DELETE /api/v1/futures/batchOrders`
-
-### 权重：5
-
-&gt; 响应:
-
-``` json
-{
-  "message":"success",
-  "timestamp":1541161088303
-}
-</code></pre><h3 id='749d765242-3'>参数</h3>
+<p>注意：<br>
+- <code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</p>
+<h2 id='trade-4'>撤销全部订单 (TRADE)</h2>
+<ul>
+<li><code>DELETE /api/v1/futures/batchOrders</code></li>
+</ul>
+<h3 id='5'>权重：5</h3>
+<blockquote>
+<p>响应:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-4'>参数</h3>
 <p>| 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 （或者用,分割的交易对的list）|
@@ -1223,7 +1264,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/futures/openOrders</code></li>
 </ul>
-<h3 id='1-4'>权重：1</h3>
+<h3 id='1-6'>权重：1</h3>
 <blockquote>
 <p>响应：
 <code>json
@@ -1249,7 +1290,7 @@ HMAC SHA256 签名:
 ]
 </code></p>
 </blockquote>
-<h3 id='749d765242-4'>参数</h3>
+<h3 id='749d765242-5'>参数</h3>
 <p>| 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
@@ -1265,7 +1306,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
 </ul>
-<h3 id='5'>权重：5</h3>
+<h3 id='5-2'>权重：5</h3>
 <blockquote>
 <p>响应：
 <code>json
@@ -1291,7 +1332,7 @@ HMAC SHA256 签名:
 ]
 </code></p>
 </blockquote>
-<h3 id='749d765242-5'>参数</h3>
+<h3 id='749d765242-6'>参数</h3>
 <p>| 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
