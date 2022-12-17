@@ -1239,7 +1239,7 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 
-<p>注意：<br>
+<p>注意：
 - <code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</p>
 <h2 id='trade-4'>撤销全部订单 (TRADE)</h2>
 <ul>
@@ -1254,12 +1254,39 @@ HMAC SHA256 签名:
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='749d765242-4'>参数</h3>
-<p>| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | 交易对 （或者用,分割的交易对的list）|
-| side | ENUM | NO | <code>BUY</code>或<code>SELL</code> |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |</p>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对 （或者用,分割的交易对的list）</td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>NO</td>
+<td><code>BUY</code>或<code>SELL</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='user_data-3'>查看当前全部挂单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/openOrders</code></li>
@@ -1286,19 +1313,56 @@ HMAC SHA256 签名:
     &quot;timeInForce&quot;: &quot;GTC&quot;, //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
     &quot;status&quot;: &quot;NEW&quot;, // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     &quot;priceType&quot;: &quot;INPUT&quot; //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
-  },...
+  }
 ]
 </code></p>
 </blockquote>
 <h3 id='749d765242-5'>参数</h3>
-<p>| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
-| orderId | LONG | NO | 订单ID |
-| type | ENUM | YES | 订单类型（<code>LIMIT</code>、<code>STOP</code>） |
-| limit | INT | NO | |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |</p>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>订单类型（<code>LIMIT</code>、<code>STOP</code>）</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <p>注意：<br>
 如果发送了<code>orderId</code>，会返回所有&lt; <code>orderId</code>的订单。如果没有则会返回最新的未完成订单。</p>
@@ -1328,19 +1392,56 @@ HMAC SHA256 签名:
     &quot;timeInForce&quot;: &quot;GTC&quot;, //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
     &quot;status&quot;: &quot;CANCELED&quot;, // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     &quot;priceType&quot;: &quot;INPUT&quot; //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
-  },...
+  }
 ]
 </code></p>
 </blockquote>
 <h3 id='749d765242-6'>参数</h3>
-<p>| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
-| orderId | LONG | NO | 订单ID |
-| type | ENUM | YES | 订单类型（<code>LIMIT</code>、<code>STOP</code>） |
-| limit | INT | NO | |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |</p>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>订单ID</td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>订单类型（<code>LIMIT</code>、<code>STOP</code>）</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <p>注意：<br>
 如果发送了orderId，会返回所有&lt; orderId的订单。如果没有则会返回最新的订单。</p>
