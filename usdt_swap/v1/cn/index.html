@@ -1293,31 +1293,29 @@ HMAC SHA256 签名:
 </ul>
 <h3 id='1-6'>权重：1</h3>
 <blockquote>
-<p>响应：
-<code>json
-[
-  {
-    &quot;time&quot;: &quot;1570760254539&quot;, //订单生成时的时间戳
-    &quot;updateTime&quot;: &quot;1570760254539&quot;, //订单上次更新的时间戳
-    &quot;orderId&quot;: &quot;469965509788581888&quot;, // 订单ID
-    &quot;clientOrderId&quot;: &quot;1570760253946&quot;,  //用户定义的订单ID
-    &quot;symbol&quot;: &quot;BTC-PERP-REV&quot;, // 交易对
-    &quot;price&quot;: &quot;8502.34&quot;, // 订单价格
-    &quot;leverage&quot;: &quot;20&quot;, //订单杠杆
-    &quot;origQty&quot;: &quot;222&quot;, // 订单数量
-    &quot;executedQty&quot;: &quot;0&quot;, // 订单已执行数量
-    &quot;avgPrice&quot;: &quot;0&quot;, // 平均交易价格
-    &quot;marginLocked&quot;: &quot;0.00130552&quot;, // 该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
-    &quot;type&quot;: &quot;LIMIT&quot;, // 订单类型（LIMIT和STOP）
-    &quot;side&quot;: &quot;BUY_OPEN&quot;, // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    &quot;timeInForce&quot;: &quot;GTC&quot;, //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
-    &quot;status&quot;: &quot;NEW&quot;, // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
-    &quot;priceType&quot;: &quot;INPUT&quot; //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
-  }
-]
-</code></p>
+<p>响应：</p>
 </blockquote>
-<h3 id='749d765242-5'>参数</h3>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570760254539"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单生成时的时间戳</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570760254539"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单上次更新的时间戳</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"469965509788581888"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单ID</span><span class="w">
+    </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570760253946"</span><span class="p">,</span><span class="w">  </span><span class="err">//用户定义的订单ID</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-PERP-REV"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">交易对</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8502.34"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单价格</span><span class="w">
+    </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单杠杆</span><span class="w">
+    </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"222"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单数量</span><span class="w">
+    </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单已执行数量</span><span class="w">
+    </span><span class="s2">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">平均交易价格</span><span class="w">
+    </span><span class="s2">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00130552"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
+    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
+    </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
+    </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-5'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1372,31 +1370,29 @@ HMAC SHA256 签名:
 </ul>
 <h3 id='5-2'>权重：5</h3>
 <blockquote>
-<p>响应：
-<code>json
-[
-  {
-    &quot;time&quot;: &quot;1570760254539&quot;, //订单生成时的时间戳
-    &quot;updateTime&quot;: &quot;1570760254539&quot;, //订单上次更新的时间戳
-    &quot;orderId&quot;: &quot;469965509788581888&quot;, // 订单ID
-    &quot;clientOrderId&quot;: &quot;1570760253946&quot;,  //用户定义的订单ID
-    &quot;symbol&quot;: &quot;BTC-PERP-REV&quot;, // 交易对
-    &quot;price&quot;: &quot;8502.34&quot;, // 订单价格
-    &quot;leverage&quot;: &quot;20&quot;, //订单杠杆
-    &quot;origQty&quot;: &quot;222&quot;, // 订单数量
-    &quot;executedQty&quot;: &quot;0&quot;, // 订单已执行数量
-    &quot;avgPrice&quot;: &quot;0&quot;, // 平均交易价格
-    &quot;marginLocked&quot;: &quot;0.00130552&quot;, // 该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
-    &quot;type&quot;: &quot;LIMIT&quot;, // 订单类型（LIMIT和STOP）
-    &quot;side&quot;: &quot;BUY_OPEN&quot;, // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    &quot;timeInForce&quot;: &quot;GTC&quot;, //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
-    &quot;status&quot;: &quot;CANCELED&quot;, // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
-    &quot;priceType&quot;: &quot;INPUT&quot; //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
-  }
-]
-</code></p>
+<p>响应：</p>
 </blockquote>
-<h3 id='749d765242-6'>参数</h3>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570760254539"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单生成时的时间戳</span><span class="w">
+    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570760254539"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单上次更新的时间戳</span><span class="w">
+    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"469965509788581888"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单ID</span><span class="w">
+    </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570760253946"</span><span class="p">,</span><span class="w">  </span><span class="err">//用户定义的订单ID</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-PERP-REV"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">交易对</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8502.34"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单价格</span><span class="w">
+    </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单杠杆</span><span class="w">
+    </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"222"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单数量</span><span class="w">
+    </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单已执行数量</span><span class="w">
+    </span><span class="s2">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">平均交易价格</span><span class="w">
+    </span><span class="s2">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00130552"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
+    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
+    </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
+    </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-6'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
