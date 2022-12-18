@@ -331,6 +331,9 @@
                   <li>
                     <a href="#user_data-4" class="toc-h2 toc-link" data-title="查询历史订单 (USER_DATA)">查询历史订单 (USER_DATA)</a>
                   </li>
+                  <li>
+                    <a href="#trade-5" class="toc-h2 toc-link" data-title="调整开仓杠杆 (TRADE)">调整开仓杠杆 (TRADE)</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1239,8 +1242,11 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 
-<p>注意：
-- <code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</p>
+<p>注意：</p>
+
+<ul>
+<li><code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</li>
+</ul>
 <h2 id='trade-4'>撤销全部订单 (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/futures/batchOrders</code></li>
@@ -1441,7 +1447,7 @@ HMAC SHA256 签名:
 
 <p>注意：<br>
 如果发送了orderId，会返回所有&lt; orderId的订单。如果没有则会返回最新的订单。</p>
-
+<h2 id='trade-5'>调整开仓杠杆 (TRADE)</h2>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
