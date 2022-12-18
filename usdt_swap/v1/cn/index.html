@@ -1149,7 +1149,7 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 
-<p>注意: <br></p>
+<p>注意: </p>
 
 <ul>
 <li><code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</li>
@@ -1368,8 +1368,11 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 
-<p>注意：<br>
-如果发送了<code>orderId</code>，会返回所有&lt; <code>orderId</code>的订单。如果没有则会返回最新的未完成订单。</p>
+<p>注意：</p>
+
+<ul>
+<li>如果发送了<code>orderId</code>，会返回所有&lt; <code>orderId</code>的订单。如果没有则会返回最新的未完成订单。</li>
+</ul>
 <h2 id='user_data-4'>查询历史订单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
@@ -1445,8 +1448,11 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 
-<p>注意：<br>
-如果发送了orderId，会返回所有&lt; orderId的订单。如果没有则会返回最新的订单。</p>
+<p>注意：</p>
+
+<ul>
+<li>如果发送了orderId，会返回所有&lt; orderId的订单。如果没有则会返回最新的订单。</li>
+</ul>
 <h2 id='trade-5'>调整开仓杠杆 (TRADE)</h2>
       </div>
       <div class="dark-box">
