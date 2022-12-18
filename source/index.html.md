@@ -642,42 +642,251 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ## 下单 (TRADE)
 `POST /api/v1/futures/order`
-### 参数
 
+> 响应：
 
-## 账户类型查询
-
-- GET `/linear-swap-api/v3/swap_unified_account_type`
-
-#### 备注
- - 此接口用于客户查询的账号类型，当前U本位合约有统一账户和非统一账户（全仓逐仓账户）类型。统一账户类型资产放在USDT一个账户上，全仓逐仓账户类型资产放在不同的币对。
- - 统一账户类型为最新升级的，当前不支持API下单。若需要用用API下单请切换账户类型为非统一账户。
-
-### 请求参数
-
-无
-
-> Response: 
-
-```json
+``` json
 {
-    "code":200,
-    "msg":"ok",
-    "data":{
-        "account_type":2
-    },
-    "ts":1668057324200
+    "time": "1668418485058", // 订单生成时的时间戳
+    "updateTime": "1668418485058", // 订单上次更新的时间戳
+    "orderId": "1289182123551455488", //订单ID
+    "clientOrderId": "test1115", //用户定义的订单ID
+    "symbol": "BTC-SWAP-USDT", //交易对
+    "price": "19000", //订单价格
+    "leverage": "2", //订单杠杆
+    "origQty": "10", //订单数量
+    "executedQty": "0", //订单已执行数量
+    "avgPrice": "0", //平均交易价格
+    "marginLocked": "9.5", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
+    "type": "LIMIT", // 订单类型（LIMIT和STOP）
+    "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+    "priceType": "INPUT" //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
+| type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP` |
+| quantity | DECIMAL | YES | 订单的合约数量 |
+| price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要** |
+| priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
+| stopPrice | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要** |
+| timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER` |
+| newClientOrderId | STRING | YES | 订单的ID，用户自己定义 |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
+
+
+
+## 查询订单 (USER_DATA)
+- `GET /api/v1/futures/order`
+
+### 权重：1
+
+> 响应：
+
+``` json
+{
+    "time": "1668418485058", // 订单生成时的时间戳
+    "updateTime": "1668418485058", // 订单上次更新的时间戳
+    "orderId": "1289182123551455488", //订单ID
+    "clientOrderId": "test1115", //用户定义的订单ID
+    "symbol": "BTC-SWAP-USDT", //交易对
+    "price": "19000", //订单价格
+    "leverage": "2", //订单杠杆
+    "origQty": "10", //订单数量
+    "executedQty": "0", //订单已执行数量
+    "avgPrice": "0", //平均交易价格
+    "marginLocked": "9.5", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
+    "type": "LIMIT", // 订单类型（LIMIT和STOP）
+    "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+    "priceType": "INPUT" //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| orderId | LONG | NO | 订单ID |
+| origClientOrderId | STRING | NO | 用户定义的订单ID |
+| type | ENUM | NO | 订单类型（LIMIT和STOP） |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
+ 
+注意: 
+
+- `orderId` 或者 `origClientOrderId` 必须发送其中之一
+
+## 撤销订单 (TRADE)
+- `DELETE /api/v1/futures/order`
+
+### 权重：1
+
+> 响应：
+
+``` json
+同步撤单响应：
+
+{
+    "time": "1668418485058", // 订单生成时的时间戳
+    "updateTime": "1668418485058", // 订单上次更新的时间戳
+    "orderId": "1289182123551455488", //订单ID
+    "clientOrderId": "test1115", //用户定义的订单ID
+    "symbol": "BTC-SWAP-USDT", //交易对
+    "price": "19000", //订单价格
+    "leverage": "2", //订单杠杆
+    "origQty": "10", //订单数量
+    "executedQty": "0", //订单已执行数量
+    "avgPrice": "0", //平均交易价格
+    "marginLocked": "9.5", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
+    "type": "LIMIT", // 订单类型（LIMIT和STOP）
+    "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+    "priceType": "INPUT" //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+}
+
+异步撤单响应：
+
+{
+  "isCancelled":true  //订单是否还在book上存在，如果本来就不在book上 返回true。所以除非连接match 超时，其他情况返回均为true
 }
 
 ```
 
-### 返回参数
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| orderId | LONG | NO | 订单ID |
+| origClientOrderId | STRING | NO | 用户定义的订单ID |
+| type | ENUM | NO | 订单类型（LIMIT和STOP） |
+| fastCancel | INT | NO | 默认`0`(同步撤单)，`1`异步撤单 |
+| symbol | STRING | NO | 交易对 |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
 
-| 参数名称    | 是否必须 | 类型      | 描述            | 取值范围           |
-| ----------------- | ---- | ------- | ------------- | -------------- |
-| code            | true | int  | 状态码        |  |
-| msg            | true | string  | 结果描述        |  |
-| ts                | true | long    | 时间戳 |                |
-| \<data\>          |  true    |         |               |          |
-| account_type        | true | int | 账户类型          |     1:非统一账户（全仓逐仓账户）2:统一账户        |
-| \</data\>         |   true   |         |        |                |
+注意：
+
+- `orderId` 或者 `origClientOrderId` 必须发送其中之一
+
+## 撤销全部订单 (TRADE)
+
+- `DELETE /api/v1/futures/batchOrders`
+
+### 权重：5
+
+> 响应:
+
+``` json
+{
+  "message":"success",
+  "timestamp":1541161088303
+}
+```
+
+### 参数
+
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 （或者用,分割的交易对的list）|
+| side | ENUM | NO | `BUY`或`SELL` |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
+
+## 查看当前全部挂单 (USER_DATA)
+- `GET /api/v1/futures/openOrders`
+
+### 权重：1
+
+> 响应：
+
+``` json
+[
+  {
+    "time": "1570760254539", //订单生成时的时间戳
+    "updateTime": "1570760254539", //订单上次更新的时间戳
+    "orderId": "469965509788581888", // 订单ID
+    "clientOrderId": "1570760253946",  //用户定义的订单ID
+    "symbol": "BTC-PERP-REV", // 交易对
+    "price": "8502.34", // 订单价格
+    "leverage": "20", //订单杠杆
+    "origQty": "222", // 订单数量
+    "executedQty": "0", // 订单已执行数量
+    "avgPrice": "0", // 平均交易价格
+    "marginLocked": "0.00130552", // 该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
+    "type": "LIMIT", // 订单类型（LIMIT和STOP）
+    "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+    "timeInForce": "GTC", //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "status": "NEW", // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+    "priceType": "INPUT" //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+  }
+]
+```
+
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+| orderId | LONG | NO | 订单ID |
+| type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
+| limit | INT | NO | |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
+
+注意：
+
+- 如果发送了`orderId`，会返回所有< `orderId`的订单。如果没有则会返回最新的未完成订单。
+
+## 查询历史订单 (USER_DATA)
+- `GET /api/v1/futures/historyOrders`
+
+### 权重：5
+
+> 响应：
+
+``` json
+[
+  {
+    "time": "1570760254539", //订单生成时的时间戳
+    "updateTime": "1570760254539", //订单上次更新的时间戳
+    "orderId": "469965509788581888", // 订单ID
+    "clientOrderId": "1570760253946",  //用户定义的订单ID
+    "symbol": "BTC-PERP-REV", // 交易对
+    "price": "8502.34", // 订单价格
+    "leverage": "20", //订单杠杆
+    "origQty": "222", // 订单数量
+    "executedQty": "0", // 订单已执行数量
+    "avgPrice": "0", // 平均交易价格
+    "marginLocked": "0.00130552", // 该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
+    "type": "LIMIT", // 订单类型（LIMIT和STOP）
+    "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+    "timeInForce": "GTC", //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "status": "CANCELED", // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+    "priceType": "INPUT" //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+  }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+| orderId | LONG | NO | 订单ID |
+| type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
+| limit | INT | NO | |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
+
+注意：
+
+- 如果发送了orderId，会返回所有< orderId的订单。如果没有则会返回最新的订单。
+
+## 调整开仓杠杆 (TRADE)
