@@ -330,6 +330,14 @@
           </li>
           <li>
             <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket 行情推送接口">Websocket 行情推送接口</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#3c863d56da" class="toc-h2 toc-link" data-title="实时订阅/取消数据流">实时订阅/取消数据流</a>
+                  </li>
+                  <li>
+                    <a href="#94a9a32795" class="toc-h2 toc-link" data-title="心跳">心跳</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#93d49cc2e5" class="toc-h1 toc-link" data-title="账户和交易接口">账户和交易接口</a>
@@ -1566,7 +1574,56 @@ HMAC SHA256 签名:
 <ul>
 <li>如果symbol没有被发送，所有symbol的最佳订单簿价格都会被返回。</li>
 </ul>
-<h1 id='websocket'>Websocket 行情推送接口</h1><h1 id='93d49cc2e5'>账户和交易接口</h1>
+<h1 id='websocket'>Websocket 行情推送接口</h1><h2 id='3c863d56da'>实时订阅/取消数据流</h2>
+<ul>
+<li>以下数据可以通过websocket发送以实现订阅或取消订阅数据流。示例如下。</li>
+<li>直接访问时URL格式为  wss://#HOST/quote/ws/v1</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>topic</td>
+<td><code>realtimes</code>(实时行情), <code>trade</code>(最新成交), <code>kline_$interval</code>(k线), <code>depth</code>（深度）</td>
+</tr>
+<tr>
+<td>event</td>
+<td><code>sub</code>(订阅), <code>cancel</code>(取消), <code>cancel_all</code>(取消全部)</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>1m, 5m, 15m, 30m, 1h, 2h, 6h, 12h, 1d, 1w, 1M</td>
+</tr>
+</tbody></table>
+<h3 id='ad052b1e2a'>请求订阅数据样例:</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易所ID+币对</span><span class="w">
+  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$topic"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">可调整的参数</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">kline返回上限是</span><span class="mi">2000</span><span class="err">，默认为</span><span class="mi">1</span><span class="w">
+        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$limit"</span><span class="p">,</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">返回的数据是否是压缩过的，默认为</span><span class="kc">false</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='94a9a32795'>心跳</h2>
+<p>每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。</p>
+<h3 id='926f6b6b6a'>请求</h3><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"ping"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535975085052</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535975085052</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='93d49cc2e5'>账户和交易接口</h1>
 <aside class="warning">
  考虑到剧烈行情下, RESTful接口可能存在查询延迟，我们强烈建议您优先从Websocket user data stream推送的消息来获取订单，成交，仓位等信息。
 </aside>
