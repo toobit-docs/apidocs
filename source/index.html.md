@@ -616,14 +616,725 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 
 ```
+## 深度信息 
+
+- `GET /quote/v1/depth`
+
+### 权重:
+
+| limit    |  权重  | 
+| -------- | ---- | 
+| 5, 10, 20, 50, 100 | 1 |
+| 500 | 5 |
+| 1000 | 10 |
+
+> 响应：
+
+``` json
+{
+  "b": [
+    [
+      "3.90000000",   // 价格
+      "431.00000000"  // 数量
+    ],
+    [
+      "4.00000000",
+      "431.00000000"
+    ]
+  ],
+  "a": [
+    [
+      "4.00000200",  // 价格
+      "12.00000000"  // 数量
+    ],
+    [
+      "5.10000000",
+      "28.00000000"
+    ]
+  ]
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| limit | INT | NO | 默认 100; 最大 100|
+
+注意：如果设置limit=0会返回很多数据。
 
 
+## 近期成交
+
+- `GET /quote/v1/trades`
+
+获取当前最新成交（最多60）
+
+### 权重：1
+
+>响应：
+
+``` json
+[
+  {
+    "p": "4.00000100",
+    "q": "12.00000000",
+    "t": 1499865549590,
+    "ibm": true  // 成交方向 isBuyerMaker
+  }
+]
+
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| limit | INT | NO | 默认 60; 最大 60|
 
 
+## K线数据
+
+- `GET /quote/v1/klines`
+
+symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
+
+### 权重：1
+
+> 响应：
+
+``` json
+[
+  [
+    1499040000000,      // 开盘时间
+    "0.01634790",       // 开盘价
+    "0.80000000",       // 最高价
+    "0.01575800",       // 最低价
+    "0.01577100",       // 收盘价
+    "148976.11427815",  // 交易量
+    1499644799999,      // 收盘时间
+    "2434.19055334",    // Quote asset数量
+    308,                // 交易次数
+    "1756.87402397",    // Taker buy base asset数量
+    "28.46694368"       // Taker buy quote asset数量
+  ]
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| interval | ENUM | YES | 时间间隔 |
+| startTime | LONG | NO | 开始时间 |
+| endTime | LONG | NO | 结束时间|
+| limit | INT | NO | 默认 100; 最大 1000|
+
+注意: 如果startTime和endTime没有发送，只有最新的K线会被返回。
+
+
+## 价格指数K线数据 
+
+- `GET /api/quote/v1/index/klines`
+
+获取某个交易对的价格指数K线
+
+> 响应：
+
+``` json
+{
+    "code": 200,
+    "data": [
+        {
+            "t": 1669155300000,//时间戳
+            "s": "ETHUSDT",//币对
+            "sn": "ETHUSDT",//币对名称
+            "c": "1127.1",//收盘价
+            "h": "1130.81",//最高价
+            "l": "1126.17",//最低价
+            "o": "1130.8",//开盘价
+            "v": "0"//成交量
+        },
+        {
+            "t": 1669156200000,
+            "s": "ETHUSDT",
+            "sn": "ETHUSDT",
+            "c": "1129.44",
+            "h": "1129.54",
+            "l": "1127.1",
+            "o": "1127.1",
+            "v": "0"
+        }
+]
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| interval | ENUM | YES | 时间间隔 |
+| from | LONG | YES | 开始时间 |
+| to | LONG | YES | 结束时间|
+| limit | INT | NO | 限制条数 |
+
+
+## 标记价格K线数据
+
+- `GET /api/quote/v1/markPrice/klines`
+
+> 响应：
+
+``` json
+{
+    "code": 200,
+    "data": [
+        {
+            "symbol": "BTCUSDT",//币对
+            "time": 1670157900000,//时间戳
+            "low": "16991.14096",//最低价
+            "open": "16991.78288",//开盘价
+            "high": "16996.30641",//最高价
+            "close": "16996.30641",//收盘价
+            "volume": "0",//成交量
+            "curId": 1670157900000
+        }
+    ]
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| interval | ENUM | YES | 时间间隔 |
+| from | LONG | YES | 开始时间 |
+| to | LONG | YES | 结束时间|
+| limit | INT | NO | 限制条数 |
+
+
+## 最新标记价格
+- `GET /api/quote/v1/markPrice`
+
+获取某个交易对的标记价格
+
+> 响应：
+
+``` json
+{
+    "code": 200,
+    "data": [
+        {
+            "exchangeId": 301,//交易所ID
+            "symbolId": "BTC-SWAP-USDT",//币对
+            "price": "17042.54471",//标记价格
+            "time": 1670897454000//时间戳
+        }
+    ]
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+
+## 最新资金费率
+- `GET /api/v1/futures/fundingRate` 
+
+> 响应：
+
+``` json
+[
+    {
+        "symbol": "BTC-SWAP-USDT", // 交易对
+        "lastFundingTime": "1668398400000", //
+        "nextFundingTime": "1668427200000", //下次资金费结算时间
+        "rate": "0.0018099173553719" //该次结算资金费率。
+    }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+
+## 查询资金费率历史
+- `GET /api/v1/futures/historyFundingRate`
+
+> 响应：
+
+``` json
+[
+  { 
+    "id": "3434343434343",
+    "symbol": "BTC-PERP-REV", // 交易对
+    "fundingTime": "1570708800000", //资金费率结算时间
+    "fundingRate": "0.00321" //资金费率
+  }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| fromId | LONG | NO | 起始id |
+| endId | LONG | NO | 结束id |
+| limit | INT | NO | 返回条数 |
+
+## 24hr价格变动情况
+- `GET /quote/v1/ticker/24hr`
+
+24小时价格变化数据。注意 如果没有发送symbol，会返回很多数据。
+
+### 权重： 如果只有一个symbol为1，不带symbol为40。
+
+> 响应：
+
+``` json
+[
+    {
+        "t": 1538725500422,   // 时间
+        "a": "1.10000000",    // 最高卖价
+        "b": "1.00000000",    // 最高买价
+        "s": "ETHBTC",        // symbol 
+        "c": "4.00000200",    // 最新成交价
+        "o": "99.00000000",   // 开盘价
+        "h": "100.00000000",  // 最高价 
+        "l": "0.10000000",    // 最低价
+        "v": "8913.30000000", // 成交量
+        "qv": "15.30000000"   // 成交额
+    }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+
+- 如果symbol没有被发送，所有symbol的数据都会被返回。
+
+
+## 最新价格
+- `GET /quote/v1/ticker/price`
+
+返回最近价格
+
+### 权重：1
+
+> 响应：
+
+``` json
+[
+  {
+    "s": "LTCBTC",     // 交易对
+    "p": "4.00000200"  // 最新价
+  }
+]
+```
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+
+- 如果symbol没有发送，所有symbol的最新价都会被返回。
+
+## 当前最优挂单
+- `GET /quote/v1/ticker/bookTicker`
+
+单个或者多个symbol的最佳买单卖单价格。
+
+### 权重：1
+
+> 响应：
+
+``` json
+[
+  {
+      "t": 132222222222222,     // 时间
+      "s": "LTCBTC",            // 交易对          
+      "b": "4.00000000",        // 最高买价
+      "bq": "431.00000000",     // 最高买价对应的数量
+      "a": "4.00000200",        // 最高卖价
+      "aq": "9.00000000"        // 最高卖价对应的数量
+  }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+
+- 如果symbol没有被发送，所有symbol的最佳订单簿价格都会被返回。
 
 # Websocket 行情推送接口
 
+## 实时订阅/取消数据流
 
+- 以下数据可以通过websocket发送以实现订阅或取消订阅数据流。示例如下。
+- 直接访问时URL格式为  wss://#HOST/quote/ws/v1
+
+
+| 名称    | 值  |  
+| ----------------- | ---- | 
+| topic | `realtimes`(实时行情), `trade`(最新成交), `kline_$interval`(k线), `depth`（深度） | 
+| event | `sub`(订阅), `cancel`(取消), `cancel_all`(取消全部)  |
+| interval | 1m, 5m, 15m, 30m, 1h, 2h, 6h, 12h, 1d, 1w, 1M |
+
+> 请求订阅数据样例:
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1", //交易所ID+币对
+  "topic": "$topic",
+  "event": "sub",
+  // 可调整的参数
+    "params": {
+        // kline返回上限是2000，默认为1
+        "limit": "$limit",
+        // 返回的数据是否是压缩过的，默认为false
+        "binary": "false"
+    }
+}
+```
+## 心跳
+
+每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。
+
+> 请求
+
+``` json
+{
+    "ping": 1535975085052
+}
+```
+
+> 响应：
+
+``` json
+{
+    "pong": 1535975085052
+}
+```
+
+## 最新合约价格
+
+逐笔交易推送每一笔成交的信息。成交，或者说交易的定义是仅有一个吃单者与一个挂单者相互交易。<br>
+在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。<br>
+变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
+例如：假设过去5秒有3笔交易发生，分别是`ETHUSDT`、`BTCUSDT`、`BHTBTC`。它们的“v”会为连续的值（112，113，114）。
+
+> 请求订阅数据样例:
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1",//币对
+  "topic": "trade",
+  "event": "sub",
+  "params": {
+    "binary": false // Whether data returned is in binary format
+  }
+}
+```
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "trade",
+    "params": {
+        "realtimeInterval": "24h",
+        "binary": "false"
+    },
+    "data": [
+        {
+            "v": "1291465821801168896", // 参见解释
+            "t": 1668690723096, //时间戳
+            "p": "399", // 价格
+            "q": "1", // 数量
+            "m": false // true = 买, false = 卖
+        },
+        {
+            "v": "1291465842546196481",
+            "t": 1668690725569,
+            "p": "399",
+            "q": "1",
+            "m": false
+        }
+    ],
+    "f": true, // 是不是第一个返回
+    "sendTime": 1668753154192,
+    "shared": false
+}
+```
+
+## 最新标记价格
+
+合约标记价格。
+
+> 请求订阅数据样例:
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1", //币对
+  "topic": "markPrice",
+  "event": "sub"
+}
+```
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "markPrice",
+    "params": {
+        "realtimeInterval": "24h"
+    },
+    "data": [
+        {
+            "symbol": "BTCUSDT",//symbol
+            "markPrice": "16792.28",//当前指数价
+            "formula": "(16792.28[HUOBI])/1",//来源
+            "time": 1668754084000
+        }
+    ],
+    "f": false,//是否为第一个返回
+    "sendTime": 1668754084738,
+    "shared": false
+}
+```
+
+## K线
+
+K线stream逐秒推送所请求的K线种类(最新一根K线)的更新
+
+> 请求订阅数据样例
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1",//币对
+  "topic": "kline_"+$间隔,
+  "event": "sub",
+  "params": {
+    "binary": false
+  }
+}
+```
+
+### K线/蜡烛图间隔:
+
+订阅Kline需要提供间隔参数，最短为分钟线，最长为月线。支持以下间隔:
+m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
+
+- 1m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 12h
+- 1d
+- 1w
+- 1M
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "kline",
+    "params": {
+        "realtimeInterval": "24h",
+        "klineType": "1m",
+        "binary": "false"
+    },
+    "data": [
+        {
+            "t": 1668753840000,//k线开始时间
+            "s": "BTCUSDT",// symbol
+            "sn": "BTCUSDT",// symbol name
+            "c": "445",//收盘价
+            "h": "445",//最高价
+            "l": "445",//最低价
+            "o": "445",//开盘价
+            "v": "0"//交易量
+        }
+    ],
+    "f": true,// 是否为第一个返回
+    "sendTime": 1668753854576,
+    "shared": false
+}
+```
+
+## 按Symbol的完整Ticker
+
+> 请求订阅数据样例
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1",//币对
+  "topic": "realtimes",
+  "event": "sub",
+  "params": {
+    "binary": false
+  }
+}
+```
+
+按Symbol逐秒刷新的24小时完整ticker信息
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "realtimes",
+    "params": {
+        "realtimeInterval": "24h",
+        "binary": "false"
+    },
+    "data": [
+        {
+            "t": 1668753480049, //时间戳
+            "s": "BTCUSDT", //symbol
+            "sn": "BTCUSDT", // symbol name
+            "c": "445", //收盘价
+            "h": "445", //最高价
+            "l": "310", //最低价
+            "o": "311", //开盘价
+            "v": "3747.7597191", //交易量
+            "qv": "1426443.9553995", //交易额
+            "m": "0.4309", // margin
+            "e": 301 // 交易id
+        }
+    ],
+    "f": true, // 是否为第一个返回
+    "sendTime": 1668753481048,
+    "shared": false
+}
+```
+
+## 有限档深度信息
+
+> 请求订阅数据样例
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1",//币对
+  "topic": "depth",
+  "event": "sub",
+  "params": {
+    "binary": false
+    }
+}
+```
+
+> Payload
+
+``` json
+{
+  "symbol": "BTCUSDT",
+  "topic": "depth",
+  "data": [{
+    "s": "BTCUSDT", //Symbol
+    "t": 1565600357643, //时间戳
+    "v": "112801745_18", //见上面解释
+    "b": [ //Bids
+      ["11371.49", "0.0014"], //[价格, 数量]
+      ["11371.12", "0.2"],
+      ["11369.97", "0.3523"],
+      ["11369.96", "0.5"],
+      ["11369.95", "0.0934"],
+      ["11369.94", "1.6809"],
+      ["11369.6", "0.0047"],
+      ["11369.17", "0.3"],
+      ["11369.16", "0.2"],
+      ["11369.04", "1.3203"],
+    "a": [//Asks
+      ["11375.41", "0.0053"], //[价格, 数量]
+      ["11375.42", "0.0043"],
+      ["11375.48", "0.0052"],
+      ["11375.58", "0.0541"],
+      ["11375.7", "0.0386"],
+      ["11375.71", "2"],
+      ["11377", "2.0691"],
+      ["11377.01", "0.0167"],
+      ["11377.12", "1.5"],
+      ["11377.61", "0.3"]
+    ]
+  }],
+  "f": true//是否为第一个返回
+}
+```
+
+## 增量深度信息
+
+> 请求订阅数据样例
+
+``` json
+{
+  "symbol": "$symbol0, $symbol1",//币对
+  "topic": "diffDepth",
+  "event": "sub",
+  "params": {
+    "binary": false
+  }
+}
+```
+
+> Payload
+
+``` json
+{
+  "symbol": "BTCUSDT",
+  "topic": "diffDepth",
+  "data": [{
+    "e": 0,
+    "t": 1565687625534,
+    "v": "115277986_18",
+    "b": [
+      ["11316.78", "0.078"],
+      ["11313.16", "0.0052"],
+      ["11312.12", "0"],
+      ["11309.75", "0.0067"],
+      ["11309.58", "0"],
+      ["11306.14", "0.0073"]
+    ],
+    "a": [
+      ["11318.96", "0.0041"],
+      ["11318.99", "0.0017"],
+      ["11319.12", "0.0017"],
+      ["11319.22", "0.4516"],
+      ["11319.23", "0.0934"],
+      ["11319.24", "3.0665"]
+    ]
+  }],
+  "f": false //是否为第一个返回值
+}
+```
+
+每秒推送订单簿的变化部分（如果有）。<br>
+在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量>0，这时的数量为更新后的这个价格所对应的数量<br>
+假设我们收到的返回数据中有这样一条：<br>
+`["0.00181860", "155.92000000"]// 价格，数量` <br>
+如果下一条返回数据中有： <br>
+`["0.00181860", "12.3"]` <br>
+这说明这个价格对应的数量有变更，已经更新变更的数量<br>
+如果下一条返回数据中有：<br>
+`["0.00181860", "0"]`<br>
+这说明这个价格对应的数量已经消失，将会在客户端中删除。
 
 # 账户和交易接口
 <aside class="warning">
@@ -631,14 +1342,155 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 </aside>
 
 ## 划转
-执行现货账户与合约账户之间的划转, <a href="#">详情请见这里</a>
+
+- `POST /api/v1/account/assetTransfer`
+
+执行现货账户与合约账户之间的划转
+
+### 权重：1
+
+> 响应：
+
+``` json
+{
+    "success":"true" // 0成功
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| fromAccountId | LONG | YES | 源账户id |
+| toAccountId | LONG | YES | 目标账户id |
+| coin | STRING | YES | tokenID |
+| quantity | DECIMAL | YES | 转账数量 |
+
 
 ## 获取划转历史
-获取现货账户与合约账户之间的资金划转历史记录,<a href="#">详情请见这里</a>
+- `GET /api/v1/account/balanceFlow`
 
-## 更改持仓模式(TRADE)
+获取现货账户与合约账户之间的资金划转历史记录
 
-## 查询持仓模式(USER_DATA)
+### 权重：5
+
+> 响应：
+
+``` json
+[
+    {
+        "id": "539870570957903104",
+        "accountId": "122216245228131",
+        "coin": "BTC",
+        "coinId": "BTC",
+        "coinName": "BTC",
+        "flowTypeValue": 51, // 流水类型
+        "flowType": "USER_ACCOUNT_TRANSFER", // 流水类型名称
+        "flowName": "Transfer", // 流水类型说明
+        "change": "-12.5", // 变动值
+        "total": "379.624059937852365", // 变动后当前tokenId总资产
+        "created": "1579093587214"
+    },
+    {
+        "id": "536072393645448960",
+        "accountId": "122216245228131",
+        "coin": "USDT",
+        "coinId": "USDT",
+        "coinName": "USDT",
+        "flowTypeValue": 7,
+        "flowType": "AIRDROP",
+        "flowName": "Airdrop",
+        "change": "-2000",
+        "total": "918662.0917630848",
+        "created": "1578640809195"
+    }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| accountType | INT | NO | 账户对应的account_type |
+| accountIndex | INT | NO | 账户对应的account_index |
+| coin | STRING | NO | tokenID |
+| flowType | INT | NO | 划转：3 |
+| fromId | LONG | NO | 顺向查询数据 |
+| endId | LONG | NO | 反向查询数据 |
+| startTime | LONG | NO | 开始时间 |
+| endTime | LONG | NO | 结束时间 |
+| limit | INT | NO | 每页记录数 |
+
+
+## 变换逐全仓模式 (TRADE)
+- `POST /api/v1/futures/marginType `
+
+变换用户在指定symbol合约上的保证金模式：逐仓或全仓。
+
+### 权重：1
+
+> 响应：
+
+``` json
+{
+    "code":200, //响应码 200 = 成功
+    "symbol":"BTC-SWAP-USDT", //交易对
+    "marginType":"CROSS" //开仓类型 CROSS：全仓 ISOLATED：逐仓
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| marginType | ENUM | YES | `CROSS`：全仓 `ISOLATED`：逐仓 |
+
+
+## 调整开仓杠杆 (TRADE)
+
+- `POST /api/v1/futures/leverage `
+
+调整用户在指定symbol合约的开仓杠杆。
+
+### 权重：1
+
+>响应:
+
+``` json
+{
+    "code": 200, //响应码 200 = 成功
+    "symbol":"BTC-SWAP-USDT", //交易对
+    "leverage":"20" //杠杠倍数
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| leverage | INT | YES | 杠杠倍数 |
+
+
+## 查询杠杆倍数和仓位模式(USER_DATA)
+- `GET /api/v1/futures/accountLeverage`
+
+获取用户所有合约交易对的杠杆倍数和仓位类型。这个API需要你的请求签名。
+
+> 响应：
+
+``` json
+[
+    {
+        "symbol":"BTC-SWAP-USDT", //交易对
+        "leverage":"20", //杠杆倍数
+        "marginType":"CROSS" //开仓类型 CROSS：全仓 ISOLATED：逐仓
+    }
+]
+```
+
+### 参数
+
+None
+
+
 
 ## 下单 (TRADE)
 `POST /api/v1/futures/order`
@@ -681,7 +1533,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
 
-
+## 批量下单 (TRADE)
 
 ## 查询订单 (USER_DATA)
 - `GET /api/v1/futures/order`
@@ -889,4 +1741,163 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 - 如果发送了orderId，会返回所有< orderId的订单。如果没有则会返回最新的订单。
 
-## 调整开仓杠杆 (TRADE)
+## 账户余额 (USER_DATA)
+- `GET  /api/v1/futures/balance`
+
+返回合约账户余额，这个端点需要请求签名。
+
+### 权重：5
+
+> 响应：
+
+``` json
+
+[
+     {
+        "asset": "USDT", //资产
+        "balance": "999999999999.982", //总余额
+        "availableMargin": "1899999999978.4995", //可用保证金
+        "positionMargin": "11.9825", //仓位保证金
+        "orderMargin": "9.5" //委托保证金（下单锁定）
+    }
+]
+```
+### 参数
+
+None
+
+## 调整逐仓保证金 (TRADE)
+- `POST  /api/v1/futures/positionMargin`
+
+针对逐仓模式下的仓位，调整其逐仓保证金资金。
+
+### 权重：1
+
+> 响应：
+
+``` json
+{
+    "code":200, //响应码 200 = 成功
+    "msg":"success", //响应消息
+    "symbol":"BTC-PERP-REV", //交易对
+    "margin":15, //更新后的仓位保证金
+    "timestamp":1541161088303 //更新时间戳
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| positionSide | ENUM | YES | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓） |
+| amount | DECIMAL | YES | 增加（正值）或者减少（负值）保证金的数量。请注意这个数量指的是合约标的定价资产（即合约结算的标的） |
+
+## 账户成交历史 (USER_DATA)
+- `GET /api/v1/futures/userTrades`
+
+获取某交易对的成交历史
+
+### 权重：5
+
+> 响应
+
+``` json
+
+[
+    {
+        "time": "1668425281370", //订单生成是的时间戳
+        "id": "1289239136943831296", //成交ID
+        "orderId": "1289239134670518528", //订单ID
+        "matchOrderId": "1287169326781135104", //成交对手订单ID
+        "symbol": "BTC-SWAP-USDT", //交易对
+        "price": "24000",//成交价格
+        "qty": "9", //成交数量
+        "commissionAsset": "USDT", //手续费类型（Token名称）
+        "commission": "0.0162", //实际手续费
+        "makerRebate": "0", // 负maker返佣
+        "type": "LIMIT", //订单类型（LIMIT、MARKET)
+        "side": "BUY_OPEN", //订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+        "realizedPnl": "0" //成交盈亏
+    }
+]
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+| limit | INT | NO | 返回限制(最大值为1000) |
+| fromId | LONG | NO | 从TradeId开始（用来查询成交订单） |
+| toId | LONG | NO | 到TradeId结束（用来查询成交订单） |
+
+## 风险限额查询
+- `GET /api/v1/futures/riskLimit`
+
+查询风险限额，这个API端点需要请求签名。
+
+### 权重：5
+
+> 响应：
+
+``` json
+[
+            {
+                "riskLimitId": "200000133", //风险限额id
+                "riskLimitAmount": "1000000.0", //风险限额(最大持仓量)
+                "maintainMargin": "0.005", //维持保证金率
+                "initialMargin": "0.01", //起始保证金率
+                "side": "SELL_OPEN" //订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+            },
+            {
+                "riskLimitId": "200000133",
+                "riskLimitAmount": "1000000.0",
+                "maintainMargin": "0.005",
+                "initialMargin": "0.01",
+                "side": "BUY_OPEN"
+            }
+ ]
+```
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+
+## 设置风险限额(USER_DATA)
+- `POST /api/v1/futures/setRiskLimit`
+
+### 权重：1
+
+> 响应：
+
+``` json
+  { 
+    "success":  true
+  }
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| riskLimitId | LONG | YES | |
+| isLong | BOOLEAN | YES | true:LONG（多仓） false:SHORT（空仓） |
+
+## 用户手续费率 (USER_DATA)
+- `GET /api/v1/futures/commissionRate`
+
+### 权重：5
+
+> 响应：
+
+``` json
+{
+    "symbol": "BTCUSDT", //
+    "makerCommissionRate": "0.0002",  // maker手续费率 0.02%
+    "takerCommissionRate": "0.0004"   //  taker手续费率 0.04%
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
