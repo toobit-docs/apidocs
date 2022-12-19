@@ -293,6 +293,39 @@
                   <li>
                     <a href="#0f3f2d5ee7" class="toc-h2 toc-link" data-title="获取交易规则和交易对">获取交易规则和交易对</a>
                   </li>
+                  <li>
+                    <a href="#38a975b802" class="toc-h2 toc-link" data-title="深度信息">深度信息</a>
+                  </li>
+                  <li>
+                    <a href="#404aacd9b3" class="toc-h2 toc-link" data-title="近期成交">近期成交</a>
+                  </li>
+                  <li>
+                    <a href="#k-2" class="toc-h2 toc-link" data-title="K线数据">K线数据</a>
+                  </li>
+                  <li>
+                    <a href="#k-3" class="toc-h2 toc-link" data-title="价格指数K线数据">价格指数K线数据</a>
+                  </li>
+                  <li>
+                    <a href="#k-4" class="toc-h2 toc-link" data-title="标记价格K线数据">标记价格K线数据</a>
+                  </li>
+                  <li>
+                    <a href="#2feac0b7e2" class="toc-h2 toc-link" data-title="最新标记价格">最新标记价格</a>
+                  </li>
+                  <li>
+                    <a href="#4a47505865" class="toc-h2 toc-link" data-title="最新资金费率">最新资金费率</a>
+                  </li>
+                  <li>
+                    <a href="#31dbeb24c4" class="toc-h2 toc-link" data-title="查询资金费率历史">查询资金费率历史</a>
+                  </li>
+                  <li>
+                    <a href="#24hr" class="toc-h2 toc-link" data-title="24hr价格变动情况">24hr价格变动情况</a>
+                  </li>
+                  <li>
+                    <a href="#8ff46b58de" class="toc-h2 toc-link" data-title="最新价格">最新价格</a>
+                  </li>
+                  <li>
+                    <a href="#5393cd07b4" class="toc-h2 toc-link" data-title="当前最优挂单">当前最优挂单</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -974,7 +1007,568 @@ HMAC SHA256 签名:
 </span><span class="p">}</span><span class="w">
 
 
-</span></code></pre><h1 id='websocket'>Websocket 行情推送接口</h1><h1 id='93d49cc2e5'>账户和交易接口</h1>
+</span></code></pre><h2 id='38a975b802'>深度信息</h2>
+<ul>
+<li><code>GET /quote/v1/depth</code>
+### 权重:</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>limit</th>
+<th>权重</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5, 10, 20, 50, 100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>500</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>10</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"3.90000000"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">价格</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">数量</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">价格</span><span class="w">
+      </span><span class="s2">"12.00000000"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">数量</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"5.10000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"28.00000000"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>默认 100; 最大 100</td>
+</tr>
+</tbody></table>
+
+<p>注意：如果设置limit=0会返回很多数据。</p>
+<h2 id='404aacd9b3'>近期成交</h2>
+<ul>
+<li><code>GET /quote/v1/trades</code></li>
+</ul>
+
+<p>获取当前最新成交（最多60）</p>
+<h3 id='1-4'>权重：1</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.00000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499865549590</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ibm"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">成交方向</span><span class="w"> </span><span class="err">isBuyerMaker</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre><h3 id='749d765242-2'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>默认 60; 最大 60</td>
+</tr>
+</tbody></table>
+<h2 id='k-2'>K线数据</h2>
+<ul>
+<li><code>GET /quote/v1/klines</code></li>
+</ul>
+
+<p>symbol的k线/烛线图数据,K线会根据开盘时间而辨别。</p>
+<h3 id='1-5'>权重：1</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1499040000000</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">开盘时间</span><span class="w">
+    </span><span class="s2">"0.01634790"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">开盘价</span><span class="w">
+    </span><span class="s2">"0.80000000"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">最高价</span><span class="w">
+    </span><span class="s2">"0.01575800"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">最低价</span><span class="w">
+    </span><span class="s2">"0.01577100"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">收盘价</span><span class="w">
+    </span><span class="s2">"148976.11427815"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">交易量</span><span class="w">
+    </span><span class="mi">1499644799999</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">收盘时间</span><span class="w">
+    </span><span class="s2">"2434.19055334"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Quote</span><span class="w"> </span><span class="err">asset数量</span><span class="w">
+    </span><span class="mi">308</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">交易次数</span><span class="w">
+    </span><span class="s2">"1756.87402397"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset数量</span><span class="w">
+    </span><span class="s2">"28.46694368"</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset数量</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-3'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>时间间隔</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>默认 100; 最大 1000</td>
+</tr>
+</tbody></table>
+
+<p>注意: 如果startTime和endTime没有发送，只有最新的K线会被返回。</p>
+<h2 id='k-3'>价格指数K线数据</h2>
+<ul>
+<li><code>GET /api/quote/v1/index/klines</code></li>
+</ul>
+
+<p>获取某个交易对的价格指数K线</p>
+
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669155300000</span><span class="p">,</span><span class="err">//时间戳</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="err">//币对名称</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130.81"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1126.17"</span><span class="p">,</span><span class="err">//最低价</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130.8"</span><span class="p">,</span><span class="err">//开盘价</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//成交量</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669156200000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1129.44"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1129.54"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-4'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>时间间隔</td>
+</tr>
+<tr>
+<td>from</td>
+<td>LONG</td>
+<td>YES</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>to</td>
+<td>LONG</td>
+<td>YES</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>限制条数</td>
+</tr>
+</tbody></table>
+<h2 id='k-4'>标记价格K线数据</h2>
+<ul>
+<li><code>GET /api/quote/v1/markPrice/klines</code></li>
+</ul>
+
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670157900000</span><span class="p">,</span><span class="err">//时间戳</span><span class="w">
+            </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16991.14096"</span><span class="p">,</span><span class="err">//最低价</span><span class="w">
+            </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16991.78288"</span><span class="p">,</span><span class="err">//开盘价</span><span class="w">
+            </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16996.30641"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
+            </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16996.30641"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
+            </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="err">//成交量</span><span class="w">
+            </span><span class="s2">"curId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670157900000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-5'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>时间间隔</td>
+</tr>
+<tr>
+<td>from</td>
+<td>LONG</td>
+<td>YES</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>to</td>
+<td>LONG</td>
+<td>YES</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>限制条数</td>
+</tr>
+</tbody></table>
+<h2 id='2feac0b7e2'>最新标记价格</h2>
+<ul>
+<li><code>GET /api/quote/v1/markPrice</code></li>
+</ul>
+
+<p>获取某个交易对的标记价格</p>
+
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="p">,</span><span class="err">//交易所ID</span><span class="w">
+            </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17042.54471"</span><span class="p">,</span><span class="err">//标记价格</span><span class="w">
+            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670897454000</span><span class="err">//时间戳</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-6'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+<h2 id='4a47505865'>最新资金费率</h2>
+<ul>
+<li><code>GET /api/v1/futures/fundingRate</code> </li>
+</ul>
+
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">交易对</span><span class="w">
+        </span><span class="s2">"lastFundingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668398400000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">
+        </span><span class="s2">"nextFundingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668427200000"</span><span class="p">,</span><span class="w"> </span><span class="err">//下次资金费结算时间</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0018099173553719"</span><span class="w"> </span><span class="err">//该次结算资金费率。</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-7'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+<h2 id='31dbeb24c4'>查询资金费率历史</h2>
+<ul>
+<li><code>GET /api/v1/futures/historyFundingRate</code></li>
+</ul>
+
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w"> 
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3434343434343"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-PERP-REV"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">交易对</span><span class="w">
+    </span><span class="s2">"fundingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1570708800000"</span><span class="p">,</span><span class="w"> </span><span class="err">//资金费率结算时间</span><span class="w">
+    </span><span class="s2">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00321"</span><span class="w"> </span><span class="err">//资金费率</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-8'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>起始id</td>
+</tr>
+<tr>
+<td>endId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>结束id</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>返回条数</td>
+</tr>
+</tbody></table>
+<h2 id='24hr'>24hr价格变动情况</h2>
+<ul>
+<li><code>GET /quote/v1/ticker/24hr</code></li>
+</ul>
+
+<p>24小时价格变化数据。注意 如果没有发送symbol，会返回很多数据。</p>
+<h3 id='symbol-1-symbol-40'>权重： 如果只有一个symbol为1，不带symbol为40。</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1538725500422</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">时间</span><span class="w">
+        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.10000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">最高卖价</span><span class="w">
+        </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">最高买价</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHBTC"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> 
+        </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">最新成交价</span><span class="w">
+        </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99.00000000"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">开盘价</span><span class="w">
+        </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.00000000"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">最高价</span><span class="w"> 
+        </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">最低价</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8913.30000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">成交量</span><span class="w">
+        </span><span class="s2">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">成交额</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-9'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>如果symbol没有被发送，所有symbol的数据都会被返回。</li>
+</ul>
+<h2 id='8ff46b58de'>最新价格</h2>
+<ul>
+<li><code>GET /quote/v1/ticker/price</code>
+返回最近价格</li>
+</ul>
+<h3 id='1-6'>权重：1</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTCBTC"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">交易对</span><span class="w">
+    </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">最新价</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-10'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>如果symbol没有发送，所有symbol的最新价都会被返回。</li>
+</ul>
+<h2 id='5393cd07b4'>当前最优挂单</h2>
+<ul>
+<li><code>GET /quote/v1/ticker/bookTicker</code></li>
+</ul>
+
+<p>单个或者多个symbol的最佳买单卖单价格。</p>
+<h3 id='1-7'>权重：1</h3>
+<blockquote>
+<p>响应：
+<code>json
+[
+  {
+      &quot;t&quot;: 132222222222222,     // 时间
+      &quot;s&quot;: &quot;LTCBTC&quot;,            // 交易对          
+      &quot;b&quot;: &quot;4.00000000&quot;,        // 最高买价
+      &quot;bq&quot;: &quot;431.00000000&quot;,     // 最高买价对应的数量
+      &quot;a&quot;: &quot;4.00000200&quot;,        // 最高卖价
+      &quot;aq&quot;: &quot;9.00000000&quot;        // 最高卖价对应的数量
+  }
+]
+</code></p>
+</blockquote>
+<h3 id='749d765242-11'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>如果symbol没有被发送，所有symbol的最佳订单簿价格都会被返回。</li>
+</ul>
+<h1 id='websocket'>Websocket 行情推送接口</h1><h1 id='93d49cc2e5'>账户和交易接口</h1>
 <aside class="warning">
  考虑到剧烈行情下, RESTful接口可能存在查询延迟，我们强烈建议您优先从Websocket user data stream推送的消息来获取订单，成交，仓位等信息。
 </aside>
@@ -1006,7 +1600,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242'>参数</h3>
+</span></code></pre><h3 id='749d765242-12'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1086,7 +1680,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
 </ul>
-<h3 id='1-4'>权重：1</h3>
+<h3 id='1-8'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1108,7 +1702,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-2'>参数</h3>
+</span></code></pre><h3 id='749d765242-13'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1158,7 +1752,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>DELETE /api/v1/futures/order</code></li>
 </ul>
-<h3 id='1-5'>权重：1</h3>
+<h3 id='1-9'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1189,7 +1783,7 @@ HMAC SHA256 签名:
   </span><span class="s2">"isCancelled"</span><span class="p">:</span><span class="kc">true</span><span class="w">  </span><span class="err">//订单是否还在book上存在，如果本来就不在book上</span><span class="w"> </span><span class="err">返回</span><span class="kc">true</span><span class="err">。所以除非连接match</span><span class="w"> </span><span class="err">超时，其他情况返回均为</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='749d765242-3'>参数</h3>
+</span></code></pre><h3 id='749d765242-14'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1259,7 +1853,7 @@ HMAC SHA256 签名:
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-4'>参数</h3>
+</span></code></pre><h3 id='749d765242-15'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1297,7 +1891,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/futures/openOrders</code></li>
 </ul>
-<h3 id='1-6'>权重：1</h3>
+<h3 id='1-10'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1321,7 +1915,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-5'>参数</h3>
+</span></code></pre><h3 id='749d765242-16'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1401,7 +1995,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-6'>参数</h3>
+</span></code></pre><h3 id='749d765242-17'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
