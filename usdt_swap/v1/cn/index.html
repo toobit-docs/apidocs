@@ -1009,10 +1009,9 @@ HMAC SHA256 签名:
 
 </span></code></pre><h2 id='38a975b802'>深度信息</h2>
 <ul>
-<li><code>GET /quote/v1/depth</code>
-### 权重:</li>
+<li><code>GET /quote/v1/depth</code></li>
 </ul>
-
+<h3 id='64268295a0'>权重:</h3>
 <table><thead>
 <tr>
 <th>limit</th>
@@ -1493,9 +1492,10 @@ HMAC SHA256 签名:
 </ul>
 <h2 id='8ff46b58de'>最新价格</h2>
 <ul>
-<li><code>GET /quote/v1/ticker/price</code>
-返回最近价格</li>
+<li><code>GET /quote/v1/ticker/price</code></li>
 </ul>
+
+<p>返回最近价格</p>
 <h3 id='1-6'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
@@ -1534,21 +1534,19 @@ HMAC SHA256 签名:
 <p>单个或者多个symbol的最佳买单卖单价格。</p>
 <h3 id='1-7'>权重：1</h3>
 <blockquote>
-<p>响应：
-<code>json
-[
-  {
-      &quot;t&quot;: 132222222222222,     // 时间
-      &quot;s&quot;: &quot;LTCBTC&quot;,            // 交易对          
-      &quot;b&quot;: &quot;4.00000000&quot;,        // 最高买价
-      &quot;bq&quot;: &quot;431.00000000&quot;,     // 最高买价对应的数量
-      &quot;a&quot;: &quot;4.00000200&quot;,        // 最高卖价
-      &quot;aq&quot;: &quot;9.00000000&quot;        // 最高卖价对应的数量
-  }
-]
-</code></p>
+<p>响应：</p>
 </blockquote>
-<h3 id='749d765242-11'>参数</h3>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">132222222222222</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">时间</span><span class="w">
+      </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTCBTC"</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">交易对</span><span class="w">          
+      </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">最高买价</span><span class="w">
+      </span><span class="s2">"bq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"431.00000000"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">最高买价对应的数量</span><span class="w">
+      </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">最高卖价</span><span class="w">
+      </span><span class="s2">"aq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.00000000"</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">最高卖价对应的数量</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-11'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
