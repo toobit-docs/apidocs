@@ -405,6 +405,35 @@
                   <li>
                     <a href="#user_data-6" class="toc-h2 toc-link" data-title="账户成交历史 (USER_DATA)">账户成交历史 (USER_DATA)</a>
                   </li>
+                  <li>
+                    <a href="#747e1e5bf3" class="toc-h2 toc-link" data-title="风险限额查询">风险限额查询</a>
+                  </li>
+                  <li>
+                    <a href="#user_data-7" class="toc-h2 toc-link" data-title="设置风险限额(USER_DATA)">设置风险限额(USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#user_data-8" class="toc-h2 toc-link" data-title="用户手续费率 (USER_DATA)">用户手续费率 (USER_DATA)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-2" class="toc-h1 toc-link" data-title="Websocket 账户信息推送">Websocket 账户信息推送</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listenkey-user_stream" class="toc-h2 toc-link" data-title="生成listenKey (USER_STREAM)">生成listenKey (USER_STREAM)</a>
+                  </li>
+                  <li>
+                    <a href="#listenkey-user_stream-2" class="toc-h2 toc-link" data-title="延长listenKey有效期 (USER_STREAM)">延长listenKey有效期 (USER_STREAM)</a>
+                  </li>
+                  <li>
+                    <a href="#listenkey-user_stream-3" class="toc-h2 toc-link" data-title="关闭listenKey (USER_STREAM)">关闭listenKey (USER_STREAM)</a>
+                  </li>
+                  <li>
+                    <a href="#balance-position" class="toc-h2 toc-link" data-title="Balance和Position更新推送">Balance和Position更新推送</a>
+                  </li>
+                  <li>
+                    <a href="#060a012f0b" class="toc-h2 toc-link" data-title="订单/交易 更新推送">订单/交易 更新推送</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -1662,9 +1691,9 @@ HMAC SHA256 签名:
     </span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535975085052</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='b14c7e3649'>最新合约价格</h2>
-<p>逐笔交易推送每一笔成交的信息。成交，或者说交易的定义是仅有一个吃单者与一个挂单者相互交易。
-在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。
-变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。
+<p>逐笔交易推送每一笔成交的信息。成交，或者说交易的定义是仅有一个吃单者与一个挂单者相互交易。<br>
+在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。<br>
+变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
 例如：假设过去5秒有3笔交易发生，分别是<code>ETHUSDT</code>、<code>BTCUSDT</code>、<code>BHTBTC</code>。它们的“v”会为连续的值（112，113，114）。</p>
 
 <blockquote>
@@ -1942,15 +1971,15 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//是否为第一个返回值</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>每秒推送订单簿的变化部分（如果有）。
-在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量&gt;0，这时的数量为更新后的这个价格所对应的数量
-假设我们收到的返回数据中有这样一条：
-<code>[&quot;0.00181860&quot;, &quot;155.92000000&quot;]// 价格，数量</code>
-如果下一条返回数据中有：
-<code>[&quot;0.00181860&quot;, &quot;12.3&quot;]</code>
-这说明这个价格对应的数量有变更，已经更新变更的数量
-如果下一条返回数据中有：
-<code>[&quot;0.00181860&quot;, &quot;0&quot;]</code>
+<p>每秒推送订单簿的变化部分（如果有）。<br>
+在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量&gt;0，这时的数量为更新后的这个价格所对应的数量<br>
+假设我们收到的返回数据中有这样一条：<br>
+<code>[&quot;0.00181860&quot;, &quot;155.92000000&quot;]// 价格，数量</code> <br>
+如果下一条返回数据中有： <br>
+<code>[&quot;0.00181860&quot;, &quot;12.3&quot;]</code> <br>
+这说明这个价格对应的数量有变更，已经更新变更的数量<br>
+如果下一条返回数据中有：<br>
+<code>[&quot;0.00181860&quot;, &quot;0&quot;]</code><br>
 这说明这个价格对应的数量已经消失，将会在客户端中删除。</p>
 <h1 id='93d49cc2e5'>账户和交易接口</h1>
 <aside class="warning">
@@ -2798,7 +2827,292 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>到TradeId结束（用来查询成交订单）</td>
 </tr>
 </tbody></table>
+<h2 id='747e1e5bf3'>风险限额查询</h2>
+<ul>
+<li><code>GET /api/v1/futures/riskLimit</code></li>
+</ul>
 
+<p>查询风险限额，这个API端点需要请求签名。</p>
+<h3 id='5-6'>权重：5</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000133"</span><span class="p">,</span><span class="w"> </span><span class="err">//风险限额id</span><span class="w">
+                </span><span class="s2">"riskLimitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//风险限额(最大持仓量)</span><span class="w">
+                </span><span class="s2">"maintainMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="p">,</span><span class="w"> </span><span class="err">//维持保证金率</span><span class="w">
+                </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w"> </span><span class="err">//起始保证金率</span><span class="w">
+                </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL_OPEN"</span><span class="w"> </span><span class="err">//订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000133"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"riskLimitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"maintainMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+ </span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-26'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+<h2 id='user_data-7'>设置风险限额(USER_DATA)</h2>
+<ul>
+<li><code>POST /api/v1/futures/setRiskLimit</code></li>
+</ul>
+<h3 id='1-15'>权重：1</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-27'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>riskLimitId</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>isLong</td>
+<td>BOOLEAN</td>
+<td>YES</td>
+<td>true:LONG（多仓） false:SHORT（空仓）</td>
+</tr>
+</tbody></table>
+<h2 id='user_data-8'>用户手续费率 (USER_DATA)</h2>
+<ul>
+<li><code>GET /api/v1/futures/commissionRate</code></li>
+</ul>
+<h3 id='5-7'>权重：5</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">
+    </span><span class="s2">"makerCommissionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">maker手续费率</span><span class="w"> </span><span class="mf">0.02</span><span class="err">%</span><span class="w">
+    </span><span class="s2">"takerCommissionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w">   </span><span class="err">//</span><span class="w">  </span><span class="err">taker手续费率</span><span class="w"> </span><span class="mf">0.04</span><span class="err">%</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-28'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
+<h1 id='websocket-2'>Websocket 账户信息推送</h1>
+<p>公共WSS说明</p>
+
+<ul>
+<li>对listenKey执行PUT将使其有效期延长60分钟。</li>
+<li>对listenKey执行DELETE将关闭流。</li>
+<li>用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如ws://#HOST/api/v1/ws/#listenKey)</li>
+<li>到api端点的单个连接仅在24小时内有效；预计在24小时时断开</li>
+<li>用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新</li>
+</ul>
+<h2 id='listenkey-user_stream'>生成listenKey (USER_STREAM)</h2>
+<ul>
+<li><code>POST /api/v1/listenKey</code></li>
+</ul>
+
+<p>创建一个新的user data stream，返回值为一个listenKey，即websocket订阅的stream名称。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。</p>
+<h3 id='1-16'>权重： 1</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-29'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
+<h2 id='listenkey-user_stream-2'>延长listenKey有效期 (USER_STREAM)</h2>
+<ul>
+<li><code>PUT /api/v1/listenKey</code></li>
+</ul>
+
+<p>有效期延长至本次调用后60分钟</p>
+<h3 id='1-17'>权重： 1</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-30'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
+<h2 id='listenkey-user_stream-3'>关闭listenKey (USER_STREAM)</h2>
+<ul>
+<li><code>DELETE /api/v1/listenKey</code></li>
+</ul>
+<h3 id='1-18'>权重： 1</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-31'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
+<h2 id='balance-position'>Balance和Position更新推送</h2>
+<p>账户更新事件的 <code>event type</code> 固定为 <code>ACCOUNT_UPDATE</code></p>
+
+<blockquote>
+<p>Balance Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCOUNT_UPDATE"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
+  </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798939</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
+  </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798938</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">可否交易</span><span class="w">
+  </span><span class="s2">"W"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798938</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">withdraw</span><span class="w"> </span><span class="err">可否提币</span><span class="w">
+  </span><span class="s2">"D"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798938</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">deposit</span><span class="w"> </span><span class="err">可否充币</span><span class="w">
+  </span><span class="s2">"B"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">Balances</span><span class="w"> </span><span class="err">changed</span><span class="w"> </span><span class="err">余额变更</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Asset</span><span class="w"> </span><span class="err">资产</span><span class="w">
+      </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17366.18538083"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Free</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">可用金额</span><span class="w"> </span><span class="err">用未实现盈亏下单时，f会返回负数</span><span class="w">
+      </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="err">Locked</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">冻结金额</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Position Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outboundContractPositionInfo"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
+        </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440976"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
+        </span><span class="s2">"A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1270447370291795457"</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">账户ID</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> </span><span class="err">币对</span><span class="w">
+        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">多空方向</span><span class="w">
+        </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441.0"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">持仓平均</span><span class="w"> </span><span class="err">价格</span><span class="w">
+        </span><span class="s2">"P"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620385157122"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">总仓位</span><span class="w">
+        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">可用仓位</span><span class="w">
+        </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">强平价格</span><span class="w">
+        </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.2"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">仓位保证金</span><span class="w">
+        </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">已实现盈亏</span><span class="w">
+        </span><span class="s2">"mt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CROSS"</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">仓位类型</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<ul>
+<li><p>当账户信息有变动时，会推送此事件：</p>
+
+<ul>
+<li>仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；</li>
+<li>订单状态变化没有引起账户和持仓变化的，不会推送此事件；</li>
+<li>position 信息：仅当symbol仓位有变动时推送。</li>
+</ul></li>
+<li><p>字段 <code>mt</code> 代表仓位类型 <code>CROSS</code> 全仓; <code>ISOLATED</code> 逐仓</p></li>
+</ul>
+<h2 id='060a012f0b'>订单/交易 更新推送</h2>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
