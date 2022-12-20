@@ -1901,3 +1901,131 @@ None
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
+
+# Websocket 账户信息推送
+
+公共WSS说明
+
+- 对listenKey执行PUT将使其有效期延长60分钟。
+- 对listenKey执行DELETE将关闭流。
+- 用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如ws://#HOST/api/v1/ws/#listenKey)
+- 到api端点的单个连接仅在24小时内有效；预计在24小时时断开
+- 用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新
+
+## 生成listenKey (USER_STREAM)
+- `POST /api/v1/listenKey`
+
+创建一个新的user data stream，返回值为一个listenKey，即websocket订阅的stream名称。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。
+
+### 权重： 1
+
+> 响应
+
+``` json
+{
+  "listenKey": "1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+## 延长listenKey有效期 (USER_STREAM)
+- `PUT /api/v1/listenKey`
+
+有效期延长至本次调用后60分钟
+
+### 权重： 1
+
+> 响应
+
+``` json
+{
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| listenKey | STRING | YES | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+## 关闭listenKey (USER_STREAM)
+
+- `DELETE /api/v1/listenKey`
+
+### 权重： 1
+
+> 响应
+
+``` json
+{
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| listenKey | STRING | YES | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+## Balance和Position更新推送
+
+账户更新事件的 `event type` 固定为 `ACCOUNT_UPDATE`
+
+> Balance Payload
+
+``` json
+{
+  "e": "ACCOUNT_UPDATE",                // 事件类型
+  "E": 1564745798939,                   // 事件时间
+  "T": 1564745798938 ,                  // Can trade 可否交易
+  "W": 1564745798938 ,                  // Can withdraw 可否提币
+  "D": 1564745798938 ,                  // Can deposit 可否充币
+  "B": [                        // Balances changed 余额变更
+    {
+      "a": "LTC",               // Asset 资产
+      "f": "17366.18538083",    // Free amount 可用金额 用未实现盈亏下单时，f会返回负数
+      "l": "0.00000000"         // Locked amount 冻结金额
+    }
+  ]
+}
+    
+```
+
+> Position Payload
+
+``` json
+[
+    {
+        "e": "outboundContractPositionInfo",                // Event type 事件类型
+        "E": "1668693440976",             // Event time 事件时间
+        "A": "1270447370291795457",      // 账户ID
+        "s": "BTCUSDT",                   // Symbol 币对
+        "S": "LONG",                      // 多空方向
+        "p": "441.0",                     // 持仓平均 价格
+        "P": "1291488620385157122",       // 总仓位
+        "a": "1000",                      // 可用仓位
+        "f": "1291488620167835136",       // 强平价格
+        "m": "18.2",                      // 仓位保证金
+        "r": "44",                        // 已实现盈亏
+        "mt": "CROSS"                     // 仓位类型
+    }
+]
+```
+
+- 当账户信息有变动时，会推送此事件：
+  - 仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；
+  - 订单状态变化没有引起账户和持仓变化的，不会推送此事件；
+  - position 信息：仅当symbol仓位有变动时推送。
+
+- 字段 `mt` 代表仓位类型 `CROSS` 全仓; `ISOLATED` 逐仓
+
+## 订单/交易 更新推送
+
+
