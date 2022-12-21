@@ -814,7 +814,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 
 
 ## 最新标记价格
-- `GET /api/quote/v1/markPrice`
+- `GET /quote/v1/markPrice`
 
 获取某个交易对的标记价格
 
@@ -2028,4 +2028,81 @@ None
 
 ## 订单/交易 更新推送
 
+当有新订单创建、订单有新成交或者新的状态变化时会推送此类事件
 
+> 订单 Payload
+
+``` json
+
+{
+  "e": "executionReport",        // Event type 事件类型
+  "E": 1499405658658,            // Event time 事件时间
+  "s": "ETHBTC",                 // Symbol 币对
+  "c": 1000087761,               // Client order ID 客户订单id
+  "S": "BUY",                    // Side 订单方向
+  "o": "LIMIT",                  // Order type 订单类型
+  "f": "GTC",                    // Time in force 有效方式
+  "q": "1.00000000",             // Order quantity 数量
+  "p": "0.10264410",             // Order price 价格
+  "X": "NEW",                    // Current order status 订单状态
+  "i": 4293153,                  // Order ID 订单id
+  "l": "0.00000000",             // Last executed quantity 上次数量
+  "z": "0.00000000",             // Cumulative filled quantity 交易数量
+  "L": "0.00000000",             // Last executed price 上次价格
+  "n": "0",                      // Commission amount 佣金
+  "N": null,                     // Commission asset 佣金资产
+  "u": true,                     // Is the trade normal, ignore for now 是否正常
+  "w": true,                     // Is the order working Stops will have
+  "m": false,                    // Is this trade the maker side
+  "O": 1499405658657,            // Order creation time 创建时间
+  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 交易金额
+
+```
+
+> 交易 Payload
+
+``` json
+[
+    {
+        "e": "ticketInfo",                // Event type 事件类型
+        "E": "1668693440976",             // Event time 事件时间
+        "s": "BTCUSDT",                   // Symbol 币对
+        "q": "0.205",                     // quantity 数量
+        "t": "1668693440899",             // time 时间
+        "p": "441.0",                     // price 价格
+        "T": "1291488620385157122",       // ticketId
+        "o": "1291488620167835136",       // orderId 订单id
+        "c": "1668693440093",             // clientOrderId 客户订单id
+        "O": "1291354087841869312",       // matchOrderId 对手方订单ID
+        "a": "1286424214388204801",       // accountId 账户id
+        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
+        "m": false,                       // isMaker 
+        "S": "SELL"                       // side  SELL or BUY
+    }
+]
+```
+
+### 订单方向
+
+- BUY 买入
+- SELL 卖出
+
+### 订单类型
+
+- MARKET 市价单
+- LIMIT 限价单
+- LIMIT_MAKER  maker限价单
+
+### 订单状态
+
+- NEW  新订单，暂无成交
+- PARTIALLY_FILLED  部分成交
+- FILLED  完全成交
+- CANCELED  已取消
+- PENDING_CANCEL  等待取消
+- REJECTED  被拒绝
+
+### 有效方式
+- GTC
+- IOC
+- FOK
