@@ -145,6 +145,153 @@ search: true
 
 # 钱包接口
 
+## 提币 (USER_DATA)
+- `POST /api/v1/account/withdraw`
+
+提交一个提币请求。
+
+### 权重：1
+
+> 响应
+
+``` json
+{
+"status": 0,
+"success": true,
+"needBrokerAudit": false, // 是否需要券商审核
+"id": "423885103582776064", // 提币成功订单id
+"refuseReason":"" // 失败拒绝原因
+}
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| coin | STRING | YES | 资产 |
+| clientOrderId | LONG | YES | 	自定义提币ID |
+| address | STRING  | YES | 提币地址(注意：提现地址必须是在PC端或者APP端维护在常用地址列表里面的地址) |
+| addressExt | STRING | NO | tag |
+| quantity  | DECIMAL | YES | 提币数量 |
+| chainType | STRING | NO | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
+
+
+## 获取提币记录 (USER_DATA)
+- `GET /api/v1/account/withdrawOrders  (HMAC SHA256)`
+
+### 权重：5
+
+> 响应
+
+``` json
+[
+    {
+        "time":"1536232111669",
+        "id ":"90161227158286336",
+        "accountId":"517256161325920",
+        "coinId ":"BHC",
+        "coinName":"BHC",
+        "address":"0x815bF1c3cc0f49b8FC66B21A7e48fCb476051209",
+        "addressExt":"address tag",
+        "quantity":"14", // 提币金额
+        "arriveQuantity":"14", // 到账金额
+        "statusCode":"PROCESSING_STATUS",
+        "status":3,
+        "txId ":"",
+        "txIdUrl ":"",
+        "walletHandleTime":"1536232111669",
+        "feeCoinId ":"BHC",
+        "feeCoinName ":"BHC",
+        "fee":"0.1",
+        "requiredConfirmTimes ":0, // 要求确认数
+        "confirmTimes ":0, // 确认数
+        "kernelId":"", // BEAM 和 GRIN 独有
+        "isInternalTransfer": false // 是否内部转账
+    }
+]
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| coin | STRING | NO | 资产 |
+| startTime | LONG | NO | 开始时间戳 |
+| endTime | LONG | NO | 结束时间戳 |
+| fromId | LONG | NO | 从哪个OrderId起开始抓取 |
+| withdrawOrderId | LONG | NO | 提现订单ID |
+| limit | INT | NO | 默认 500; 最大 1000 |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+## 获取充值地址 (USER_DATA)
+- `GET /api/v1/account/deposit/address  (HMAC SHA256)`
+
+### 权重：1
+
+> 响应
+
+``` json
+    {
+        "canDeposit":false,//是否可充值
+        "address":"0x815bF1c3cc0f49b8FC66B21A7e48fCb476051209",//地址
+        "addressExt":"address tag",
+        "minQuantity":"100",//最小金额
+        "requiredConfirmTimes ":1,//到账确认数
+        "canWithdrawConfirmNum ":12,//提币确认数
+        "coinType":"ERC20_TOKEN"//链类型
+    }
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| coin | STRING | YES | 资产 |
+| chainType | STRING | YES | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
+
+## 获取充值历史 (USER_DATA)
+ - `GET /api/v1/account/depositOrders  (HMAC SHA256)`
+
+ ### 权重： 5
+
+> 响应
+
+``` json
+[
+  {
+        "id": 100234,
+        "coin": "EOS",
+        "coinName": "EOS",
+        "address": "deposit2bb",
+        "addressTag": "19012584",
+        "fromAddress": "clarkkent",
+        "fromAddressTag": "19029901",
+        "time": 1499865549590,
+        "quantity": "1.01",
+        "status": "1",
+        "statusCode": "1",
+        "requiredConfirmTimes": "5",
+        "confirmTimes": "5",
+        "txId": "98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC",
+        "txIdUrl": ""
+  }
+]
+```
+
+ ### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| coin | STRING | NO | 资产 |
+| startTime | LONG | NO | 开始时间戳 |
+| endTime | LONG | NO | 结束时间戳 |
+| fromId | LONG | NO | 从哪个Id起开始抓取 |
+| limit | INT | NO | 默认 500; 最大 1000 |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |、
+
+注意：
+
+- 如果fromId设定好了，会筛选订单小于id的。否则会返回最近的订单信息。
 
 # 现货账户和交易接口
 
@@ -403,3 +550,32 @@ search: true
 | limit | INT | NO | 默认 500; 最多 1000. |
 | recvWindow | LONG | NO | recv窗口 |
 | timestamp | LONG | YES | 时间戳 |
+
+## 账户信息 (USER_DATA)
+- `GET /api/v1/account`
+
+### 权重：5 
+
+> 响应
+
+``` json
+{
+    "balances": [
+        {
+            "asset": "BTC", //资产
+            "assetId": "BTC", //资产id
+            "assetName": "BTC", //资产名称
+            "total": "995.899", //总数量
+            "free": "995.899", //可用数
+            "locked": "0" //冻结数
+        }
+    ]
+}
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
