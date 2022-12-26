@@ -579,3 +579,215 @@ search: true
 | recvWindow | LONG | NO | recv窗口 |
 | timestamp | LONG | YES | 时间戳 |
 
+## 账户成交历史 (USER_DATA)
+- `GET /api/v1/account/trades`
+
+### 权重：5
+
+> 响应
+
+``` json
+[
+    {
+        "id": "1291291745779199489",
+        "symbol": "BTCUSDT",
+        "symbolName": "BTCUSDT",
+        "orderId": "1290805676579237376",
+        "matchOrderId": "1291291745191996928",
+        "price": "314",
+        "qty": "0.71433122",
+        "commission": "0.22430000308",
+        "commissionAsset": "USDT",
+        "time": "1668669971575",
+        "isBuyer": false,
+        "isMaker": true,
+        "fee": {
+            "feeCoinId": "USDT",
+            "feeCoinName": "USDT",
+            "fee": "0.22430000308"
+        },
+        "feeCoinId": "USDT",
+        "feeAmount": "0.22430000308",
+        "makerRebate": "0"
+    }
+]
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING | NO | 交易对 |
+| startTime | LONG | NO | 开始时间戳 |
+| endTime | LONG | NO | 结束时间戳 |
+| fromId | LONG | NO  | |
+| toId | LONG | NO | |
+| limit | INT | NO | 每页显示条数 |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+注意：
+
+- 如果只有fromId，会返回订单号小于fromId的，倒序排列。
+- 如果只有toId，会返回订单号小于toId的，升序排列。
+- 如果同时有fromId和toId, 会返回订单号在fromId和toId的，倒序排列。
+- 如果fromId和toId都没有，会返回最新的成交记录，倒序排列。
+
+# Websocket账户信息推送
+
+- 本篇所列出API接口的base url : 
+- 用于订阅账户数据的 `listenKey` 从创建时刻起有效期为60分钟
+- 可以通过 PUT 一个 `listenKey` 延长60分钟有效期
+- 可以通过DELETE一个 `listenKey` 立即关闭当前数据流，并使该`listenKey` 无效
+- 在具有有效listenKey的帐户上执行`POST`将返回当前有效的`listenKey`并将其有效期延长60分钟
+- websocket接口的baseurl: 
+- 每个链接有效期不超过24小时，请妥善处理断线重连。
+- 用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新
+
+## Listen Key (现货账户)
+
+### 生成 Listen Key (USER_STREAM)
+- `POST /api/v1/userDataStream`
+
+开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。
+
+#### 权重：1
+
+> 响应
+
+``` json
+{
+  "listenKey": "1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"
+}
+```
+
+#### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+### 延长 Listen Key 有效期 (USER_STREAM)
+- `PUT /api/v1/userDataStream`
+
+有效期延长至本次调用后60分钟,建议每30分钟发送一个 ping 。
+
+#### 权重：1
+
+> 响应
+
+``` json
+{}
+```
+
+#### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| listenKey | STRING | YES | |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+### 关闭 Listen Key (USER_STREAM)
+- `DELETE /api/v1/userDataStream`
+#### 权重：1
+
+> 响应
+
+``` json
+{}
+```
+
+#### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| listenKey | STRING | YES | |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+## Payload: 账户更新
+
+> Payload
+
+``` json
+{
+  "e": "outboundAccountInfo",   // Event type事件类型
+  "E": 1499405658849,           // Event time事件时间
+  "T": true,                    // Can trade? 可否交易
+  "W": true,                    // Can withdraw? 可否提币
+  "D": true,                    // Can deposit? 可否充币
+  "B": [                        // Balances changed 余额变更
+    {
+      "a": "LTC",               // Asset 资产
+      "f": "17366.18538083",    // Free amount 可用金额
+      "l": "0.00000000"         // Locked amount 冻结金额
+    }
+  ]
+}
+```
+
+每当帐户余额发生更改时，都会发送一个事件`outboundAccountInfo`，其中包含可能由生成余额变动的事件而变动的资产。
+
+
+## Payload: 订单更新
+
+> Payload
+
+``` json
+{
+  "e": "executionReport",        // Event type 事件类型
+  "E": 1499405658658,            // Event time 事件时间
+  "s": "ETHBTC",                 // Symbol 币对
+  "c": 1000087761,               // Client order ID 客户订单id
+  "S": "BUY",                    // Side 订单方向
+  "o": "LIMIT",                  // Order type 订单类型
+  "f": "GTC",                    // Time in force 有效方式
+  "q": "1.00000000",             // Order quantity 数量
+  "p": "0.10264410",             // Order price 价格
+  "X": "NEW",                    // Current order status 订单状态
+  "i": 4293153,                  // Order ID 订单id
+  "l": "0.00000000",             // Last executed quantity 上次数量
+  "z": "0.00000000",             // Cumulative filled quantity 交易数量
+  "L": "0.00000000",             // Last executed price 上次价格
+  "n": "0",                      // Commission amount 佣金
+  "N": null,                     // Commission asset 佣金资产
+  "u": true,                     // Is the trade normal, ignore for now 是否正常
+  "w": true,                     // Is the order working? Stops will have
+  "m": false,                    // Is this trade the maker side?
+  "O": 1499405658657,            // Order creation time 创建时间
+  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 交易金额
+```
+
+订单更新会通过 `executionReport` 事件更新。查看API文档和下面的相关枚举定义。
+平均价格可以通过Z除以z来找到。
+
+### 执行类型
+
+- NEW  新订单
+- PARTIALLY_FILLED 
+- FILLED 
+- CANCELED 订单被取消
+- REJECTED 
+
+## Payload: Ticket推送
+
+> 响应
+
+``` json
+[
+    {
+        "e": "ticketInfo",                // Event type 事件类型
+        "E": "1668693440976",             // Event time 事件时间
+        "s": "BTCUSDT",                   // Symbol 币对
+        "q": "0.205",                     // quantity 数量
+        "t": "1668693440899",             // time 时间
+        "p": "441.0",                     // price 价格
+        "T": "1291488620385157122",       // ticketId
+        "o": "1291488620167835136",       // orderId 订单id
+        "c": "1668693440093",             // clientOrderId 客户订单id
+        "O": "1291354087841869312",       // matchOrderId 对手方订单ID
+        "a": "1286424214388204801",       // accountId 账户id
+        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
+        "m": false,                       // isMaker 
+        "S": "SELL"                       // side  SELL or BUY
+    }
+]
+```
