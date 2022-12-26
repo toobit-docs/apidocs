@@ -36,14 +36,14 @@ search: true
 
 ### 现货账户
 
-新注册的币安账号都会有一个现货(`SPOT`)账号。
+新注册的账号都会有一个现货(`SPOT`)账号。
 
 # 基础信息
 
 ## API 基本信息
 
 - 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href="https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key">这里</a>
-- 本篇列出接口的baseurl: https://bapi.wcsbapp.com
+- 本篇列出接口的baseurl: https://api.toobit.com
 - 所有接口的响应都是 JSON 格式。
 - 所有时间、时间戳均为UNIX时间，单位为毫秒。
 
@@ -638,7 +638,7 @@ search: true
 
 # Websocket账户信息推送
 
-- 本篇所列出API接口的base url : 
+- 本篇所列出API接口的base url :  **wss://stream.toobit.com**
 - 用于订阅账户数据的 `listenKey` 从创建时刻起有效期为60分钟
 - 可以通过 PUT 一个 `listenKey` 延长60分钟有效期
 - 可以通过DELETE一个 `listenKey` 立即关闭当前数据流，并使该`listenKey` 无效
