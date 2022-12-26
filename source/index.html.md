@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://baidu.com'>baidu </a>
+  - <a href='https://www.toobit.com'>Toobit</a>
 includes:
 
 search: true
@@ -17,7 +17,7 @@ search: true
 
 ## API Key 设置
 
-- 很多接口需要API Key才可以访问. 请参考<a href=#>这个页面</a>来设置API Key.
+- 很多接口需要API Key才可以访问. 请参考<a href=“https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key”>这个页面</a>来设置API Key.
 - 设置API Key的同时，为了安全，建议设置IP访问白名单.
 - **永远不要把你的API key/secret告诉给任何人**
 
