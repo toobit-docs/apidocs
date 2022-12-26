@@ -438,20 +438,18 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://baidu.com'>baidu </a></li>
+            <li><a href='https://www.toobit.com'>TooBit </a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='185368440e'>更新日志</h1><h2 id='2022-12-16'>2022-12-16</h2>
-<ul>
-<li>接口</li>
-</ul>
+<p>文档创建</p>
 <h1 id='41654e0268'>基础信息</h1><h2 id='rest'>Rest 基本信息</h2>
 <ul>
-<li>接口可能需要用户的 API Key，如何创建API-KEY请参考<a href=''>这里</a></li>
-<li>本篇列出REST接口的baseurl <strong>https://fapi.</strong></li>
+<li>接口可能需要用户的 API Key，如何创建API-KEY请参考<a href='https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA-API-%E5%AF%86%E9%92%A5-'>这里</a></li>
+<li>本篇列出REST接口的baseurl <strong>https://api.toobit.com</strong></li>
 <li>所有接口的响应都是JSON格式</li>
 <li>所有时间、时间戳均为UNIX时间，单位为毫秒</li>
 <li>所有数据类型采用JAVA的数据类型定义</li>
@@ -2225,8 +2223,22 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"marginType"</span><span class="p">:</span><span class="s2">"CROSS"</span><span class="w"> </span><span class="err">//开仓类型</span><span class="w"> </span><span class="err">CROSS：全仓</span><span class="w"> </span><span class="err">ISOLATED：逐仓</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-16'>参数</h3>
-<p>None</p>
+</span></code></pre><h3 id='749d765242-16'>参数</h3><h3 id='749d765242-17'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>交易对</td>
+</tr>
+</tbody></table>
 <h2 id='trade-3'>下单 (TRADE)</h2>
 <p><code>POST /api/v1/futures/order</code></p>
 
@@ -2251,7 +2263,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-17'>参数</h3>
+</span></code></pre><h3 id='749d765242-18'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2353,7 +2365,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-18'>参数</h3>
+</span></code></pre><h3 id='749d765242-19'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2434,7 +2446,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"isCancelled"</span><span class="p">:</span><span class="kc">true</span><span class="w">  </span><span class="err">//订单是否还在book上存在，如果本来就不在book上</span><span class="w"> </span><span class="err">返回</span><span class="kc">true</span><span class="err">。所以除非连接match</span><span class="w"> </span><span class="err">超时，其他情况返回均为</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='749d765242-19'>参数</h3>
+</span></code></pre><h3 id='749d765242-20'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2504,7 +2516,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-20'>参数</h3>
+</span></code></pre><h3 id='749d765242-21'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2566,7 +2578,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-21'>参数</h3>
+</span></code></pre><h3 id='749d765242-22'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2646,7 +2658,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-22'>参数</h3>
+</span></code></pre><h3 id='749d765242-23'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2718,7 +2730,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="w"> </span><span class="err">//委托保证金（下单锁定）</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-23'>参数</h3>
+</span></code></pre><h3 id='749d765242-24'>参数</h3>
 <p>None</p>
 <h2 id='trade-7'>调整逐仓保证金 (TRADE)</h2>
 <ul>
@@ -2737,7 +2749,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="err">//更新后的仓位保证金</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> </span><span class="err">//更新时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-24'>参数</h3>
+</span></code></pre><h3 id='749d765242-25'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2793,7 +2805,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> </span><span class="err">//成交盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-25'>参数</h3>
+</span></code></pre><h3 id='749d765242-26'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2853,7 +2865,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-26'>参数</h3>
+</span></code></pre><h3 id='749d765242-27'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2880,7 +2892,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
     </span><span class="s2">"success"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-27'>参数</h3>
+</span></code></pre><h3 id='749d765242-28'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2921,7 +2933,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"makerCommissionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">maker手续费率</span><span class="w"> </span><span class="mf">0.02</span><span class="err">%</span><span class="w">
     </span><span class="s2">"takerCommissionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w">   </span><span class="err">//</span><span class="w">  </span><span class="err">taker手续费率</span><span class="w"> </span><span class="mf">0.04</span><span class="err">%</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-28'>参数</h3>
+</span></code></pre><h3 id='749d765242-29'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2960,7 +2972,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-29'>参数</h3>
+</span></code></pre><h3 id='749d765242-30'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2994,7 +3006,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-30'>参数</h3>
+</span></code></pre><h3 id='749d765242-31'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3032,7 +3044,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-31'>参数</h3>
+</span></code></pre><h3 id='749d765242-32'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
