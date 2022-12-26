@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://www.toobit.com'>Toobit</a>
+  - <a href='https://www.toobit.com'>TooBit</a>
 includes:
 
 search: true
@@ -42,7 +42,7 @@ search: true
 
 ## API 基本信息
 
-- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href="#">这里</a>
+- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href="https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key">这里</a>
 - 本篇列出接口的baseurl: https://bapi.wcsbapp.com
 - 所有接口的响应都是 JSON 格式。
 - 所有时间、时间戳均为UNIX时间，单位为毫秒。
@@ -255,7 +255,7 @@ search: true
 ## 获取充值历史 (USER_DATA)
  - `GET /api/v1/account/depositOrders  (HMAC SHA256)`
 
- ### 权重： 5
+### 权重： 5
 
 > 响应
 
@@ -281,7 +281,8 @@ search: true
 ]
 ```
 
- ### 参数
+### 参数
+
 | 参数名称     | 类型      | 是否必需      | 描述           |
 | ----------- | ------- | ------------- | -------------- |
 | coin | STRING | NO | 资产 |
@@ -690,7 +691,9 @@ search: true
 | timestamp | LONG | YES | 时间戳 |
 
 ### 关闭 Listen Key (USER_STREAM)
+
 - `DELETE /api/v1/userDataStream`
+
 #### 权重：1
 
 > 响应
