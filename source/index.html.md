@@ -20,7 +20,7 @@ search: true
 
 ## API Key 设置
 
-- 很多接口需要API Key才可以访问. 请参考<a href=“https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key”>这个页面</a>来设置API Key.
+- 很多接口需要API Key才可以访问. 请参考<a href='https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key'>这个页面</a>来设置API Key.
 - 设置API Key的同时，为了安全，建议设置IP访问白名单.
 - **永远不要把你的API key/secret告诉给任何人**
 
@@ -42,7 +42,7 @@ search: true
 
 ## API 基本信息
 
-- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href="https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key">这里</a>
+- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href='https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-How-to-Create-Your-API-Key'>这里</a>
 - 本篇列出接口的baseurl: https://api.toobit.com
 - 所有接口的响应都是 JSON 格式。
 - 所有时间、时间戳均为UNIX时间，单位为毫秒。
