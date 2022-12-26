@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://baidu.com'>baidu </a>
+  - <a href='https://www.toobit.com'>TooBit </a>
 includes:
 
 search: true
@@ -13,15 +13,16 @@ search: true
 
 
 # 更新日志
-## 2022-12-16
-- 接口
+## 2022-10-16
+
+  文档创建
 
 # 基础信息
 
 ## Rest 基本信息
 
-- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href=''>这里</a>
-- 本篇列出REST接口的baseurl **https://fapi.**
+- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href='https://toobit.zendesk.com/hc/zh-cn/articles/13445077851545-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA-API-%E5%AF%86%E9%92%A5-'>这里</a>
+- 本篇列出REST接口的baseurl **https://api.toobit.com**
 - 所有接口的响应都是JSON格式
 - 所有时间、时间戳均为UNIX时间，单位为毫秒
 - 所有数据类型采用JAVA的数据类型定义
@@ -1487,8 +1488,9 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 ```
 
 ### 参数
-
-None
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
 
 
 
@@ -1891,9 +1893,10 @@ None
 
 ``` json
 {
-    "symbol": "BTCUSDT", //
-    "makerCommissionRate": "0.0002",  // maker手续费率 0.02%
-    "takerCommissionRate": "0.0004"   //  taker手续费率 0.04%
+    "openMakerFee": "0.000006", //开仓挂单的手续费费率
+    "openTakerFee": "0.0001", //开仓吃单的手续费费率
+    "closeMakerFee": "0.0002", //平仓挂单的手续费费率
+    "closeTakerFee": "0.0004" //平仓吃单的手续费费率
 }
 ```
 
@@ -1908,7 +1911,7 @@ None
 
 - 对listenKey执行PUT将使其有效期延长60分钟。
 - 对listenKey执行DELETE将关闭流。
-- 用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如ws://#HOST/api/v1/ws/#listenKey)
+- 用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如wss://#HOST/api/v1/ws/#listenKey)
 - 到api端点的单个连接仅在24小时内有效；预计在24小时时断开
 - 用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新
 
