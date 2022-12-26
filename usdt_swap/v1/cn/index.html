@@ -2929,9 +2929,10 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <p>响应：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">
-    </span><span class="s2">"makerCommissionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">maker手续费率</span><span class="w"> </span><span class="mf">0.02</span><span class="err">%</span><span class="w">
-    </span><span class="s2">"takerCommissionRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w">   </span><span class="err">//</span><span class="w">  </span><span class="err">taker手续费率</span><span class="w"> </span><span class="mf">0.04</span><span class="err">%</span><span class="w">
+    </span><span class="s2">"openMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000006"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓挂单的手续费费率</span><span class="w">
+    </span><span class="s2">"openTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w"> </span><span class="err">//开仓吃单的手续费费率</span><span class="w">
+    </span><span class="s2">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//平仓挂单的手续费费率</span><span class="w">
+    </span><span class="s2">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//平仓吃单的手续费费率</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='749d765242-29'>参数</h3>
 <table><thead>
@@ -2955,7 +2956,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li>对listenKey执行PUT将使其有效期延长60分钟。</li>
 <li>对listenKey执行DELETE将关闭流。</li>
-<li>用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如ws://#HOST/api/v1/ws/#listenKey)</li>
+<li>用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如wss://#HOST/api/v1/ws/#listenKey)</li>
 <li>到api端点的单个连接仅在24小时内有效；预计在24小时时断开</li>
 <li>用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新</li>
 </ul>
