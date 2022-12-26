@@ -297,6 +297,9 @@
                     <a href="#38a975b802" class="toc-h2 toc-link" data-title="深度信息">深度信息</a>
                   </li>
                   <li>
+                    <a href="#6bfe48187e" class="toc-h2 toc-link" data-title="合并深度">合并深度</a>
+                  </li>
+                  <li>
                     <a href="#404aacd9b3" class="toc-h2 toc-link" data-title="近期成交">近期成交</a>
                   </li>
                   <li>
@@ -1146,13 +1149,82 @@ HMAC SHA256 签名:
 </tbody></table>
 
 <p>注意：如果设置limit=0会返回很多数据。</p>
+<h2 id='6bfe48187e'>合并深度</h2>
+<ul>
+<li><code>GET /quote/v1/depth/merged</code></li>
+</ul>
+
+<p>合并深度接口。</p>
+<h3 id='1-4'>权重：1</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1672035413265</span><span class="p">,</span><span class="err">//时间</span><span class="w">
+    </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//买入深度高到低</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16851.95"</span><span class="p">,</span><span class="err">//价格</span><span class="w">
+            </span><span class="s2">"0.003321"</span><span class="err">//数量</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16851.87"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.005456"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16851.47"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.002219"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//卖出深度低到高</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16870.19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.003838"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16873.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.00361"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16873.06"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.002623"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-2'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>scale</td>
+<td>INT</td>
+<td>NO</td>
+<td>精度</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>限制条数</td>
+</tr>
+</tbody></table>
 <h2 id='404aacd9b3'>近期成交</h2>
 <ul>
 <li><code>GET /quote/v1/trades</code></li>
 </ul>
 
 <p>获取当前最新成交（最多60）</p>
-<h3 id='1-4'>权重：1</h3>
+<h3 id='1-5'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1165,7 +1237,7 @@ HMAC SHA256 签名:
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 
-</span></code></pre><h3 id='749d765242-2'>参数</h3>
+</span></code></pre><h3 id='749d765242-3'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1193,7 +1265,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>symbol的k线/烛线图数据,K线会根据开盘时间而辨别。</p>
-<h3 id='1-5'>权重：1</h3>
+<h3 id='1-6'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1212,7 +1284,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"28.46694368"</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset数量</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-3'>参数</h3>
+</span></code></pre><h3 id='749d765242-4'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1289,7 +1361,7 @@ HMAC SHA256 签名:
         </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-4'>参数</h3>
+</span></code></pre><h3 id='749d765242-5'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1352,7 +1424,7 @@ HMAC SHA256 签名:
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-5'>参数</h3>
+</span></code></pre><h3 id='749d765242-6'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1413,7 +1485,7 @@ HMAC SHA256 签名:
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-6'>参数</h3>
+</span></code></pre><h3 id='749d765242-7'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1445,7 +1517,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0018099173553719"</span><span class="w"> </span><span class="err">//该次结算资金费率。</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-7'>参数</h3>
+</span></code></pre><h3 id='749d765242-8'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1477,7 +1549,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"fundingRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00321"</span><span class="w"> </span><span class="err">//资金费率</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-8'>参数</h3>
+</span></code></pre><h3 id='749d765242-9'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1535,7 +1607,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">成交额</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-9'>参数</h3>
+</span></code></pre><h3 id='749d765242-10'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1561,7 +1633,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>返回最近价格</p>
-<h3 id='1-6'>权重：1</h3>
+<h3 id='1-7'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1571,7 +1643,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">最新价</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-10'>参数</h3>
+</span></code></pre><h3 id='749d765242-11'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1597,7 +1669,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>单个或者多个symbol的最佳买单卖单价格。</p>
-<h3 id='1-7'>权重：1</h3>
+<h3 id='1-8'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1611,7 +1683,7 @@ HMAC SHA256 签名:
       </span><span class="s2">"aq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.00000000"</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">最高卖价对应的数量</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-11'>参数</h3>
+</span></code></pre><h3 id='749d765242-12'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -1989,14 +2061,14 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>执行现货账户与合约账户之间的划转</p>
-<h3 id='1-8'>权重：1</h3>
+<h3 id='1-9'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"success"</span><span class="p">:</span><span class="s2">"true"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">0</span><span class="err">成功</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-12'>参数</h3>
+</span></code></pre><h3 id='749d765242-13'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2068,7 +2140,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1578640809195"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-13'>参数</h3>
+</span></code></pre><h3 id='749d765242-14'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2138,7 +2210,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>变换用户在指定symbol合约上的保证金模式：逐仓或全仓。</p>
-<h3 id='1-9'>权重：1</h3>
+<h3 id='1-10'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -2147,7 +2219,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易对</span><span class="w">
     </span><span class="s2">"marginType"</span><span class="p">:</span><span class="s2">"CROSS"</span><span class="w"> </span><span class="err">//开仓类型</span><span class="w"> </span><span class="err">CROSS：全仓</span><span class="w"> </span><span class="err">ISOLATED：逐仓</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-14'>参数</h3>
+</span></code></pre><h3 id='749d765242-15'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2175,7 +2247,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>调整用户在指定symbol合约的开仓杠杆。</p>
-<h3 id='1-10'>权重：1</h3>
+<h3 id='1-11'>权重：1</h3>
 <blockquote>
 <p>响应:</p>
 </blockquote>
@@ -2184,7 +2256,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易对</span><span class="w">
     </span><span class="s2">"leverage"</span><span class="p">:</span><span class="s2">"20"</span><span class="w"> </span><span class="err">//杠杠倍数</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-15'>参数</h3>
+</span></code></pre><h3 id='749d765242-16'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2223,7 +2295,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"marginType"</span><span class="p">:</span><span class="s2">"CROSS"</span><span class="w"> </span><span class="err">//开仓类型</span><span class="w"> </span><span class="err">CROSS：全仓</span><span class="w"> </span><span class="err">ISOLATED：逐仓</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-16'>参数</h3>
+</span></code></pre><h3 id='749d765242-17'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2263,7 +2335,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-17'>参数</h3>
+</span></code></pre><h3 id='749d765242-18'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2343,7 +2415,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
 </ul>
-<h3 id='1-11'>权重：1</h3>
+<h3 id='1-12'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -2365,7 +2437,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-18'>参数</h3>
+</span></code></pre><h3 id='749d765242-19'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2415,7 +2487,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>DELETE /api/v1/futures/order</code></li>
 </ul>
-<h3 id='1-12'>权重：1</h3>
+<h3 id='1-13'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -2446,7 +2518,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"isCancelled"</span><span class="p">:</span><span class="kc">true</span><span class="w">  </span><span class="err">//订单是否还在book上存在，如果本来就不在book上</span><span class="w"> </span><span class="err">返回</span><span class="kc">true</span><span class="err">。所以除非连接match</span><span class="w"> </span><span class="err">超时，其他情况返回均为</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='749d765242-19'>参数</h3>
+</span></code></pre><h3 id='749d765242-20'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2516,7 +2588,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-20'>参数</h3>
+</span></code></pre><h3 id='749d765242-21'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2554,7 +2626,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>GET /api/v1/futures/openOrders</code></li>
 </ul>
-<h3 id='1-13'>权重：1</h3>
+<h3 id='1-14'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -2578,7 +2650,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-21'>参数</h3>
+</span></code></pre><h3 id='749d765242-22'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2658,7 +2730,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-22'>参数</h3>
+</span></code></pre><h3 id='749d765242-23'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2730,7 +2802,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="w"> </span><span class="err">//委托保证金（下单锁定）</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-23'>参数</h3>
+</span></code></pre><h3 id='749d765242-24'>参数</h3>
 <p>None</p>
 <h2 id='trade-7'>调整逐仓保证金 (TRADE)</h2>
 <ul>
@@ -2738,7 +2810,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>针对逐仓模式下的仓位，调整其逐仓保证金资金。</p>
-<h3 id='1-14'>权重：1</h3>
+<h3 id='1-15'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -2749,7 +2821,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="err">//更新后的仓位保证金</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> </span><span class="err">//更新时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-24'>参数</h3>
+</span></code></pre><h3 id='749d765242-25'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2805,7 +2877,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> </span><span class="err">//成交盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-25'>参数</h3>
+</span></code></pre><h3 id='749d765242-26'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2865,7 +2937,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-26'>参数</h3>
+</span></code></pre><h3 id='749d765242-27'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2885,14 +2957,14 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>POST /api/v1/futures/setRiskLimit</code></li>
 </ul>
-<h3 id='1-15'>权重：1</h3>
+<h3 id='1-16'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
     </span><span class="s2">"success"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-27'>参数</h3>
+</span></code></pre><h3 id='749d765242-28'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2934,7 +3006,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//平仓挂单的手续费费率</span><span class="w">
     </span><span class="s2">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//平仓吃单的手续费费率</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-28'>参数</h3>
+</span></code></pre><h3 id='749d765242-29'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2966,14 +3038,14 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>创建一个新的user data stream，返回值为一个listenKey，即websocket订阅的stream名称。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。</p>
-<h3 id='1-16'>权重： 1</h3>
+<h3 id='1-17'>权重： 1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-29'>参数</h3>
+</span></code></pre><h3 id='749d765242-30'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3001,13 +3073,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>有效期延长至本次调用后60分钟</p>
-<h3 id='1-17'>权重： 1</h3>
+<h3 id='1-18'>权重： 1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-30'>参数</h3>
+</span></code></pre><h3 id='749d765242-31'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3039,13 +3111,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>DELETE /api/v1/listenKey</code></li>
 </ul>
-<h3 id='1-18'>权重： 1</h3>
+<h3 id='1-19'>权重： 1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-31'>参数</h3>
+</span></code></pre><h3 id='749d765242-32'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
