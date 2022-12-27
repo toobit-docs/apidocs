@@ -437,6 +437,648 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 - 如果fromId设定好了，会筛选订单小于id的。否则会返回最近的订单信息。
 
+# 行情接口
+
+## 测试服务器连通性
+
+-  `GET /api/v1/ping`
+
+测试能否联通 Rest API。
+
+### 权重:1
+
+> 响应
+
+``` json
+{}
+```
+
+### 参数
+
+NONE
+
+## 获取服务器时间
+
+- `GET /api/v1/time`
+
+测试能否联通 Rest API 并 获取服务器时间。
+
+### 权重:1
+
+> 响应
+
+``` json
+{
+  "serverTime": 1538323200000
+}
+```
+
+### 参数
+
+NONE
+
+## 获取交易规则和交易对
+
+- `GET /api/v1/exchangeInfo`
+
+当前broker交易规则和symbol信息
+
+### 权重:1
+
+> 响应
+
+``` json
+{
+  "timezone": "UTC",
+  "serverTime": "1668407511495",
+  "brokerFilters": [],
+  "symbols": [
+    {
+      "filters": [
+        {
+          "minPrice": "0.01",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.01",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "0.01",
+          "maxQty": "100000.00000000",
+          "stepSize": "0.0001",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "10",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "ETHUSDT",
+      "symbolName": "ETHUSDT",
+      "status": "TRADING",
+      "baseAsset": "ETH",
+      "baseAssetName": "ETH",
+      "baseAssetPrecision": "0.0001",
+      "quoteAsset": "USDT",
+      "quoteAssetName": "USDT",
+      "quotePrecision": "0.01",
+      "icebergAllowed": false,
+      "isAggregate": false,
+      "allowMargin": true
+    },
+    {
+      "filters": [
+        {
+          "minPrice": "0.01",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.01",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "0.0005",
+          "maxQty": "100000.00000000",
+          "stepSize": "0.000001",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "1",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "BTCUSDT",
+      "symbolName": "BTCUSDT",
+      "status": "TRADING",
+      "baseAsset": "BTC",
+      "baseAssetName": "BTC",
+      "baseAssetPrecision": "0.000001",
+      "quoteAsset": "USDT",
+      "quoteAssetName": "USDT",
+      "quotePrecision": "0.01",
+      "icebergAllowed": false,
+      "isAggregate": false,
+      "allowMargin": true
+    },
+    {
+      "filters": [
+        {
+          "minPrice": "0.01",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.01",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "0.01",
+          "maxQty": "100000.00000000",
+          "stepSize": "0.01",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "0.01",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "XRPUSDT",
+      "symbolName": "XRPUSDT",
+      "status": "TRADING",
+      "baseAsset": "XRP",
+      "baseAssetName": "XRP",
+      "baseAssetPrecision": "0.01",
+      "quoteAsset": "USDT",
+      "quoteAssetName": "USDT",
+      "quotePrecision": "0.01",
+      "icebergAllowed": false,
+      "isAggregate": false,
+      "allowMargin": false
+    }
+  ],
+  "rateLimits": [
+    {
+      "rateLimitType": "REQUEST_WEIGHT",
+      "interval": "MINUTE",
+      "intervalUnit": 1,
+      "limit": 3000
+    },
+    {
+      "rateLimitType": "ORDERS",
+      "interval": "SECOND",
+      "intervalUnit": 60,
+      "limit": 60
+    }
+  ],
+  "options": [],
+  "contracts": [
+    {
+      "filters": [
+        {
+          "minPrice": "0.1",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.1",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "1",
+          "maxQty": "100000.00000000",
+          "stepSize": "1",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "0.000000001",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "BTC-SWAP-USDT",
+      "symbolName": "BTC-SWAP-USDTUSDT",
+      "status": "TRADING",
+      "baseAsset": "BTC-SWAP-USDT",
+      "baseAssetPrecision": "1",
+      "quoteAsset": "USDT",
+      "quoteAssetPrecision": "0.1",
+      "icebergAllowed": false,
+      "inverse": false,
+      "index": "BTCUSDT",
+      "marginToken": "USDT",
+      "marginPrecision": "0.0001",
+      "contractMultiplier": "0.0001",
+      "underlying": "BTC",
+      "riskLimits": [
+        {
+          "riskLimitId": "200000133",
+          "quantity": "1000000.0",
+          "initialMargin": "0.01",
+          "maintMargin": "0.005"
+        },
+        {
+          "riskLimitId": "200000134",
+          "quantity": "2000000.0",
+          "initialMargin": "0.02",
+          "maintMargin": "0.01"
+        },
+        {
+          "riskLimitId": "200000135",
+          "quantity": "3000000.0",
+          "initialMargin": "0.03",
+          "maintMargin": "0.015"
+        },
+        {
+          "riskLimitId": "200000136",
+          "quantity": "4000000.0",
+          "initialMargin": "0.04",
+          "maintMargin": "0.02"
+        }
+      ]
+    },
+    {
+      "filters": [
+        {
+          "minPrice": "0.1",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.1",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "1",
+          "maxQty": "100000.00000000",
+          "stepSize": "1",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "0.000001",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "BTC-SWAP",
+      "symbolName": "BTC-SWAP",
+      "status": "TRADING",
+      "baseAsset": "BTC-SWAP",
+      "baseAssetPrecision": "1",
+      "quoteAsset": "USDT",
+      "quoteAssetPrecision": "0.1",
+      "icebergAllowed": false,
+      "inverse": true,
+      "index": "BTCUSDT",
+      "marginToken": "BTC",
+      "marginPrecision": "0.00000001",
+      "contractMultiplier": "1.0",
+      "underlying": "BTC",
+      "riskLimits": [
+        {
+          "riskLimitId": "200000137",
+          "quantity": "1000000.0",
+          "initialMargin": "0.01",
+          "maintMargin": "0.005"
+        },
+        {
+          "riskLimitId": "200000138",
+          "quantity": "2000000.0",
+          "initialMargin": "0.02",
+          "maintMargin": "0.01"
+        },
+        {
+          "riskLimitId": "200000139",
+          "quantity": "3000000.0",
+          "initialMargin": "0.03",
+          "maintMargin": "0.015"
+        },
+        {
+          "riskLimitId": "200000140",
+          "quantity": "4000000.0",
+          "initialMargin": "0.04",
+          "maintMargin": "0.02"
+        }
+      ]
+    }
+  ],
+  "coins": [
+    {
+      "coinId": "ETH",
+      "coinName": "ETH",
+      "coinFullName": "Ethereum",
+      "allowWithdraw": true,
+      "allowDeposit": true,
+      "chainTypes": []
+    },
+    {
+      "coinId": "USDT",
+      "coinName": "USDT",
+      "coinFullName": "TetherUS",
+      "allowWithdraw": true,
+      "allowDeposit": true,
+      "chainTypes": [
+        {
+          "chainType": "ERC20",
+          "withdrawFee": "0.1",
+          "minWithdrawQuantity": "10",
+          "maxWithdrawQuantity": "1000",
+          "minDepositQuantity": "1",
+          "allowDeposit": true,
+          "allowWithdraw": true
+        },
+        {
+          "chainType": "TRC20",
+          "withdrawFee": "0.1",
+          "minWithdrawQuantity": "10",
+          "maxWithdrawQuantity": "1000",
+          "allowDeposit": true,
+          "allowWithdraw": true
+        },
+        {
+          "chainType": "OMNI",
+          "withdrawFee": "0.1",
+          "minWithdrawQuantity": "10",
+          "maxWithdrawQuantity": "1000",
+          "allowDeposit": true,
+          "allowWithdraw": true
+        }
+      ]
+    },
+    {
+      "coinId": "BTC",
+      "coinName": "BTC",
+      "coinFullName": "Bitcoin",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    },
+    {
+      "coinId": "UNI",
+      "coinName": "UNI",
+      "coinFullName": "uniswap",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    },
+    {
+      "coinId": "XRP",
+      "coinName": "XRP",
+      "coinFullName": "XRP",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    },
+    {
+      "coinId": "EOS",
+      "coinName": "EOS1",
+      "coinFullName": "EOS",
+      "allowWithdraw": true,
+      "allowDeposit": true,
+      "chainTypes": []
+    },
+    {
+      "coinId": "JET",
+      "coinName": "JET",
+      "coinFullName": "JET",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    }
+  ]
+}
+
+```
+
+### 参数
+
+NONE
+
+## 深度信息
+- `GET /quote/v1/depth`
+
+### 权重：
+
+根据limit不同：
+
+| 限制	     | 权重      | 
+| ----------- | ------- |
+| 5, 10, 20, 50, 100 | 1 | 
+| 500 | 5 |
+| 1000  | 10 |
+
+> 响应
+
+``` json
+{
+  "b": [
+    [
+      "3.90000000",   // 价格
+      "431.00000000"  // 数量
+    ],
+    [
+      "4.00000000",
+      "431.00000000"
+    ]
+  ],
+  "a": [
+    [
+      "4.00000200",  // 价格
+      "12.00000000"  // 数量
+    ],
+    [
+      "5.10000000",
+      "28.00000000"
+    ]
+  ]
+}
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| YES | |
+| limit | INT | NO | 默认 100; 最大 100. |
+
+注意：
+如果设置`limit=0`会返回很多数据。
+
+## 最近成交
+
+- `GET /quote/v1/trades`
+
+获取当前最新成交（最多60）
+
+### 权重： 1
+
+> 响应
+
+``` json
+[
+  {
+    "p": "4.00000100",
+    "q": "12.00000000",
+    "t": 1499865549590,
+    "ibm": true  // 成交方向 isBuyerMaker
+  }
+]
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| YES | |
+| limit | INT | NO | 默认 60; 最大 60. |
+
+## k线/烛线图数据
+- `GET /quote/v1/klines`
+
+- `symbol`的k线/烛线图数据。
+- K线会根据开盘时间而辨别。
+
+### 权重：1
+
+> 响应
+
+``` json
+[
+  [
+    1499040000000,      // 开盘时间
+    "0.01634790",       // 开盘价
+    "0.80000000",       // 最高价
+    "0.01575800",       // 最低价
+    "0.01577100",       // 收盘价
+    "148976.11427815",  // 交易量
+    1499644799999,      // 收盘时间
+    "2434.19055334",    // Quote asset数量
+    308,                // 交易次数
+    "1756.87402397",    // Taker buy base asset数量
+    "28.46694368"       // Taker buy quote asset数量
+  ]
+]
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| YES | |
+| interval | ENUM | YES | |
+| startTime | LONG | NO | |
+| endTime | LONG | NO |
+| limit | INT | NO | 默认 100; 最大 100. |
+
+- 如果`startTime`和`endTime`没有发送，只有最新的K线会被返回。
+
+## 24hr 价格变动情况
+- `GET /quote/v1/ticker/24hr`
+
+24小时价格变化数据。注意 如果没有发送`symbol`，会返回很多数据。
+
+### 权重： 
+
+如果只有一个`symbol`为1; 如果`symbol`没有被发送为40。
+
+> 响应
+
+``` json
+[
+    {
+        "t": 1538725500422,   // 时间
+        "a": "1.10000000",    // 最高卖价
+        "b": "1.00000000",    // 最高买价
+        "s": "ETHBTC",        // symbol 
+        "c": "4.00000200",    // 最新成交价
+        "o": "99.00000000",   // 开盘价
+        "h": "100.00000000",  // 最高价 
+        "l": "0.10000000",    // 最低价
+        "v": "8913.30000000", // 成交量
+        "qv": "15.30000000"   // 成交额
+    }
+]
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | |
+
+- 如果symbol没有被发送，所有symbol的数据都会被返回。
+
+## 最新价格
+
+- `GET /quote/v1/ticker/price`
+
+单个或多个symbol的最新价。
+
+### 权重：1
+
+> 响应
+
+``` json
+[
+  {
+    "s": "LTCBTC",     // 交易对
+    "p": "4.00000200"  // 最新价
+  }
+]
+```
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | |
+
+- 如果symbol没有发送，所有symbol的最新价都会被返回。
+
+## 当前最优挂单
+- `GET /quote/v1/ticker/bookTicker`
+
+单个或者多个symbol的最佳买单卖单价格。
+
+### 权重：1
+
+> 响应
+
+``` json
+[
+  {
+      "t": 132222222222222,     // 时间
+      "s": "LTCBTC",            // 交易对          
+      "b": "4.00000000",        // 最高买价
+      "bq": "431.00000000",     // 最高买价对应的数量
+      "a": "4.00000200",        // 最高卖价
+      "aq": "9.00000000"        // 最高卖价对应的数量
+  }
+]
+```
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | |
+
+- 如果symbol没有被发送，所有symbol的最佳订单簿价格都会被返回。
+
+## 合并深度
+
+- `GET /api/quote/v1/depth/merged`
+
+### 权重： 1
+
+> 响应
+
+``` json
+{
+    "t": 1672035413265,//时间
+    "b": [//买入深度高到低
+        [
+            "16851.95",//价格
+            "0.003321"//数量
+        ],
+        [
+            "16851.87",
+            "0.005456"
+        ],
+        [
+            "16851.47",
+            "0.002219"
+        ]
+    ],
+    "a": [//卖出深度低到高
+        [
+            "16870.19",
+            "0.003838"
+        ],
+        [
+            "16873.05",
+            "0.00361"
+        ],
+        [
+            "16873.06",
+            "0.002623"
+        ]
+    ]
+}
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | 交易对 |
+| scale | INT | NO | 精度 |
+| limit | INT | NO | 限制条数 |
+
+
 # 现货账户和交易接口
 
 ## 测试下单 (TRADE)
