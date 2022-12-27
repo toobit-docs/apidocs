@@ -285,6 +285,9 @@
                     <a href="#12907e94be" class="toc-h2 toc-link" data-title="访问限制">访问限制</a>
                   </li>
                   <li>
+                    <a href="#a573a19f9c" class="toc-h2 toc-link" data-title="接口鉴权类型">接口鉴权类型</a>
+                  </li>
+                  <li>
                     <a href="#9887431e76" class="toc-h2 toc-link" data-title="需要签名的接口">需要签名的接口</a>
                   </li>
                   <li>
@@ -448,6 +451,47 @@
 <li>JSON格式的消息, 比如订阅, 断开订阅.</li>
 </ul></li>
 <li>如果用户发送的消息超过限制，连接会被断开连接。反复被断开连接的IP有可能被服务器屏蔽。</li>
+</ul>
+<h2 id='a573a19f9c'>接口鉴权类型</h2>
+<ul>
+<li>每个接口都有自己的鉴权类型，鉴权类型决定了访问时应当进行何种鉴权。</li>
+<li>鉴权类型会在本文档中各个接口名称旁声明，如果没有特殊声明即默认为 NONE。</li>
+<li>如果需要 API-keys，应当在HTTP头中以 X-BB-APIKEY字段传递。</li>
+<li>API-keys 与 secret-keys 是大小写敏感的。</li>
+<li>API-keys可以被配置为只拥有访问一些接口的权限。 例如, 一个 API-key 仅可用于发送交易指令, 而另一个 API-key 则可访问除交易指令外的所有路径。</li>
+<li>默认 API-keys 可访问所有鉴权路径.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>鉴权类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NONE</td>
+<td>端点可以自由访问。</td>
+</tr>
+<tr>
+<td>TRADE</td>
+<td>端点需要发送有效的API-Key和签名。</td>
+</tr>
+<tr>
+<td>USER_DATA</td>
+<td>端点需要发送有效的API-Key和签名</td>
+</tr>
+<tr>
+<td>USER_STREAM</td>
+<td>端点需要发送有效的API-Key。</td>
+</tr>
+<tr>
+<td>MARKET_DATA</td>
+<td>端点需要发送有效的API-Key。</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><code>TRADE</code> 和<code>USER_DATA</code> 接口是 签名<code>(SIGNED)</code>接口.</li>
 </ul>
 <h2 id='9887431e76'>需要签名的接口</h2>
 <ul>
