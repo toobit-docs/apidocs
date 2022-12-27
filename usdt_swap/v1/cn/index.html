@@ -1764,22 +1764,6 @@ HMAC SHA256 签名:
 在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。<br>
 变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
 例如：假设过去5秒有3笔交易发生，分别是<code>ETHUSDT</code>、<code>BTCUSDT</code>、<code>BHTBTC</code>。它们的“v”会为连续的值（112，113，114）。</p>
-<h3 id='ad052b1e2a-2'>请求订阅数据样例:</h3>
-<p><code>{</code></p>
-
-<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
-
-<p><code>&quot;topic&quot;: &quot;trade&quot;,</code></p>
-
-<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
-
-<p><code>&quot;params&quot;: {</code></p>
-
-<p><code>&quot;binary&quot;: false // Whether data returned is in binary format</code></p>
-
-<p><code>}</code></p>
-
-<p><code>}</code></p>
 
 <blockquote>
 <p>Payload</p>
@@ -1812,18 +1796,24 @@ HMAC SHA256 签名:
     </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753154192</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='2feac0b7e2-2'>最新标记价格</h2>
-<p>合约标记价格。</p>
-<h3 id='ad052b1e2a-3'>请求订阅数据样例:</h3>
+</span></code></pre><h3 id='ad052b1e2a-2'>请求订阅数据样例:</h3>
 <p><code>{</code></p>
 
-<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //币对</code></p>
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
 
-<p><code>&quot;topic&quot;: &quot;markPrice&quot;,</code></p>
+<p><code>&quot;topic&quot;: &quot;trade&quot;,</code></p>
 
-<p><code>&quot;event&quot;: &quot;sub&quot;</code></p>
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false // Whether data returned is in binary format</code></p>
 
 <p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='2feac0b7e2-2'>最新标记价格</h2>
+<p>合约标记价格。</p>
 
 <blockquote>
 <p>Payload</p>
@@ -1847,9 +1837,48 @@ HMAC SHA256 签名:
     </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668754084738</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='k-5'>K线</h2>
+</span></code></pre><h3 id='ad052b1e2a-3'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;markPrice&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;</code></p>
+
+<p><code>}</code></p>
+<h2 id='k-5'>K线</h2>
 <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新</p>
-<h3 id='38344a9449'>请求订阅数据样例</h3>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kline"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"klineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1m"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753840000</span><span class="p">,</span><span class="err">//k线开始时间</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> </span><span class="err">name</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//最低价</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//开盘价</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//交易量</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">是否为第一个返回</span><span class="w">
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753854576</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='38344a9449'>请求订阅数据样例</h3>
 <p><code>{</code></p>
 
 <p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
@@ -1883,36 +1912,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>1w</li>
 <li>1M</li>
 </ul>
-
-<blockquote>
-<p>Payload</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kline"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"klineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1m"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753840000</span><span class="p">,</span><span class="err">//k线开始时间</span><span class="w">
-            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w">
-            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> </span><span class="err">name</span><span class="w">
-            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
-            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
-            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//最低价</span><span class="w">
-            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//开盘价</span><span class="w">
-            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//交易量</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">是否为第一个返回</span><span class="w">
-    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753854576</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='symbol-ticker'>按Symbol的完整Ticker</h2><h3 id='38344a9449-2'>请求订阅数据样例</h3>
+<h2 id='symbol-ticker'>按Symbol的完整Ticker</h2><h3 id='38344a9449-2'>请求订阅数据样例</h3>
 <p><code>{</code></p>
 
 <p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
@@ -1961,23 +1961,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753481048</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='6ae7c2b506'>有限档深度信息</h2><h3 id='38344a9449-3'>请求订阅数据样例</h3>
-<p><code>{</code></p>
-
-<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
-
-<p><code>&quot;topic&quot;: &quot;depth&quot;,</code></p>
-
-<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
-
-<p><code>&quot;params&quot;: {</code></p>
-
-<p><code>&quot;binary&quot;: false</code></p>
-
-<p><code>}</code></p>
-
-<p><code>}</code></p>
-
+</span></code></pre><h2 id='6ae7c2b506'>有限档深度信息</h2>
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -2014,22 +1998,23 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">//是否为第一个返回</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='1654ad2dd2'>增量深度信息</h2><h3 id='38344a9449-4'>请求订阅数据样例</h3>
+</span></code></pre><h3 id='38344a9449-3'>请求订阅数据样例</h3>
 <p><code>{</code></p>
 
 <p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
 
-<p><code>&quot;topic&quot;: &quot;diffDepth&quot;,</code></p>
+<p><code>&quot;topic&quot;: &quot;depth&quot;,</code></p>
 
 <p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
 
 <p><code>&quot;params&quot;: {</code></p>
 
-<p><code>&quot;binary&quot;: false</code> 
-  <code>}</code></p>
+<p><code>&quot;binary&quot;: false</code></p>
 
 <p><code>}</code></p>
 
+<p><code>}</code></p>
+<h2 id='1654ad2dd2'>增量深度信息</h2>
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -2059,7 +2044,22 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//是否为第一个返回值</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='38344a9449-4'>请求订阅数据样例</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;diffDepth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code> 
+  <code>}</code></p>
+
+<p><code>}</code></p>
+
 <p>每秒推送订单簿的变化部分（如果有）。<br>
 在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量&gt;0，这时的数量为更新后的这个价格所对应的数量<br>
 假设我们收到的返回数据中有这样一条：<br>
