@@ -175,9 +175,11 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 
 #### 交易对类型:
 - FUTURE 期货
+
 #### 资产类型:
 - CASH - 现金
 - MARGIN - 保证金
+
 #### 订单状态:
 - NEW - 新订单，暂无成交
 - PARTIALLY_FILLED - 部分成交
@@ -195,9 +197,11 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - TAKE_PROFIT (unavailable now) - 暂无
 - TAKE_PROFIT_LIMIT (unavailable now) - 暂无
 - MARKET_OF_PAYOUT (unavailable now) - 暂无
+
 #### 订单方向:
 - BUY - 买单
 - SELL - 卖单
+
 #### 有效方式:
 - GTC - Good Till Cancel 成交为止
 - IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销
