@@ -1729,20 +1729,18 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 <h3 id='ad052b1e2a'>请求订阅数据样例:</h3>
-<p><code>
-{
-  &quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对
-  &quot;topic&quot;: &quot;$topic&quot;,
-  &quot;event&quot;: &quot;sub&quot;,
-  // 可调整的参数
-    &quot;params&quot;: {
-        // kline返回上限是2000，默认为1
-        &quot;limit&quot;: &quot;$limit&quot;,
-        // 返回的数据是否是压缩过的，默认为false
-        &quot;binary&quot;: &quot;false&quot;
-    }
-}
-</code></p>
+<p><code>{</code>
+  <code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对</code>
+  <code>&quot;topic&quot;: &quot;$topic&quot;,</code>
+  <code>&quot;event&quot;: &quot;sub&quot;,</code>
+  <code>// 可调整的参数</code>
+  <code>&quot;params&quot;: {</code>
+  <code>// kline返回上限是2000，默认为1</code>
+  <code>&quot;limit&quot;: &quot;$limit&quot;,</code>
+  <code>// 返回的数据是否是压缩过的，默认为false</code>
+  <code>&quot;binary&quot;: &quot;false&quot;</code>
+  <code>}</code>
+<code>}</code></p>
 <h2 id='94a9a32795'>心跳</h2>
 <p>每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。</p>
 <h3 id='926f6b6b6a'>请求</h3>
