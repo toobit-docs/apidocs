@@ -1037,33 +1037,35 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 | event | `sub`(订阅), `cancel`(取消), `cancel_all`(取消全部)  |
 | interval | 1m, 5m, 15m, 30m, 1h, 2h, 6h, 12h, 1d, 1w, 1M |
 
-> 请求订阅数据样例:
+### 请求订阅数据样例:
 
-``` json
-{
-  "symbol": "$symbol0, $symbol1", //交易所ID+币对
-  "topic": "$topic",
-  "event": "sub",
-  // 可调整的参数
-    "params": {
-        // kline返回上限是2000，默认为1
-        "limit": "$limit",
-        // 返回的数据是否是压缩过的，默认为false
-        "binary": "false"
-    }
-}
-```
+`{`
+
+  `"symbol": "$symbol0, $symbol1", //交易所ID+币对`
+
+  `"topic": "$topic",`
+
+  `"event": "sub",`
+  
+  `  "params": {`
+
+  `      "limit": "$limit",  // kline返回上限是2000，默认为1`
+
+  `      "binary": "false"  // 返回的数据是否是压缩过的，默认为false`
+
+  `  }`
+
+`}`
+
 ## 心跳
 
 每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。
 
-> 请求
+### 请求
 
-``` json
-{
-    "ping": 1535975085052
-}
-```
+`{`
+    `"ping": 1535975085052`
+`}`
 
 > 响应：
 
@@ -1079,19 +1081,6 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。<br>
 变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
 例如：假设过去5秒有3笔交易发生，分别是`ETHUSDT`、`BTCUSDT`、`BHTBTC`。它们的“v”会为连续的值（112，113，114）。
-
-> 请求订阅数据样例:
-
-``` json
-{
-  "symbol": "$symbol0, $symbol1",//币对
-  "topic": "trade",
-  "event": "sub",
-  "params": {
-    "binary": false // Whether data returned is in binary format
-  }
-}
-```
 
 > Payload
 
@@ -1126,19 +1115,29 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 }
 ```
 
+### 请求订阅数据样例:
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",//币对`
+
+  `"topic": "trade",`
+
+  `"event": "sub",`
+
+  `"params": {`
+
+  `  "binary": false // Whether data returned is in binary format`
+
+  `}`
+
+`}`
+
+
+
 ## 最新标记价格
 
 合约标记价格。
-
-> 请求订阅数据样例:
-
-``` json
-{
-  "symbol": "$symbol0, $symbol1", //币对
-  "topic": "markPrice",
-  "event": "sub"
-}
-```
 
 > Payload
 
@@ -1164,40 +1163,24 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 }
 ```
 
+### 请求订阅数据样例:
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1", //币对`
+
+  `"topic": "markPrice",`
+
+  `"event": "sub"`
+
+`}`
+
+
+
+
 ## K线
 
 K线stream逐秒推送所请求的K线种类(最新一根K线)的更新
-
-> 请求订阅数据样例
-
-``` json
-{
-  "symbol": "$symbol0, $symbol1",//币对
-  "topic": "kline_"+$间隔,
-  "event": "sub",
-  "params": {
-    "binary": false
-  }
-}
-```
-
-### K线/蜡烛图间隔:
-
-订阅Kline需要提供间隔参数，最短为分钟线，最长为月线。支持以下间隔:
-m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
-
-- 1m
-- 5m
-- 15m
-- 30m
-- 1h
-- 2h
-- 4h
-- 6h
-- 12h
-- 1d
-- 1w
-- 1M
 
 > Payload
 
@@ -1229,20 +1212,46 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 }
 ```
 
+### 请求订阅数据样例
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",//币对`
+
+  `"topic": "kline_"+$间隔,`
+
+  `"event": "sub",`
+
+  `"params": {`
+
+  `  "binary": false`
+
+  `}`
+
+`}`
+
+
+### K线/蜡烛图间隔:
+
+订阅Kline需要提供间隔参数，最短为分钟线，最长为月线。支持以下间隔:
+m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
+
+- 1m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 12h
+- 1d
+- 1w
+- 1M
+
+
+
 ## 按Symbol的完整Ticker
-
-> 请求订阅数据样例
-
-``` json
-{
-  "symbol": "$symbol0, $symbol1",//币对
-  "topic": "realtimes",
-  "event": "sub",
-  "params": {
-    "binary": false
-  }
-}
-```
 
 按Symbol逐秒刷新的24小时完整ticker信息
 
@@ -1278,20 +1287,28 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 }
 ```
 
+### 请求订阅数据样例
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",//币对`
+
+  `"topic": "realtimes",`
+
+  `"event": "sub",`
+
+  `"params": {`
+
+  `  "binary": false`
+
+  `}`
+
+`}`
+
+
+
+
 ## 有限档深度信息
-
-> 请求订阅数据样例
-
-``` json
-{
-  "symbol": "$symbol0, $symbol1",//币对
-  "topic": "depth",
-  "event": "sub",
-  "params": {
-    "binary": false
-    }
-}
-```
 
 > Payload
 
@@ -1331,20 +1348,28 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 }
 ```
 
+### 请求订阅数据样例
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",//币对`
+
+ ` "topic": "depth",`
+
+  `"event": "sub",`
+
+  `"params": {`
+
+   ` "binary": false`
+
+  `  }`
+
+`}`
+
+
+
+
 ## 增量深度信息
-
-> 请求订阅数据样例
-
-``` json
-{
-  "symbol": "$symbol0, $symbol1",//币对
-  "topic": "diffDepth",
-  "event": "sub",
-  "params": {
-    "binary": false
-  }
-}
-```
 
 > Payload
 
@@ -1376,6 +1401,26 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
   "f": false //是否为第一个返回值
 }
 ```
+
+### 请求订阅数据样例
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",//币对`
+
+  `"topic": "diffDepth",`
+
+  `"event": "sub",`
+
+  `"params": {`
+
+  ` "binary": false` 
+  `}`
+
+`}`
+
+
+
 
 每秒推送订单簿的变化部分（如果有）。<br>
 在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量>0，这时的数量为更新后的这个价格所对应的数量<br>
