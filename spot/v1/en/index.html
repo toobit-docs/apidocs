@@ -276,36 +276,39 @@
               </ul>
           </li>
           <li>
-            <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
+            <a href="#general-info" class="toc-h1 toc-link" data-title="General Info">General Info</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#api" class="toc-h2 toc-link" data-title="API 基本信息">API 基本信息</a>
+                    <a href="#general-api-information" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
                   </li>
                   <li>
-                    <a href="#12907e94be" class="toc-h2 toc-link" data-title="访问限制">访问限制</a>
+                    <a href="#limits" class="toc-h2 toc-link" data-title="LIMITS">LIMITS</a>
                   </li>
                   <li>
-                    <a href="#9887431e76" class="toc-h2 toc-link" data-title="需要签名的接口">需要签名的接口</a>
+                    <a href="#endpoint-security-type" class="toc-h2 toc-link" data-title="Endpoint security type">Endpoint security type</a>
                   </li>
                   <li>
-                    <a href="#api-2" class="toc-h2 toc-link" data-title="公开API参数">公开API参数</a>
+                    <a href="#signed-trade-user_data-endpoint-security" class="toc-h2 toc-link" data-title="SIGNED (TRADE, USER_DATA) Endpoint security">SIGNED (TRADE, USER_DATA) Endpoint security</a>
+                  </li>
+                  <li>
+                    <a href="#public-api-definitions" class="toc-h2 toc-link" data-title="Public API Definitions">Public API Definitions</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#ec5249e068" class="toc-h1 toc-link" data-title="钱包接口">钱包接口</a>
+            <a href="#wallet-endpoints" class="toc-h1 toc-link" data-title="Wallet Endpoints">Wallet Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#user_data" class="toc-h2 toc-link" data-title="提币 (USER_DATA)">提币 (USER_DATA)</a>
+                    <a href="#withdraw-user_data" class="toc-h2 toc-link" data-title="Withdraw (USER_DATA)">Withdraw (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-2" class="toc-h2 toc-link" data-title="获取提币记录 (USER_DATA)">获取提币记录 (USER_DATA)</a>
+                    <a href="#user_data" class="toc-h2 toc-link" data-title="获取提币记录 (USER_DATA)">获取提币记录 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-3" class="toc-h2 toc-link" data-title="获取充值地址 (USER_DATA)">获取充值地址 (USER_DATA)</a>
+                    <a href="#user_data-2" class="toc-h2 toc-link" data-title="获取充值地址 (USER_DATA)">获取充值地址 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-4" class="toc-h2 toc-link" data-title="获取充值历史 (USER_DATA)">获取充值历史 (USER_DATA)</a>
+                    <a href="#user_data-3" class="toc-h2 toc-link" data-title="获取充值历史 (USER_DATA)">获取充值历史 (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -325,19 +328,19 @@
                     <a href="#trade-4" class="toc-h2 toc-link" data-title="批量撤单 (TRADE)">批量撤单 (TRADE)</a>
                   </li>
                   <li>
-                    <a href="#user_data-5" class="toc-h2 toc-link" data-title="查询订单  (USER_DATA)">查询订单  (USER_DATA)</a>
+                    <a href="#user_data-4" class="toc-h2 toc-link" data-title="查询订单  (USER_DATA)">查询订单  (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-6" class="toc-h2 toc-link" data-title="当前挂单 (USER_DATA)">当前挂单 (USER_DATA)</a>
+                    <a href="#user_data-5" class="toc-h2 toc-link" data-title="当前挂单 (USER_DATA)">当前挂单 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-7" class="toc-h2 toc-link" data-title="查询所有订单 (USER_DATA)">查询所有订单 (USER_DATA)</a>
+                    <a href="#user_data-6" class="toc-h2 toc-link" data-title="查询所有订单 (USER_DATA)">查询所有订单 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-8" class="toc-h2 toc-link" data-title="账户信息 (USER_DATA)">账户信息 (USER_DATA)</a>
+                    <a href="#user_data-7" class="toc-h2 toc-link" data-title="账户信息 (USER_DATA)">账户信息 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-9" class="toc-h2 toc-link" data-title="账户成交历史 (USER_DATA)">账户成交历史 (USER_DATA)</a>
+                    <a href="#user_data-8" class="toc-h2 toc-link" data-title="账户成交历史 (USER_DATA)">账户成交历史 (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -400,79 +403,127 @@
 <li>After creating the API key, the default restrictions is <code>Enable Reading</code>.</li>
 </ul>
 <h2 id='enabling-accounts'>Enabling Accounts</h2><h3 id='spot-account'>Spot Account</h3>
-<p>新注册的账号都会有一个现货(<code>SPOT</code>)账号。</p>
-<h1 id='41654e0268'>基础信息</h1><h2 id='api'>API 基本信息</h2>
+<p>A <code>SPOT</code> account is provided by default upon creation of a Account.</p>
+<h1 id='general-info'>General Info</h1><h2 id='general-api-information'>General API Information</h2>
 <ul>
-<li>接口可能需要用户的 API Key，如何创建API-KEY请参考<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>这里</a></li>
-<li>本篇列出接口的baseurl: https://api.toobit.com</li>
-<li>所有接口的响应都是 JSON 格式。</li>
-<li>所有时间、时间戳均为UNIX时间，单位为毫秒。</li>
+<li>ome endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>this page</a></li>
+<li>The base endpoint is: <strong>https://api.toobit.com</strong></li>
+<li>All endpoints return either a JSON object or array.</li>
+<li>All time and timestamp related fields are in milliseconds.</li>
 </ul>
-<h3 id='http'>HTTP 返回代码</h3>
+<h3 id='http-return-codes'>HTTP  Return Codes</h3>
 <ul>
-<li>HTTP <code>4XX</code> 错误码用于指示错误的请求内容、行为、格式。问题在于请求者。</li>
-<li>HTTP <code>403</code> 错误码表示违反WAF限制(Web应用程序防火墙)。</li>
-<li>HTTP <code>429</code> 错误码表示警告访问频次超限，你有义务停止发送请求。</li>
-<li>HTTP <code>5XX</code> 错误码用于指示服务侧的问题。</li>
+<li>HTTP <code>4XX</code> return codes are used for malformed requests; the issue is on the sender&#39;s side.</li>
+<li>HTTP <code>403</code> return code is used when the WAF Limit (Web Application Firewall) has been violated.</li>
+<li>HTTP <code>429</code> return code is used when breaking a request rate limit.</li>
+<li>HTTP <code>5XX</code> return codes are used for internal errors; the issue is on TooBit&#39;s side. It is important to NOT treat this as a failure operation; the execution status is UNKNOWN and could have been a success.</li>
 </ul>
-<h3 id='2be91f451e'>接口的基本信息</h3>
+<h3 id='general-information-on-endpoints'>General Information on Endpoints</h3>
 <ul>
-<li><code>GET</code> 方法的接口, 参数必须在 <code>query string</code>中发送。</li>
-<li><code>POST</code>, <code>PUT</code>, 和 <code>DELETE</code> 方法的接口,参数可以在内容形式为<code>application/x-www-form-urlencoded</code>的 <code>query string</code> 中发送，也可以在 <code>request body</code> 中发送。 如果你喜欢，也可以混合这两种方式发送参数。</li>
-<li>对参数的顺序不做要求。</li>
-<li>但如果同一个参数名在<code>query string</code>和<code>request body</code>中都有，<code>query string</code>中的会被优先采用。</li>
+<li>For <code>GET</code>endpoints, parameters must be sent as a <code>query string</code>.</li>
+<li>For <code>POS</code>T, <code>PUT</code>, and <code>DELETE</code> endpoints, the parameters may be sent as a query string or in the request body with content type <code>application/x-www-form-urlencoded</code>. You may mix parameters between both the <code>query string</code> and <code>request body</code> if you wish to do so.</li>
+<li>Parameters may be sent in any order.</li>
+<li>If a parameter sent in both the <code>query string</code> and <code>request body</code>, the <code>query string</code> parameter will be used.</li>
 </ul>
-<h2 id='12907e94be'>访问限制</h2><h3 id='a19828b706'>访问限制基本信息</h3>
+<h2 id='limits'>LIMITS</h2><h3 id='general-info-on-limits'>General Info on Limits</h3>
 <ul>
-<li>在 <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> 数组中包含与交易的有关<code>REQUEST_WEIGHT</code>和<code>ORDERS</code>速率限制相关的对象。这些在 限制种类 (<code>rateLimitType</code>) 下的 <code>枚举定义</code> 部分中进一步定义。</li>
-<li>违反任何一个速率限制时，将返回429。</li>
-<li>每一个接口均有一个相应的权重(weight)，有的接口根据参数不同可能拥有不同的权重。越消耗资源的接口权重就会越大。</li>
-<li>收到429时，您有责任停止发送请求，不得滥用API。</li>
+<li>The <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange&#39;s <code>REQUEST_WEIGHT</code> and <code>ORDERS</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
+<li>A 429 will be returned when either rate limit is violated.</li>
+<li>Each route has a weight which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier weight.</li>
+<li>When a 429 is received, it&#39;s your obligation as an API to back off and not spam the API.</li>
 </ul>
 
 <aside class="notice">
-建议您尽可能多地使用websocket消息获取相应数据，以减少请求带来的访问限制压力。
+ We recommend using the websocket for getting data as much as possible, as this will not count to the request rate limit.
 </aside>
-<h3 id='b0ee61b8c8'>下单频率限制</h3>
+<h3 id='order-rate-limits'>Order Rate Limits</h3>
 <ul>
-<li>当下单数超过限制时，会收到带有429 HTTP CODE 的响应。请检查 <code>GET</code> <code>/api/v1/exchangeInfo</code> 的下单频率限制 (rateLimitType = ORDERS) 并等待封禁时间结束。</li>
-<li>下单频率限制是基于每个账户计数的。</li>
+<li>When the order count exceeds the limit, you will receive a 429 error without the Retry-After header. Please check the Order Rate Limit rules using <code>GET</code> <code>api/v1/exchangeInfo</code> and wait for reactivation accordingly. </li>
+<li><strong>The order rate limit is counted against each account.</strong></li>
 </ul>
-<h3 id='web-socket'>WEB SOCKET 连接限制</h3>
+<h3 id='websocket-limits'>Websocket Limits</h3>
 <ul>
-<li>Websocket服务器每秒最多接受5个消息。消息包括:
+<li>WebSocket connections have a limit of 5 incoming messages per second. A message is considered:
 
 <ul>
-<li>PING帧</li>
-<li>PONG帧</li>
-<li>JSON格式的消息, 比如订阅, 断开订阅.</li>
+<li>A PING frame</li>
+<li>A PONG frame</li>
+<li>A JSON controlled message (e.g. subscribe, unsubscribe)</li>
 </ul></li>
-<li>如果用户发送的消息超过限制，连接会被断开连接。反复被断开连接的IP有可能被服务器屏蔽。</li>
+<li>If the user sends more messages than the limit, the connection will be disconnected. IPs that are repeatedly disconnected may be blocked by the server.</li>
 </ul>
-<h2 id='9887431e76'>需要签名的接口</h2>
+<h2 id='endpoint-security-type'>Endpoint security type</h2>
 <ul>
-<li>调用这些接口时，除了接口本身所需的参数外，还需要传递<code>signature</code>即签名参数</li>
-<li>签名使用<code>HMAC SHA256</code>算法. API-KEY所对应的API-Secret作为 <code>HMAC SHA256</code> 的密钥，其他所有参数作为<code>HMAC SHA256</code>的操作对象，得到的输出即为签名</li>
-<li>签名大小写不敏感</li>
-<li>当同时使用query string和request body时，<code>HMAC SHA256</code>的输入query string在前，request body在后
-### 时间同步安全</li>
-<li>签名接口均需要传递timestamp参数, 其值应当是请求发送时刻的unix时间戳(毫秒)</li>
-<li>服务器收到请求时会判断请求中的时间戳，如果是5000毫秒之前发出的，则请求会被认为无效。这个时间窗口值可以通过发送可选参数<code>recvWindow</code>来自定义</li>
-<li>另外，如果服务器计算得出客户端时间戳在服务器时间的‘未来’一秒以上，也会拒绝请求。</li>
+<li>Each endpoint has a security type that determines how you will interact with it. This is stated next to the NAME of the endpoint.
+
+<ul>
+<li>If no security type is stated, assume the security type is NONE.</li>
+</ul></li>
+<li>API-keys are passed into the Rest API via the <code>X-BB-APIKEY</code> header.</li>
+<li>API-keys and secret-keys <strong>are case sensitive</strong>.</li>
+<li>API-keys can be configured to only access certain types of secure endpoints. For example, one API-key could be used for TRADE only, while another API-key can access everything except for TRADE routes.</li>
+<li>By default, API-keys can access all secure routes.</li>
 </ul>
-<pre class="highlight javascript tab-javascript"><code><span class="err">逻辑伪代码：</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">timestamp</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nx">serverTime</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">serverTime</span> <span class="o">-</span> <span class="nx">timestamp</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nx">recvWindow</span><span class="p">)</span> <span class="p">{</span>
+
+<table><thead>
+<tr>
+<th>Security Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NONE</td>
+<td>Endpoint can be accessed freely.</td>
+</tr>
+<tr>
+<td>TRADE</td>
+<td>Endpoint requires sending a valid API-Key and signature.</td>
+</tr>
+<tr>
+<td>USER_DATA</td>
+<td>Endpoint requires sending a valid API-Key and signature.</td>
+</tr>
+<tr>
+<td>USER_STREAM</td>
+<td>Endpoint requires sending a valid API-Key.</td>
+</tr>
+<tr>
+<td>MARKET_DATA</td>
+<td>Endpoint requires sending a valid API-Key.</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><code>TRADE</code> and <code>USER_DATA</code> endpoints are <code>SIGNED</code> endpoints.</li>
+</ul>
+<h2 id='signed-trade-user_data-endpoint-security'>SIGNED (TRADE, USER_DATA) Endpoint security</h2>
+<ul>
+<li><code>SIGNED</code> endpoints require an additional parameter, <code>signature</code>, to be sent in the <code>query string</code> or <code>request body</code>.</li>
+<li>Endpoints use <code>HMAC SHA256</code> signatures. The <code>HMAC SHA256</code> signature is a keyed <code>HMAC SHA256</code>operation. Use your <code>secretKey</code> as the key and <code>totalParams</code> as the value for the HMAC operation.</li>
+<li>The signature is not case sensitive.</li>
+<li>totalParams is defined as the query string concatenated with the request body.</li>
+</ul>
+<h3 id='timing-security'>Timing security</h3>
+<ul>
+<li>A <code>SIGNED</code>endpoint also requires a parameter, <code>timestamp</code>, to be sent which should be the millisecond timestamp of when the request was created and sent.</li>
+<li>An additional parameter, <code>recvWindow</code>, may be sent to specify the number of milliseconds after <code>timestamp</code>the request is valid for. If <code>recvWindow</code> is not sent, <strong>it defaults to 5000</strong>.</li>
+</ul>
+
+<blockquote>
+<p>The logic is as follows:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span> <span class="p">(</span><span class="nx">timestamp</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nx">serverTime</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">serverTime</span> <span class="o">-</span> <span class="nx">timestamp</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nx">recvWindow</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// process request</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="c1">// reject request</span>
 <span class="p">}</span>
 </code></pre>
-<p><strong>关于交易时效性</strong> 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到币安服务器的时延会有抖动. 这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
+<p><strong>Serious trading is about timing.</strong>  Networks can be unstable and unreliable, which can lead to requests taking varying amounts of time to reach the servers. With <code>recvWindow,</code> you can specify that the request must be processed within a certain number of milliseconds or be rejected by the server.
 <aside class="notice">
-不推荐使用5秒以上的recvWindow
+It is recommended to use a small recvWindow of 5000 or less! The max cannot go beyond 60,000!
 </aside></p>
-<h3 id='post-api-v1-spot-order'>POST /api/v1/spot/order的示例</h3>
-<p>以下是在linux bash环境下使用 echo openssl 和curl工具实现的一个调用接口下单的示例 apikey、secret仅供示范</p>
+<h3 id='signed-endpoint-examples-for-post-api-v1-spot-order-hmac-keys'>SIGNED Endpoint Examples for POST /api/v1/spot/order - HMAC Keys</h3>
+<p>Here is a step-by-step example of how to send a vaild signed payload from the Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl</code>.</p>
 
 <table><thead>
 <tr>
@@ -492,8 +543,8 @@
 
 <table><thead>
 <tr>
-<th>参数</th>
-<th>取值</th>
+<th>Parameter</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -529,13 +580,17 @@
 <td>1668481902307</td>
 </tr>
 </tbody></table>
-<h4 id='1-query-string'>示例 1: 所有参数通过 query string 发送</h4><pre class="highlight shell tab-shell"><code>示例1:
-HMAC SHA256 签名:
-<span class="gp">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307"</span> | openssl dgst -sha256 -hmac <span class="s2">"30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"</span>
+<h4 id='example-1-as-a-query-string'>Example 1:  As a query string</h4>
+<blockquote>
+<p>Example 1:</p>
+
+<p>HMAC SHA256 signature:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307"</span> | openssl dgst -sha256 -hmac <span class="s2">"30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"</span>
 <span class="o">(</span>stdin<span class="o">)=</span> 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
-</code></pre><pre class="highlight shell"><code>curl 调用:
+</code></pre><pre class="highlight shell"><code>curl <span class="nb">command</span>:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order'</span> -d <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
+<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://api.toobit.com/api/v1/spot/order'</span> -d <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
 
 </code></pre>
 <ul>
@@ -549,13 +604,13 @@ symbol=BTCUSDT <br>
 &amp;recvWindow=100000 <br>
 &amp;timestamp=1668481902307</li>
 </ul>
-<h4 id='2-request-body'>示例 2: 所有参数通过 request body 发送</h4><pre class="highlight shell tab-shell"><code>示例2:
-HMAC SHA256 签名:
+<h4 id='example-2-as-a-request-body'>Example 2: As a request body</h4><pre class="highlight shell tab-shell"><code>Example 2:
+HMAC SHA256 signature:
 <span class="gp">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307"</span> | openssl dgst -sha256 -hmac <span class="s2">"30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"</span>
 <span class="o">(</span>stdin<span class="o">)=</span> 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
-</code></pre><pre class="highlight shell"><code>curl 调用:
+</code></pre><pre class="highlight shell"><code>curl <span class="nb">command</span>:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order'</span> -d <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
+<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://api.toobit.com/api/v1/spot/order'</span> -d <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
 </code></pre>
 <ul>
 <li><strong>requestBody</strong>
@@ -568,59 +623,61 @@ symbol=BTCUSDT <br>
 &amp;recvWindow=100000 <br>
 &amp;timestamp=1668481902307</li>
 </ul>
-<h4 id='3-query-string-request-body'>示例 3: 混合使用 query string 与 request body</h4>
+<h4 id='example-3-mixed-query-string-and-request-body'>Example 3: Mixed query string and request body</h4>
 <ul>
 <li><strong>queryString</strong>:symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC</li>
 <li><strong>requestBody</strong>:quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307</li>
 </ul>
-<pre class="highlight shell tab-shell"><code>示例3:
-HMAC SHA256 签名:
+<pre class="highlight shell tab-shell"><code>Example 3:
+HMAC SHA256 signature:
 <span class="gp">$ </span><span class="nb">echo</span> -n <span class="s2">"symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTCquantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307"</span> | openssl dgst -sha256 -hmac <span class="s2">"30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"</span>
 <span class="o">(</span>stdin<span class="o">)=</span> 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
-</code></pre><pre class="highlight shell"><code>curl 调用:
+</code></pre><pre class="highlight shell"><code>curl <span class="nb">command</span>:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order?symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC'</span> -d <span class="s1">'quantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&amp;signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'</span>
+<span class="gp">$ </span>curl -H <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> -X POST <span class="s1">'https://api.toobit.com/api/v1/spot/order?symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC'</span> -d <span class="s1">'quantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&amp;signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'</span>
 
 </code></pre>
-<p>注意在例子3里有一点不一样，&quot;GTC&quot;和&quot;quantity=1&quot;之间没有&amp;。</p>
-<h2 id='api-2'>公开API参数</h2><h3 id='6db415da2a'>术语解释</h3>
+<p>Note that the signature is different in example 3. There is no &amp; between &quot;GTC&quot; and &quot;quantity=1&quot;.</p>
+<h2 id='public-api-definitions'>Public API Definitions</h2><h3 id='terminology'>Terminology</h3>
+<p>These terms will be used throughout the documentation, so it is recommended especially for new users to read to help their understanding of the API.</p>
+
 <ul>
-<li><code>base asset</code> 指一个交易对的交易对象，即写在靠前部分的资产名</li>
-<li><code>quote asset</code> 指一个交易对的定价资产，即写在靠后部分资产名</li>
+<li><code>base asset</code>  refers to the asset that is the <code>quantity</code> of a symbol. For the symbol BTCUSDT, BTC would be the base asset.</li>
+<li><code>quote asset</code> refers to the asset that is the <code>price</code> of a symbol. For the symbol BTCUSDT, USDT would be the quote asset.</li>
 </ul>
-<h3 id='8c6d51826c'>枚举定义</h3><h4 id='9d97842b35'>订单状态:</h4>
+<h3 id='enum-definitions'>ENUM definitions</h3><h4 id='order-status-status'>Order status (status):</h4>
 <ul>
-<li>NEW - 新订单，暂无成交</li>
-<li>PARTIALLY_FILLED - 部分成交</li>
-<li>FILLED - 完全成交</li>
-<li>CANCELED - 已取消</li>
-<li>PENDING_CANCEL - 等待取消</li>
-<li>REJECTED - 被拒绝</li>
+<li>NEW - New order, no deal yet</li>
+<li>PARTIALLY_FILLED - Partial Sale</li>
+<li>FILLED - Full Deal</li>
+<li>CANCELED - Cancelled</li>
+<li>PENDING_CANCEL - Waiting for Cancellation</li>
+<li>REJECTED - Rejected</li>
 </ul>
-<h4 id='ccc1043a13'>订单类型:</h4>
+<h4 id='order-types-ordertypes-type'>Order types (orderTypes, type):</h4>
 <ul>
-<li>LIMIT - 限价单</li>
-<li>MARKET - 市价单</li>
-<li>LIMIT_MAKER - maker限价单</li>
-<li>STOP_LOSS (unavailable now) - 暂无</li>
-<li>STOP_LOSS_LIMIT (unavailable now) - 暂无</li>
-<li>TAKE_PROFIT (unavailable now) - 暂无</li>
-<li>TAKE_PROFIT_LIMIT (unavailable now) - 暂无</li>
-<li>MARKET_OF_PAYOUT (unavailable now) - 暂无</li>
+<li>LIMIT - Limit Order</li>
+<li>MARKET -  Market List</li>
+<li>LIMIT_MAKER - maker Limit Order</li>
+<li>STOP_LOSS (unavailable now) </li>
+<li>STOP_LOSS_LIMIT (unavailable now) </li>
+<li>TAKE_PROFIT (unavailable now) </li>
+<li>TAKE_PROFIT_LIMIT (unavailable now) </li>
+<li>MARKET_OF_PAYOUT (unavailable now) </li>
 </ul>
-<h4 id='2ca0747f2a'>订单方向:</h4>
+<h4 id='order-side-side'>Order side (side):</h4>
 <ul>
-<li>BUY - 买单</li>
-<li>SELL - 卖单</li>
+<li>BUY -  buy the bill</li>
+<li>SELL - sell order</li>
 </ul>
-<h4 id='cdbe9023a2'>有效方式:</h4>
+<h4 id='time-in-force-timeinforce'>Time in force (timeInForce):</h4>
 <ul>
-<li>GTC - Good Till Cancel 成交为止</li>
-<li>IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销</li>
-<li>FOK - Fill or Kill 无法全部立即成交就撤销</li>
+<li>GTC - Good Till Cancel </li>
+<li>IOC - Immediate or Cancel </li>
+<li>FOK - Fill or Kill </li>
 </ul>
-<h4 id='k'>K线间隔:</h4>
-<p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
+<h4 id='kline-candlestick-chart-intervals'>Kline/Candlestick chart intervals:</h4>
+<p>m -&gt; minutes; h -&gt; hours; d -&gt; days; w -&gt; weeks; M -&gt; months</p>
 
 <ul>
 <li>1m</li>
@@ -639,60 +696,60 @@ HMAC SHA256 签名:
 <li>1w</li>
 <li>1M</li>
 </ul>
-<h4 id='6c2a2ea1f1'>频率限制类型：</h4>
+<h4 id='rate-limiters-ratelimittype'>Rate limiters (rateLimitType)</h4>
 <ul>
 <li>REQUESTS_WEIGHT</li>
 <li>ORDERS</li>
 </ul>
-<h4 id='5ab44df604'>频率限制区间</h4>
+<h4 id='rate-limit-intervals-interval'>Rate limit intervals (interval)</h4>
 <ul>
 <li>SECOND</li>
 <li>MINUTE</li>
 <li>DAY</li>
 </ul>
-<h1 id='ec5249e068'>钱包接口</h1><h2 id='user_data'>提币 (USER_DATA)</h2>
+<h1 id='wallet-endpoints'>Wallet Endpoints</h1><h2 id='withdraw-user_data'>Withdraw (USER_DATA)</h2>
 <ul>
 <li><code>POST /api/v1/account/withdraw</code></li>
 </ul>
 
-<p>提交一个提币请求。</p>
-<h3 id='1'>权重：1</h3>
+<p>Submit a withdraw request.</p>
+<h3 id='weight-1'>Weight：1</h3>
 <blockquote>
-<p>响应</p>
+<p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
 </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-</span><span class="s2">"needBrokerAudit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">是否需要券商审核</span><span class="w">
-</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423885103582776064"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">提币成功订单id</span><span class="w">
-</span><span class="s2">"refuseReason"</span><span class="p">:</span><span class="s2">""</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">失败拒绝原因</span><span class="w">
+</span><span class="s2">"needBrokerAudit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Do</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">need</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">brokerage</span><span class="w"> </span><span class="err">review?</span><span class="w">
+</span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"423885103582776064"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Withdrawal</span><span class="w"> </span><span class="err">successful</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">id</span><span class="w">
+</span><span class="s2">"refuseReason"</span><span class="p">:</span><span class="s2">""</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">failure</span><span class="w"> </span><span class="err">rejection</span><span class="w"> </span><span class="err">reason</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242'>参数</h3>
+</span></code></pre><h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
-<th>参数名称</th>
-<th>类型</th>
-<th>是否必需</th>
-<th>描述</th>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>coin</td>
 <td>STRING</td>
 <td>YES</td>
-<td>资产</td>
+<td>asset</td>
 </tr>
 <tr>
 <td>clientOrderId</td>
 <td>LONG</td>
 <td>YES</td>
-<td>自定义提币ID</td>
+<td>client id for withdraw</td>
 </tr>
 <tr>
 <td>address</td>
 <td>STRING</td>
 <td>YES</td>
-<td>提币地址(注意：提现地址必须是在PC端或者APP端维护在常用地址列表里面的地址)</td>
+<td></td>
 </tr>
 <tr>
 <td>addressExt</td>
@@ -704,7 +761,7 @@ HMAC SHA256 签名:
 <td>quantity</td>
 <td>DECIMAL</td>
 <td>YES</td>
-<td>提币数量</td>
+<td></td>
 </tr>
 <tr>
 <td>chainType</td>
@@ -713,7 +770,7 @@ HMAC SHA256 签名:
 <td>chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-2'>获取提币记录 (USER_DATA)</h2>
+<h2 id='user_data'>获取提币记录 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/withdrawOrders  (HMAC SHA256)</code></li>
 </ul>
@@ -746,7 +803,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"isInternalTransfer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">是否内部转账</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-2'>参数</h3>
+</span></code></pre><h3 id='749d765242'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -804,11 +861,11 @@ HMAC SHA256 签名:
 <td>时间戳</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-3'>获取充值地址 (USER_DATA)</h2>
+<h2 id='user_data-2'>获取充值地址 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/deposit/address  (HMAC SHA256)</code></li>
 </ul>
-<h3 id='1-2'>权重：1</h3>
+<h3 id='1'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -821,7 +878,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"canWithdrawConfirmNum "</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="err">//提币确认数</span><span class="w">
         </span><span class="s2">"coinType"</span><span class="p">:</span><span class="s2">"ERC20_TOKEN"</span><span class="err">//链类型</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-3'>参数</h3>
+</span></code></pre><h3 id='749d765242-2'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -843,7 +900,7 @@ HMAC SHA256 签名:
 <td>chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-4'>获取充值历史 (USER_DATA)</h2>
+<h2 id='user_data-3'>获取充值历史 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/depositOrders  (HMAC SHA256)</code></li>
 </ul>
@@ -870,7 +927,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"txIdUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-4'>参数</h3>
+</span></code></pre><h3 id='749d765242-3'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -934,12 +991,12 @@ HMAC SHA256 签名:
 </ul>
 
 <p>用于测试订单请求，但不会提交到撮合引擎</p>
-<h3 id='1-3'>权重：1</h3>
+<h3 id='1-2'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h3 id='749d765242-5'>参数</h3>
+</span></code></pre><h3 id='749d765242-4'>参数</h3>
 <p>同于 <code>POST /api/v1/spot/order</code></p>
 <h2 id='trade-2'>下单 (TRADE)</h2>
 <ul>
@@ -947,7 +1004,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>发送下单。</p>
-<h3 id='1-4'>权重：1</h3>
+<h3 id='1-3'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -966,7 +1023,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-6'>参数</h3>
+</span></code></pre><h3 id='749d765242-5'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1092,7 +1149,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>取消有效订单。</p>
-<h3 id='1-5'>权重：1</h3>
+<h3 id='1-4'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -1109,7 +1166,7 @@ HMAC SHA256 签名:
   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-7'>参数</h3>
+</span></code></pre><h3 id='749d765242-6'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1156,7 +1213,7 @@ HMAC SHA256 签名:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-8'>参数</h3>
+</span></code></pre><h3 id='749d765242-7'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1178,11 +1235,11 @@ HMAC SHA256 签名:
 <td>BUY或SELL</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-5'>查询订单  (USER_DATA)</h2>
+<h2 id='user_data-4'>查询订单  (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='1-6'>权重：1</h3>
+<h3 id='1-5'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -1204,7 +1261,7 @@ HMAC SHA256 签名:
   </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-9'>参数</h3>
+</span></code></pre><h3 id='749d765242-8'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1245,13 +1302,13 @@ HMAC SHA256 签名:
 <li>单一 orderId 或者 origClientOrderId 必须被发送。</li>
 <li>对于某些历史数据 cummulativeQuoteQty 可能会 &lt; 0, 这说明数据当前不可用。</li>
 </ul>
-<h2 id='user_data-6'>当前挂单 (USER_DATA)</h2>
+<h2 id='user_data-5'>当前挂单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/spot/openOrders (HMAC SHA256)</code></li>
 </ul>
 
 <p>获取交易对的所有当前挂单， 请小心使用不带交易对参数的调用。</p>
-<h3 id='1-7'>权重 ：1</h3>
+<h3 id='1-6'>权重 ：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -1275,7 +1332,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-10'>参数</h3>
+</span></code></pre><h3 id='749d765242-9'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1321,7 +1378,7 @@ HMAC SHA256 签名:
 <ul>
 <li>如果orderId设定好了，会筛选订单小于orderId的。否则会返回最近的订单信息。</li>
 </ul>
-<h2 id='user_data-7'>查询所有订单 (USER_DATA)</h2>
+<h2 id='user_data-6'>查询所有订单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/spot/tradeOrders (HMAC SHA256)</code></li>
 </ul>
@@ -1351,7 +1408,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-11'>参数</h3>
+</span></code></pre><h3 id='749d765242-10'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1403,7 +1460,7 @@ HMAC SHA256 签名:
 <td>时间戳</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-8'>账户信息 (USER_DATA)</h2>
+<h2 id='user_data-7'>账户信息 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account</code></li>
 </ul>
@@ -1423,7 +1480,7 @@ HMAC SHA256 签名:
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-12'>参数</h3>
+</span></code></pre><h3 id='749d765242-11'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1445,7 +1502,7 @@ HMAC SHA256 签名:
 <td>时间戳</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-9'>账户成交历史 (USER_DATA)</h2>
+<h2 id='user_data-8'>账户成交历史 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/trades</code></li>
 </ul>
@@ -1477,7 +1534,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-13'>参数</h3>
+</span></code></pre><h3 id='749d765242-12'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1561,14 +1618,14 @@ HMAC SHA256 签名:
 </ul>
 
 <p>开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。</p>
-<h4 id='1-8'>权重：1</h4>
+<h4 id='1-7'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='749d765242-14'>参数</h4>
+</span></code></pre><h4 id='749d765242-13'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1596,12 +1653,12 @@ HMAC SHA256 签名:
 </ul>
 
 <p>有效期延长至本次调用后60分钟,建议每30分钟发送一个 ping 。</p>
-<h4 id='1-9'>权重：1</h4>
+<h4 id='1-8'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='749d765242-15'>参数</h4>
+</span></code></pre><h4 id='749d765242-14'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1633,12 +1690,12 @@ HMAC SHA256 签名:
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='1-10'>权重：1</h4>
+<h4 id='1-9'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='749d765242-16'>参数</h4>
+</span></code></pre><h4 id='749d765242-15'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
