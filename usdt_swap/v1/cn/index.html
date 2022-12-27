@@ -1765,14 +1765,21 @@ HMAC SHA256 签名:
 变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
 例如：假设过去5秒有3笔交易发生，分别是<code>ETHUSDT</code>、<code>BTCUSDT</code>、<code>BHTBTC</code>。它们的“v”会为连续的值（112，113，114）。</p>
 <h3 id='ad052b1e2a-2'>请求订阅数据样例:</h3>
-<p><code>{</code>
-  <code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code>
-  <code>&quot;topic&quot;: &quot;trade&quot;,</code>
-  <code>&quot;event&quot;: &quot;sub&quot;,</code>
-  <code>&quot;params&quot;: {</code>
-  <code>&quot;binary&quot;: false // Whether data returned is in binary format</code>
-  <code>}</code>
-<code>}</code></p>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;trade&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false // Whether data returned is in binary format</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
 
 <blockquote>
 <p>Payload</p>
@@ -1807,16 +1814,17 @@ HMAC SHA256 签名:
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='2feac0b7e2-2'>最新标记价格</h2>
 <p>合约标记价格。</p>
+<h3 id='ad052b1e2a-3'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
 
-<blockquote>
-<p>请求订阅数据样例:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="w"> </span><span class="err">//币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"markPrice"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;markPrice&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;</code></p>
+
+<p><code>}</code></p>
+
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -1841,19 +1849,23 @@ HMAC SHA256 签名:
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='k-5'>K线</h2>
 <p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新</p>
+<h3 id='38344a9449'>请求订阅数据样例</h3>
+<p><code>{</code></p>
 
-<blockquote>
-<p>请求订阅数据样例</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kline_"</span><span class="err">+$间隔</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='k-6'>K线/蜡烛图间隔:</h3>
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;kline_&quot;+$间隔,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h3 id='k-6'>K线/蜡烛图间隔:</h3>
 <p>订阅Kline需要提供间隔参数，最短为分钟线，最长为月线。支持以下间隔:
 m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 
@@ -1900,19 +1912,23 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753854576</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='symbol-ticker'>按Symbol的完整Ticker</h2>
-<blockquote>
-<p>请求订阅数据样例</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"realtimes"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h2 id='symbol-ticker'>按Symbol的完整Ticker</h2><h3 id='38344a9449-2'>请求订阅数据样例</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;realtimes&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
 <p>按Symbol逐秒刷新的24小时完整ticker信息</p>
 
 <blockquote>
@@ -1945,19 +1961,23 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753481048</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='6ae7c2b506'>有限档深度信息</h2>
-<blockquote>
-<p>请求订阅数据样例</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h2 id='6ae7c2b506'>有限档深度信息</h2><h3 id='38344a9449-3'>请求订阅数据样例</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;depth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -1994,19 +2014,22 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="p">}],</span><span class="w">
   </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">//是否为第一个返回</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='1654ad2dd2'>增量深度信息</h2>
-<blockquote>
-<p>请求订阅数据样例</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diffDepth"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h2 id='1654ad2dd2'>增量深度信息</h2><h3 id='38344a9449-4'>请求订阅数据样例</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;diffDepth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code> 
+  <code>}</code></p>
+
+<p><code>}</code></p>
+
 <blockquote>
 <p>Payload</p>
 </blockquote>
