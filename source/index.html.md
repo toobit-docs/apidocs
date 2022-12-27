@@ -105,18 +105,19 @@ A `SPOT` account is provided by default upon creation of a Account.
 
 - `TRADE` and `USER_DATA` endpoints are `SIGNED` endpoints.
 
-## 需要签名的接口
-- 调用这些接口时，除了接口本身所需的参数外，还需要传递`signature`即签名参数
-- 签名使用`HMAC SHA256`算法. API-KEY所对应的API-Secret作为 `HMAC SHA256` 的密钥，其他所有参数作为`HMAC SHA256`的操作对象，得到的输出即为签名
-- 签名大小写不敏感
-- 当同时使用query string和request body时，`HMAC SHA256`的输入query string在前，request body在后
-### 时间同步安全
-- 签名接口均需要传递timestamp参数, 其值应当是请求发送时刻的unix时间戳(毫秒)
-- 服务器收到请求时会判断请求中的时间戳，如果是5000毫秒之前发出的，则请求会被认为无效。这个时间窗口值可以通过发送可选参数`recvWindow`来自定义
-- 另外，如果服务器计算得出客户端时间戳在服务器时间的‘未来’一秒以上，也会拒绝请求。
+## SIGNED (TRADE, USER_DATA) Endpoint security
+- `SIGNED` endpoints require an additional parameter, `signature`, to be sent in the `query string` or `request body`.
+- Endpoints use `HMAC SHA256` signatures. The `HMAC SHA256` signature is a keyed `HMAC SHA256 `operation. Use your `secretKey` as the key and `totalParams` as the value for the HMAC operation.
+- The signature is not case sensitive.
+- totalParams is defined as the query string concatenated with the request body.
+
+### Timing security
+- A `SIGNED `endpoint also requires a parameter, `timestamp`, to be sent which should be the millisecond timestamp of when the request was created and sent.
+- An additional parameter, `recvWindow`, may be sent to specify the number of milliseconds after `timestamp `the request is valid for. If `recvWindow` is not sent, **it defaults to 5000**.
+
+> The logic is as follows:
 
 ``` javascript
-逻辑伪代码：
 if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
   // process request
 } else {
@@ -124,20 +125,20 @@ if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
 }
 ```
 
-**关于交易时效性** 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到币安服务器的时延会有抖动. 这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
+**Serious trading is about timing.**  Networks can be unstable and unreliable, which can lead to requests taking varying amounts of time to reach the servers. With `recvWindow,` you can specify that the request must be processed within a certain number of milliseconds or be rejected by the server.
 <aside class="notice">
-不推荐使用5秒以上的recvWindow
+It is recommended to use a small recvWindow of 5000 or less! The max cannot go beyond 60,000!
 </aside>
 
-### POST /api/v1/spot/order的示例
-以下是在linux bash环境下使用 echo openssl 和curl工具实现的一个调用接口下单的示例 apikey、secret仅供示范
+### SIGNED Endpoint Examples for POST /api/v1/spot/order - HMAC Keys
+Here is a step-by-step example of how to send a vaild signed payload from the Linux command line using `echo`, `openssl`, and `curl`.
 
 | Key    | Value | 
 | --------- | ---- | 
 | apiKey| SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq |
 | secretKey| 30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2 |
 
-| 参数    | 取值 | 
+| Parameter    | Value | 
 | --------- | ---- | 
 | symbol | BTCUSDT |
 | side | SELL |
@@ -148,18 +149,21 @@ if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
 | recvWindow| 100000 |
 | timestamp| 1668481902307|
 
-#### 示例 1: 所有参数通过 query string 发送
+#### Example 1:  As a query string
+
+> Example 1:
+
+> HMAC SHA256 signature:
+
 ``` shell
-示例1:
-HMAC SHA256 签名:
 $ echo -n "symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307" | openssl dgst -sha256 -hmac "30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"
 (stdin)= 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
 ```
 
 ``` bash
-curl 调用:
+curl command:
 (HMAC SHA256)
-$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
+$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://api.toobit.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
 
 ```
 - **queryString**
@@ -174,19 +178,19 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 
 
 
-#### 示例 2: 所有参数通过 request body 发送
+#### Example 2: As a request body
 
 ``` shell
-示例2:
-HMAC SHA256 签名:
+Example 2:
+HMAC SHA256 signature:
 $ echo -n "symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307" | openssl dgst -sha256 -hmac "30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"
 (stdin)= 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
 ```
 
 ``` bash
-curl 调用:
+curl command:
 (HMAC SHA256)
-$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
+$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://api.toobit.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
 ```
 - **requestBody**
   symbol=BTCUSDT <br>
@@ -200,65 +204,67 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 
 
 
-#### 示例 3: 混合使用 query string 与 request body
+#### Example 3: Mixed query string and request body
 
 - **queryString**:symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC
 - **requestBody**:quantity=1&price=400&recvWindow=100000&timestamp=1668481902307
 
 ``` shell
-示例3:
-HMAC SHA256 签名:
+Example 3:
+HMAC SHA256 signature:
 $ echo -n "symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTCquantity=1&price=400&recvWindow=10000000&timestamp=1668481902307" | openssl dgst -sha256 -hmac "30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"
 (stdin)= 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
 ```
 
 ``` bash
-curl 调用:
+curl command:
 (HMAC SHA256)
-$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC' -d 'quantity=1&price=400&recvWindow=10000000&timestamp=1668481902307&signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'
+$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://api.toobit.com/api/v1/spot/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC' -d 'quantity=1&price=400&recvWindow=10000000&timestamp=1668481902307&signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'
 
 ```
 
-注意在例子3里有一点不一样，"GTC"和"quantity=1"之间没有&。
+Note that the signature is different in example 3. There is no & between "GTC" and "quantity=1".
 
-## 公开API参数
+## Public API Definitions
 
-### 术语解释
+### Terminology
 
-- `base asset` 指一个交易对的交易对象，即写在靠前部分的资产名
-- `quote asset` 指一个交易对的定价资产，即写在靠后部分资产名
+These terms will be used throughout the documentation, so it is recommended especially for new users to read to help their understanding of the API.
 
-### 枚举定义
+- `base asset`  refers to the asset that is the `quantity` of a symbol. For the symbol BTCUSDT, BTC would be the base asset.
+- `quote asset` refers to the asset that is the `price` of a symbol. For the symbol BTCUSDT, USDT would be the quote asset.
 
-#### 订单状态:
-- NEW - 新订单，暂无成交
-- PARTIALLY_FILLED - 部分成交
-- FILLED - 完全成交
-- CANCELED - 已取消
-- PENDING_CANCEL - 等待取消
-- REJECTED - 被拒绝
+### ENUM definitions
 
-#### 订单类型:
-- LIMIT - 限价单
-- MARKET - 市价单
-- LIMIT_MAKER - maker限价单
-- STOP_LOSS (unavailable now) - 暂无
-- STOP_LOSS_LIMIT (unavailable now) - 暂无
-- TAKE_PROFIT (unavailable now) - 暂无
-- TAKE_PROFIT_LIMIT (unavailable now) - 暂无
-- MARKET_OF_PAYOUT (unavailable now) - 暂无
+#### Order status (status):
+- NEW - New order, no deal yet
+- PARTIALLY_FILLED - Partial Sale
+- FILLED - Full Deal
+- CANCELED - Cancelled
+- PENDING_CANCEL - Waiting for Cancellation
+- REJECTED - Rejected
 
-#### 订单方向:
-- BUY - 买单
-- SELL - 卖单
+#### Order types (orderTypes, type):
+- LIMIT - Limit Order
+- MARKET -  Market List
+- LIMIT_MAKER - maker Limit Order
+- STOP_LOSS (unavailable now) 
+- STOP_LOSS_LIMIT (unavailable now) 
+- TAKE_PROFIT (unavailable now) 
+- TAKE_PROFIT_LIMIT (unavailable now) 
+- MARKET_OF_PAYOUT (unavailable now) 
 
-#### 有效方式:
-- GTC - Good Till Cancel 成交为止
-- IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销
-- FOK - Fill or Kill 无法全部立即成交就撤销
+#### Order side (side):
+- BUY -  buy the bill
+- SELL - sell order
 
-#### K线间隔:
-m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
+#### Time in force (timeInForce):
+- GTC - Good Till Cancel 
+- IOC - Immediate or Cancel 
+- FOK - Fill or Kill 
+
+#### Kline/Candlestick chart intervals:
+m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 
 - 1m
 - 3m
@@ -276,46 +282,46 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 - 1w
 - 1M
 
-#### 频率限制类型：
+#### Rate limiters (rateLimitType)
 - REQUESTS_WEIGHT
 - ORDERS
 
-#### 频率限制区间
+#### Rate limit intervals (interval)
 - SECOND
 - MINUTE
 - DAY
 
 
-# 钱包接口
+# Wallet Endpoints
 
-## 提币 (USER_DATA)
+## Withdraw (USER_DATA)
 - `POST /api/v1/account/withdraw`
 
-提交一个提币请求。
+Submit a withdraw request.
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {
 "status": 0,
 "success": true,
-"needBrokerAudit": false, // 是否需要券商审核
-"id": "423885103582776064", // 提币成功订单id
-"refuseReason":"" // 失败拒绝原因
+"needBrokerAudit": false, // Do you need a brokerage review?
+"id": "423885103582776064", // Withdrawal successful order id
+"refuseReason":"" // failure rejection reason
 }
 ```
 
-### 参数
+### Parameters
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| coin | STRING | YES | 资产 |
-| clientOrderId | LONG | YES | 	自定义提币ID |
-| address | STRING  | YES | 提币地址(注意：提现地址必须是在PC端或者APP端维护在常用地址列表里面的地址) |
+| coin | STRING | YES | asset |
+| clientOrderId | LONG | YES | 	client id for withdraw |
+| address | STRING  | YES |  |
 | addressExt | STRING | NO | tag |
-| quantity  | DECIMAL | YES | 提币数量 |
+| quantity  | DECIMAL | YES |  |
 | chainType | STRING | NO | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
 
 
