@@ -87,20 +87,29 @@ search: true
 - 如果用户发送的消息超过限制，连接会被断开连接。反复被断开连接的IP有可能被服务器屏蔽。
 
 
-### SIGNED Endpoint security
-
-- 调用SIGNED 接口时，除了接口本身所需的参数外，还需要在query string 或 request body中传递 signature, 即签名参数。
-- 签名使用HMAC SHA256算法. API-KEY所对应的API-Secret作为 HMAC SHA256 的密钥，其他所有参数作为HMAC SHA256的操作对象，得到的输出即为签名。
-- 签名 大小写不敏感.
-- "totalParams"定义为与"request body"串联的"query string"。
-
+## 需要签名的接口
+- 调用这些接口时，除了接口本身所需的参数外，还需要传递`signature`即签名参数
+- 签名使用`HMAC SHA256`算法. API-KEY所对应的API-Secret作为 `HMAC SHA256` 的密钥，其他所有参数作为`HMAC SHA256`的操作对象，得到的输出即为签名
+- 签名大小写不敏感
+- 当同时使用query string和request body时，`HMAC SHA256`的输入query string在前，request body在后
 ### 时间同步安全
-- 签名接口均需要传递 timestamp参数，其值应当是请求发送时刻的unix时间戳(毫秒)。
-- 服务器收到请求时会判断请求中的时间戳，如果是5000毫秒之前发出的，则请求会被认为无效。这个时间空窗值可以通过发送可选参数 recvWindow来定义。
+- 签名接口均需要传递timestamp参数, 其值应当是请求发送时刻的unix时间戳(毫秒)
+- 服务器收到请求时会判断请求中的时间戳，如果是5000毫秒之前发出的，则请求会被认为无效。这个时间窗口值可以通过发送可选参数`recvWindow`来自定义
+- 另外，如果服务器计算得出客户端时间戳在服务器时间的‘未来’一秒以上，也会拒绝请求。
 
-**关于交易时效性** 互联网状况并不完全稳定可靠,因此你的程序本地到币安服务器的时延会有抖动。这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
+``` javascript
+逻辑伪代码：
+if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
+  // process request
+} else {
+  // reject request
+}
+```
 
-
+**关于交易时效性** 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到币安服务器的时延会有抖动. 这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
+<aside class="notice">
+不推荐使用5秒以上的recvWindow
+</aside>
 # 钱包接口
 
 ## 提币 (USER_DATA)
