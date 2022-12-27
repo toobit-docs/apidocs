@@ -110,6 +110,164 @@ if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
 <aside class="notice">
 不推荐使用5秒以上的recvWindow
 </aside>
+
+### POST /api/v1/spot/order的示例
+以下是在linux bash环境下使用 echo openssl 和curl工具实现的一个调用接口下单的示例 apikey、secret仅供示范
+
+| Key    | Value | 
+| --------- | ---- | 
+| apiKey| SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq |
+| secretKey| 30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2 |
+
+| 参数    | 取值 | 
+| --------- | ---- | 
+| symbol | BTCUSDT |
+| side | SELL |
+| type| LIMIT |
+| timeInForce| GTC |
+| quantity| 1 | 
+| price| 4000 |
+| recvWindow| 100000 |
+| timestamp| 1668481902307|
+
+#### 示例 1: 所有参数通过 query string 发送
+``` shell
+示例1:
+HMAC SHA256 签名:
+$ echo -n "symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307" | openssl dgst -sha256 -hmac "30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"
+(stdin)= 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
+```
+
+``` bash
+curl 调用:
+(HMAC SHA256)
+$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
+
+```
+- **queryString**
+  symbol=BTCUSDT <br>
+  &side=SELL <br>
+  &type=LIMIT <br>
+  &timeInForce=GTC <br>
+  &quantity=1 <br>
+  &price=400 <br>
+  &recvWindow=100000 <br>
+  &timestamp=1668481902307
+
+
+
+#### 示例 2: 所有参数通过 request body 发送
+
+``` shell
+示例2:
+HMAC SHA256 签名:
+$ echo -n "symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307" | openssl dgst -sha256 -hmac "30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"
+(stdin)= 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
+```
+
+``` bash
+curl 调用:
+(HMAC SHA256)
+$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order' -d 'symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=1&price=400&recvWindow=100000&timestamp=1668481902307&signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'
+```
+- **requestBody**
+  symbol=BTCUSDT <br>
+  &side=SELL <br>
+  &type=LIMIT <br>
+  &timeInForce=GTC <br>
+  &quantity=1 <br>
+  &price=400 <br>
+  &recvWindow=100000 <br>
+  &timestamp=1668481902307
+
+
+
+#### 示例 3: 混合使用 query string 与 request body
+
+- **queryString**:symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC
+- **requestBody**:quantity=1&price=400&recvWindow=100000&timestamp=1668481902307
+
+``` shell
+示例3:
+HMAC SHA256 签名:
+$ echo -n "symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTCquantity=1&price=400&recvWindow=10000000&timestamp=1668481902307" | openssl dgst -sha256 -hmac "30lfjDT51iOG1kYZnDoLNynOyMdIcmQyO1XYfxzYOmQfx9tjiI98Pzio4uhZ0Uk2"
+(stdin)= 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
+```
+
+``` bash
+curl 调用:
+(HMAC SHA256)
+$ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST 'https://openapi.wcsbapp.com/api/v1/spot/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC' -d 'quantity=1&price=400&recvWindow=10000000&timestamp=1668481902307&signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'
+
+```
+
+注意在例子3里有一点不一样，"GTC"和"quantity=1"之间没有&。
+
+## 公开API参数
+
+### 术语解释
+
+- `base asset` 指一个交易对的交易对象，即写在靠前部分的资产名
+- `quote asset` 指一个交易对的定价资产，即写在靠后部分资产名
+
+### 枚举定义
+
+#### 订单状态:
+- NEW - 新订单，暂无成交
+- PARTIALLY_FILLED - 部分成交
+- FILLED - 完全成交
+- CANCELED - 已取消
+- PENDING_CANCEL - 等待取消
+- REJECTED - 被拒绝
+
+#### 订单类型:
+- LIMIT - 限价单
+- MARKET - 市价单
+- LIMIT_MAKER - maker限价单
+- STOP_LOSS (unavailable now) - 暂无
+- STOP_LOSS_LIMIT (unavailable now) - 暂无
+- TAKE_PROFIT (unavailable now) - 暂无
+- TAKE_PROFIT_LIMIT (unavailable now) - 暂无
+- MARKET_OF_PAYOUT (unavailable now) - 暂无
+
+#### 订单方向:
+- BUY - 买单
+- SELL - 卖单
+
+#### 有效方式:
+- GTC - Good Till Cancel 成交为止
+- IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销
+- FOK - Fill or Kill 无法全部立即成交就撤销
+
+#### K线间隔:
+m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
+
+- 1m
+- 3m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 8h
+- 12h
+- 1d
+- 3d
+- 1w
+- 1M
+
+#### 频率限制类型：
+- REQUESTS_WEIGHT
+- ORDERS
+
+#### 频率限制区间
+- SECOND
+- MINUTE
+- DAY
+
+
 # 钱包接口
 
 ## 提币 (USER_DATA)
