@@ -1728,32 +1728,30 @@ HMAC SHA256 签名:
 <td>1m, 5m, 15m, 30m, 1h, 2h, 6h, 12h, 1d, 1w, 1M</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>请求订阅数据样例:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易所ID+币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$topic"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">可调整的参数</span><span class="w">
-    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">kline返回上限是</span><span class="mi">2000</span><span class="err">，默认为</span><span class="mi">1</span><span class="w">
-        </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$limit"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">返回的数据是否是压缩过的，默认为</span><span class="kc">false</span><span class="w">
-        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='94a9a32795'>心跳</h2>
+<h3 id='ad052b1e2a'>请求订阅数据样例:</h3>
+<p><code>
+{
+  &quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对
+  &quot;topic&quot;: &quot;$topic&quot;,
+  &quot;event&quot;: &quot;sub&quot;,
+  // 可调整的参数
+    &quot;params&quot;: {
+        // kline返回上限是2000，默认为1
+        &quot;limit&quot;: &quot;$limit&quot;,
+        // 返回的数据是否是压缩过的，默认为false
+        &quot;binary&quot;: &quot;false&quot;
+    }
+}
+</code></p>
+<h2 id='94a9a32795'>心跳</h2>
 <p>每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。</p>
+<h3 id='926f6b6b6a'>请求</h3>
+<p><code>
+{
+    &quot;ping&quot;: 1535975085052
+}
+</code></p>
 
-<blockquote>
-<p>请求</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"ping"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535975085052</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -1765,19 +1763,18 @@ HMAC SHA256 签名:
 在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。<br>
 变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
 例如：假设过去5秒有3笔交易发生，分别是<code>ETHUSDT</code>、<code>BTCUSDT</code>、<code>BHTBTC</code>。它们的“v”会为连续的值（112，113，114）。</p>
+<h3 id='ad052b1e2a-2'>请求订阅数据样例:</h3>
+<p><code>
+{
+  &quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对
+  &quot;topic&quot;: &quot;trade&quot;,
+  &quot;event&quot;: &quot;sub&quot;,
+  &quot;params&quot;: {
+    &quot;binary&quot;: false // Whether data returned is in binary format
+  }
+}
+</code></p>
 
-<blockquote>
-<p>请求订阅数据样例:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
-  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Whether</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">returned</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">binary</span><span class="w"> </span><span class="err">format</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -3310,7 +3307,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         v1_url.href = '/docs/spot/v1/cn/';
       }else{
         //如果是英文环境
-        lang_btn.innerHTML = '中文';
+        lang_btn.innerHTML = '简体中文';
         btn_spot.innerHTML = 'Spot';
       //  btn_dm.innerHTML = 'Coin-M Futures';
         // btn_swap.innerHTML = 'SWAP API';
