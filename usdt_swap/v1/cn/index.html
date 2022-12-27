@@ -1729,26 +1729,29 @@ HMAC SHA256 签名:
 </tr>
 </tbody></table>
 <h3 id='ad052b1e2a'>请求订阅数据样例:</h3>
-<p><code>{</code>
-  <code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对</code>
-  <code>&quot;topic&quot;: &quot;$topic&quot;,</code>
-  <code>&quot;event&quot;: &quot;sub&quot;,</code>
-  <code>// 可调整的参数</code>
-  <code>&quot;params&quot;: {</code>
-  <code>// kline返回上限是2000，默认为1</code>
-  <code>&quot;limit&quot;: &quot;$limit&quot;,</code>
-  <code>// 返回的数据是否是压缩过的，默认为false</code>
-  <code>&quot;binary&quot;: &quot;false&quot;</code>
-  <code>}</code>
-<code>}</code></p>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对</code></p>
+
+<p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;limit&quot;: &quot;$limit&quot;,  // kline返回上限是2000，默认为1</code></p>
+
+<p><code>&quot;binary&quot;: &quot;false&quot;  // 返回的数据是否是压缩过的，默认为false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
 <h2 id='94a9a32795'>心跳</h2>
 <p>每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。</p>
 <h3 id='926f6b6b6a'>请求</h3>
-<p><code>
-{
-    &quot;ping&quot;: 1535975085052
-}
-</code></p>
+<p><code>{</code>
+    <code>&quot;ping&quot;: 1535975085052</code>
+<code>}</code></p>
 
 <blockquote>
 <p>响应：</p>
@@ -1762,16 +1765,14 @@ HMAC SHA256 签名:
 变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。<br>
 例如：假设过去5秒有3笔交易发生，分别是<code>ETHUSDT</code>、<code>BTCUSDT</code>、<code>BHTBTC</code>。它们的“v”会为连续的值（112，113，114）。</p>
 <h3 id='ad052b1e2a-2'>请求订阅数据样例:</h3>
-<p><code>
-{
-  &quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对
-  &quot;topic&quot;: &quot;trade&quot;,
-  &quot;event&quot;: &quot;sub&quot;,
-  &quot;params&quot;: {
-    &quot;binary&quot;: false // Whether data returned is in binary format
-  }
-}
-</code></p>
+<p><code>{</code>
+  <code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,//币对</code>
+  <code>&quot;topic&quot;: &quot;trade&quot;,</code>
+  <code>&quot;event&quot;: &quot;sub&quot;,</code>
+  <code>&quot;params&quot;: {</code>
+  <code>&quot;binary&quot;: false // Whether data returned is in binary format</code>
+  <code>}</code>
+<code>}</code></p>
 
 <blockquote>
 <p>Payload</p>
