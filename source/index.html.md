@@ -75,8 +75,7 @@ search: true
 </aside>
 
 ### 下单频率限制
-- 当下单数超过限制时，会收到带有429但不含Retry-After头的响应。请检查 `GET` `api/v1/exchangeInfo` 的下单频率限制 (rateLimitType = ORDERS) 并等待封禁时间结束。
-- 被拒绝或不成功的下单并不保证回报中包含以上头内容。
+- 当下单数超过限制时，会收到带有429 HTTP CODE 的响应。请检查 `GET` `/api/v1/exchangeInfo` 的下单频率限制 (rateLimitType = ORDERS) 并等待封禁时间结束。
 - 下单频率限制是基于每个账户计数的。
 
 ### WEB SOCKET 连接限制
