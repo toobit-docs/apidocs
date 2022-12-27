@@ -51,8 +51,7 @@ search: true
 
 - HTTP `4XX` 错误码用于指示错误的请求内容、行为、格式。问题在于请求者。
 - HTTP `403` 错误码表示违反WAF限制(Web应用程序防火墙)。
-- HTTP `429` 错误码表示警告访问频次超限，即将被封IP。
-- HTTP `418` 表示收到429后继续访问，于是被封了。
+- HTTP `429` 错误码表示警告访问频次超限，你有义务停止发送请求。
 - HTTP `5XX` 错误码用于指示服务侧的问题。
 
 ### 接口的基本信息
@@ -66,13 +65,7 @@ search: true
 
 ### 访问限制基本信息
 
-- 以下 是`intervalLetter` 作为头部值:
-
-  - SECOND => S
-  - MINUTE => M
-  - HOUR => H
-  - DAY => D
-- 在 `/api/v1/exchangeInfo` `rateLimits` 数组中包含与交易的有关`RAW_REQUESTS`，`REQUEST_WEIGHT`和`ORDERS`速率限制相关的对象。这些在 限制种类 (`rateLimitType`) 下的 `枚举定义` 部分中进一步定义。
+- 在 `/api/v1/exchangeInfo` `rateLimits` 数组中包含与交易的有关`REQUEST_WEIGHT`和`ORDERS`速率限制相关的对象。这些在 限制种类 (`rateLimitType`) 下的 `枚举定义` 部分中进一步定义。
 - 违反任何一个速率限制时，将返回429。
 
 ### IP 访问限制
