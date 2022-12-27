@@ -445,6 +445,1034 @@ Notes:
 
 - If fromId is set, it will filter the orders smaller than id. Otherwise, the most recent order information will be returned.
 
+# Market Data Endpoints
+
+## Test Connectivity
+
+-  `GET /api/v1/ping`
+
+est connectivity to the Rest API.
+
+### 权重:1
+
+> Response
+
+``` json
+{}
+```
+
+### Parameters
+
+NONE
+
+## Check Server Time
+
+- `GET /api/v1/time`
+
+Test connectivity to the Rest API and get the current server time.
+
+### Weight:1
+
+> Response
+
+``` json
+{
+  "serverTime": 1538323200000
+}
+```
+
+### Parameters
+
+NONE
+
+## Exchange Information
+
+- `GET /api/v1/exchangeInfo`
+
+Current exchange trading rules and symbol information
+
+### Weight:1
+
+> Response
+
+``` json
+{
+  "timezone": "UTC",
+  "serverTime": "1668407511495",
+  "brokerFilters": [],
+  "symbols": [
+    {
+      "filters": [
+        {
+          "minPrice": "0.01",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.01",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "0.01",
+          "maxQty": "100000.00000000",
+          "stepSize": "0.0001",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "10",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "ETHUSDT",
+      "symbolName": "ETHUSDT",
+      "status": "TRADING",
+      "baseAsset": "ETH",
+      "baseAssetName": "ETH",
+      "baseAssetPrecision": "0.0001",
+      "quoteAsset": "USDT",
+      "quoteAssetName": "USDT",
+      "quotePrecision": "0.01",
+      "icebergAllowed": false,
+      "isAggregate": false,
+      "allowMargin": true
+    },
+    {
+      "filters": [
+        {
+          "minPrice": "0.01",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.01",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "0.0005",
+          "maxQty": "100000.00000000",
+          "stepSize": "0.000001",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "1",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "BTCUSDT",
+      "symbolName": "BTCUSDT",
+      "status": "TRADING",
+      "baseAsset": "BTC",
+      "baseAssetName": "BTC",
+      "baseAssetPrecision": "0.000001",
+      "quoteAsset": "USDT",
+      "quoteAssetName": "USDT",
+      "quotePrecision": "0.01",
+      "icebergAllowed": false,
+      "isAggregate": false,
+      "allowMargin": true
+    },
+    {
+      "filters": [
+        {
+          "minPrice": "0.01",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.01",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "0.01",
+          "maxQty": "100000.00000000",
+          "stepSize": "0.01",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "0.01",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "XRPUSDT",
+      "symbolName": "XRPUSDT",
+      "status": "TRADING",
+      "baseAsset": "XRP",
+      "baseAssetName": "XRP",
+      "baseAssetPrecision": "0.01",
+      "quoteAsset": "USDT",
+      "quoteAssetName": "USDT",
+      "quotePrecision": "0.01",
+      "icebergAllowed": false,
+      "isAggregate": false,
+      "allowMargin": false
+    }
+  ],
+  "rateLimits": [
+    {
+      "rateLimitType": "REQUEST_WEIGHT",
+      "interval": "MINUTE",
+      "intervalUnit": 1,
+      "limit": 3000
+    },
+    {
+      "rateLimitType": "ORDERS",
+      "interval": "SECOND",
+      "intervalUnit": 60,
+      "limit": 60
+    }
+  ],
+  "options": [],
+  "contracts": [
+    {
+      "filters": [
+        {
+          "minPrice": "0.1",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.1",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "1",
+          "maxQty": "100000.00000000",
+          "stepSize": "1",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "0.000000001",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "BTC-SWAP-USDT",
+      "symbolName": "BTC-SWAP-USDTUSDT",
+      "status": "TRADING",
+      "baseAsset": "BTC-SWAP-USDT",
+      "baseAssetPrecision": "1",
+      "quoteAsset": "USDT",
+      "quoteAssetPrecision": "0.1",
+      "icebergAllowed": false,
+      "inverse": false,
+      "index": "BTCUSDT",
+      "marginToken": "USDT",
+      "marginPrecision": "0.0001",
+      "contractMultiplier": "0.0001",
+      "underlying": "BTC",
+      "riskLimits": [
+        {
+          "riskLimitId": "200000133",
+          "quantity": "1000000.0",
+          "initialMargin": "0.01",
+          "maintMargin": "0.005"
+        },
+        {
+          "riskLimitId": "200000134",
+          "quantity": "2000000.0",
+          "initialMargin": "0.02",
+          "maintMargin": "0.01"
+        },
+        {
+          "riskLimitId": "200000135",
+          "quantity": "3000000.0",
+          "initialMargin": "0.03",
+          "maintMargin": "0.015"
+        },
+        {
+          "riskLimitId": "200000136",
+          "quantity": "4000000.0",
+          "initialMargin": "0.04",
+          "maintMargin": "0.02"
+        }
+      ]
+    },
+    {
+      "filters": [
+        {
+          "minPrice": "0.1",
+          "maxPrice": "100000.00000000",
+          "tickSize": "0.1",
+          "filterType": "PRICE_FILTER"
+        },
+        {
+          "minQty": "1",
+          "maxQty": "100000.00000000",
+          "stepSize": "1",
+          "filterType": "LOT_SIZE"
+        },
+        {
+          "minNotional": "0.000001",
+          "filterType": "MIN_NOTIONAL"
+        }
+      ],
+      "symbol": "BTC-SWAP",
+      "symbolName": "BTC-SWAP",
+      "status": "TRADING",
+      "baseAsset": "BTC-SWAP",
+      "baseAssetPrecision": "1",
+      "quoteAsset": "USDT",
+      "quoteAssetPrecision": "0.1",
+      "icebergAllowed": false,
+      "inverse": true,
+      "index": "BTCUSDT",
+      "marginToken": "BTC",
+      "marginPrecision": "0.00000001",
+      "contractMultiplier": "1.0",
+      "underlying": "BTC",
+      "riskLimits": [
+        {
+          "riskLimitId": "200000137",
+          "quantity": "1000000.0",
+          "initialMargin": "0.01",
+          "maintMargin": "0.005"
+        },
+        {
+          "riskLimitId": "200000138",
+          "quantity": "2000000.0",
+          "initialMargin": "0.02",
+          "maintMargin": "0.01"
+        },
+        {
+          "riskLimitId": "200000139",
+          "quantity": "3000000.0",
+          "initialMargin": "0.03",
+          "maintMargin": "0.015"
+        },
+        {
+          "riskLimitId": "200000140",
+          "quantity": "4000000.0",
+          "initialMargin": "0.04",
+          "maintMargin": "0.02"
+        }
+      ]
+    }
+  ],
+  "coins": [
+    {
+      "coinId": "ETH",
+      "coinName": "ETH",
+      "coinFullName": "Ethereum",
+      "allowWithdraw": true,
+      "allowDeposit": true,
+      "chainTypes": []
+    },
+    {
+      "coinId": "USDT",
+      "coinName": "USDT",
+      "coinFullName": "TetherUS",
+      "allowWithdraw": true,
+      "allowDeposit": true,
+      "chainTypes": [
+        {
+          "chainType": "ERC20",
+          "withdrawFee": "0.1",
+          "minWithdrawQuantity": "10",
+          "maxWithdrawQuantity": "1000",
+          "minDepositQuantity": "1",
+          "allowDeposit": true,
+          "allowWithdraw": true
+        },
+        {
+          "chainType": "TRC20",
+          "withdrawFee": "0.1",
+          "minWithdrawQuantity": "10",
+          "maxWithdrawQuantity": "1000",
+          "allowDeposit": true,
+          "allowWithdraw": true
+        },
+        {
+          "chainType": "OMNI",
+          "withdrawFee": "0.1",
+          "minWithdrawQuantity": "10",
+          "maxWithdrawQuantity": "1000",
+          "allowDeposit": true,
+          "allowWithdraw": true
+        }
+      ]
+    },
+    {
+      "coinId": "BTC",
+      "coinName": "BTC",
+      "coinFullName": "Bitcoin",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    },
+    {
+      "coinId": "UNI",
+      "coinName": "UNI",
+      "coinFullName": "uniswap",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    },
+    {
+      "coinId": "XRP",
+      "coinName": "XRP",
+      "coinFullName": "XRP",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    },
+    {
+      "coinId": "EOS",
+      "coinName": "EOS1",
+      "coinFullName": "EOS",
+      "allowWithdraw": true,
+      "allowDeposit": true,
+      "chainTypes": []
+    },
+    {
+      "coinId": "JET",
+      "coinName": "JET",
+      "coinFullName": "JET",
+      "allowWithdraw": false,
+      "allowDeposit": false,
+      "chainTypes": []
+    }
+  ]
+}
+
+```
+
+### Parameters
+
+NONE
+
+## Order Book
+- `GET /quote/v1/depth`
+
+### 权重：
+
+Adjusted based on the limit:：
+
+| Limit	     | Weight      | 
+| ----------- | ------- |
+| 5, 10, 20, 50, 100 | 1 | 
+| 500 | 5 |
+| 1000  | 10 |
+
+> Response
+
+``` json
+{
+  "b": [
+    [
+      "3.90000000",   // price
+      "431.00000000"  // quantity
+    ],
+    [
+      "4.00000000",
+      "431.00000000"
+    ]
+  ],
+  "a": [
+    [
+      "4.00000200",  // price
+      "12.00000000"  // quantity
+    ],
+    [
+      "5.10000000",
+      "28.00000000"
+    ]
+  ]
+}
+```
+
+### Parameters
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| YES | |
+| limit | INT | NO | Default 100; Max 100. |
+
+Notes:
+If you set `limit=0`, a lot of data will be returned.
+
+## Recent Trades List
+
+- `GET /quote/v1/trades`
+
+Get recent trades.
+
+### Weight： 1
+
+> Response
+
+``` json
+[
+  {
+    "p": "4.00000100",
+    "q": "12.00000000",
+    "t": 1499865549590,
+    "ibm": true  // Transaction direction isBuyerMaker
+  }
+]
+```
+
+### Parameters
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| YES | |
+| limit | INT | NO | Default 60; Max 60. |
+
+## Kline/Candlestick Data
+- `GET /quote/v1/klines`
+
+Kline/candlestick bars for a symbol. <br>
+Klines are uniquely identified by their open time.
+
+### Weight：1
+
+> Response
+
+``` json
+[
+  [
+    1499040000000,      // Kline open time
+    "0.01634790",       // Open price
+    "0.80000000",       // High price
+    "0.01575800",       //  Low price
+    "0.01577100",       // Close price
+    "148976.11427815",  // Volume
+    1499644799999,      //  Kline Close time
+    "2434.19055334",    // Quote asset volume
+    308,                // Number of trades
+    "1756.87402397",    // Taker buy base asset volume
+    "28.46694368"       // Taker buy quote asset volume
+  ]
+]
+```
+
+### Parameters
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| YES | |
+| interval | ENUM | YES | |
+| startTime | LONG | NO | |
+| endTime | LONG | NO |
+| limit | INT | NO | Default 100; Max 100. |
+
+- If `startTime` and `endTime` are not sent, only the latest K line will be returned.
+
+## 24hr Ticker Price Change Statistics
+- `GET /quote/v1/ticker/24hr`
+
+24 hour rolling window price change statistics. Careful when accessing this with no symbol.
+
+### Weight： 
+
+1 if only one `symbol` was sent; 40 if no `symbol` was sent.
+
+> Response
+
+``` json
+[
+    {
+        "t": 1538725500422,   // time
+        "a": "1.10000000",    // 最高卖价
+        "b": "1.00000000",    // 最高买价
+        "s": "ETHBTC",        // symbol 
+        "c": "4.00000200",    // 最新成交价
+        "o": "99.00000000",   // 开盘价
+        "h": "100.00000000",  // 最高价 
+        "l": "0.10000000",    // 最低价
+        "v": "8913.30000000", // 成交量
+        "qv": "15.30000000"   // 成交额
+    }
+]
+```
+
+### 参数
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | |
+
+- 如果symbol没有被发送，所有symbol的数据都会被返回。
+
+## 最新价格
+
+- `GET /quote/v1/ticker/price`
+
+单个或多个symbol的最新价。
+
+### 权重：1
+
+> 响应
+
+``` json
+[
+  {
+    "s": "LTCBTC",     // 交易对
+    "p": "4.00000200"  // 最新价
+  }
+]
+```
+### 参数
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | |
+
+- 如果symbol没有发送，所有symbol的最新价都会被返回。
+
+## 当前最优挂单
+- `GET /quote/v1/ticker/bookTicker`
+
+单个或者多个symbol的最佳买单卖单价格。
+
+### 权重：1
+
+> 响应
+
+``` json
+[
+  {
+      "t": 132222222222222,     // 时间
+      "s": "LTCBTC",            // 交易对          
+      "b": "4.00000000",        // 最高买价
+      "bq": "431.00000000",     // 最高买价对应的数量
+      "a": "4.00000200",        // 最高卖价
+      "aq": "9.00000000"        // 最高卖价对应的数量
+  }
+]
+```
+### 参数
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | |
+
+- 如果symbol没有被发送，所有symbol的最佳订单簿价格都会被返回。
+
+## 合并深度
+
+- `GET /quote/v1/depth/merged`
+
+### 权重： 1
+
+> 响应
+
+``` json
+{
+    "t": 1672035413265,//时间
+    "b": [//买入深度高到低
+        [
+            "16851.95",//价格
+            "0.003321"//数量
+        ],
+        [
+            "16851.87",
+            "0.005456"
+        ],
+        [
+            "16851.47",
+            "0.002219"
+        ]
+    ],
+    "a": [//卖出深度低到高
+        [
+            "16870.19",
+            "0.003838"
+        ],
+        [
+            "16873.05",
+            "0.00361"
+        ],
+        [
+            "16873.06",
+            "0.002623"
+        ]
+    ]
+}
+```
+
+### 参数
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING| NO | 交易对 |
+| scale | INT | NO | 精度 |
+| limit | INT | NO | 限制条数 |
+
+# Websocket 行情推送
+
+- 本篇所列出的所有wss接口的baseurl为: wss://stream.toobit.com
+- 直接访问时URL格式为  wss://#HOST/quote/ws/v1
+
+| 名称     | 值      | 
+| ----------- | ------- |
+| topic | `realtimes`(实时行情), `trade`(最新成交), `kline_$interval`(k线), `depth`（深度）,`markPrice`(标记价格）,`markPriceKline_$interval`(标记价格K线）,`index`(指数价格）`indexKline_$interval`(指数价格K线） |
+| event | `sub`(订阅), `cancel`(取消), `cancel_all`(取消全部)  |
+| interval | `1m`, `5m`, `15m`, `30m`, `1h`, `2h`, `6h`, `12h`, `1d`, `1w`, `1M` |
+
+## 实时订阅/取消数据流
+
+### 请求订阅数据样例:
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",`
+
+  `"topic": "$topic",`
+
+  `"event": "sub",`
+
+   ` "params": {`
+
+  `"limit": "$limit", // kline返回上限是2000，默认为1`
+        
+  ` "binary": "false" //返回的数据是否是压缩过的，默认为false`
+
+  `}`
+
+`}`
+
+### 取消订阅数据样例:
+`{`
+
+  `"symbol": "$symbol0, $symbol1",`
+
+  `"topic": "$topic",`
+
+  `"event": "cancel",`
+
+   ` "params": {`
+
+  `"limit": "$limit", // kline返回上限是2000，默认为1`
+        
+  ` "binary": "false" //返回的数据是否是压缩过的，默认为false`
+
+  `}`
+
+`}`
+
+## 心跳
+
+每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。
+
+> Payblad
+
+``` json
+{
+    "pong": 1535975085052
+}
+```
+
+### 请求
+
+`{`
+
+  `"ping": 1535975085052`
+
+`}`
+
+## 逐笔交易
+
+逐笔交易推送每一笔成交的信息。成交，或者说交易的定义是仅有一个吃单者与一个挂单者相互交易。
+在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。
+变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。例如：假设过去5秒有3笔交易发生，分别是`ETHUSDT`、`BTCUSDT`、`BHTBTC`。它们的“v”会为连续的值（112，113，114）。
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "trade",
+    "params": {
+        "realtimeInterval": "24h",
+        "binary": "false"
+    },
+    "data": [
+        {
+            "v": "1291465821801168896", // 参见解释
+            "t": 1668690723096, //时间戳
+            "p": "399", // 价格
+            "q": "1", // 数量
+            "m": false // true = 买, false = 卖
+        },
+        {
+            "v": "1291465842546196481",
+            "t": 1668690725569,
+            "p": "399",
+            "q": "1",
+            "m": false
+        }
+    ],
+    "f": true, // 是不是第一个返回
+    "sendTime": 1668753154192,
+    "shared": false
+}
+```
+
+### 请求订阅数据样例:
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",`'
+
+ ` "topic": "trade",`
+
+  `"event": "sub",`
+
+ ` "params": {`
+
+  `  "binary": false // Whether data returned is in binary format`
+
+ ` }`
+
+`}`
+
+## K线 Streams
+
+K线stream逐秒推送所请求的K线种类(最新一根K线)的更新
+
+### K线图间隔参数:
+
+m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
+
+- 1m
+- 5m
+- 15m
+- 30m
+- 1h
+- 2h
+- 4h
+- 6h
+- 12h
+- 1d
+- 1w
+- 1M
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "kline",
+    "params": {
+        "realtimeInterval": "24h",
+        "klineType": "1m",
+        "binary": "false"
+    },
+    "data": [
+        {
+            "t": 1668753840000,//k线开始时间
+            "s": "BTCUSDT",// symbol
+            "sn": "BTCUSDT",// symbol name
+            "c": "445",//收盘价
+            "h": "445",//最高价
+            "l": "445",//最低价
+            "o": "445",//开盘价
+            "v": "0"//交易量
+        }
+    ],
+    "f": true,// 是否为第一个返回
+    "sendTime": 1668753854576,
+    "shared": false
+}
+```
+
+### 请求订阅数据样例:
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",`
+
+ ` "topic": "kline_"+$间隔,`
+
+  `"event": "sub",`
+
+ ` "params": {`
+    
+  `  "binary": false`
+
+  `}`
+
+`}`
+
+## 按Symbol的完整Ticker
+
+按Symbol逐秒刷新的24小时完整ticker信息
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",
+    "symbolName": "BTCUSDT",
+    "topic": "realtimes",
+    "params": {
+        "realtimeInterval": "24h",
+        "binary": "false"
+    },
+    "data": [
+        {
+            "t": 1668753480049, //时间戳
+            "s": "BTCUSDT", //symbol
+            "sn": "BTCUSDT", // symbol name
+            "c": "445", //收盘价
+            "h": "445", //最高价
+            "l": "310", //最低价
+            "o": "311", //开盘价
+            "v": "3747.7597191", //交易量
+            "qv": "1426443.9553995", //交易额
+            "m": "0.4309", // margin
+            "e": 301 // 交易id
+        }
+    ],
+    "f": true, // 是否为第一个返回
+    "sendTime": 1668753481048,
+    "shared": false
+}
+```
+
+### 请求订阅数据样例:
+
+`{`
+
+`  "symbol": "$symbol0, $symbol1",`
+
+`  "topic": "realtimes",`
+
+`  "event": "sub",`
+
+`  "params": {`
+
+`    "binary": false`
+
+`  }`
+
+`}`
+
+## 有限档深度信息
+
+Symbol的深度信息。
+
+- 订单簿快照频率：每300ms, 如果book变了的话。
+- 订单簿快照频率深度：bids 和 asks各300
+- 订单簿版本变更触发事件：
+  - 订单进入订单簿
+  - 订单离开订单簿
+  - 订单数量变更
+  - 订单已完成
+
+> Payload
+
+``` json
+{
+  "symbol": "BTCUSDT",
+  "topic": "depth",
+  "data": [{
+    "s": "BTCUSDT", //Symbol
+    "t": 1565600357643, //时间戳
+    "v": "112801745_18", //见上面解释
+    "b": [ //Bids
+      ["11371.49", "0.0014"], //[价格, 数量]
+      ["11371.12", "0.2"],
+      ["11369.97", "0.3523"],
+      ["11369.96", "0.5"],
+      ["11369.95", "0.0934"],
+      ["11369.94", "1.6809"],
+      ["11369.6", "0.0047"],
+      ["11369.17", "0.3"],
+      ["11369.16", "0.2"],
+      ["11369.04", "1.3203"],
+    "a": [//Asks
+      ["11375.41", "0.0053"], //[价格, 数量]
+      ["11375.42", "0.0043"],
+      ["11375.48", "0.0052"],
+      ["11375.58", "0.0541"],
+      ["11375.7", "0.0386"],
+      ["11375.71", "2"],
+      ["11377", "2.0691"],
+      ["11377.01", "0.0167"],
+      ["11377.12", "1.5"],
+      ["11377.61", "0.3"]
+    ]
+  }],
+  "f": true//是否为第一个返回
+}
+```
+
+### 请求订阅数据样例:
+
+`{`
+
+`  "symbol": "$symbol0, $symbol1",`
+
+`  "topic": "depth",`
+
+`  "event": "sub",`
+
+`  "params": {`
+
+`    "binary": false`
+
+`    }`
+
+
+## 增量深度信息
+
+> Payload
+
+``` json
+{
+  "symbol": "BTCUSDT",
+  "topic": "diffDepth",
+  "data": [{
+    "e": 0,
+    "t": 1565687625534,
+    "v": "115277986_18",
+    "b": [
+      ["11316.78", "0.078"],
+      ["11313.16", "0.0052"],
+      ["11312.12", "0"],
+      ["11309.75", "0.0067"],
+      ["11309.58", "0"],
+      ["11306.14", "0.0073"]
+    ],
+    "a": [
+      ["11318.96", "0.0041"],
+      ["11318.99", "0.0017"],
+      ["11319.12", "0.0017"],
+      ["11319.22", "0.4516"],
+      ["11319.23", "0.0934"],
+      ["11319.24", "3.0665"]
+    ]
+  }],
+  "f": false //是否为第一个返回值
+}
+```
+
+### 请求订阅数据样例:
+
+`{`
+
+  `"symbol": "$symbol0, $symbol1",`
+
+  `"topic": "diffDepth",`
+
+  `"event": "sub",`
+
+  `"params": {`
+
+  `  "binary": false`
+
+  `}`
+
+`}`
+
+每秒推送订单簿的变化部分（如果有）。
+在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量>0，这时的数量为更新后的这个价格所对应的数量
+假设我们收到的返回数据中有这样一条：<br>
+
+`["0.00181860", "155.92000000"]// 价格，数量`
+
+如果下一条返回数据中有：<br>
+
+`["0.00181860", "12.3"]`
+
+这说明这个价格对应的数量有变更，已经更新变更的数量
+如果下一条返回数据中有：
+
+`["0.00181860", "0"]`
+
+这说明这个价格对应的数量已经消失，将会在客户端中删除。
+
 # Spot Account/Trade
 
 ## Test New Order  (TRADE)
@@ -694,7 +1722,7 @@ Get all account orders; active, canceled, or filled.
 ```
 
 ### 参数
-| Name     | 类型      | Mandatory      | Description           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | orderId | LONG | NO |  |
 | symbol | STRING | NO |  |
