@@ -22,7 +22,7 @@ search: true
 
 - Some endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'> this page </a> regarding API key creation.
 - Once API key is created, it is recommended to set IP restrictions on the key for security reasons.
-- **永Never share your API key/secret key to ANYONE.**
+- **Never share your API key/secret key to ANYONE.**
 
 <aside class="warning">
  If the API keys were accidentally shared, please delete them immediately and create a new key.
@@ -36,56 +36,74 @@ search: true
 
 ### Spot Account
 
-新注册的账号都会有一个现货(`SPOT`)账号。
+A `SPOT` account is provided by default upon creation of a Account.
 
-# 基础信息
+# General Info
 
-## API 基本信息
+## General API Information
 
-- 接口可能需要用户的 API Key，如何创建API-KEY请参考<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>这里</a>
-- 本篇列出接口的baseurl: https://api.toobit.com
-- 所有接口的响应都是 JSON 格式。
-- 所有时间、时间戳均为UNIX时间，单位为毫秒。
+- ome endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>this page</a>
+- The base endpoint is: **https://api.toobit.com**
+- All endpoints return either a JSON object or array.
+- All time and timestamp related fields are in milliseconds.
 
-### HTTP 返回代码
+### HTTP  Return Codes
 
-- HTTP `4XX` 错误码用于指示错误的请求内容、行为、格式。问题在于请求者。
-- HTTP `403` 错误码表示违反WAF限制(Web应用程序防火墙)。
-- HTTP `429` 错误码表示警告访问频次超限，你有义务停止发送请求。
-- HTTP `5XX` 错误码用于指示服务侧的问题。
+- HTTP `4XX` return codes are used for malformed requests; the issue is on the sender's side.
+- HTTP `403` return code is used when the WAF Limit (Web Application Firewall) has been violated.
+- HTTP `429` return code is used when breaking a request rate limit.
+- HTTP `5XX` return codes are used for internal errors; the issue is on TooBit's side. It is important to NOT treat this as a failure operation; the execution status is UNKNOWN and could have been a success.
 
-### 接口的基本信息
+### General Information on Endpoints
 
-- `GET` 方法的接口, 参数必须在 `query string`中发送。
-- `POST`, `PUT`, 和 `DELETE` 方法的接口,参数可以在内容形式为`application/x-www-form-urlencoded`的 `query string` 中发送，也可以在 `request body` 中发送。 如果你喜欢，也可以混合这两种方式发送参数。
-- 对参数的顺序不做要求。
-- 但如果同一个参数名在`query string`和`request body`中都有，`query string`中的会被优先采用。
+- For `GET `endpoints, parameters must be sent as a `query string`.
+- For `POS`T, `PUT`, and `DELETE` endpoints, the parameters may be sent as a query string or in the request body with content type `application/x-www-form-urlencoded`. You may mix parameters between both the `query string` and `request body` if you wish to do so.
+- Parameters may be sent in any order.
+- If a parameter sent in both the `query string` and `request body`, the `query string` parameter will be used.
 
-## 访问限制
+## LIMITS
 
-### 访问限制基本信息
+### General Info on Limits
 
-- 在 `/api/v1/exchangeInfo` `rateLimits` 数组中包含与交易的有关`REQUEST_WEIGHT`和`ORDERS`速率限制相关的对象。这些在 限制种类 (`rateLimitType`) 下的 `枚举定义` 部分中进一步定义。
-- 违反任何一个速率限制时，将返回429。
-- 每一个接口均有一个相应的权重(weight)，有的接口根据参数不同可能拥有不同的权重。越消耗资源的接口权重就会越大。
-- 收到429时，您有责任停止发送请求，不得滥用API。
+- The `/api/v1/exchangeInfo` `rateLimits` array contains objects related to the exchange's `REQUEST_WEIGHT` and `ORDERS` rate limits. These are further defined in the `ENUM definitions` section under `Rate limiters (rateLimitType)`.
+- A 429 will be returned when either rate limit is violated.
+- Each route has a weight which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier weight.
+- When a 429 is received, it's your obligation as an API to back off and not spam the API.
 
 <aside class="notice">
-建议您尽可能多地使用websocket消息获取相应数据，以减少请求带来的访问限制压力。
+ We recommend using the websocket for getting data as much as possible, as this will not count to the request rate limit.
 </aside>
 
-### 下单频率限制
-- 当下单数超过限制时，会收到带有429 HTTP CODE 的响应。请检查 `GET` `/api/v1/exchangeInfo` 的下单频率限制 (rateLimitType = ORDERS) 并等待封禁时间结束。
-- 下单频率限制是基于每个账户计数的。
+### Order Rate Limits
+- When the order count exceeds the limit, you will receive a 429 error without the Retry-After header. Please check the Order Rate Limit rules using `GET` `api/v1/exchangeInfo` and wait for reactivation accordingly. 
+- **The order rate limit is counted against each account.**
 
-### WEB SOCKET 连接限制
+### Websocket Limits
 
-- Websocket服务器每秒最多接受5个消息。消息包括:
-  - PING帧
-  - PONG帧
-  - JSON格式的消息, 比如订阅, 断开订阅.
-- 如果用户发送的消息超过限制，连接会被断开连接。反复被断开连接的IP有可能被服务器屏蔽。
+- WebSocket connections have a limit of 5 incoming messages per second. A message is considered:
+  - A PING frame
+  - A PONG frame
+  - A JSON controlled message (e.g. subscribe, unsubscribe)
+- If the user sends more messages than the limit, the connection will be disconnected. IPs that are repeatedly disconnected may be blocked by the server.
 
+## Endpoint security type
+
+- Each endpoint has a security type that determines how you will interact with it. This is stated next to the NAME of the endpoint.
+  - If no security type is stated, assume the security type is NONE.
+- API-keys are passed into the Rest API via the `X-BB-APIKEY` header.
+- API-keys and secret-keys **are case sensitive**.
+- API-keys can be configured to only access certain types of secure endpoints. For example, one API-key could be used for TRADE only, while another API-key can access everything except for TRADE routes.
+- By default, API-keys can access all secure routes.
+
+| Security Type		    | Description | 
+| ----------- | ---- | 
+| NONE | Endpoint can be accessed freely. |
+| TRADE | Endpoint requires sending a valid API-Key and signature. |
+| USER_DATA | Endpoint requires sending a valid API-Key and signature. |
+| USER_STREAM | Endpoint requires sending a valid API-Key. |
+| MARKET_DATA | Endpoint requires sending a valid API-Key. |
+
+- `TRADE` and `USER_DATA` endpoints are `SIGNED` endpoints.
 
 ## 需要签名的接口
 - 调用这些接口时，除了接口本身所需的参数外，还需要传递`signature`即签名参数
