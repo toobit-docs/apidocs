@@ -412,8 +412,7 @@
 <ul>
 <li>HTTP <code>4XX</code> 错误码用于指示错误的请求内容、行为、格式。问题在于请求者。</li>
 <li>HTTP <code>403</code> 错误码表示违反WAF限制(Web应用程序防火墙)。</li>
-<li>HTTP <code>429</code> 错误码表示警告访问频次超限，即将被封IP。</li>
-<li>HTTP <code>418</code> 表示收到429后继续访问，于是被封了。</li>
+<li>HTTP <code>429</code> 错误码表示警告访问频次超限，你有义务停止发送请求。</li>
 <li>HTTP <code>5XX</code> 错误码用于指示服务侧的问题。</li>
 </ul>
 <h3 id='2be91f451e'>接口的基本信息</h3>
@@ -425,16 +424,8 @@
 </ul>
 <h2 id='12907e94be'>访问限制</h2><h3 id='a19828b706'>访问限制基本信息</h3>
 <ul>
-<li><p>以下 是<code>intervalLetter</code> 作为头部值:</p>
-
-<ul>
-<li>SECOND =&gt; S</li>
-<li>MINUTE =&gt; M</li>
-<li>HOUR =&gt; H</li>
-<li>DAY =&gt; D</li>
-</ul></li>
-<li><p>在 <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> 数组中包含与交易的有关<code>RAW_REQUESTS</code>，<code>REQUEST_WEIGHT</code>和<code>ORDERS</code>速率限制相关的对象。这些在 限制种类 (<code>rateLimitType</code>) 下的 <code>枚举定义</code> 部分中进一步定义。</p></li>
-<li><p>违反任何一个速率限制时，将返回429。</p></li>
+<li>在 <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> 数组中包含与交易的有关<code>REQUEST_WEIGHT</code>和<code>ORDERS</code>速率限制相关的对象。这些在 限制种类 (<code>rateLimitType</code>) 下的 <code>枚举定义</code> 部分中进一步定义。</li>
+<li>违反任何一个速率限制时，将返回429。</li>
 </ul>
 <h3 id='ip'>IP 访问限制</h3>
 <ul>
