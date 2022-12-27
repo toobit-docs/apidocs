@@ -86,24 +86,8 @@ search: true
   - JSON格式的消息, 比如订阅, 断开订阅.
 - 如果用户发送的消息超过限制，连接会被断开连接。反复被断开连接的IP有可能被服务器屏蔽。
 
-## 接口鉴权类型
 
-- 每个接口都有自己的鉴权类型，鉴权类型决定了访问时应当进行何种鉴权。
-- 鉴权类型会在本文档中各个接口名称旁声明，如果没有特殊声明即默认为 NONE。
-- 如果需要 API-keys，应当在HTTP头中以 X-BB-APIKEY字段传递。
-- API-keys 与 secret-keys 是大小写敏感的。
-- API-keys可以被配置为只拥有访问一些接口的权限。 例如, 一个 API-key 仅可用于发送交易指令, 而另一个 API-key 则可访问除交易指令外的所有路径。
-- 默认 API-keys 可访问所有鉴权路径.
-
-| 鉴权类型	    | 描述 | 
-| ----------- | ---- | 
-| NONE | 端点可以自由访问。 |
-| TRADE | 端点需要发送有效的API-Key和签名。 |
-| USER_DATA | 端点需要发送有效的API-Key和签名 |
-| USER_STREAM | 端点需要发送有效的API-Key。 |
-| MARKET_DATA | 端点需要发送有效的API-Key。 |
-
-### SIGNED (TRADE、USER_DATA ) Endpoint security
+### SIGNED Endpoint security
 
 - 调用SIGNED 接口时，除了接口本身所需的参数外，还需要在query string 或 request body中传递 signature, 即签名参数。
 - 签名使用HMAC SHA256算法. API-KEY所对应的API-Secret作为 HMAC SHA256 的密钥，其他所有参数作为HMAC SHA256的操作对象，得到的输出即为签名。
