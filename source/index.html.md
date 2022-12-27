@@ -1,5 +1,5 @@
 ---
-title: Spot API Documetn 
+title:   Spot API Document 
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -11,30 +11,30 @@ includes:
 search: true
 ---
 
-# 更新日志
+# Change Log
 
 ## 2022-10-16
-  创建文档
+  Create a document
 
-# 介绍
+# Introduction
 
-## API Key 设置
+## API Key Setup
 
-- 很多接口需要API Key才可以访问. 请参考<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>这个页面</a>来设置API Key.
-- 设置API Key的同时，为了安全，建议设置IP访问白名单.
-- **永远不要把你的API key/secret告诉给任何人**
+- Some endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'> this page </a> regarding API key creation.
+- Once API key is created, it is recommended to set IP restrictions on the key for security reasons.
+- **永Never share your API key/secret key to ANYONE.**
 
 <aside class="warning">
-如果不小心泄露了API key，请立刻删除此Key, 并可以另外生产新的Key.
+ If the API keys were accidentally shared, please delete them immediately and create a new key.
 </aside>
 
-## API Key 权限设置
+## API Key Restrictions
 
-- 新创建的API的默认权限是 `只读`。
+- After creating the API key, the default restrictions is `Enable Reading`.
 
-## 账户
+## Enabling Accounts
 
-### 现货账户
+### Spot Account
 
 新注册的账号都会有一个现货(`SPOT`)账号。
 
