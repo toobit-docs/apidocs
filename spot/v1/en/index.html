@@ -6,7 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
-    <title>Spot API Documetn</title>
+    <title>Spot API Document</title>
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -254,7 +254,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#185368440e" class="toc-h1 toc-link" data-title="更新日志">更新日志</a>
+            <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#2022-10-16" class="toc-h2 toc-link" data-title="2022-10-16">2022-10-16</a>
@@ -262,16 +262,16 @@
               </ul>
           </li>
           <li>
-            <a href="#45fa4e00db" class="toc-h1 toc-link" data-title="介绍">介绍</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#api-key" class="toc-h2 toc-link" data-title="API Key 设置">API Key 设置</a>
+                    <a href="#api-key-setup" class="toc-h2 toc-link" data-title="API Key Setup">API Key Setup</a>
                   </li>
                   <li>
-                    <a href="#api-key-2" class="toc-h2 toc-link" data-title="API Key 权限设置">API Key 权限设置</a>
+                    <a href="#api-key-restrictions" class="toc-h2 toc-link" data-title="API Key Restrictions">API Key Restrictions</a>
                   </li>
                   <li>
-                    <a href="#c3d92b20c8" class="toc-h2 toc-link" data-title="账户">账户</a>
+                    <a href="#enabling-accounts" class="toc-h2 toc-link" data-title="Enabling Accounts">Enabling Accounts</a>
                   </li>
               </ul>
           </li>
@@ -383,23 +383,23 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='185368440e'>更新日志</h1><h2 id='2022-10-16'>2022-10-16</h2>
-<p>创建文档</p>
-<h1 id='45fa4e00db'>介绍</h1><h2 id='api-key'>API Key 设置</h2>
+        <h1 id='change-log'>Change Log</h1><h2 id='2022-10-16'>2022-10-16</h2>
+<p>Create a document</p>
+<h1 id='introduction'>Introduction</h1><h2 id='api-key-setup'>API Key Setup</h2>
 <ul>
-<li>很多接口需要API Key才可以访问. 请参考<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>这个页面</a>来设置API Key.</li>
-<li>设置API Key的同时，为了安全，建议设置IP访问白名单.</li>
-<li><strong>永远不要把你的API key/secret告诉给任何人</strong></li>
+<li>Some endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'> this page </a> regarding API key creation.</li>
+<li>Once API key is created, it is recommended to set IP restrictions on the key for security reasons.</li>
+<li><strong>永Never share your API key/secret key to ANYONE.</strong></li>
 </ul>
 
 <aside class="warning">
-如果不小心泄露了API key，请立刻删除此Key, 并可以另外生产新的Key.
+ If the API keys were accidentally shared, please delete them immediately and create a new key.
 </aside>
-<h2 id='api-key-2'>API Key 权限设置</h2>
+<h2 id='api-key-restrictions'>API Key Restrictions</h2>
 <ul>
-<li>新创建的API的默认权限是 <code>只读</code>。</li>
+<li>After creating the API key, the default restrictions is <code>Enable Reading</code>.</li>
 </ul>
-<h2 id='c3d92b20c8'>账户</h2><h3 id='32ff85d375'>现货账户</h3>
+<h2 id='enabling-accounts'>Enabling Accounts</h2><h3 id='spot-account'>Spot Account</h3>
 <p>新注册的账号都会有一个现货(<code>SPOT</code>)账号。</p>
 <h1 id='41654e0268'>基础信息</h1><h2 id='api'>API 基本信息</h2>
 <ul>
