@@ -348,6 +348,32 @@
               </ul>
           </li>
           <li>
+            <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket 行情推送">Websocket 行情推送</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#3c863d56da" class="toc-h2 toc-link" data-title="实时订阅/取消数据流">实时订阅/取消数据流</a>
+                  </li>
+                  <li>
+                    <a href="#94a9a32795" class="toc-h2 toc-link" data-title="心跳">心跳</a>
+                  </li>
+                  <li>
+                    <a href="#2b149598d9" class="toc-h2 toc-link" data-title="逐笔交易">逐笔交易</a>
+                  </li>
+                  <li>
+                    <a href="#k-streams" class="toc-h2 toc-link" data-title="K线 Streams">K线 Streams</a>
+                  </li>
+                  <li>
+                    <a href="#symbol-ticker" class="toc-h2 toc-link" data-title="按Symbol的完整Ticker">按Symbol的完整Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#6ae7c2b506" class="toc-h2 toc-link" data-title="有限档深度信息">有限档深度信息</a>
+                  </li>
+                  <li>
+                    <a href="#1654ad2dd2" class="toc-h2 toc-link" data-title="增量深度信息">增量深度信息</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#c15d2e6b39" class="toc-h1 toc-link" data-title="现货账户和交易接口">现货账户和交易接口</a>
               <ul class="toc-list-h2">
                   <li>
@@ -380,7 +406,7 @@
               </ul>
           </li>
           <li>
-            <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket账户信息推送">Websocket账户信息推送</a>
+            <a href="#websocket-2" class="toc-h1 toc-link" data-title="Websocket账户信息推送">Websocket账户信息推送</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#listen-key" class="toc-h2 toc-link" data-title="Listen Key (现货账户)">Listen Key (现货账户)</a>
@@ -1682,7 +1708,7 @@ HMAC SHA256 签名:
 </ul>
 <h2 id='6bfe48187e'>合并深度</h2>
 <ul>
-<li><code>GET /api/quote/v1/depth/merged</code></li>
+<li><code>GET /quote/v1/depth/merged</code></li>
 </ul>
 <h3 id='1-10'>权重： 1</h3>
 <blockquote>
@@ -1747,6 +1773,376 @@ HMAC SHA256 签名:
 <td>限制条数</td>
 </tr>
 </tbody></table>
+<h1 id='websocket'>Websocket 行情推送</h1>
+<ul>
+<li>本篇所列出的所有wss接口的baseurl为: wss://stream.toobit.com</li>
+<li>直接访问时URL格式为  wss://#HOST/quote/ws/v1</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>topic</td>
+<td><code>realtimes</code>(实时行情), <code>trade</code>(最新成交), <code>kline_$interval</code>(k线), <code>depth</code>（深度）,<code>markPrice</code>(标记价格）,<code>markPriceKline_$interval</code>(标记价格K线）,<code>index</code>(指数价格）<code>indexKline_$interval</code>(指数价格K线）</td>
+</tr>
+<tr>
+<td>event</td>
+<td><code>sub</code>(订阅), <code>cancel</code>(取消), <code>cancel_all</code>(取消全部)</td>
+</tr>
+<tr>
+<td>interval</td>
+<td><code>1m</code>, <code>5m</code>, <code>15m</code>, <code>30m</code>, <code>1h</code>, <code>2h</code>, <code>6h</code>, <code>12h</code>, <code>1d</code>, <code>1w</code>, <code>1M</code></td>
+</tr>
+</tbody></table>
+<h2 id='3c863d56da'>实时订阅/取消数据流</h2><h3 id='ad052b1e2a'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;cancel&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;limit&quot;: &quot;$limit&quot;, // kline返回上限是2000，默认为1</code></p>
+
+<p><code>&quot;binary&quot;: &quot;false&quot; //返回的数据是否是压缩过的，默认为false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h3 id='84c15ad6a8'>取消订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;limit&quot;: &quot;$limit&quot;, // kline返回上限是2000，默认为1</code></p>
+
+<p><code>&quot;binary&quot;: &quot;false&quot; //返回的数据是否是压缩过的，默认为false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='94a9a32795'>心跳</h2>
+<p>每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。</p>
+
+<blockquote>
+<p>Payblad</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535975085052</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='926f6b6b6a'>请求</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;ping&quot;: 1535975085052</code></p>
+
+<p><code>}</code></p>
+<h2 id='2b149598d9'>逐笔交易</h2>
+<p>逐笔交易推送每一笔成交的信息。成交，或者说交易的定义是仅有一个吃单者与一个挂单者相互交易。
+在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。
+变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。例如：假设过去5秒有3笔交易发生，分别是<code>ETHUSDT</code>、<code>BTCUSDT</code>、<code>BHTBTC</code>。它们的“v”会为连续的值（112，113，114）。</p>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291465821801168896"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">参见解释</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668690723096</span><span class="p">,</span><span class="w"> </span><span class="err">//时间戳</span><span class="w">
+            </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"399"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">价格</span><span class="w">
+            </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">数量</span><span class="w">
+            </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">买</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">卖</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291465842546196481"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668690725569</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"399"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">是不是第一个返回</span><span class="w">
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753154192</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ad052b1e2a-2'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code>&#39;</p>
+
+<p><code>&quot;topic&quot;: &quot;trade&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false // Whether data returned is in binary format</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='k-streams'>K线 Streams</h2>
+<p>K线stream逐秒推送所请求的K线种类(最新一根K线)的更新</p>
+<h3 id='k-3'>K线图间隔参数:</h3>
+<p>m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
+
+<ul>
+<li>1m</li>
+<li>5m</li>
+<li>15m</li>
+<li>30m</li>
+<li>1h</li>
+<li>2h</li>
+<li>4h</li>
+<li>6h</li>
+<li>12h</li>
+<li>1d</li>
+<li>1w</li>
+<li>1M</li>
+</ul>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kline"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"klineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1m"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753840000</span><span class="p">,</span><span class="err">//k线开始时间</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> </span><span class="err">name</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//最低价</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//开盘价</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//交易量</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">是否为第一个返回</span><span class="w">
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753854576</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ad052b1e2a-3'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;kline_&quot;+$间隔,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='symbol-ticker'>按Symbol的完整Ticker</h2>
+<p>按Symbol逐秒刷新的24小时完整ticker信息</p>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"realtimes"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753480049</span><span class="p">,</span><span class="w"> </span><span class="err">//时间戳</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//symbol</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> </span><span class="err">name</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="w"> </span><span class="err">//收盘价</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="w"> </span><span class="err">//最高价</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"310"</span><span class="p">,</span><span class="w"> </span><span class="err">//最低价</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"311"</span><span class="p">,</span><span class="w"> </span><span class="err">//开盘价</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3747.7597191"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易量</span><span class="w">
+            </span><span class="s2">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1426443.9553995"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易额</span><span class="w">
+            </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.4309"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">margin</span><span class="w">
+            </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">交易id</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">是否为第一个返回</span><span class="w">
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753481048</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ad052b1e2a-4'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;realtimes&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='6ae7c2b506'>有限档深度信息</h2>
+<p>Symbol的深度信息。</p>
+
+<ul>
+<li>订单簿快照频率：每300ms, 如果book变了的话。</li>
+<li>订单簿快照频率深度：bids 和 asks各300</li>
+<li>订单簿版本变更触发事件：
+
+<ul>
+<li>订单进入订单簿</li>
+<li>订单离开订单簿</li>
+<li>订单数量变更</li>
+<li>订单已完成</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//Symbol</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1565600357643</span><span class="p">,</span><span class="w"> </span><span class="err">//时间戳</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112801745_18"</span><span class="p">,</span><span class="w"> </span><span class="err">//见上面解释</span><span class="w">
+    </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//Bids</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11371.49"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0014"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">价格</span><span class="p">,</span><span class="w"> </span><span class="err">数量</span><span class="p">]</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11371.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.97"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3523"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.96"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.95"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0934"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.94"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.6809"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0047"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.17"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.16"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.3203"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//Asks</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.41"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0053"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">价格</span><span class="p">,</span><span class="w"> </span><span class="err">数量</span><span class="p">]</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.42"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0043"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.48"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0052"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.58"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0541"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0386"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.71"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2.0691"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377.01"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0167"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377.61"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">//是否为第一个返回</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ad052b1e2a-5'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;depth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+<h2 id='1654ad2dd2'>增量深度信息</h2>
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diffDepth"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1565687625534</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115277986_18"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11316.78"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.078"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11313.16"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0052"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11312.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11309.75"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0067"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11309.58"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11306.14"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0073"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11318.96"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0041"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11318.99"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0017"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0017"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.22"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.4516"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.23"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0934"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.24"</span><span class="p">,</span><span class="w"> </span><span class="s2">"3.0665"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//是否为第一个返回值</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='ad052b1e2a-6'>请求订阅数据样例:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;diffDepth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p>每秒推送订单簿的变化部分（如果有）。
+在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量&gt;0，这时的数量为更新后的这个价格所对应的数量
+假设我们收到的返回数据中有这样一条：<br></p>
+
+<p><code>[&quot;0.00181860&quot;, &quot;155.92000000&quot;]// 价格，数量</code></p>
+
+<p>如果下一条返回数据中有：<br></p>
+
+<p><code>[&quot;0.00181860&quot;, &quot;12.3&quot;]</code></p>
+
+<p>这说明这个价格对应的数量有变更，已经更新变更的数量
+如果下一条返回数据中有：</p>
+
+<p><code>[&quot;0.00181860&quot;, &quot;0&quot;]</code></p>
+
+<p>这说明这个价格对应的数量已经消失，将会在客户端中删除。</p>
 <h1 id='c15d2e6b39'>现货账户和交易接口</h1><h2 id='trade'>测试下单 (TRADE)</h2>
 <ul>
 <li><code>POST /api/v1/spot/orderTest (HMAC SHA256)</code></li>
@@ -2363,14 +2759,14 @@ HMAC SHA256 签名:
 <li>如果同时有fromId和toId, 会返回订单号在fromId和toId的，倒序排列。</li>
 <li>如果fromId和toId都没有，会返回最新的成交记录，倒序排列。</li>
 </ul>
-<h1 id='websocket'>Websocket账户信息推送</h1>
+<h1 id='websocket-2'>Websocket账户信息推送</h1>
 <ul>
-<li>本篇所列出API接口的base url :  <strong>wss://stream.toobit.com</strong></li>
+<li>本篇所列出API接口的base url :  <strong>https://api.toobit.com</strong></li>
 <li>用于订阅账户数据的 <code>listenKey</code> 从创建时刻起有效期为60分钟</li>
 <li>可以通过 PUT 一个 <code>listenKey</code> 延长60分钟有效期</li>
 <li>可以通过DELETE一个 <code>listenKey</code> 立即关闭当前数据流，并使该<code>listenKey</code> 无效</li>
 <li>在具有有效listenKey的帐户上执行<code>POST</code>将返回当前有效的<code>listenKey</code>并将其有效期延长60分钟</li>
-<li>websocket接口的baseurl: </li>
+<li>websocket接口的baseurl: <strong>wss://stream.toobit.com</strong></li>
 <li>每个链接有效期不超过24小时，请妥善处理断线重连。</li>
 <li>用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新</li>
 </ul>
