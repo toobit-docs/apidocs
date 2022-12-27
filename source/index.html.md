@@ -1099,7 +1099,7 @@ NONE
 
   `"topic": "$topic",`
 
-  `"event": "cancel",`
+  `"event": "sub",`
 
    ` "params": {`
 
@@ -1118,7 +1118,7 @@ NONE
 
   `"topic": "$topic",`
 
-  `"event": "sub",`
+  `"event": "cancel",`
 
    ` "params": {`
 
