@@ -322,15 +322,15 @@ Submit a withdraw request.
 | address | STRING  | YES |  |
 | addressExt | STRING | NO | tag |
 | quantity  | DECIMAL | YES |  |
-| chainType | STRING | NO | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
+| chainType | STRING | NO | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI |
 
 
-## 获取提币记录 (USER_DATA)
+##  Withdrawal records (USER_DATA)
 - `GET /api/v1/account/withdrawOrders  (HMAC SHA256)`
 
-### 权重：5
+### Weight：5
 
-> 响应
+> Response
 
 ``` json
 [
@@ -342,8 +342,8 @@ Submit a withdraw request.
         "coinName":"BHC",
         "address":"0x815bF1c3cc0f49b8FC66B21A7e48fCb476051209",
         "addressExt":"address tag",
-        "quantity":"14", // 提币金额
-        "arriveQuantity":"14", // 到账金额
+        "quantity":"14", // Withdrawal amount
+        "arriveQuantity":"14", // Amount received
         "statusCode":"PROCESSING_STATUS",
         "status":3,
         "txId ":"",
@@ -352,58 +352,60 @@ Submit a withdraw request.
         "feeCoinId ":"BHC",
         "feeCoinName ":"BHC",
         "fee":"0.1",
-        "requiredConfirmTimes ":0, // 要求确认数
-        "confirmTimes ":0, // 确认数
-        "kernelId":"", // BEAM 和 GRIN 独有
-        "isInternalTransfer": false // 是否内部转账
+        "requiredConfirmTimes ":0, // Number of confirmation requests
+        "confirmTimes ":0, // number of confirmations
+        "kernelId":"", 
+        "isInternalTransfer": false // Whether internal transfer
     }
 ]
 ```
 
-### 参数
+### Parameters
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| coin | STRING | NO | 资产 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG | NO | 结束时间戳 |
-| fromId | LONG | NO | 从哪个OrderId起开始抓取 |
-| withdrawOrderId | LONG | NO | 提现订单ID |
-| limit | INT | NO | 默认 500; 最大 1000 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| coin | STRING | NO | asset |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp |
+| fromId | LONG | NO | From which OrderId to start fetching |
+| withdrawOrderId | LONG | NO | Withdrawal order ID |
+| limit | INT | NO | default 500; maximum 1000 |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-## 获取充值地址 (USER_DATA)
+## Deposit Address (USER_DATA)
 - `GET /api/v1/account/deposit/address  (HMAC SHA256)`
 
-### 权重：1
+Fetch deposit address with network.
 
-> 响应
+### Weight：1
+
+> Response
 
 ``` json
     {
-        "canDeposit":false,//是否可充值
-        "address":"0x815bF1c3cc0f49b8FC66B21A7e48fCb476051209",//地址
+        "canDeposit":false,//Is it possible to recharge
+        "address":"0x815bF1c3cc0f49b8FC66B21A7e48fCb476051209",
         "addressExt":"address tag",
-        "minQuantity":"100",//最小金额
-        "requiredConfirmTimes ":1,//到账确认数
-        "canWithdrawConfirmNum ":12,//提币确认数
-        "coinType":"ERC20_TOKEN"//链类型
+        "minQuantity":"100",//minimum amount
+        "requiredConfirmTimes ":1,//Arrival confirmation number
+        "canWithdrawConfirmNum ":12,//Withdrawal confirmation number
+        "coinType":"ERC20_TOKEN"
     }
 ```
 
-### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| coin | STRING | YES | 资产 |
-| chainType | STRING | YES | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
+| coin | STRING | YES |  |
+| chainType | STRING | YES | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI |
 
 ## 获取充值历史 (USER_DATA)
  - `GET /api/v1/account/depositOrders  (HMAC SHA256)`
 
-### 权重： 5
+### Weight： 5
 
-> 响应
+> Response
 
 ``` json
 [
@@ -427,48 +429,48 @@ Submit a withdraw request.
 ]
 ```
 
-### 参数
+### Parameters
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| coin | STRING | NO | 资产 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG | NO | 结束时间戳 |
-| fromId | LONG | NO | 从哪个Id起开始抓取 |
-| limit | INT | NO | 默认 500; 最大 1000 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |、
+| coin | STRING | NO |  |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp |
+| fromId | LONG | NO | From which Id to start crawling |
+| limit | INT | NO | Default 500; Max 1000 |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-注意：
+Notes:
 
-- 如果fromId设定好了，会筛选订单小于id的。否则会返回最近的订单信息。
+- If fromId is set, it will filter the orders smaller than id. Otherwise, the most recent order information will be returned.
 
-# 现货账户和交易接口
+# Spot Account/Trade
 
-## 测试下单 (TRADE)
+## Test New Order  (TRADE)
 - `POST /api/v1/spot/orderTest (HMAC SHA256)`
 
-用于测试订单请求，但不会提交到撮合引擎
+Test new order creation and signature/recvWindow long. Creates and validates a new order but does not send it into the matching engine.
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {}
 ```
 
-### 参数
-同于 `POST /api/v1/spot/order`
+### Parameters
+Same as `POST /api/v1/spot/order`
 
-## 下单 (TRADE)
+## New Order  (TRADE)
 - `POST /api/v1/spot/order  (HMAC SHA256)`
 
-发送下单。
+Send in a new order.
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {
@@ -488,43 +490,43 @@ Submit a withdraw request.
 }
 ```
 
-### 参数
+### Parameters
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | YES | 交易对 |
-| assetType | ENUM | NO | `CASH`、`MARGIN`，只支持`CASH` |
-| side | ENUM | YES | `BUY`或`SELL `|
-| type | ENUM | YES | 详见枚举定义：订单类型 |
-| timeInForce | ENUM | NO | 详见枚举定义：有效方式 |
-| quantity | DECIMAL | YES | 数量 |
-| price | DECIMAL | NO | 价格 |
-| newClientOrderId | STRING | NO | 一个自己给订单定义的ID，如果没有发送会自动生成。 |
-| stopPrice | DECIMAL | NO | 与 `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, 和`TAKE_PROFIT_LIMIT` 订单一起使用. **当前不可用** |
-| icebergQty | DECIMAL | NO | 与 `LIMIT`, `STOP_LOSS_LIMIT`, 和` TAKE_PROFIT_LIMIT` 来创建冰山订单. **当前不可用** |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| symbol | STRING | YES |  |
+| assetType | ENUM | NO | `CASH`、`MARGIN`，only supports `CASH` |
+| side | ENUM | YES | `BUY` or `SELL `|
+| type | ENUM | YES | See enumeration definition for details: order type |
+| timeInForce | ENUM | NO | For details, see enumeration definition: valid methods |
+| quantity | DECIMAL | YES |  |
+| price | DECIMAL | NO |  |
+| newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent. |
+| stopPrice | DECIMAL | NO | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders. **currently unavailable** |
+| icebergQty | DECIMAL | NO | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and ` TAKE_PROFIT_LIMIT` to create an iceberg order. **currently unavailable** |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-基于订单 `type`不同，强制要求某些参数:
+Additional mandatory parameters based on `type`:
 
-| 类型     | 额外强制参数      | 
+| Type     | Additional mandatory parameters      | 
 | ----------- | ------- | 
 | `LIMIT` | `timeInForce`, `quantity`,` price` |
 | `MARKET` |  `quantity` |
-| `STOP_LOSS` | `quantity`, `stopPrice` **当前不可用** |
-| `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **当前不可用**|
-| `TAKE_PROFIT` | `quantity`, `stopPrice` **当前不可用** |
-| `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` **当前不可用** |
+| `STOP_LOSS` | `quantity`, `stopPrice` **currently unavailable** |
+| `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **currently unavailable**|
+| `TAKE_PROFIT` | `quantity`, `stopPrice` **currently unavailable** |
+| `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` **currently unavailable** |
 | `LIMIT_MAKER` | `quantity`, `price` |
 
-## 撤销订单 (TRADE)
+## Cancel Order  (TRADE)
 - `DELETE /api/v1/spot/order  (HMAC SHA256)`
 
-取消有效订单。
+Cancel an active order.
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {
@@ -542,22 +544,22 @@ Submit a withdraw request.
 }
 ```
 
-### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO | 订单ID |
-| clientOrderId | STRING | NO | 客户订单ID |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| orderId | LONG | NO |  |
+| clientOrderId | STRING | NO |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-`orderId` 或 `origClientOrderId` 必须至少发送一个
+Either `orderId `or `clientOrderId `must be sent.
 
-##  批量撤单 (TRADE)
+##  Cancel Multiple Orders (TRADE)
 - `DELETE /api/v1/spot/openOrders (HMAC SHA256)`
 
-### 权重：5
+### Weight：5
 
-> 响应
+> Response
 
 ``` json
 {
@@ -565,19 +567,19 @@ Submit a withdraw request.
 }
 ```
 
-### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | NO | 现货名称（多个用,隔开） |
-| side | ENUM| NO | BUY或SELL |
+| symbol | STRING | NO | |
+| side | ENUM| NO | `BUY` or `SELL` |
 
 
-## 查询订单  (USER_DATA)
+## Query Order  (USER_DATA)
 - `GET /api/v1/spot/order (HMAC SHA256)`
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {
@@ -600,27 +602,27 @@ Submit a withdraw request.
 }
 ```
 
-### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO | 订单ID |
-| origClientOrderId | STRING | NO | 客户订单ID |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| orderId | LONG | NO |  |
+| origClientOrderId | STRING | NO |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |   |
 
-注意：
+Notes：
 
-- 单一 orderId 或者 origClientOrderId 必须被发送。
-- 对于某些历史数据 cummulativeQuoteQty 可能会 < 0, 这说明数据当前不可用。
+- Either `orderId` or o`rigClientOrderId` must be sent.
+- For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.
 
-## 当前挂单 (USER_DATA)
+## Current Open Orders (USER_DATA)
 - `GET /api/v1/spot/openOrders (HMAC SHA256)`
 
-获取交易对的所有当前挂单， 请小心使用不带交易对参数的调用。
+Get all open orders on a symbol. **Careful** when accessing this with no symbol.
 
-### 权重 ：1
+### Weight ：1
 
-> 响应
+> Response
 
 ``` json
 [
@@ -645,27 +647,28 @@ Submit a withdraw request.
 ]
 ```
 
-### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO | 订单ID |
-| symbol | STRING | NO | 交易对 |
-| limit | INT | NO | 默认 500; 最多 1000. |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| orderId | LONG | NO |  |
+| symbol | STRING | NO |  |
+| limit | INT | NO | Default 500; Max 1000. |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-注意：
+Notes：
 
-- 如果orderId设定好了，会筛选订单小于orderId的。否则会返回最近的订单信息。
+- If orderId is set, it will filter orders smaller than orderId. Otherwise, the most recent order information will be returned.
 
-## 查询所有订单 (USER_DATA)
+## All Orders (USER_DATA)
+
 - `GET /api/v1/spot/tradeOrders (HMAC SHA256)`
 
-获取所有帐户订单； 有效，已取消或已完成。
+Get all account orders; active, canceled, or filled.
 
-### 权重：5
+### Weight：5
 
-> 响应
+> Response
 
 ``` json
 [
@@ -691,50 +694,50 @@ Submit a withdraw request.
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | 类型      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO | 订单ID |
-| symbol | STRING | NO | 交易对 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG| NO | 结束时间戳 |
-| limit | INT | NO | 默认 500; 最多 1000. |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| orderId | LONG | NO |  |
+| symbol | STRING | NO |  |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG| NO | end timestamp |
+| limit | INT | NO | Default 500; Max 1000. |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-## 账户信息 (USER_DATA)
+## Account Information (USER_DATA)
 - `GET /api/v1/account`
 
-### 权重：5 
+### Weight：5 
 
-> 响应
+> Response
 
 ``` json
 {
     "balances": [
         {
-            "asset": "BTC", //资产
-            "assetId": "BTC", //资产id
-            "assetName": "BTC", //资产名称
-            "total": "995.899", //总数量
-            "free": "995.899", //可用数
-            "locked": "0" //冻结数
+            "asset": "BTC", 
+            "assetId": "BTC", 
+            "assetName": "BTC", 
+            "total": "995.899", 
+            "free": "995.899", //available number
+            "locked": "0" //frozen number
         }
     ]
 }
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-## 账户成交历史 (USER_DATA)
+## Account Trade List (USER_DATA)
 - `GET /api/v1/account/trades`
 
-### 权重：5
+### Weight：5
 
-> 响应
+> Response
 
 ``` json
 [
@@ -763,46 +766,46 @@ Submit a withdraw request.
 ]
 ```
 
-### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | NO | 交易对 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG | NO | 结束时间戳 |
+| symbol | STRING | NO |  |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp |
 | fromId | LONG | NO  | |
 | toId | LONG | NO | |
-| limit | INT | NO | 每页显示条数 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| limit | INT | NO | Number of items displayed per page |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-注意：
+Notes：
 
-- 如果只有fromId，会返回订单号小于fromId的，倒序排列。
-- 如果只有toId，会返回订单号小于toId的，升序排列。
-- 如果同时有fromId和toId, 会返回订单号在fromId和toId的，倒序排列。
-- 如果fromId和toId都没有，会返回最新的成交记录，倒序排列。
+- If only fromId is set，it will get orders < that fromId in descending order.
+- If only toId is set, it will get orders > that toId in ascending order.
+- If fromId is set and toId is set, it will get orders < that fromId and > that toId in descending order.
+- If fromId is not set and toId it not set, most recent order are returned in descending order.
 
-# Websocket账户信息推送
+# User Data Streams
 
-- 本篇所列出API接口的base url :  **wss://stream.toobit.com**
-- 用于订阅账户数据的 `listenKey` 从创建时刻起有效期为60分钟
-- 可以通过 PUT 一个 `listenKey` 延长60分钟有效期
-- 可以通过DELETE一个 `listenKey` 立即关闭当前数据流，并使该`listenKey` 无效
-- 在具有有效listenKey的帐户上执行`POST`将返回当前有效的`listenKey`并将其有效期延长60分钟
-- websocket接口的baseurl: 
-- 每个链接有效期不超过24小时，请妥善处理断线重连。
-- 用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新
+- The base API endpoint is : **https://api.toobit.com** 
+- A User Data Stream  `listenKey` is valid for 60 minutes after creation.
+- Doing a  `PUT` on a `listenKey` will extend its validity for 60 minutes.
+- Doing a `DELETE` on a `listenKey` will close the stream and invalidate the `listenKey` .
+- Doing a `POST` on an account with an active `listenKey` will return the currently active `listenKey `and extend its validity for 60 minutes.
+- The base websocket endpoint is: **wss://stream.toobit.com**
+- Each link is valid for no more than 24 hours, please properly handle disconnection and reconnection.
+- User feed payloads are not guaranteed to be up during busy times; make sure to order updates with `E`
 
-## Listen Key (现货账户)
+## Listen Key (SPOT)
 
-### 生成 Listen Key (USER_STREAM)
+### Create a ListenKey  (USER_STREAM)
 - `POST /api/v1/userDataStream`
 
-开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。
+Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.
 
-#### 权重：1
+#### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {
@@ -811,144 +814,145 @@ Submit a withdraw request.
 ```
 
 #### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-### 延长 Listen Key 有效期 (USER_STREAM)
+### Ping/Keep-alive a ListenKey (USER_STREAM)
 - `PUT /api/v1/userDataStream`
 
-有效期延长至本次调用后60分钟,建议每30分钟发送一个 ping 。
+Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.
 
-#### 权重：1
+#### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {}
 ```
 
-#### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+#### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | listenKey | STRING | YES | |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-### 关闭 Listen Key (USER_STREAM)
+### Close a ListenKey (USER_STREAM)
 
 - `DELETE /api/v1/userDataStream`
 
-#### 权重：1
+#### Weight：1
 
-> 响应
+> Response
 
 ``` json
 {}
 ```
 
-#### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
+#### Parameters
+| Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | listenKey | STRING | YES | |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
-## Payload: 账户更新
+## Payload: Account Update
 
 > Payload
 
 ``` json
 {
-  "e": "outboundAccountInfo",   // Event type事件类型
-  "E": 1499405658849,           // Event time事件时间
-  "T": true,                    // Can trade? 可否交易
-  "W": true,                    // Can withdraw? 可否提币
-  "D": true,                    // Can deposit? 可否充币
-  "B": [                        // Balances changed 余额变更
+  "e": "outboundAccountInfo",   // Event type
+  "E": 1499405658849,           // Event time
+  "T": true,                    // Can trade? 
+  "W": true,                    // Can withdraw? 
+  "D": true,                    // Can deposit? 
+  "B": [                        // Balances changed 
     {
-      "a": "LTC",               // Asset 资产
-      "f": "17366.18538083",    // Free amount 可用金额
-      "l": "0.00000000"         // Locked amount 冻结金额
+      "a": "LTC",               // Asset 
+      "f": "17366.18538083",    // Free amount 
+      "l": "0.00000000"         // Locked amount 
     }
   ]
 }
 ```
 
-每当帐户余额发生更改时，都会发送一个事件`outboundAccountInfo`，其中包含可能由生成余额变动的事件而变动的资产。
+Whenever the account balance changes, an event `outboundAccountInfo` is sent containing the assets that may have been moved by the event that generated the balance change.
 
 
-## Payload: 订单更新
+## Payload: Order Update
 
 > Payload
 
 ``` json
 {
-  "e": "executionReport",        // Event type 事件类型
-  "E": 1499405658658,            // Event time 事件时间
-  "s": "ETHBTC",                 // Symbol 币对
-  "c": 1000087761,               // Client order ID 客户订单id
-  "S": "BUY",                    // Side 订单方向
-  "o": "LIMIT",                  // Order type 订单类型
-  "f": "GTC",                    // Time in force 有效方式
-  "q": "1.00000000",             // Order quantity 数量
-  "p": "0.10264410",             // Order price 价格
-  "X": "NEW",                    // Current order status 订单状态
-  "i": 4293153,                  // Order ID 订单id
-  "l": "0.00000000",             // Last executed quantity 上次数量
-  "z": "0.00000000",             // Cumulative filled quantity 交易数量
-  "L": "0.00000000",             // Last executed price 上次价格
-  "n": "0",                      // Commission amount 佣金
-  "N": null,                     // Commission asset 佣金资产
-  "u": true,                     // Is the trade normal, ignore for now 是否正常
+  "e": "executionReport",        // Event type 
+  "E": 1499405658658,            // Event time 
+  "s": "ETHBTC",                 // Symbol 
+  "c": 1000087761,               // Client order ID 
+  "S": "BUY",                    // Side 
+  "o": "LIMIT",                  // Order type 
+  "f": "GTC",                    // Time in force 
+  "q": "1.00000000",             // Order quantity 
+  "p": "0.10264410",             // Order price 
+  "X": "NEW",                    // Current order status 
+  "i": 4293153,                  // Order ID 
+  "l": "0.00000000",             // Last executed quantity 
+  "z": "0.00000000",             // Cumulative filled quantity 
+  "L": "0.00000000",             // Last executed price 
+  "n": "0",                      // Commission amount 
+  "N": null,                     // Commission asset 
+  "u": true,                     // Is the trade normal, ignore for now 
   "w": true,                     // Is the order working? Stops will have
   "m": false,                    // Is this trade the maker side?
-  "O": 1499405658657,            // Order creation time 创建时间
-  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 交易金额
+  "O": 1499405658657,            // Order creation time 
+  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 
 ```
 
-订单更新会通过 `executionReport` 事件更新。查看API文档和下面的相关枚举定义。
-平均价格可以通过Z除以z来找到。
+Order updates are updated through the `executionReport` event. Check out the API docs and the relevant enum definitions below.
+The average price can be found by dividing Z by z.
 
-### 执行类型
+### Execution Type
 
-- NEW  新订单
+- NEW  
 - PARTIALLY_FILLED 
 - FILLED 
-- CANCELED 订单被取消
+- CANCELED 
 - REJECTED 
 
-## Payload: Ticket推送
+## Payload: Ticket push
 
-> 响应
+> Payload
 
 ``` json
 [
     {
-        "e": "ticketInfo",                // Event type 事件类型
-        "E": "1668693440976",             // Event time 事件时间
-        "s": "BTCUSDT",                   // Symbol 币对
-        "q": "0.205",                     // quantity 数量
-        "t": "1668693440899",             // time 时间
-        "p": "441.0",                     // price 价格
+        "e": "ticketInfo",                // Event type 
+        "E": "1668693440976",             // Event time 
+        "s": "BTCUSDT",                   // Symbol 
+        "q": "0.205",                     // quantity 
+        "t": "1668693440899",             // time 
+        "p": "441.0",                     // price 
         "T": "1291488620385157122",       // ticketId
-        "o": "1291488620167835136",       // orderId 订单id
-        "c": "1668693440093",             // clientOrderId 客户订单id
-        "O": "1291354087841869312",       // matchOrderId 对手方订单ID
-        "a": "1286424214388204801",       // accountId 账户id
-        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
+        "o": "1291488620167835136",       // orderId 
+        "c": "1668693440093",             // clientOrderId 
+        "O": "1291354087841869312",       // matchOrderId 
+        "a": "1286424214388204801",       // accountId 
+        "A": "1270447370291795457",       // matchAccountId 
         "m": false,                       // isMaker 
         "S": "SELL"                       // side  SELL or BUY
     }
 ]
 ```
 
-# 错误代码
+# Error Codes
 
-错误由两部分组成：错误代码和消息。代码是通用的，但消息可以不同。
+Errors consist of two parts: an error code and a message. Codes are universal, but messages can vary.
 
-> 错误JSON格式
+
+> The error JSON payload
 
 ``` json
 {  
@@ -957,224 +961,224 @@ Submit a withdraw request.
 }
 ```
 
-## 10xx-通用服务器或网络问题
+## 10xx - General Server or Network issues
 
 ### -1000 UNKNOWN
-- 处理请求时发生未知错误。
+- An unknown error occurred while processing the request.
 
 ### -1001 DISCONNECTED
-- 内部错误；无法处理您的请求。请重试。
+- Internal error; unable to process your request. Please try again.
 
 ### -1002 UNAUTHORIZED
-- 您无权限执行此请求。请求需要包含API密钥。我们建议在任何请求中包含API密钥。
+- You are not authorized to execute this request.
 
 ### -1003 TOO_MANY_REQUESTS
-- 请求太多；请使用WebSocket进行实时更新。
-- 请求太多；当前限制为每分钟%s个请求。请使用webSocket进行实时更新以避免轮询API。
-- 请求太多；IP直到%s才被禁止。请使用WebSocket进行实时更新以避免禁止。
+- Too many requests queued.
+- Too much request weight used; current limit is %s request weight per %s. Please use WebSocket Streams for live updates to avoid polling the API.
+- Way too much request weight used; IP banned until %s. Please use WebSocket Streams for live updates to avoid bans.
 
 ### -1006 UNEXPECTED_RESP
-- 从消息总线收到意外响应。执行状态未知。OPENAPI服务器在执行请求中发现异常。请向客户服务报告。
+- An unexpected response was received from the message bus. Execution status unknown.
 
 ### -1007 TIMEOUT
-- 等待后端服务器响应的超时。发送状态未知；执行状态未知。
+- Timeout waiting for response from backend server. Send status unknown; execution status unknown.
 
 ### -1014 UNKNOWN_ORDER_COMPOSITION
-- 不支持的订单组合。
+- Unsupported order combination.
 
 ### -1015 TOO_MANY_ORDERS
-- 达到速率限制。请放慢您的请求速度。
-- 太多的新订单。
-- 新订单太多；当前限制为%s每%s的订单数。
+- Reach the rate limit .Please slow down your request speed.
+- Too many new orders.
+- Too many new orders; current limit is %s orders per %s.
 
 ### -1016 SERVICE_SHUTTING_DOWN
-- 此服务不再可用。
+- This service is no longer available.
 
 ### -1020 UNSUPPORTED_OPERATION
-- 不支持此操作。
+- This operation is not supported.
 
 ### -1021 INVALID_TIMESTAMP
-- 此请求的时间戳在recvWindow之外。
-- 此请求的时间戳比服务器的时间早1000毫秒。
-- 请检查您的本地时间和服务器时间之间的差异。
+- Timestamp for this request is outside of the recvWindow.
+- Timestamp for this request was 1000ms ahead of the server's time.
+- Please check the difference between your local time and server time .
 
 ### -1022 INVALID_SIGNATURE
-- 此请求的签名无效。
+- Signature for this request is not valid.
 
 ## 11xx - 2xxx Request issues
 
 ### -1100 ILLEGAL_CHARS
-- 在参数中发现非法字符。
-- 在参数“%s”中找到非法字符；合法范围为“%s”。
+- Illegal characters found in a parameter.
+- Illegal characters found in parameter '%s'; legal range is '%s'.
 
 ### -1101 TOO_MANY_PARAMETERS
-- 为此端点发送的参数太多。
-- 参数太多；期望'%s'并收到'%s'。
-- 检测到的参数的重复值。
+- Too many parameters sent for this endpoint.
+- Too many parameters; expected '%s' and received '%s'.
+- Duplicate values for a parameter detected.
 
 ### -1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED
-- 未发送强制参数、为空/null或格式错误。
-- 强制参数'%s'未发送，是空/null或格式错误。
-- 必须发送参数'%s'或'%s'，但两者都是空/null！
+- A mandatory parameter was not sent, was empty/null, or malformed.
+- Mandatory parameter '%s' was not sent, was empty/null, or malformed.
+- Param '%s' or '%s' must be sent, but both were empty/null!
 
 ### -1103 UNKNOWN_PARAM
-- 发送了一个未知参数。
-- 在BBEx Open Api中，每个请求至少需要一个参数。{Timestamp}。
+- An unknown parameter was sent.
+- In BBEx Open Api , each request requires at least one parameter. {Timestamp}.
 
 ### -1104 UNREAD_PARAMETERS
-- 并非所有发送的参数都被读取。
-- 并非所有发送的参数都被读取；读取'%s'参数，但发送了'%s'。
+- Not all sent parameters were read.
+- Not all sent parameters were read; read '%s' parameter(s) but was sent '%s'.
 
 ### -1105 PARAM_EMPTY
-- 参数为空。
-- 参数"%1！"为空。
+- A parameter was empty.
+- Parameter '%s' was empty.
 
 ### -1106 PARAM_NOT_REQUIRED
-- 不需要时发送参数。
-- 参数“%1！”在不需要时发送。
+- A parameter was sent when not required.
+- Parameter '%s' sent when not required.
 
 ### -1111 BAD_PRECISION
-- 精度高于为此资产定义的最大值。
+- Precision is over the maximum defined for this asset.
 
 ### -1112 NO_DEPTH
-- 书上没有符号的订单。
+- No orders on book for symbol.
 
 ### -1114 TIF_NOT_REQUIRED
-- 不需要时发送的TimeInForce参数。
+- TimeInForce parameter sent when not required.
 
 ### -1115 INVALID_TIF
-- 无效的时间。
-- 在当前版本中，此参数为空或GTC。
+- Invalid timeInForce.
+- In the current version, this parameter is either empty or GTC.
 
 ### -1116 INVALID_ORDER_TYPE
-- 订单类型无效。
-- 在当前版本中，ORDER_TYPE值是LIMIT或MARKET。
+- Invalid orderType.
+- In the current version , ORDER_TYPE values is LIMIT or MARKET.
 
 ### -1117 INVALID_SIDE
-- 无效边。
-- ORDER_SIDE值是买入或卖出
+- Invalid side.
+- ORDER_SIDE values is BUY or SELL
 
 ### -1118 EMPTY_NEW_CL_ORD_ID
-- 新客户端订单ID为空。
+- New client order ID was empty.
 
 ### -1119 EMPTY_ORG_CL_ORD_ID
-- 原始客户端订单ID为空。
+- Original client order ID was empty.
 
 ### -1120 BAD_INTERVAL
-- 无效的间隔。
+- Invalid interval.
 
 ### -1121 BAD_SYMBOL
-- 无效符号。
+- Invalid symbol.
 
 ### -1125 INVALID_LISTEN_KEY
-- 此listenKey不存在。
+- This listenKey does not exist.
 
 ### -1127 MORE_THAN_XX_HOURS
-- 查找间隔太大。
-- 开始时间和结束时间之间超过%s小时。
+- Lookup interval is too big.
+- More than %s hours between startTime and endTime.
 
 ### -1128 OPTIONAL_PARAMS_BAD_COMBO
-- 可选参数的组合无效。
+- Combination of optional parameters invalid.
 
 ### -1130 INVALID_PARAMETER
-- 为参数发送的数据无效。
-- 为参数"%1！"发送的数据无效。
+- Invalid data sent for a parameter.
+- Data sent for paramter '%s' is not valid.
 
 ### -1132 ORDER_PRICE_TOO_HIGH
-- 订单价格太高。
+- Order price too high.
 
 ### -1133 ORDER_PRICE_TOO_SMALL
-- 订单价格低于最低，请检查一般经纪人信息。
+- Order price lower than the minimum,please check general broker info.
 
 ### -1134 ORDER_PRICE_PRECISION_TOO_LONG
-- 订单价格小数太长，请检查一般经纪人信息。
+- Order price decimal too long,please check general broker info.
 
 ### -1135 ORDER_QUANTITY_TOO_BIG
-- 订单数量太大。
+- Order quantity too large.
 
 ### -1136 ORDER_QUANTITY_TOO_SMALL
-- 订单数量低于最低数量。
+- Order quantity lower than the minimum.
 
 ### -1137 ORDER_QUANTITY_PRECISION_TOO_LONG
-- 订购数量小数太长。
+- Order quantity decimal too long.
 
 ### -1138 ORDER_PRICE_WAVE_EXCEED
-- 订单价格超出允许范围。
+- Order price exceeds permissible range.
 
 ### -1139 ORDER_HAS_FILLED
-- 订单已完成。
+- Order has been filled.
 
 ### -1140 ORDER_AMOUNT_TOO_SMALL
-- 交易金额低于最低金额。
+- Transaction amount lower than the minimum.
 
 ### -1141 ORDER_DUPLICATED
-- 客户端订单重复
+- Duplicate clientOrderId
 
 ### -1142 ORDER_CANCELLED
-- 订单已被取消
+- Order has been canceled
 
 ### -1143 ORDER_NOT_FOUND_ON_ORDER_BOOK
-- 在订单簿上找不到
+- Cannot be found on order book
 
 ### -1144 ORDER_LOCKED
-- 订单已被锁定
+- Order has been locked
 
 ### -1145 ORDER_NOT_SUPPORT_CANCELLATION
-- 此订单类型不支持取消
+- This order type does not support cancellation
 
 ### -1146 ORDER_CREATION_TIMEOUT
-- 订单创建超时
+- Order creation timeout
 
 ### -1147 ORDER_CANCELLATION_TIMEOUT
-- 订单取消超时
+- Order cancellation timeout
 
 ### -2010 NEW_ORDER_REJECTED
-- 新订单被拒绝
+- NEW_ORDER_REJECTED
 
 ### -2011 CANCEL_REJECTED
-- 取消订单被拒绝
+- CANCEL_REJECTED
 
 ### -2013 NO_SUCH_ORDER
-- 订单不存在
+- Order does not exist.
 
 ### -2014 BAD_API_KEY_FMT
-- API密钥格式无效。
+- API-key format invalid.
 
 ### -2015 REJECTED_MBX_KEY
-- 操作的API、IP或权限无效。
+- Invalid API-key, IP, or permissions for action.
 
 ### -2016 NO_TRADING_WINDOW
-- 找不到该品种的交易窗口。试试股票代码/24小时。
+- No trading window could be found for the symbol. Try ticker/24hrs instead.
 
-## 过滤器故障
+## Filter failures
 
-| 报错信息	     | 描述           |
+| Error message	     | Description           |
 | ----------- | -------------- |
-| "Filter failure: PRICE_FILTER" | 价格太高，太低，和/或不遵循交易品种的分时大小规则。|
-| "Filter failure: LOT_SIZE" | 数量太高、太低和/或未遵循符号的步长规则。|
-| "Filter failure: MIN_NOTIONAL" |价格*数量太低，不能作为该品种的有效订单。|
-| "Filter failure: MAX_NUM_ORDERS" |	客户在交易对上有太多挂单。|
-| "Filter failure: MAX_ALGO_ORDERS"| 账户有太多未平仓止损和/或在交易对上执行获利指令。 |
-| "Filter failure: ICEBERG_PARTS" | ICEBERG 订单会分成太多部分； icebergQty太小。|
+| "Filter failure: PRICE_FILTER" | price is too high, too low, and/or not following the tick size rule for the symbol.|
+| "Filter failure: LOT_SIZE" | quantity is too high, too low, and/or not following the step size rule for the symbol.|
+| "Filter failure: MIN_NOTIONAL" |price* quantity is too low to be a valid order for the symbol.|
+| "Filter failure: MAX_NUM_ORDERS" |	Account has too many open orders on the symbol.|
+| "Filter failure: MAX_ALGO_ORDERS"| Account has too many open stop loss and/or take profit orders on the symbol. |
+| "Filter failure: ICEBERG_PARTS" | Iceberg order would break into too many parts; icebergQty is too small.|
 
-## 订单拒绝错误
+## Order Rejection Issues
 
-| 报错信息	     | 描述           |
+| Error message	     | Description           |
 | ----------- | -------------- |
-|"Unknown order sent." | 	找不到订单(通过"orderId"，"clientOrderId"，"origClientOrderId")|
-|"Duplicate order sent." | clientOrderId已经被使用|
-|"Market is closed." | 该交易对不在交易范围 |
-|"Account has insufficient balance for requested action." | 没有足够的资金来完成行动  |
-|"Market orders are not supported for this symbol." | 交易对上未启用`MARKET` |
-|"Iceberg orders are not supported for this symbol." | 交易对上未启用`icebergQty` |
-|"Stop loss orders are not supported for this symbol." | 交易对上未启用 `STOP_LOSS` |
-|"Stop loss limit orders are not supported for this symbol." | 交易对上未启 `STOP_LOSS_LIMIT` |
-|"Take profit orders are not supported for this symbol." | 交易对上未启用`TAKE_PROFIT`|
-|"Take profit limit orders are not supported for this symbol." | 交易对上未启用`TAKE_PROFIT_LIMIT`|
-|"Price* QTY is zero or less." | `price` * `quantity`太小|
-|"IcebergQty exceeds QTY." | `icebergQty` 必须少于订单数量|
-|"This action disabled is on this account." | 联系客户支持； 该帐户已禁用了某些操作。|
-|"Unsupported order combination" | 不允许组合`orderType`, `timeInForce`, `stopPrice`, 和/或 `icebergQty` 。|
-|"Order would trigger immediately." | 与最后交易价格相比，订单的止损价无效。|
-|"Cancel order is invalid. Check origClOrdId and orderId." | 未发送`origClientOrderId` 或`orderId` 。|
-|"Order would immediately match and take." | `LIMIT_MAKER `订单类型将立即匹配并进行交易，而不是纯粹的生成订单。|
+|"Unknown order sent." | The order (by either orderId, clOrdId, origClOrdId) could not be found|
+|"Duplicate order sent." | The clOrdId is already in use|
+|"Market is closed." | The symbol is not trading |
+|"Account has insufficient balance for requested action." | Not enough funds to complete the action  |
+|"Market orders are not supported for this symbol." | MARKET is not enabled on the symbol |
+|"Iceberg orders are not supported for this symbol." | icebergQty is not enabled on the symbol |
+|"Stop loss orders are not supported for this symbol." | STOP_LOSS is not enabled on the symbol |
+|"Stop loss limit orders are not supported for this symbol." | STOP_LOSS_LIMIT is not enabled on the symbol |
+|"Take profit orders are not supported for this symbol." | TAKE_PROFIT is not enabled on the symbol|
+|"Take profit limit orders are not supported for this symbol." | TAKE_PROFIT_LIMIT is not enabled on the symbol |
+|"Price* QTY is zero or less." | price* quantity is too low|
+|"IcebergQty exceeds QTY." | icebergQty must be less than the order quantity|
+|"This action disabled is on this account." | Contact customer support; some actions have been disabled on the account.|
+|"Unsupported order combination" | The orderType, timeInForce, stopPrice, and/or icebergQty combination isn't allowed.|
+|"Order would trigger immediately." | The order's stop price is not valid when compared to the last traded price. |
+|"Cancel order is invalid. Check origClOrdId and orderId." | No origClOrdId or orderId was sent in.|
+|"Order would immediately match and take." | LIMIT_MAKER order type would immediately match and trade, and not be a pure maker order.|
