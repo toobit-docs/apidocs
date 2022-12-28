@@ -278,7 +278,6 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 - 8h
 - 12h
 - 1d
-- 3d
 - 1w
 - 1M
 
@@ -960,15 +959,15 @@ Klines are uniquely identified by their open time.
 [
     {
         "t": 1538725500422,   // time
-        "a": "1.10000000",    // 最高卖价
-        "b": "1.00000000",    // 最高买价
+        "a": "1.10000000",    // highest selling price
+        "b": "1.00000000",    // highest bid
         "s": "ETHBTC",        // symbol 
-        "c": "4.00000200",    // 最新成交价
-        "o": "99.00000000",   // 开盘价
-        "h": "100.00000000",  // 最高价 
-        "l": "0.10000000",    // 最低价
-        "v": "8913.30000000", // 成交量
-        "qv": "15.30000000"   // 成交额
+        "c": "4.00000200",    // latest transaction price
+        "o": "99.00000000",   // opening price
+        "h": "100.00000000",  // highest price 
+        "l": "0.10000000",    // lowest price
+        "v": "8913.30000000", // Total trade volume (in base asset)
+        "qv": "15.30000000"   // otal trade volume (in quote asset)
     }
 ]
 ```
@@ -979,78 +978,78 @@ Klines are uniquely identified by their open time.
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING| NO | |
 
-- 如果symbol没有被发送，所有symbol的数据都会被返回。
+- If the symbol is not sent, all symbol data will be returned.
 
-## 最新价格
+## Symbol Price Ticker
 
 - `GET /quote/v1/ticker/price`
 
-单个或多个symbol的最新价。
+Latest price for a symbol or symbols.
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 [
   {
-    "s": "LTCBTC",     // 交易对
-    "p": "4.00000200"  // 最新价
+    "s": "LTCBTC",     // symbol
+    "p": "4.00000200"  // price
   }
 ]
 ```
-### 参数
+### Parameters
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING| NO | |
 
-- 如果symbol没有发送，所有symbol的最新价都会被返回。
+- If the symbol is not sent, all symbol data will be returned.
 
-## 当前最优挂单
+## Symbol Order Book Ticker
 - `GET /quote/v1/ticker/bookTicker`
 
-单个或者多个symbol的最佳买单卖单价格。
+Best price/qty on the order book for a symbol or symbols.
 
-### 权重：1
+### Weight：1
 
-> 响应
+> Response
 
 ``` json
 [
   {
-      "t": 132222222222222,     // 时间
-      "s": "LTCBTC",            // 交易对          
-      "b": "4.00000000",        // 最高买价
-      "bq": "431.00000000",     // 最高买价对应的数量
-      "a": "4.00000200",        // 最高卖价
-      "aq": "9.00000000"        // 最高卖价对应的数量
+      "t": 1672035413265,     // time
+      "s": "LTCBTC",            // symbol          
+      "b": "4.00000000",        // bidPrice
+      "bq": "431.00000000",     // bidQty
+      "a": "4.00000200",        // askPrice
+      "aq": "9.00000000"        // askQty
   }
 ]
 ```
-### 参数
+### Parameters
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING| NO | |
 
-- 如果symbol没有被发送，所有symbol的最佳订单簿价格都会被返回。
+- If the symbol is not sent, the best order book price for all symbols will be returned.
 
-## 合并深度
+## Merge Depth
 
 - `GET /quote/v1/depth/merged`
 
-### 权重： 1
+### Weight： 1
 
-> 响应
+> Response
 
 ``` json
 {
-    "t": 1672035413265,//时间
-    "b": [//买入深度高到低
+    "t": 1672035413265,//time
+    "b": [//Buy Depth High to Low
         [
-            "16851.95",//价格
-            "0.003321"//数量
+            "16851.95",//price
+            "0.003321"//quantity
         ],
         [
             "16851.87",
@@ -1061,7 +1060,7 @@ Klines are uniquely identified by their open time.
             "0.002219"
         ]
     ],
-    "a": [//卖出深度低到高
+    "a": [//Sell Depth Low to High
         [
             "16870.19",
             "0.003838"
@@ -1082,24 +1081,26 @@ Klines are uniquely identified by their open time.
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| NO | 交易对 |
-| scale | INT | NO | 精度 |
-| limit | INT | NO | 限制条数 |
+| symbol | STRING| NO |  |
+| scale | INT | NO |  |
+| limit | INT | NO |  |
 
-# Websocket 行情推送
+# Websocket Market Streams
 
-- 本篇所列出的所有wss接口的baseurl为: wss://stream.toobit.com
-- 直接访问时URL格式为  wss://#HOST/quote/ws/v1
+- The base endpoint is: wss://stream.toobit.com
+- The URL format for direct access is:  wss://#HOST/quote/ws/v1
 
-| 名称     | 值      | 
+| Name     | value      | 
 | ----------- | ------- |
-| topic | `realtimes`(实时行情), `trade`(最新成交), `kline_$interval`(k线), `depth`（深度）,`markPrice`(标记价格）,`markPriceKline_$interval`(标记价格K线）,`index`(指数价格）`indexKline_$interval`(指数价格K线） |
-| event | `sub`(订阅), `cancel`(取消), `cancel_all`(取消全部)  |
+| topic | `realtimes`, `trade`, `kline_$interval`, `depth`,`markPrice`,`markPriceKline_$interval`,`index``indexKline_$interval` |
+| event | `sub`, `cancel`, `cancel_all`  |
 | interval | `1m`, `5m`, `15m`, `30m`, `1h`, `2h`, `6h`, `12h`, `1d`, `1w`, `1M` |
 
-## 实时订阅/取消数据流
+## Live Subscribing/Unsubscribing to streams
 
-### 请求订阅数据样例:
+### Subscribe to a stream:
+
+- Request
 
 `{`
 
@@ -1111,15 +1112,18 @@ Klines are uniquely identified by their open time.
 
    ` "params": {`
 
-  `"limit": "$limit", // kline返回上限是2000，默认为1`
+  `"limit": "$limit", // kline return upper limit is 2000, the default is 1`
         
-  ` "binary": "false" //返回的数据是否是压缩过的，默认为false`
+  ` "binary": "false" //Whether the returned data is compressed, the default is false`
 
   `}`
 
 `}`
 
-### 取消订阅数据样例:
+### Unsubscribe to a stream:
+
+- Request
+
 `{`
 
   `"symbol": "$symbol0, $symbol1",`
@@ -1130,17 +1134,17 @@ Klines are uniquely identified by their open time.
 
    ` "params": {`
 
-  `"limit": "$limit", // kline返回上限是2000，默认为1`
+  `"limit": "$limit", // kline return upper limit is 2000, the default is 1`
         
-  ` "binary": "false" //返回的数据是否是压缩过的，默认为false`
+  ` "binary": "false" //Whether the returned data is compressed, the default is false`
 
   `}`
 
 `}`
 
-## 心跳
+## Heartbeat
 
-每隔一段时间，客户端需要发送ping帧，服务端会回复pong帧，否则服务端会在5分钟内主动断开链接。
+Every once in a while, the client needs to send a ping frame, and the server will reply with a pong frame, otherwise the server will actively disconnect within 5 minutes.
 
 > Payblad
 
@@ -1150,7 +1154,7 @@ Klines are uniquely identified by their open time.
 }
 ```
 
-### 请求
+### Request
 
 `{`
 
@@ -1158,11 +1162,11 @@ Klines are uniquely identified by their open time.
 
 `}`
 
-## 逐笔交易
+## Trade Streams
 
-逐笔交易推送每一笔成交的信息。成交，或者说交易的定义是仅有一个吃单者与一个挂单者相互交易。
-在成功连接到服务器后，服务器首先会推送一条最近的60条成交。在这条推送之后，每条推送都是实时的成交。
-变量“v”可以理解成一个交易ID。这个变量是全局递增的并且独特的。例如：假设过去5秒有3笔交易发生，分别是`ETHUSDT`、`BTCUSDT`、`BHTBTC`。它们的“v”会为连续的值（112，113，114）。
+Push the information of each transaction transaction by transaction. A deal, or the definition of a transaction, is that there is only one taker and one maker trading with each other.
+After successfully connecting to the server, the server will first push a recent 60 transactions. After this push, each push is a real-time transaction.
+The variable "v" can be understood as a transaction ID. This variable is globally incremented and unique. For example: Suppose there have been 3 transactions in the past 5 seconds, namely `ETHUSDT`, `BTCUSDT`, `BHTBTC`. Their "v" will be consecutive values (112, 113, 114).
 
 > Payload
 
@@ -1177,11 +1181,11 @@ Klines are uniquely identified by their open time.
     },
     "data": [
         {
-            "v": "1291465821801168896", // 参见解释
-            "t": 1668690723096, //时间戳
-            "p": "399", // 价格
-            "q": "1", // 数量
-            "m": false // true = 买, false = 卖
+            "v": "1291465821801168896", 
+            "t": 1668690723096, //time
+            "p": "399", // price
+            "q": "1", // quantity
+            "m": false // true = buy, false = sell
         },
         {
             "v": "1291465842546196481",
@@ -1191,13 +1195,13 @@ Klines are uniquely identified by their open time.
             "m": false
         }
     ],
-    "f": true, // 是不是第一个返回
+    "f": true, // is it the first to return
     "sendTime": 1668753154192,
     "shared": false
 }
 ```
 
-### 请求订阅数据样例:
+### Request:
 
 `{`
 
@@ -1215,13 +1219,13 @@ Klines are uniquely identified by their open time.
 
 `}`
 
-## K线 Streams
+## Kline/Candlestick Streams
 
-K线stream逐秒推送所请求的K线种类(最新一根K线)的更新
+The Kline/Candlestick Stream push updates to the current klines/candlestick every second.
 
 ### K线图间隔参数:
 
-m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
+m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 
 - 1m
 - 5m
@@ -1250,29 +1254,29 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
     },
     "data": [
         {
-            "t": 1668753840000,//k线开始时间
+            "t": 1668753840000,// Event time
             "s": "BTCUSDT",// symbol
             "sn": "BTCUSDT",// symbol name
-            "c": "445",//收盘价
-            "h": "445",//最高价
-            "l": "445",//最低价
-            "o": "445",//开盘价
-            "v": "0"//交易量
+            "c": "445",//Close price
+            "h": "445",//High price
+            "l": "445",//Low price
+            "o": "445",//Open price
+            "v": "0"//Base asset volume
         }
     ],
-    "f": true,// 是否为第一个返回
+    "f": true,// Is it the first return
     "sendTime": 1668753854576,
     "shared": false
 }
 ```
 
-### 请求订阅数据样例:
+### Request:
 
 `{`
 
   `"symbol": "$symbol0, $symbol1",`
 
- ` "topic": "kline_"+$间隔,`
+ ` "topic": "kline_"+$interval,`
 
   `"event": "sub",`
 
@@ -1284,9 +1288,9 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 `}`
 
-## 按Symbol的完整Ticker
+## Individual Symbol Ticker Streams
 
-按Symbol逐秒刷新的24小时完整ticker信息
+24-hour complete ticker information refreshed second by symbol
 
 > Payload
 
@@ -1301,26 +1305,26 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
     },
     "data": [
         {
-            "t": 1668753480049, //时间戳
+            "t": 1668753480049, //time
             "s": "BTCUSDT", //symbol
             "sn": "BTCUSDT", // symbol name
-            "c": "445", //收盘价
-            "h": "445", //最高价
-            "l": "310", //最低价
-            "o": "311", //开盘价
-            "v": "3747.7597191", //交易量
-            "qv": "1426443.9553995", //交易额
+            "c": "445", //Close price
+            "h": "445", //High price
+            "l": "310", // Low price
+            "o": "311", //Open price
+            "v": "3747.7597191", //Total traded base asset volume
+            "qv": "1426443.9553995", // Total traded quote asset volume
             "m": "0.4309", // margin
-            "e": 301 // 交易id
+            "e": 301 // trade id
         }
     ],
-    "f": true, // 是否为第一个返回
+    "f": true, 
     "sendTime": 1668753481048,
     "shared": false
 }
 ```
 
-### 请求订阅数据样例:
+### Request:
 
 `{`
 
@@ -1338,17 +1342,17 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 `}`
 
-## 有限档深度信息
+## Partial Book Depth Streams
 
-Symbol的深度信息。
+Symbol's depth information.
 
-- 订单簿快照频率：每300ms, 如果book变了的话。
-- 订单簿快照频率深度：bids 和 asks各300
-- 订单簿版本变更触发事件：
-  - 订单进入订单簿
-  - 订单离开订单簿
-  - 订单数量变更
-  - 订单已完成
+- Order book snapshot frequency: every 300ms, if the book changes.
+- Order book snapshot frequency depth: bids and asks 300 each
+- Order book version change trigger event：
+  - The order enters the order book
+  - Order leaves the order book
+  - Order Quantity Change
+  - Order Completed
 
 > Payload
 
@@ -1358,10 +1362,10 @@ Symbol的深度信息。
   "topic": "depth",
   "data": [{
     "s": "BTCUSDT", //Symbol
-    "t": 1565600357643, //时间戳
-    "v": "112801745_18", //见上面解释
+    "t": 1565600357643, //time
+    "v": "112801745_18", //
     "b": [ //Bids
-      ["11371.49", "0.0014"], //[价格, 数量]
+      ["11371.49", "0.0014"], //[price, quantity]
       ["11371.12", "0.2"],
       ["11369.97", "0.3523"],
       ["11369.96", "0.5"],
@@ -1372,7 +1376,7 @@ Symbol的深度信息。
       ["11369.16", "0.2"],
       ["11369.04", "1.3203"],
     "a": [//Asks
-      ["11375.41", "0.0053"], //[价格, 数量]
+      ["11375.41", "0.0053"], //[price, quantity]
       ["11375.42", "0.0043"],
       ["11375.48", "0.0052"],
       ["11375.58", "0.0541"],
@@ -1384,11 +1388,11 @@ Symbol的深度信息。
       ["11377.61", "0.3"]
     ]
   }],
-  "f": true//是否为第一个返回
+  "f": true//Is it the first return
 }
 ```
 
-### 请求订阅数据样例:
+### Request:
 
 `{`
 
@@ -1405,7 +1409,7 @@ Symbol的深度信息。
 `    }`
 
 
-## 增量深度信息
+## Diff. Depth Stream
 
 > Payload
 
@@ -1434,11 +1438,11 @@ Symbol的深度信息。
       ["11319.24", "3.0665"]
     ]
   }],
-  "f": false //是否为第一个返回值
+  "f": false //Is it the first return
 }
 ```
 
-### 请求订阅数据样例:
+### Request:
 
 `{`
 
@@ -1456,22 +1460,22 @@ Symbol的深度信息。
 
 `}`
 
-每秒推送订单簿的变化部分（如果有）。
-在增量深度信息中，数量不一定等于对应价格的数量。如果数量=0，这说明在上一条推送中的这个价格已经没有了。如果数量>0，这时的数量为更新后的这个价格所对应的数量
-假设我们收到的返回数据中有这样一条：<br>
+Push the changing part of the order book (if any) every second.
+In incremental depth information, the quantity is not necessarily equal to the quantity corresponding to the price. If the quantity=0, it means that the price in the last push is no longer available. If the quantity>0, the quantity at this time is the quantity corresponding to the updated price
+Suppose there is such an item in the returned data we received:<br>
 
-`["0.00181860", "155.92000000"]// 价格，数量`
+`["0.00181860", "155.92000000"]// price, quantity`
 
-如果下一条返回数据中有：<br>
+If the next returned data contains:<br>
 
 `["0.00181860", "12.3"]`
 
-这说明这个价格对应的数量有变更，已经更新变更的数量
-如果下一条返回数据中有：
+This means that the quantity corresponding to this price has changed, and the changed quantity has been updated
+If the next returned data contains:
 
 `["0.00181860", "0"]`
 
-这说明这个价格对应的数量已经消失，将会在客户端中删除。
+This means that the quantity corresponding to this price has disappeared and will be deleted in the client.
 
 # Spot Account/Trade
 
