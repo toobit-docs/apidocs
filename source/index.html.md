@@ -1789,7 +1789,7 @@ Notes：
 
 ### Weight：5
 
-> 响应:
+> Response:
 
 ``` json
 {
