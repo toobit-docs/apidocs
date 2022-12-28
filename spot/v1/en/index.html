@@ -2790,6 +2790,7 @@ If the next returned data contains:</p>
 <li>Doing a <code>DELETE</code> on a <code>listenKey</code> will close the stream and invalidate the <code>listenKey</code> .</li>
 <li>Doing a <code>POST</code> on an account with an active <code>listenKey</code> will return the currently active <code>listenKey</code>and extend its validity for 60 minutes.</li>
 <li>The base websocket endpoint is: <strong>wss://stream.toobit.com</strong></li>
+<li>User feeds are accessible via <code>/api/v1/ws/&lt;listenKey&gt;</code> (e.g. <code>wss://#HOST/api/v1/ws/&lt;listenKey&gt;</code>)</li>
 <li>Each link is valid for no more than 24 hours, please properly handle disconnection and reconnection.</li>
 <li>User feed payloads are not guaranteed to be up during busy times; make sure to order updates with <code>E</code></li>
 </ul>
