@@ -1811,6 +1811,7 @@ Symbol的深度信息。
 - 可以通过DELETE一个 `listenKey` 立即关闭当前数据流，并使该`listenKey` 无效
 - 在具有有效listenKey的帐户上执行`POST`将返回当前有效的`listenKey`并将其有效期延长60分钟
 - websocket接口的baseurl: **wss://stream.toobit.com**
+- - 用户信息流可通过 `/api/v1/ws/<listenKey>`访问   (例如`wss://#HOST/api/v1/ws/<listenKey>`)
 - 每个链接有效期不超过24小时，请妥善处理断线重连。
 - 用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新
 
