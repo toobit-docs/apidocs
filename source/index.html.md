@@ -1983,7 +1983,7 @@ Get trades for a specific account and symbol.
 | fromId | LONG | NO | Start from TradeId (used to query transaction orders) |
 | toId | LONG | NO | To the end of TradeId (used to query transaction orders) |
 
-## Query Risk Limit 
+## Query Risk Limit (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
 
 To query the risk limit, this API endpoint requires a request signature.
