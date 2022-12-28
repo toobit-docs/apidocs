@@ -308,7 +308,7 @@
                     <a href="#deposit-address-user_data" class="toc-h2 toc-link" data-title="Deposit Address (USER_DATA)">Deposit Address (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data" class="toc-h2 toc-link" data-title="获取充值历史 (USER_DATA)">获取充值历史 (USER_DATA)</a>
+                    <a href="#deposit-history-user_data" class="toc-h2 toc-link" data-title="Deposit History (USER_DATA)">Deposit History (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -962,7 +962,7 @@ HMAC SHA256 signature:
 <td>chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI</td>
 </tr>
 </tbody></table>
-<h2 id='user_data'>获取充值历史 (USER_DATA)</h2>
+<h2 id='deposit-history-user_data'>Deposit History (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/depositOrders  (HMAC SHA256)</code></li>
 </ul>
@@ -1053,7 +1053,7 @@ HMAC SHA256 signature:
 </ul>
 
 <p>est connectivity to the Rest API.</p>
-<h3 id='1'>权重:1</h3>
+<h3 id='weight-1-3'>Weight:1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1066,7 +1066,7 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Test connectivity to the Rest API and get the current server time.</p>
-<h3 id='weight-1-3'>Weight:1</h3>
+<h3 id='weight-1-4'>Weight:1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1081,7 +1081,7 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Current exchange trading rules and symbol information</p>
-<h3 id='weight-1-4'>Weight:1</h3>
+<h3 id='weight-1-5'>Weight:1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1495,7 +1495,7 @@ If you set <code>limit=0</code>, a lot of data will be returned.</p>
 </ul>
 
 <p>Get recent trades.</p>
-<h3 id='weight-1-5'>Weight： 1</h3>
+<h3 id='weight-1-6'>Weight： 1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1536,7 +1536,7 @@ If you set <code>limit=0</code>, a lot of data will be returned.</p>
 
 <p>Kline/candlestick bars for a symbol. <br>
 Klines are uniquely identified by their open time.</p>
-<h3 id='weight-1-6'>Weight：1</h3>
+<h3 id='weight-1-7'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1625,7 +1625,7 @@ Klines are uniquely identified by their open time.</p>
         </span><span class="s2">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">otal</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset)</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242'>参数</h3>
+</span></code></pre><h3 id='parameters-11'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1651,7 +1651,7 @@ Klines are uniquely identified by their open time.</p>
 </ul>
 
 <p>Latest price for a symbol or symbols.</p>
-<h3 id='weight-1-7'>Weight：1</h3>
+<h3 id='weight-1-8'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1661,7 +1661,7 @@ Klines are uniquely identified by their open time.</p>
     </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-11'>Parameters</h3>
+</span></code></pre><h3 id='parameters-12'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1687,7 +1687,7 @@ Klines are uniquely identified by their open time.</p>
 </ul>
 
 <p>Best price/qty on the order book for a symbol or symbols.</p>
-<h3 id='weight-1-8'>Weight：1</h3>
+<h3 id='weight-1-9'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1701,7 +1701,7 @@ Klines are uniquely identified by their open time.</p>
       </span><span class="s2">"aq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.00000000"</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">askQty</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-12'>Parameters</h3>
+</span></code></pre><h3 id='parameters-13'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1725,7 +1725,7 @@ Klines are uniquely identified by their open time.</p>
 <ul>
 <li><code>GET /quote/v1/depth/merged</code></li>
 </ul>
-<h3 id='weight-1-9'>Weight： 1</h3>
+<h3 id='weight-1-10'>Weight： 1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1760,7 +1760,7 @@ Klines are uniquely identified by their open time.</p>
         </span><span class="p">]</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-2'>参数</h3>
+</span></code></pre><h3 id='parameters-14'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1926,7 +1926,7 @@ The variable &quot;v&quot; can be understood as a transaction ID. This variable 
 <p><code>}</code></p>
 <h2 id='kline-candlestick-streams'>Kline/Candlestick Streams</h2>
 <p>The Kline/Candlestick Stream push updates to the current klines/candlestick every second.</p>
-<h3 id='k'>K线图间隔参数:</h3>
+<h3 id='kline-candlestick-chart-intervals-2'>Kline/Candlestick chart intervals:</h3>
 <p>m -&gt; minutes; h -&gt; hours; d -&gt; days; w -&gt; weeks; M -&gt; months</p>
 
 <ul>
@@ -2062,7 +2062,7 @@ The variable &quot;v&quot; can be understood as a transaction ID. This variable 
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
     </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//Symbol</span><span class="w">
     </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1565600357643</span><span class="p">,</span><span class="w"> </span><span class="err">//time</span><span class="w">
-    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112801745_18"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112801745_18"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
     </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//Bids</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11371.49"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0014"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">quantity</span><span class="p">]</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11371.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
@@ -2172,12 +2172,12 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Test new order creation and signature/recvWindow long. Creates and validates a new order but does not send it into the matching engine.</p>
-<h3 id='weight-1-10'>Weight：1</h3>
+<h3 id='weight-1-11'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h3 id='parameters-13'>Parameters</h3>
+</span></code></pre><h3 id='parameters-15'>Parameters</h3>
 <p>Same as <code>POST /api/v1/spot/order</code></p>
 <h2 id='new-order-trade'>New Order  (TRADE)</h2>
 <ul>
@@ -2185,7 +2185,7 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Send in a new order.</p>
-<h3 id='weight-1-11'>Weight：1</h3>
+<h3 id='weight-1-12'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2204,7 +2204,7 @@ If the next returned data contains:</p>
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-14'>Parameters</h3>
+</span></code></pre><h3 id='parameters-16'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2330,7 +2330,7 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Cancel an active order.</p>
-<h3 id='weight-1-12'>Weight：1</h3>
+<h3 id='weight-1-13'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2347,7 +2347,7 @@ If the next returned data contains:</p>
   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-15'>Parameters</h3>
+</span></code></pre><h3 id='parameters-17'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2394,7 +2394,7 @@ If the next returned data contains:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-16'>Parameters</h3>
+</span></code></pre><h3 id='parameters-18'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2420,7 +2420,7 @@ If the next returned data contains:</p>
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='weight-1-13'>Weight：1</h3>
+<h3 id='weight-1-14'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2442,7 +2442,7 @@ If the next returned data contains:</p>
   </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-17'>Parameters</h3>
+</span></code></pre><h3 id='parameters-19'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2489,7 +2489,7 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Get all open orders on a symbol. <strong>Careful</strong> when accessing this with no symbol.</p>
-<h3 id='weight-1-14'>Weight ：1</h3>
+<h3 id='weight-1-15'>Weight ：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2513,7 +2513,7 @@ If the next returned data contains:</p>
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-18'>Parameters</h3>
+</span></code></pre><h3 id='parameters-20'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2589,7 +2589,7 @@ If the next returned data contains:</p>
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-3'>参数</h3>
+</span></code></pre><h3 id='parameters-21'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2661,7 +2661,7 @@ If the next returned data contains:</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-4'>参数</h3>
+</span></code></pre><h3 id='parameters-22'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2715,7 +2715,7 @@ If the next returned data contains:</p>
         </span><span class="s2">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-19'>Parameters</h3>
+</span></code></pre><h3 id='parameters-23'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2799,14 +2799,14 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active <code>listenKey</code>, that <code>listenKey</code> will be returned and its validity will be extended for 60 minutes.</p>
-<h4 id='weight-1-15'>Weight：1</h4>
+<h4 id='weight-1-16'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='749d765242-5'>参数</h4>
+</span></code></pre><h4 id='parameters-24'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2834,12 +2834,12 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It&#39;s recommended to send a ping about every 30 minutes.</p>
-<h4 id='weight-1-16'>Weight：1</h4>
+<h4 id='weight-1-17'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='parameters-20'>Parameters</h4>
+</span></code></pre><h4 id='parameters-25'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2871,12 +2871,12 @@ If the next returned data contains:</p>
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='weight-1-17'>Weight：1</h4>
+<h4 id='weight-1-18'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='parameters-21'>Parameters</h4>
+</span></code></pre><h4 id='parameters-26'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
