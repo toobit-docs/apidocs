@@ -399,7 +399,7 @@ Fetch deposit address with network.
 | coin | STRING | YES |  |
 | chainType | STRING | YES | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI |
 
-## 获取充值历史 (USER_DATA)
+## Deposit History (USER_DATA)
  - `GET /api/v1/account/depositOrders  (HMAC SHA256)`
 
 ### Weight： 5
@@ -452,7 +452,7 @@ Notes:
 
 est connectivity to the Rest API.
 
-### 权重:1
+### Weight:1
 
 > Response
 
@@ -972,7 +972,7 @@ Klines are uniquely identified by their open time.
 ]
 ```
 
-### 参数
+### Parameters
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
@@ -1077,7 +1077,7 @@ Best price/qty on the order book for a symbol or symbols.
 }
 ```
 
-### 参数
+### Parameters
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
@@ -1223,7 +1223,7 @@ The variable "v" can be understood as a transaction ID. This variable is globall
 
 The Kline/Candlestick Stream push updates to the current klines/candlestick every second.
 
-### K线图间隔参数:
+### Kline/Candlestick chart intervals:
 
 m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 
@@ -1363,7 +1363,7 @@ Symbol's depth information.
   "data": [{
     "s": "BTCUSDT", //Symbol
     "t": 1565600357643, //time
-    "v": "112801745_18", //
+    "v": "112801745_18", // Base asset volume
     "b": [ //Bids
       ["11371.49", "0.0014"], //[price, quantity]
       ["11371.12", "0.2"],
@@ -1725,7 +1725,7 @@ Get all account orders; active, canceled, or filled.
 ]
 ```
 
-### 参数
+### Parameters
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | orderId | LONG | NO |  |
@@ -1758,7 +1758,7 @@ Get all account orders; active, canceled, or filled.
 }
 ```
 
-### 参数
+### Parameters
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | recvWindow | LONG | NO |  |
@@ -1845,7 +1845,7 @@ Start a new user data stream. The stream will close after 60 minutes unless a ke
 }
 ```
 
-#### 参数
+#### Parameters
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | recvWindow | LONG | NO |  |
