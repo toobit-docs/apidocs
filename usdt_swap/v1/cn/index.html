@@ -409,13 +409,13 @@
                     <a href="#user_data-6" class="toc-h2 toc-link" data-title="账户成交历史 (USER_DATA)">账户成交历史 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#747e1e5bf3" class="toc-h2 toc-link" data-title="风险限额查询">风险限额查询</a>
+                    <a href="#user_data-7" class="toc-h2 toc-link" data-title="风险限额查询 (USER_DATA)">风险限额查询 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-7" class="toc-h2 toc-link" data-title="设置风险限额(USER_DATA)">设置风险限额(USER_DATA)</a>
+                    <a href="#user_data-8" class="toc-h2 toc-link" data-title="设置风险限额(USER_DATA)">设置风险限额(USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-8" class="toc-h2 toc-link" data-title="用户手续费率 (USER_DATA)">用户手续费率 (USER_DATA)</a>
+                    <a href="#user_data-9" class="toc-h2 toc-link" data-title="用户手续费率 (USER_DATA)">用户手续费率 (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -662,11 +662,28 @@ HMAC SHA256 签名:
 <li>LIMIT - 限价单</li>
 <li>MARKET - 市价单</li>
 <li>LIMIT_MAKER - maker限价单</li>
-<li>STOP_LOSS (unavailable now) - 暂无</li>
-<li>STOP_LOSS_LIMIT (unavailable now) - 暂无</li>
-<li>TAKE_PROFIT (unavailable now) - 暂无</li>
-<li>TAKE_PROFIT_LIMIT (unavailable now) - 暂无</li>
-<li>MARKET_OF_PAYOUT (unavailable now) - 暂无</li>
+<li>STOP 计划委托</li>
+<li>STOP_SHORT_PROFIT 止盈</li>
+<li>STOP_LONG_PROFIT 止盈</li>
+<li>STOP_LONG_LOSS  止损</li>
+<li>STOP_SHORT_LOSS 止损</li>
+<li>LIQUI_IOC_ORDER 强平</li>
+<li>LIQUI_ADL_ORDER ADL</li>
+</ul>
+<h3 id='71bd733fc3'>计划委托 或者 止盈止损订单状态</h3>
+<ul>
+<li>ORDER_NEW 新建委托</li>
+<li>ORDER_FILLED 委托触发成功</li>
+<li>ORDER_REJECTED 委托拒绝</li>
+<li>ORDER_CANCELED 取消委托</li>
+<li>ORDER_FAILED 委托触发失败</li>
+</ul>
+<h3 id='a8e01fef2a'>止盈止损类型</h3>
+<ul>
+<li>STOP_LONG_PROFIT  多仓止盈</li>
+<li>STOP_LONG_LOSS 多仓止损</li>
+<li>STOP_SHORT_PROFIT 计划委托-空仓止盈</li>
+<li>STOP_SHORT_LOSS 计划委托-空仓止损</li>
 </ul>
 <h4 id='2ca0747f2a'>订单方向:</h4>
 <ul>
@@ -695,7 +712,6 @@ HMAC SHA256 签名:
 <li>8h</li>
 <li>12h</li>
 <li>1d</li>
-<li>3d</li>
 <li>1w</li>
 <li>1M</li>
 </ul>
@@ -2938,7 +2954,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>到TradeId结束（用来查询成交订单）</td>
 </tr>
 </tbody></table>
-<h2 id='747e1e5bf3'>风险限额查询</h2>
+<h2 id='user_data-7'>风险限额查询 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/riskLimit</code></li>
 </ul>
@@ -2980,7 +2996,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>交易对</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-7'>设置风险限额(USER_DATA)</h2>
+<h2 id='user_data-8'>设置风险限额(USER_DATA)</h2>
 <ul>
 <li><code>POST /api/v1/futures/setRiskLimit</code></li>
 </ul>
@@ -3019,7 +3035,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>true:LONG（多仓） false:SHORT（空仓）</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-8'>用户手续费率 (USER_DATA)</h2>
+<h2 id='user_data-9'>用户手续费率 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/commissionRate</code></li>
 </ul>
@@ -3309,7 +3325,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>IOC</li>
 <li>FOK</li>
 </ul>
-<h3 id='71bd733fc3'>计划委托 或者 止盈止损订单状态</h3>
+<h3 id='71bd733fc3-2'>计划委托 或者 止盈止损订单状态</h3>
 <ul>
 <li>ORDER_NEW 新建委托</li>
 <li>ORDER_FILLED 委托触发成功</li>
@@ -3317,7 +3333,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>ORDER_CANCELED 取消委托</li>
 <li>ORDER_FAILED 委托触发失败</li>
 </ul>
-<h3 id='a8e01fef2a'>止盈止损类型</h3>
+<h3 id='a8e01fef2a-2'>止盈止损类型</h3>
 <ul>
 <li>STOP_LONG_PROFIT  多仓止盈</li>
 <li>STOP_LONG_LOSS 多仓止损</li>
