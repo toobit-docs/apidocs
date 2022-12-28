@@ -2766,6 +2766,7 @@ HMAC SHA256 签名:
 <li>可以通过DELETE一个 <code>listenKey</code> 立即关闭当前数据流，并使该<code>listenKey</code> 无效</li>
 <li>在具有有效listenKey的帐户上执行<code>POST</code>将返回当前有效的<code>listenKey</code>并将其有效期延长60分钟</li>
 <li>websocket接口的baseurl: <strong>wss://stream.toobit.com</strong></li>
+<li>- 用户信息流可通过 <code>/api/v1/ws/&lt;listenKey&gt;</code>访问   (例如<code>wss://#HOST/api/v1/ws/&lt;listenKey&gt;</code>)</li>
 <li>每个链接有效期不超过24小时，请妥善处理断线重连。</li>
 <li>用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新</li>
 </ul>
