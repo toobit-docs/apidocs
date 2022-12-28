@@ -2064,6 +2064,7 @@ To query the risk limit, this API endpoint requires a request signature.
 - Doing a DELETE on a `listenKey` will close the stream and invalidate the listenKey .
 - Doing a POST on an account with an active `listenKey` will return the currently active `listenKey` and extend its validity for 60 minutes.
 - The base websocket endpoint is: **wss://stream.toobit.com**
+- User feeds are accessible via `/api/v1/ws/<listenKey>` (e.g. `wss://#HOST/api/v1/ws/<listenKey>`)
 - Each link is valid for no more than 24 hours, please properly handle disconnection and reconnection.
 - User feed payloads are not guaranteed to be up during busy times; make sure to order updates with `E`
 
