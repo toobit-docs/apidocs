@@ -313,6 +313,67 @@
               </ul>
           </li>
           <li>
+            <a href="#market-data-endpoints" class="toc-h1 toc-link" data-title="Market Data Endpoints">Market Data Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#test-connectivity" class="toc-h2 toc-link" data-title="Test Connectivity">Test Connectivity</a>
+                  </li>
+                  <li>
+                    <a href="#check-server-time" class="toc-h2 toc-link" data-title="Check Server Time">Check Server Time</a>
+                  </li>
+                  <li>
+                    <a href="#exchange-information" class="toc-h2 toc-link" data-title="Exchange Information">Exchange Information</a>
+                  </li>
+                  <li>
+                    <a href="#order-book" class="toc-h2 toc-link" data-title="Order Book">Order Book</a>
+                  </li>
+                  <li>
+                    <a href="#recent-trades-list" class="toc-h2 toc-link" data-title="Recent Trades List">Recent Trades List</a>
+                  </li>
+                  <li>
+                    <a href="#kline-candlestick-data" class="toc-h2 toc-link" data-title="Kline/Candlestick Data">Kline/Candlestick Data</a>
+                  </li>
+                  <li>
+                    <a href="#24hr-ticker-price-change-statistics" class="toc-h2 toc-link" data-title="24hr Ticker Price Change Statistics">24hr Ticker Price Change Statistics</a>
+                  </li>
+                  <li>
+                    <a href="#symbol-price-ticker" class="toc-h2 toc-link" data-title="Symbol Price Ticker">Symbol Price Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#symbol-order-book-ticker" class="toc-h2 toc-link" data-title="Symbol Order Book Ticker">Symbol Order Book Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#merge-depth" class="toc-h2 toc-link" data-title="Merge Depth">Merge Depth</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#websocket-market-streams" class="toc-h1 toc-link" data-title="Websocket Market Streams">Websocket Market Streams</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#live-subscribing-unsubscribing-to-streams" class="toc-h2 toc-link" data-title="Live Subscribing/Unsubscribing to streams">Live Subscribing/Unsubscribing to streams</a>
+                  </li>
+                  <li>
+                    <a href="#heartbeat" class="toc-h2 toc-link" data-title="Heartbeat">Heartbeat</a>
+                  </li>
+                  <li>
+                    <a href="#trade-streams" class="toc-h2 toc-link" data-title="Trade Streams">Trade Streams</a>
+                  </li>
+                  <li>
+                    <a href="#kline-candlestick-streams" class="toc-h2 toc-link" data-title="Kline/Candlestick Streams">Kline/Candlestick Streams</a>
+                  </li>
+                  <li>
+                    <a href="#individual-symbol-ticker-streams" class="toc-h2 toc-link" data-title="Individual Symbol Ticker Streams">Individual Symbol Ticker Streams</a>
+                  </li>
+                  <li>
+                    <a href="#partial-book-depth-streams" class="toc-h2 toc-link" data-title="Partial Book Depth Streams">Partial Book Depth Streams</a>
+                  </li>
+                  <li>
+                    <a href="#diff-depth-stream" class="toc-h2 toc-link" data-title="Diff. Depth Stream">Diff. Depth Stream</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#spot-account-trade" class="toc-h1 toc-link" data-title="Spot Account/Trade">Spot Account/Trade</a>
               <ul class="toc-list-h2">
                   <li>
@@ -692,7 +753,6 @@ HMAC SHA256 signature:
 <li>8h</li>
 <li>12h</li>
 <li>1d</li>
-<li>3d</li>
 <li>1w</li>
 <li>1M</li>
 </ul>
@@ -987,18 +1047,1137 @@ HMAC SHA256 signature:
 <ul>
 <li>If fromId is set, it will filter the orders smaller than id. Otherwise, the most recent order information will be returned.</li>
 </ul>
+<h1 id='market-data-endpoints'>Market Data Endpoints</h1><h2 id='test-connectivity'>Test Connectivity</h2>
+<ul>
+<li> <code>GET /api/v1/ping</code></li>
+</ul>
+
+<p>est connectivity to the Rest API.</p>
+<h3 id='1'>权重:1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre><h3 id='parameters-5'>Parameters</h3>
+<p>NONE</p>
+<h2 id='check-server-time'>Check Server Time</h2>
+<ul>
+<li><code>GET /api/v1/time</code></li>
+</ul>
+
+<p>Test connectivity to the Rest API and get the current server time.</p>
+<h3 id='weight-1-3'>Weight:1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1538323200000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-6'>Parameters</h3>
+<p>NONE</p>
+<h2 id='exchange-information'>Exchange Information</h2>
+<ul>
+<li><code>GET /api/v1/exchangeInfo</code></li>
+</ul>
+
+<p>Current exchange trading rules and symbol information</p>
+<h3 id='weight-1-4'>Weight:1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668407511495"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"brokerFilters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"symbols"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isAggregate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isAggregate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRPUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRPUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quotePrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isAggregate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"rateLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rateLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REQUEST_WEIGHT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MINUTE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intervalUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rateLimitType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ORDERS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SECOND"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"intervalUnit"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDTUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inverse"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"contractMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"riskLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000133"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000134"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000135"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000136"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADING"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"baseAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAsset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quoteAssetPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"icebergAllowed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"inverse"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"marginPrecision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"contractMultiplier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"underlying"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"riskLimits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000137"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000138"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000139"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000140"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4000000.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.04"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.02"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"coins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TetherUS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"chainType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERC20"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minDepositQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"chainType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRC20"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"chainType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OMNI"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"withdrawFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"minWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"maxWithdrawQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNI"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uniswap"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EOS"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coinFullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JET"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowWithdraw"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"allowDeposit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chainTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='parameters-7'>Parameters</h3>
+<p>NONE</p>
+<h2 id='order-book'>Order Book</h2>
+<ul>
+<li><code>GET /quote/v1/depth</code></li>
+</ul>
+<h3 id='0247ab2030'>权重：</h3>
+<p>Adjusted based on the limit:：</p>
+
+<table><thead>
+<tr>
+<th>Limit</th>
+<th>Weight</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>5, 10, 20, 50, 100</td>
+<td>1</td>
+</tr>
+<tr>
+<td>500</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>10</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"3.90000000"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"431.00000000"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+      </span><span class="s2">"12.00000000"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"5.10000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"28.00000000"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-8'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 100; Max 100.</td>
+</tr>
+</tbody></table>
+
+<p>Notes:
+If you set <code>limit=0</code>, a lot of data will be returned.</p>
+<h2 id='recent-trades-list'>Recent Trades List</h2>
+<ul>
+<li><code>GET /quote/v1/trades</code></li>
+</ul>
+
+<p>Get recent trades.</p>
+<h3 id='weight-1-5'>Weight： 1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000100"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.00000000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499865549590</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ibm"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Transaction</span><span class="w"> </span><span class="err">direction</span><span class="w"> </span><span class="err">isBuyerMaker</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='parameters-9'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 60; Max 60.</td>
+</tr>
+</tbody></table>
+<h2 id='kline-candlestick-data'>Kline/Candlestick Data</h2>
+<ul>
+<li><code>GET /quote/v1/klines</code></li>
+</ul>
+
+<p>Kline/candlestick bars for a symbol. <br>
+Klines are uniquely identified by their open time.</p>
+<h3 id='weight-1-6'>Weight：1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="mi">1499040000000</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">Kline</span><span class="w"> </span><span class="err">open</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="s2">"0.01634790"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Open</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"0.80000000"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">High</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"0.01575800"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w">  </span><span class="err">Low</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"0.01577100"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Close</span><span class="w"> </span><span class="err">price</span><span class="w">
+    </span><span class="s2">"148976.11427815"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Volume</span><span class="w">
+    </span><span class="mi">1499644799999</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w">  </span><span class="err">Kline</span><span class="w"> </span><span class="err">Close</span><span class="w"> </span><span class="err">time</span><span class="w">
+    </span><span class="s2">"2434.19055334"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="mi">308</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">trades</span><span class="w">
+    </span><span class="s2">"1756.87402397"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+    </span><span class="s2">"28.46694368"</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='parameters-10'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 100; Max 100.</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>If <code>startTime</code> and <code>endTime</code> are not sent, only the latest K line will be returned.</li>
+</ul>
+<h2 id='24hr-ticker-price-change-statistics'>24hr Ticker Price Change Statistics</h2>
+<ul>
+<li><code>GET /quote/v1/ticker/24hr</code></li>
+</ul>
+
+<p>24 hour rolling window price change statistics. Careful when accessing this with no symbol.</p>
+<h3 id='weight'>Weight：</h3>
+<p>1 if only one <code>symbol</code> was sent; 40 if no <code>symbol</code> was sent.</p>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1538725500422</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w">
+        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.10000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">highest</span><span class="w"> </span><span class="err">selling</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">highest</span><span class="w"> </span><span class="err">bid</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHBTC"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> 
+        </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">latest</span><span class="w"> </span><span class="err">transaction</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99.00000000"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.00000000"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">highest</span><span class="w"> </span><span class="err">price</span><span class="w"> 
+        </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10000000"</span><span class="p">,</span><span class="w">    </span><span class="err">//</span><span class="w"> </span><span class="err">lowest</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8913.30000000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset)</span><span class="w">
+        </span><span class="s2">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">otal</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">volume</span><span class="w"> </span><span class="err">(in</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242'>参数</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>If the symbol is not sent, all symbol data will be returned.</li>
+</ul>
+<h2 id='symbol-price-ticker'>Symbol Price Ticker</h2>
+<ul>
+<li><code>GET /quote/v1/ticker/price</code></li>
+</ul>
+
+<p>Latest price for a symbol or symbols.</p>
+<h3 id='weight-1-7'>Weight：1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTCBTC"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w">
+    </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='parameters-11'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>If the symbol is not sent, all symbol data will be returned.</li>
+</ul>
+<h2 id='symbol-order-book-ticker'>Symbol Order Book Ticker</h2>
+<ul>
+<li><code>GET /quote/v1/ticker/bookTicker</code></li>
+</ul>
+
+<p>Best price/qty on the order book for a symbol or symbols.</p>
+<h3 id='weight-1-8'>Weight：1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1672035413265</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w">
+      </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTCBTC"</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w">          
+      </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000000"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">bidPrice</span><span class="w">
+      </span><span class="s2">"bq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"431.00000000"</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">bidQty</span><span class="w">
+      </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">askPrice</span><span class="w">
+      </span><span class="s2">"aq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.00000000"</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">askQty</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='parameters-12'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>If the symbol is not sent, the best order book price for all symbols will be returned.</li>
+</ul>
+<h2 id='merge-depth'>Merge Depth</h2>
+<ul>
+<li><code>GET /quote/v1/depth/merged</code></li>
+</ul>
+<h3 id='weight-1-9'>Weight： 1</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1672035413265</span><span class="p">,</span><span class="err">//time</span><span class="w">
+    </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//Buy</span><span class="w"> </span><span class="err">Depth</span><span class="w"> </span><span class="err">High</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">Low</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16851.95"</span><span class="p">,</span><span class="err">//price</span><span class="w">
+            </span><span class="s2">"0.003321"</span><span class="err">//quantity</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16851.87"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.005456"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16851.47"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.002219"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//Sell</span><span class="w"> </span><span class="err">Depth</span><span class="w"> </span><span class="err">Low</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">High</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16870.19"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.003838"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16873.05"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.00361"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"16873.06"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"0.002623"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-2'>参数</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>scale</td>
+<td>INT</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id='websocket-market-streams'>Websocket Market Streams</h1>
+<ul>
+<li>The base endpoint is: wss://stream.toobit.com</li>
+<li>The URL format for direct access is:  wss://#HOST/quote/ws/v1</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>topic</td>
+<td><code>realtimes</code>, <code>trade</code>, <code>kline_$interval</code>, <code>depth</code>,<code>markPrice</code>,<code>markPriceKline_$interval</code>,<code>index</code><code>indexKline_$interval</code></td>
+</tr>
+<tr>
+<td>event</td>
+<td><code>sub</code>, <code>cancel</code>, <code>cancel_all</code></td>
+</tr>
+<tr>
+<td>interval</td>
+<td><code>1m</code>, <code>5m</code>, <code>15m</code>, <code>30m</code>, <code>1h</code>, <code>2h</code>, <code>6h</code>, <code>12h</code>, <code>1d</code>, <code>1w</code>, <code>1M</code></td>
+</tr>
+</tbody></table>
+<h2 id='live-subscribing-unsubscribing-to-streams'>Live Subscribing/Unsubscribing to streams</h2><h3 id='subscribe-to-a-stream'>Subscribe to a stream:</h3>
+<ul>
+<li>Request</li>
+</ul>
+
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;limit&quot;: &quot;$limit&quot;, // kline return upper limit is 2000, the default is 1</code></p>
+
+<p><code>&quot;binary&quot;: &quot;false&quot; //Whether the returned data is compressed, the default is false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h3 id='unsubscribe-to-a-stream'>Unsubscribe to a stream:</h3>
+<ul>
+<li>Request</li>
+</ul>
+
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;cancel&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;limit&quot;: &quot;$limit&quot;, // kline return upper limit is 2000, the default is 1</code></p>
+
+<p><code>&quot;binary&quot;: &quot;false&quot; //Whether the returned data is compressed, the default is false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='heartbeat'>Heartbeat</h2>
+<p>Every once in a while, the client needs to send a ping frame, and the server will reply with a pong frame, otherwise the server will actively disconnect within 5 minutes.</p>
+
+<blockquote>
+<p>Payblad</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"pong"</span><span class="p">:</span><span class="w"> </span><span class="mi">1535975085052</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request'>Request</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;ping&quot;: 1535975085052</code></p>
+
+<p><code>}</code></p>
+<h2 id='trade-streams'>Trade Streams</h2>
+<p>Push the information of each transaction transaction by transaction. A deal, or the definition of a transaction, is that there is only one taker and one maker trading with each other.
+After successfully connecting to the server, the server will first push a recent 60 transactions. After this push, each push is a real-time transaction.
+The variable &quot;v&quot; can be understood as a transaction ID. This variable is globally incremented and unique. For example: Suppose there have been 3 transactions in the past 5 seconds, namely <code>ETHUSDT</code>, <code>BTCUSDT</code>, <code>BHTBTC</code>. Their &quot;v&quot; will be consecutive values (112, 113, 114).</p>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291465821801168896"</span><span class="p">,</span><span class="w"> 
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668690723096</span><span class="p">,</span><span class="w"> </span><span class="err">//time</span><span class="w">
+            </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"399"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w">
+            </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">buy</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">sell</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291465842546196481"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668690725569</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"399"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">return</span><span class="w">
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753154192</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-2'>Request:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code>&#39;</p>
+
+<p><code>&quot;topic&quot;: &quot;trade&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false // Whether data returned is in binary format</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='kline-candlestick-streams'>Kline/Candlestick Streams</h2>
+<p>The Kline/Candlestick Stream push updates to the current klines/candlestick every second.</p>
+<h3 id='k'>K线图间隔参数:</h3>
+<p>m -&gt; minutes; h -&gt; hours; d -&gt; days; w -&gt; weeks; M -&gt; months</p>
+
+<ul>
+<li>1m</li>
+<li>5m</li>
+<li>15m</li>
+<li>30m</li>
+<li>1h</li>
+<li>2h</li>
+<li>4h</li>
+<li>6h</li>
+<li>12h</li>
+<li>1d</li>
+<li>1w</li>
+<li>1M</li>
+</ul>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kline"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"klineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1m"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753840000</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> </span><span class="err">name</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//Close</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//High</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//Low</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="err">//Open</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//Base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">return</span><span class="w">
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753854576</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-3'>Request:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;kline_&quot;+$interval,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='individual-symbol-ticker-streams'>Individual Symbol Ticker Streams</h2>
+<p>24-hour complete ticker information refreshed second by symbol</p>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"realtimes"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"realtimeInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24h"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"binary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753480049</span><span class="p">,</span><span class="w"> </span><span class="err">//time</span><span class="w">
+            </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//symbol</span><span class="w">
+            </span><span class="s2">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">symbol</span><span class="w"> </span><span class="err">name</span><span class="w">
+            </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="w"> </span><span class="err">//Close</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445"</span><span class="p">,</span><span class="w"> </span><span class="err">//High</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"310"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Low</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"311"</span><span class="p">,</span><span class="w"> </span><span class="err">//Open</span><span class="w"> </span><span class="err">price</span><span class="w">
+            </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3747.7597191"</span><span class="p">,</span><span class="w"> </span><span class="err">//Total</span><span class="w"> </span><span class="err">traded</span><span class="w"> </span><span class="err">base</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+            </span><span class="s2">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1426443.9553995"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Total</span><span class="w"> </span><span class="err">traded</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">volume</span><span class="w">
+            </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.4309"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">margin</span><span class="w">
+            </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">id</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668753481048</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-4'>Request:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;realtimes&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+<h2 id='partial-book-depth-streams'>Partial Book Depth Streams</h2>
+<p>Symbol&#39;s depth information.</p>
+
+<ul>
+<li>Order book snapshot frequency: every 300ms, if the book changes.</li>
+<li>Order book snapshot frequency depth: bids and asks 300 each</li>
+<li>Order book version change trigger event：
+
+<ul>
+<li>The order enters the order book</li>
+<li>Order leaves the order book</li>
+<li>Order Quantity Change</li>
+<li>Order Completed</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//Symbol</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1565600357643</span><span class="p">,</span><span class="w"> </span><span class="err">//time</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112801745_18"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">
+    </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//Bids</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11371.49"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0014"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">quantity</span><span class="p">]</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11371.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.97"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3523"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.96"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.95"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0934"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.94"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.6809"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0047"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.17"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.16"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.3203"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//Asks</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.41"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0053"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">quantity</span><span class="p">]</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.42"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0043"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.48"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0052"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.58"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0541"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0386"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11375.71"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2.0691"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377.01"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0167"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.5"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11377.61"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">return</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-5'>Request:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;depth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+<h2 id='diff-depth-stream'>Diff. Depth Stream</h2>
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diffDepth"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1565687625534</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115277986_18"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"b"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11316.78"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.078"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11313.16"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0052"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11312.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11309.75"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0067"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11309.58"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11306.14"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0073"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11318.96"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0041"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11318.99"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0017"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.12"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0017"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.22"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.4516"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.23"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0934"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11319.24"</span><span class="p">,</span><span class="w"> </span><span class="s2">"3.0665"</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="err">//Is</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">return</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='request-6'>Request:</h3>
+<p><code>{</code></p>
+
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
+
+<p><code>&quot;topic&quot;: &quot;diffDepth&quot;,</code></p>
+
+<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
+
+<p><code>&quot;params&quot;: {</code></p>
+
+<p><code>&quot;binary&quot;: false</code></p>
+
+<p><code>}</code></p>
+
+<p><code>}</code></p>
+
+<p>Push the changing part of the order book (if any) every second.
+In incremental depth information, the quantity is not necessarily equal to the quantity corresponding to the price. If the quantity=0, it means that the price in the last push is no longer available. If the quantity&gt;0, the quantity at this time is the quantity corresponding to the updated price
+Suppose there is such an item in the returned data we received:<br></p>
+
+<p><code>[&quot;0.00181860&quot;, &quot;155.92000000&quot;]// price, quantity</code></p>
+
+<p>If the next returned data contains:<br></p>
+
+<p><code>[&quot;0.00181860&quot;, &quot;12.3&quot;]</code></p>
+
+<p>This means that the quantity corresponding to this price has changed, and the changed quantity has been updated
+If the next returned data contains:</p>
+
+<p><code>[&quot;0.00181860&quot;, &quot;0&quot;]</code></p>
+
+<p>This means that the quantity corresponding to this price has disappeared and will be deleted in the client.</p>
 <h1 id='spot-account-trade'>Spot Account/Trade</h1><h2 id='test-new-order-trade'>Test New Order  (TRADE)</h2>
 <ul>
 <li><code>POST /api/v1/spot/orderTest (HMAC SHA256)</code></li>
 </ul>
 
 <p>Test new order creation and signature/recvWindow long. Creates and validates a new order but does not send it into the matching engine.</p>
-<h3 id='weight-1-3'>Weight：1</h3>
+<h3 id='weight-1-10'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h3 id='parameters-5'>Parameters</h3>
+</span></code></pre><h3 id='parameters-13'>Parameters</h3>
 <p>Same as <code>POST /api/v1/spot/order</code></p>
 <h2 id='new-order-trade'>New Order  (TRADE)</h2>
 <ul>
@@ -1006,7 +2185,7 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Send in a new order.</p>
-<h3 id='weight-1-4'>Weight：1</h3>
+<h3 id='weight-1-11'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1025,7 +2204,7 @@ HMAC SHA256 signature:
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-6'>Parameters</h3>
+</span></code></pre><h3 id='parameters-14'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1151,7 +2330,7 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Cancel an active order.</p>
-<h3 id='weight-1-5'>Weight：1</h3>
+<h3 id='weight-1-12'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1168,7 +2347,7 @@ HMAC SHA256 signature:
   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-7'>Parameters</h3>
+</span></code></pre><h3 id='parameters-15'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1215,7 +2394,7 @@ HMAC SHA256 signature:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-8'>Parameters</h3>
+</span></code></pre><h3 id='parameters-16'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1241,7 +2420,7 @@ HMAC SHA256 signature:
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='weight-1-6'>Weight：1</h3>
+<h3 id='weight-1-13'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1263,7 +2442,7 @@ HMAC SHA256 signature:
   </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-9'>Parameters</h3>
+</span></code></pre><h3 id='parameters-17'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1310,7 +2489,7 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Get all open orders on a symbol. <strong>Careful</strong> when accessing this with no symbol.</p>
-<h3 id='weight-1-7'>Weight ：1</h3>
+<h3 id='weight-1-14'>Weight ：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1334,7 +2513,7 @@ HMAC SHA256 signature:
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-10'>Parameters</h3>
+</span></code></pre><h3 id='parameters-18'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1410,11 +2589,11 @@ HMAC SHA256 signature:
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242'>参数</h3>
+</span></code></pre><h3 id='749d765242-3'>参数</h3>
 <table><thead>
 <tr>
 <th>Name</th>
-<th>类型</th>
+<th>Type</th>
 <th>Mandatory</th>
 <th>Description</th>
 </tr>
@@ -1482,7 +2661,7 @@ HMAC SHA256 signature:
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-2'>参数</h3>
+</span></code></pre><h3 id='749d765242-4'>参数</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1536,7 +2715,7 @@ HMAC SHA256 signature:
         </span><span class="s2">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-11'>Parameters</h3>
+</span></code></pre><h3 id='parameters-19'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1620,14 +2799,14 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active <code>listenKey</code>, that <code>listenKey</code> will be returned and its validity will be extended for 60 minutes.</p>
-<h4 id='weight-1-8'>Weight：1</h4>
+<h4 id='weight-1-15'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='749d765242-3'>参数</h4>
+</span></code></pre><h4 id='749d765242-5'>参数</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1655,12 +2834,12 @@ HMAC SHA256 signature:
 </ul>
 
 <p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It&#39;s recommended to send a ping about every 30 minutes.</p>
-<h4 id='weight-1-9'>Weight：1</h4>
+<h4 id='weight-1-16'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='parameters-12'>Parameters</h4>
+</span></code></pre><h4 id='parameters-20'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1692,12 +2871,12 @@ HMAC SHA256 signature:
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='weight-1-10'>Weight：1</h4>
+<h4 id='weight-1-17'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='parameters-13'>Parameters</h4>
+</span></code></pre><h4 id='parameters-21'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
