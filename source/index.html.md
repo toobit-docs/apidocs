@@ -192,11 +192,28 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - LIMIT - 限价单
 - MARKET - 市价单
 - LIMIT_MAKER - maker限价单
-- STOP_LOSS (unavailable now) - 暂无
-- STOP_LOSS_LIMIT (unavailable now) - 暂无
-- TAKE_PROFIT (unavailable now) - 暂无
-- TAKE_PROFIT_LIMIT (unavailable now) - 暂无
-- MARKET_OF_PAYOUT (unavailable now) - 暂无
+- STOP 计划委托
+- STOP_SHORT_PROFIT 止盈
+- STOP_LONG_PROFIT 止盈
+- STOP_LONG_LOSS  止损
+- STOP_SHORT_LOSS 止损
+- LIQUI_IOC_ORDER 强平
+- LIQUI_ADL_ORDER ADL
+
+### 计划委托 或者 止盈止损订单状态
+
+- ORDER_NEW 新建委托
+- ORDER_FILLED 委托触发成功
+- ORDER_REJECTED 委托拒绝
+- ORDER_CANCELED 取消委托
+- ORDER_FAILED 委托触发失败
+
+### 止盈止损类型
+
+- STOP_LONG_PROFIT  多仓止盈
+- STOP_LONG_LOSS 多仓止损
+- STOP_SHORT_PROFIT 计划委托-空仓止盈
+- STOP_SHORT_LOSS 计划委托-空仓止损
 
 #### 订单方向:
 - BUY - 买单
@@ -222,7 +239,6 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 - 8h
 - 12h
 - 1d
-- 3d
 - 1w
 - 1M
 
@@ -1932,7 +1948,7 @@ None
 | fromId | LONG | NO | 从TradeId开始（用来查询成交订单） |
 | toId | LONG | NO | 到TradeId结束（用来查询成交订单） |
 
-## 风险限额查询
+## 风险限额查询 (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
 
 查询风险限额，这个API端点需要请求签名。
