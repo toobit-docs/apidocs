@@ -3286,6 +3286,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>MARKET 市价单</li>
 <li>LIMIT 限价单</li>
 <li>LIMIT_MAKER  maker限价单</li>
+<li>STOP 计划委托</li>
+<li>STOP_SHORT_PROFIT 止盈</li>
+<li>STOP_LONG_PROFIT 止盈</li>
+<li>STOP_LONG_LOSS  止损</li>
+<li>STOP_SHORT_LOSS 止损</li>
+<li>LIQUI_IOC_ORDER 强平</li>
+<li>LIQUI_ADL_ORDER ADL</li>
 </ul>
 <h3 id='4e4ca9ca80'>订单状态</h3>
 <ul>
@@ -3301,6 +3308,21 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>GTC</li>
 <li>IOC</li>
 <li>FOK</li>
+</ul>
+<h3 id='71bd733fc3'>计划委托 或者 止盈止损订单状态</h3>
+<ul>
+<li>ORDER_NEW 新建委托</li>
+<li>ORDER_FILLED 委托触发成功</li>
+<li>ORDER_REJECTED 委托拒绝</li>
+<li>ORDER_CANCELED 取消委托</li>
+<li>ORDER_FAILED 委托触发失败</li>
+</ul>
+<h3 id='a8e01fef2a'>止盈止损类型</h3>
+<ul>
+<li>STOP_LONG_PROFIT  多仓止盈</li>
+<li>STOP_LONG_LOSS 多仓止损</li>
+<li>STOP_SHORT_PROFIT 计划委托-空仓止盈</li>
+<li>STOP_SHORT_LOSS 计划委托-空仓止损</li>
 </ul>
 
       </div>
