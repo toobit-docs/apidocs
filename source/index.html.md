@@ -2027,7 +2027,7 @@ None
 
 - 对listenKey执行PUT将使其有效期延长60分钟。
 - 对listenKey执行DELETE将关闭流。
-- 用户信息流可通过 /api/v1/ws/<listenKey>访问   (例如wss://#HOST/api/v1/ws/#listenKey)
+- 用户信息流可通过 `/api/v1/ws/<listenKey>`访问   (例如`wss://#HOST/api/v1/ws/<listenKey>`)
 - 到api端点的单个连接仅在24小时内有效；预计在24小时时断开
 - 用户信息流有效负载不保证在繁忙时段处于正常状态；确保使用E订购更新
 
