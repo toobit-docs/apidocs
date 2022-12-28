@@ -2195,6 +2195,13 @@ None
 - MARKET 市价单
 - LIMIT 限价单
 - LIMIT_MAKER  maker限价单
+- STOP 计划委托
+- STOP_SHORT_PROFIT 止盈
+- STOP_LONG_PROFIT 止盈
+- STOP_LONG_LOSS  止损
+- STOP_SHORT_LOSS 止损
+- LIQUI_IOC_ORDER 强平
+- LIQUI_ADL_ORDER ADL
 
 ### 订单状态
 
@@ -2206,6 +2213,22 @@ None
 - REJECTED  被拒绝
 
 ### 有效方式
+
 - GTC
 - IOC
 - FOK
+
+### 计划委托 或者 止盈止损订单状态
+
+- ORDER_NEW 新建委托
+- ORDER_FILLED 委托触发成功
+- ORDER_REJECTED 委托拒绝
+- ORDER_CANCELED 取消委托
+- ORDER_FAILED 委托触发失败
+
+### 止盈止损类型
+
+- STOP_LONG_PROFIT  多仓止盈
+- STOP_LONG_LOSS 多仓止损
+- STOP_SHORT_PROFIT 计划委托-空仓止盈
+- STOP_SHORT_LOSS 计划委托-空仓止损
