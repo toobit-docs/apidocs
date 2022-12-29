@@ -1073,8 +1073,8 @@ NONE
 
 | 参数名称     | 类型      | 是否必需      | 描述           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| NO | 交易对 |
-| scale | INT | NO | 精度 |
+| symbol | STRING| YES | 交易对 |
+| scale | INT | NO | 档位: `0`,`1`,`2`,`3`,`4`,`5` |
 | limit | INT | NO | 限制条数 |
 
 # Websocket 行情推送
