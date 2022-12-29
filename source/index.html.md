@@ -1082,7 +1082,7 @@ Best price/qty on the order book for a symbol or symbols.
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING| YES |  |
-| scale | INT | NO | gear: `0`,`1`,`2`,`3`,`4`,`5` |
+| scale | INT | NO | Gears: `0`,`1`,`2`,`3`,`4`,`5` For example: `0 `means gear `1`, `1` means gear `2` |
 | limit | INT | NO |  |
 
 # Websocket Market Streams
