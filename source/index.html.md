@@ -1081,8 +1081,8 @@ Best price/qty on the order book for a symbol or symbols.
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| NO |  |
-| scale | INT | NO |  |
+| symbol | STRING| YES |  |
+| scale | INT | NO | gear: `0`,`1`,`2`,`3`,`4`,`5` |
 | limit | INT | NO |  |
 
 # Websocket Market Streams
