@@ -743,7 +743,7 @@ Merged deep interface.
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
-| scale | INT |  NO |  |
+| scale | INT |  NO | Gears: `0`,`1`,`2`,`3`,`4`,`5` For example: `0 `means gear `1`, `1` means gear `2` |
 | limit | INT |  NO |  |
 
 
