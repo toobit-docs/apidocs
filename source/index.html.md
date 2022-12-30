@@ -907,15 +907,10 @@ Get the mark price of a trading pair.
 
 ``` json
 {
-    "code": 200,
-    "data": [
-        {
-            "exchangeId": 301,
-            "symbolId": "BTC-SWAP-USDT",// Symbol
-            "price": "17042.54471",// Mark price
-            "time": 1670897454000// time
-        }
-    ]
+  "exchangeId": 301,
+  "symbolId": "BTC-SWAP-USDT",// Symbol
+  "price": "17042.54471",// Mark price
+  "time": 1670897454000// time
 }
 ```
 
