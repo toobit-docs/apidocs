@@ -1454,6 +1454,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
  考虑到剧烈行情下, RESTful接口可能存在查询延迟，我们强烈建议您优先从Websocket user data stream推送的消息来获取订单，成交，仓位等信息。
 </aside>
 
+
 ## 划转
 
 - `POST /api/v1/account/assetTransfer`
@@ -1532,6 +1533,47 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | endTime | LONG | NO | 结束时间 |
 | limit | INT | NO | 每页记录数 |
 
+## 查询子账户 (USER_DATA)
+
+- `GET /api/v1/account/subAccount`
+
+
+### 权重：5
+
+> 响应：
+
+``` json
+[
+    {
+        "accountId": "122216245228131",
+        "accountName": "",
+        "accountType": 1,
+        "accountIndex": 0 // 账户index 0 默认账户 >0, 创建的子账户
+    },
+    {
+        "accountId": "482694560475091200",
+        "accountName": "createSubAccountByCurl", // 子账户名称
+        "accountType": 1, // 子账户类型 1 币币账户 3 合约账户
+        "accountIndex": 1
+    },
+    {
+        "accountId": "422446415267060992",
+        "accountName": "",
+        "accountType": 3,
+        "accountIndex": 0
+    },
+    {
+        "accountId": "482711469199298816",
+        "accountName": "createSubAccountByCurl",
+        "accountType": 3,
+        "accountIndex": 1
+    },
+]
+```
+
+### 参数
+
+NONE
 
 ## 变换逐全仓模式 (TRADE)
 - `POST /api/v1/futures/marginType `
@@ -1647,7 +1689,6 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
 
-## 批量下单 (TRADE)
 
 ## 查询订单 (USER_DATA)
 - `GET /api/v1/futures/order`
@@ -1810,6 +1851,42 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 注意：
 
 - 如果发送了`orderId`，会返回所有< `orderId`的订单。如果没有则会返回最新的未完成订单。
+
+## 查询当前持仓 (USER_DATA)
+
+- `GET /api/v1/futures/positions`
+
+返回现在的仓位信息，这个API需要请求签名。
+
+> 响应
+
+``` json
+[
+    {
+        "symbol": "BTC-SWAP-USDT",
+        "side": "LONG",//仓位方向
+        "avgPrice": "24000", //平均开仓价格
+        "position": "10", //开仓数量（张）
+        "available": "10", //可平仓数量（张）
+        "leverage": "2", //仓位现在杠杆
+        "lastPrice": "16854.4", //合约最新市场成交价
+        "positionValue": "24", //仓位价值
+        "flp": "12077.8", //强制平仓价格
+        "margin": "11.9825", //仓位保证金
+        "marginRate": "0.4992", //当前仓位的保证金率
+        "unrealizedPnL": "0", //当前仓位的未实现盈亏
+        "profitRate": "0", //当前仓位的盈利率
+        "realizedPnL": "-0.018" //当前 合约 的已实现盈亏
+    }
+]
+```
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO | 交易对 |
+| side | ENUM | NO | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓）。 |
+
+
 
 ## 查询历史订单 (USER_DATA)
 - `GET /api/v1/futures/historyOrders`
