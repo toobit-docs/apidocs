@@ -894,15 +894,10 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 
 ``` json
 {
-    "code": 200,
-    "data": [
-        {
-            "exchangeId": 301,//交易所ID
-            "symbolId": "BTC-SWAP-USDT",//币对
-            "price": "17042.54471",//标记价格
-            "time": 1670897454000//时间戳
-        }
-    ]
+  "exchangeId": 301,//交易所ID
+  "symbolId": "BTC-SWAP-USDT",//币对
+  "price": "17042.54471",//标记价格
+  "time": 1670897454000//时间戳
 }
 ```
 
