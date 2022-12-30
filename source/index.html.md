@@ -999,7 +999,8 @@ Get the mark price of a trading pair.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
+| symbol | STRING | NO |  |
+| realtimeInterval | ENUM | NO | `24h`,`1d`,`1d+8` |
 
 - If the symbol is not sent, tickers for all symbols will be returned in an array.
 
