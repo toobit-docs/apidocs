@@ -1510,15 +1510,10 @@ HMAC SHA256 signature:
 <p>Response：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17042.54471"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">Mark</span><span class="w"> </span><span class="err">price</span><span class="w">
-            </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670897454000</span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">301</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"symbolId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w">
+  </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17042.54471"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">Mark</span><span class="w"> </span><span class="err">price</span><span class="w">
+  </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670897454000</span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='parameters-10'>Parameters</h3>
 <table><thead>
@@ -1659,7 +1654,13 @@ HMAC SHA256 signature:
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
-<td>交易对</td>
+<td></td>
+</tr>
+<tr>
+<td>realtimeInterval</td>
+<td>ENUM</td>
+<td>NO</td>
+<td><code>24h</code>,<code>1d</code>,<code>1d+8</code></td>
 </tr>
 </tbody></table>
 
