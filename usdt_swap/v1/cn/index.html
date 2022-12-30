@@ -2835,6 +2835,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>仓位方向，<code>LONG</code>（多仓）或者<code>SHORT</code>（空仓）。</td>
 </tr>
 </tbody></table>
+
+<p>注意：</p>
+
+<ul>
+<li>如果<code>symbol</code>没有发送，所有的合约仓位信息都会被返回。</li>
+<li>如果<code>side</code>没有发送，两个方向的仓位信息都会被返回。</li>
+</ul>
 <h2 id='user_data-6'>查询历史订单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
