@@ -1517,6 +1517,48 @@ Execute the transfer between the spot account and the contract account
 | quantity | DECIMAL | YES |  |
 
 
+## Query Sub-account (USER_DATA)
+
+- `GET /api/v1/account/subAccount`
+
+
+### Weight：5
+
+> Response：
+
+``` json
+[
+    {
+        "accountId": "122216245228131",
+        "accountName": "",
+        "accountType": 1,
+        "accountIndex": 0 
+    },
+    {
+        "accountId": "482694560475091200",
+        "accountName": "createSubAccountByCurl", 
+        "accountType": 1, // 1 Spot Account 3 Futures Account
+        "accountIndex": 1
+    },
+    {
+        "accountId": "422446415267060992",
+        "accountName": "",
+        "accountType": 3,
+        "accountIndex": 0
+    },
+    {
+        "accountId": "482711469199298816",
+        "accountName": "createSubAccountByCurl",
+        "accountType": 3,
+        "accountIndex": 1
+    },
+]
+```
+
+### Parameters
+
+NONE
+
 ## Get Future Account Transaction History List (USER_DATA)
 - `GET /api/v1/account/balanceFlow`
 
@@ -1847,6 +1889,47 @@ Notes：
 Notes：
 
 - If `orderId` is sent, all orders < `orderId` will be returned. If not, the latest outstanding order will be returned.
+
+## Query  Position (USER_DATA)
+
+- `GET /api/v1/futures/positions`
+
+Returns the current position information, this API requires a request signature.
+
+### Weight: 5
+
+> Response
+
+``` json
+[
+    {
+        "symbol": "BTC-SWAP-USDT",
+        "side": "LONG",
+        "avgPrice": "24000", 
+        "position": "10", //Number of open positions (pieces)
+        "available": "10", //Quantity that can be closed (pieces)
+        "leverage": "2", 
+        "lastPrice": "16854.4", 
+        "positionValue": "24", //Position value
+        "flp": "12077.8", //liquidation price
+        "margin": "11.9825", 
+        "marginRate": "0.4992", 
+        "unrealizedPnL": "0", //The unrealized profit and loss of the current position
+        "profitRate": "0", //Profit rate of current position
+        "realizedPnL": "-0.018" //Realized profit and loss
+    }
+]
+```
+### Parameters
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | NO |  |
+| side | ENUM | NO | position direction `LONG` or `SHORT` |
+
+Notes：
+
+- If `symbol` is not sent, all contract position information will be returned.
+- If `side` is not sent, position information in both directions will be returned.
 
 ## Query History Orders (USER_DATA)
 - `GET /api/v1/futures/historyOrders`
