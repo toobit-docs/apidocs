@@ -1746,7 +1746,7 @@ HMAC SHA256 signature:
 <h1 id='websocket-market-streams'>Websocket Market Streams</h1>
 <ul>
 <li>The base endpoint is:  wss://stream.toobit.com</li>
-<li>he URL format for direct access is: wss://#HOST/quote/ws/v1</li>
+<li>The URL format for direct access is: wss://#HOST/quote/ws/v1</li>
 </ul>
 <h2 id='live-subscribing-unsubscribing-to-streams'>Live Subscribing/Unsubscribing to streams</h2>
 <ul>
@@ -1775,7 +1775,7 @@ HMAC SHA256 signature:
 <h3 id='subscribe-to-a-stream-request'>Subscribe to a stream Request:</h3>
 <p><code>{</code></p>
 
-<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对</code></p>
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
 
 <p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
 
@@ -1793,7 +1793,7 @@ HMAC SHA256 signature:
 <h2 id='unsubscribe-to-a-stream-request'>Unsubscribe to a stream Request:</h2>
 <p><code>{</code></p>
 
-<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;, //交易所ID+币对</code></p>
+<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
 
 <p><code>&quot;topic&quot;: &quot;$topic&quot;,</code></p>
 
@@ -2612,7 +2612,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>orderId</td>
 <td>LONG</td>
 <td>NO</td>
-<td>订单ID</td>
+<td></td>
 </tr>
 <tr>
 <td>origClientOrderId</td>
@@ -2973,7 +2973,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>)</td>
+<td></td>
 </tr>
 <tr>
 <td>fromId</td>
@@ -3027,7 +3027,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td>交易对</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='set-risk-limits-user_data'>Set Risk Limits (USER_DATA)</h2>
@@ -3087,7 +3087,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <table><thead>
 <tr>
 <th>Name</th>
-<th>R t p w</th>
+<th>Type</th>
 <th>Mandatory</th>
 <th>Description</th>
 </tr>
@@ -3096,7 +3096,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td>交易对</td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='user-data-streams'>User Data Streams</h1>
@@ -3177,13 +3177,13 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td>时间戳</td>
+<td></td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td>recv窗口</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='close-user-data-stream-user_stream'>Close User Data Stream (USER_STREAM)</h2>
@@ -3214,13 +3214,13 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td>时间戳</td>
+<td></td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td>recv窗口</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='event-balance-and-position-update'>Event: Balance and Position Update</h2>
