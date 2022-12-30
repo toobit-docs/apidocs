@@ -1955,6 +1955,7 @@ NONE
         "availableMargin": "1899999999978.4995", //可用保证金
         "positionMargin": "11.9825", //仓位保证金
         "orderMargin": "9.5" //委托保证金（下单锁定）
+        "crossUnPnl": "10.01" //全仓未实现盈亏
     }
 ]
 ```
