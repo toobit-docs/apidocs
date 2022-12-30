@@ -1538,6 +1538,107 @@ Symbol的深度信息。
 | `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` **当前不可用** |
 | `LIMIT_MAKER` | `quantity`, `price` |
 
+
+## 批量下单 (TRADE)
+
+- `POST /api/v1/spot/batchOrders      (HMAC SHA256)`
+
+批量创建新订单,单次最多`20`条订单，必须为同一`symbol`。
+**其中batchOrders应以list of JSON格式填写订单参数**
+
+> 例子：
+
+``` json
+curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST -d '[   
+{     "newClientOrderId": "pl12241234567898",     
+      "orderId": 202212241234567898,     
+      "symbol": "BTCUSDT",     
+      "side": "SELL",     
+      "type": "LIMIT",     
+      "price": 17001,     
+      "quantity": 1   
+},   
+{     "newClientOrderId": "pl12241234567899",     
+      "orderId": 202212241234567899,     
+      "symbol": "BTCUSDT",     
+      "side": "SELL",     
+      "type": "LIMIT",     
+      "price": 17002,     
+      "quantity": 1  
+ } ]' 'https://api.toobit.com/api/v1/spot/batchOrders?timestamp=1671880913657&signature=7548b6834613afed3b7d3b0b9bfb0e0b3e3799c46db3ea6b952439fde35cb88f'
+
+```
+
+> 响应
+
+``` json
+成功返回
+{
+        "code": 0,
+        "result": [{
+                "code": 0,
+                "order": {
+                        "accountId": "1287091689761137921",
+                        "symbol": "BTCUSDT",
+                        "symbolName": "BTCUSDT",
+                        "clientOrderId": "pl12241234567898",
+                        "orderId": "202212241234567898",
+                        "transactTime": "1671880251836",
+                        "price": "17001",
+                        "origQty": "1",
+                        "executedQty": "0",
+                        "status": "NEW",
+                        "timeInForce": "GTC",
+                        "type": "LIMIT",
+                        "side": "SELL"
+                }
+        }, {
+                "code": 0,
+                "order": {
+                        "accountId": "1287091689761137921",
+                        "symbol": "BTCUSDT",
+                        "symbolName": "BTCUSDT",
+                        "clientOrderId": "pl12241234567899",
+                        "orderId": "202212241234567899",
+                        "transactTime": "1671880251853",
+                        "price": "17002",
+                        "origQty": "1",
+                        "executedQty": "0",
+                        "status": "NEW",
+                        "timeInForce": "GTC",
+                        "type": "LIMIT",
+                        "side": "SELL"
+                }
+        }]
+}
+
+失败返回
+{
+        "code": 0,
+        "result": [{
+                "code": -1149,
+                "msg": "Create order failed"
+        }, {
+                "code": -1149,
+                "msg": "Create order failed"
+        }]
+}
+```
+
+### 参数
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING | YES | 交易对 |
+| side | ENUM | YES | `BUY`或`SELL `|
+| type | ENUM | YES | 详见枚举定义：订单类型 |
+| timeInForce | ENUM | NO | 详见枚举定义：有效方式 |
+| quantity | DECIMAL | YES | 数量 |
+| price | DECIMAL | NO | 价格 |
+| newClientOrderId | STRING | NO | 一个自己给订单定义的ID，如果没有发送会自动生成。 |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
 ## 撤销订单 (TRADE)
 - `DELETE /api/v1/spot/order  (HMAC SHA256)`
 
