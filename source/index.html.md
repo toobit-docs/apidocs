@@ -1062,7 +1062,7 @@ Best price/qty on the order book for a symbol or symbols.
 # Websocket Market Streams
 
 - The base endpoint is:  wss://stream.toobit.com
-- he URL format for direct access is: wss://#HOST/quote/ws/v1
+- The URL format for direct access is: wss://#HOST/quote/ws/v1
 
 ## Live Subscribing/Unsubscribing to streams
 
@@ -1079,7 +1079,7 @@ Best price/qty on the order book for a symbol or symbols.
 
 `{`
 
-  `"symbol": "$symbol0, $symbol1", //交易所ID+币对`
+  `"symbol": "$symbol0, $symbol1", `
 
   `"topic": "$topic",`
 
@@ -1099,7 +1099,7 @@ Best price/qty on the order book for a symbol or symbols.
 
 `{`
 
-  `"symbol": "$symbol0, $symbol1", //交易所ID+币对`
+  `"symbol": "$symbol0, $symbol1", `
 
   `"topic": "$topic",`
 
@@ -1767,7 +1767,7 @@ Asynchronous Cancellation Response：
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| orderId | LONG | NO | 订单ID |
+| orderId | LONG | NO |  |
 | origClientOrderId | STRING | NO | User defined order ID |
 | type | ENUM | NO | `LIMIT` or `STOP` |
 | fastCancel | INT | NO | Default `0`(Synchronous Cancellation)，`1`Asynchronous order cancellation |
@@ -1975,7 +1975,7 @@ Get trades for a specific account and symbol.
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO |  |
-| limit | INT | NO | ) |
+| limit | INT | NO |  |
 | fromId | LONG | NO | Start from TradeId (used to query transaction orders) |
 | toId | LONG | NO | To the end of TradeId (used to query transaction orders) |
 
@@ -2009,7 +2009,7 @@ To query the risk limit, this API endpoint requires a request signature.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | 交易对 |
+| symbol | STRING | YES |  |
 
 ## Set Risk Limits (USER_DATA)
 - `POST /api/v1/futures/setRiskLimit`
@@ -2048,9 +2048,9 @@ To query the risk limit, this API endpoint requires a request signature.
 ```
 
 ### Parameters
-| Name    | R t p w  |    Mandatory           | Description           |
+| Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | 交易对 |
+| symbol | STRING | YES |  |
 
 # User Data Streams
 
@@ -2104,8 +2104,8 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | listenKey | STRING | YES | |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |  |
 
 ## Close User Data Stream (USER_STREAM)
 
@@ -2123,8 +2123,8 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | listenKey | STRING | YES | |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |  |
 
 ## Event: Balance and Position Update
 
