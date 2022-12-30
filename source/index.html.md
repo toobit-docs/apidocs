@@ -1886,7 +1886,10 @@ NONE
 | symbol | STRING | NO | 交易对 |
 | side | ENUM | NO | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓）。 |
 
+注意：
 
+- 如果`symbol`没有发送，所有的合约仓位信息都会被返回。
+- 如果`side`没有发送，两个方向的仓位信息都会被返回。
 
 ## 查询历史订单 (USER_DATA)
 - `GET /api/v1/futures/historyOrders`
