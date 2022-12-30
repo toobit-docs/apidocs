@@ -1992,6 +1992,7 @@ Notes：
         "availableMargin": "1899999999978.4995", //available margin
         "positionMargin": "11.9825", //position Margin
         "orderMargin": "9.5" //order Margin
+        "crossUnPnl": "10.01" //The unrealized profit and loss of cross position
     }
 ]
 ```
