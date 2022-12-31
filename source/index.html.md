@@ -1713,6 +1713,9 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING | NO | 现货名称（多个用,隔开） |
 | side | ENUM| NO | BUY或SELL |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
 
 ## 批量撤单 (TRADE)
 
