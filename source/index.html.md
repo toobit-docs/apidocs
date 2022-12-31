@@ -1543,6 +1543,8 @@ Symbol的深度信息。
 
 - `POST /api/v1/spot/batchOrders      (HMAC SHA256)`
 
+### 权重：1
+
 批量创建新订单,单次最多`20`条订单，必须为同一`symbol`。
 
 > 例子：
@@ -1717,6 +1719,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 - `DELETE /api/v1/spot/cancelOrderByIds (HMAC SHA256)`
 
 根据订单id批量撤单，**单次最多100条**
+
+### 权重：5
 
 > 响应
 
@@ -1961,6 +1965,135 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 - 如果只有toId，会返回订单号小于toId的，升序排列。
 - 如果同时有fromId和toId, 会返回订单号在fromId和toId的，倒序排列。
 - 如果fromId和toId都没有，会返回最新的成交记录，倒序排列。
+
+## 查询子账户 (USER_DATA)
+
+- `GET /api/v1/account/subAccount`
+
+### 权重：5
+
+> 响应：
+
+``` json
+[
+    {
+        "accountId": "122216245228131",
+        "accountName": "",
+        "accountType": 1,
+        "accountIndex": 0 // 账户index 0 默认账户 >0, 创建的子账户
+    },
+    {
+        "accountId": "482694560475091200",
+        "accountName": "createSubAccountByCurl", // 子账户名称
+        "accountType": 1, // 子账户类型 1 币币账户 3 合约账户
+        "accountIndex": 1
+    },
+    {
+        "accountId": "422446415267060992",
+        "accountName": "",
+        "accountType": 3,
+        "accountIndex": 0
+    },
+    {
+        "accountId": "482711469199298816",
+        "accountName": "createSubAccountByCurl",
+        "accountType": 3,
+        "accountIndex": 1
+    },
+]
+```
+
+### 参数
+
+NONE
+
+## 账户内资产划转 (USER_DATA)
+
+- `POST /api/v1/account/assetTransfer`
+
+### 权重： 5
+
+> 响应
+
+``` json
+{
+    "success":"true" // 成功
+}
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| fromAccountId | LONG | YES | 源账户id |
+| toAccountId | LONG | YES | 目标账户id |
+| coin | STRING | YES | 资产 |
+| quantity | DECIMAL | YES  | 数量 |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+## 查询账户流水 (USER_DATA)
+
+- `GET /api/v1/account/balanceFlow`
+
+### 权重： 5
+
+> 响应
+
+``` json
+[
+    {
+        "id": "539870570957903104",
+        "accountId": "122216245228131",
+        "coin": "BTC",
+        "coinId": "BTC",
+        "coinName": "BTC",
+        "flowTypeValue": 51, // 流水类型
+        "flowType": "USER_ACCOUNT_TRANSFER", // 流水类型名称
+        "flowName": "Transfer", // 流水类型说明
+        "change": "-12.5", // 变动值
+        "total": "379.624059937852365", // 变动后当前tokenId总资产
+        "created": "1579093587214"
+    }
+]
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| accountType | INT | NO | 源账户id |
+| accountIndex | INT | NO | 目标账户id |
+| coin | STRING | NO | 资产 |
+| fromId | LONT | NO  | 顺向查询数据 |
+| endId | LONG | NO | 反向查询数据 |
+| startTime | LONG | NO | 开始时间 |
+| endTime | LONG | NO | 结束时间 |
+| limit | INT | NO | 每页记录数 |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+
+## 获取API KEY类型 (USER_DATA)
+
+- `GET /api/v1/account/checkApiKey`
+
+> 响应
+
+``` json
+{
+    "accountType": "master"
+}
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+-  accountType类型:
+  - master
+  - spot
+  - contract
 
 # Websocket账户信息推送
 
