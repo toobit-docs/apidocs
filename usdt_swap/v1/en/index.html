@@ -2056,7 +2056,8 @@ m -&gt; minutes; h -&gt; hours; d -&gt; days; w -&gt; weeks; M -&gt; months</p>
       </span><span class="p">[</span><span class="s2">"11369.6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0047"</span><span class="p">],</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11369.17"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">],</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11369.16"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"11369.04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.3203"</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.3203"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//Asks</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11375.41"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0053"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">quantity</span><span class="p">]</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11375.42"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0043"</span><span class="p">],</span><span class="w">
@@ -2242,7 +2243,27 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='parameters-17'>Parameters</h3>
-<p>NONE</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='get-future-account-transaction-history-list-user_data'>Get Future Account Transaction History List (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/balanceFlow</code></li>
@@ -3055,12 +3076,32 @@ Considering the possible data latency from RESTful endpoints during an extremely
         </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999999999.982"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">total</span><span class="w">
         </span><span class="s2">"availableMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1899999999978.4995"</span><span class="p">,</span><span class="w"> </span><span class="err">//available</span><span class="w"> </span><span class="err">margin</span><span class="w">
         </span><span class="s2">"positionMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.9825"</span><span class="p">,</span><span class="w"> </span><span class="err">//position</span><span class="w"> </span><span class="err">Margin</span><span class="w">
-        </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="w"> </span><span class="err">//order</span><span class="w"> </span><span class="err">Margin</span><span class="w">
+        </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//order</span><span class="w"> </span><span class="err">Margin</span><span class="w">
         </span><span class="s2">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">unrealized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">cross</span><span class="w"> </span><span class="err">position</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-29'>Parameters</h3>
-<p>None</p>
+</span></code></pre><h3 id='parameters-29'>Parameters</h3><h3 id='parameters-30'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='modify-isolated-position-margin-trade'>Modify Isolated Position Margin (TRADE)</h2>
 <ul>
 <li><code>POST  /api/v1/futures/positionMargin</code></li>
@@ -3076,7 +3117,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> 
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-30'>Parameters</h3>
+</span></code></pre><h3 id='parameters-31'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3144,7 +3185,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
         </span><span class="s2">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> 
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-31'>Parameters</h3>
+</span></code></pre><h3 id='parameters-32'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3216,7 +3257,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-32'>Parameters</h3>
+</span></code></pre><h3 id='parameters-33'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3255,7 +3296,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
     </span><span class="s2">"success"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-33'>Parameters</h3>
+</span></code></pre><h3 id='parameters-34'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3309,7 +3350,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
     </span><span class="s2">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">taker</span><span class="w"> </span><span class="err">order</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-34'>Parameters</h3>
+</span></code></pre><h3 id='parameters-35'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3362,7 +3403,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-35'>Parameters</h3>
+</span></code></pre><h3 id='parameters-36'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3396,7 +3437,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-36'>Parameters</h3>
+</span></code></pre><h3 id='parameters-37'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3433,7 +3474,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h3 id='parameters-37'>Parameters</h3>
+</span></code></pre><h3 id='parameters-38'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
