@@ -2172,7 +2172,7 @@ None
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
-## Balance和Position更新推送
+## Balance推送
 
 账户更新事件的 `event type` 固定为 `ACCOUNT_UPDATE`
 
@@ -2196,7 +2196,16 @@ None
     
 ```
 
-> Position Payload
+- 当账户信息有变动时，会推送此事件：
+  - 仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；
+  - 订单状态变化没有引起账户和持仓变化的，不会推送此事件；
+  - position 信息：仅当symbol仓位有变动时推送。
+
+
+
+## Position更新推送
+
+> Payload
 
 ``` json
 [
@@ -2217,18 +2226,14 @@ None
 ]
 ```
 
-- 当账户信息有变动时，会推送此事件：
-  - 仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；
-  - 订单状态变化没有引起账户和持仓变化的，不会推送此事件；
-  - position 信息：仅当symbol仓位有变动时推送。
-
 - 字段 `mt` 代表仓位类型 `CROSS` 全仓; `ISOLATED` 逐仓
 
-## 订单/交易 更新推送
+
+## 订单更新推送
 
 当有新订单创建、订单有新成交或者新的状态变化时会推送此类事件
 
-> 订单 Payload
+> Payload
 
 ``` json
 
@@ -2257,28 +2262,7 @@ None
 
 ```
 
-> 交易 Payload
-
-``` json
-[
-    {
-        "e": "ticketInfo",                // Event type 事件类型
-        "E": "1668693440976",             // Event time 事件时间
-        "s": "BTCUSDT",                   // Symbol 币对
-        "q": "0.205",                     // quantity 数量
-        "t": "1668693440899",             // time 时间
-        "p": "441.0",                     // price 价格
-        "T": "1291488620385157122",       // ticketId
-        "o": "1291488620167835136",       // orderId 订单id
-        "c": "1668693440093",             // clientOrderId 客户订单id
-        "O": "1291354087841869312",       // matchOrderId 对手方订单ID
-        "a": "1286424214388204801",       // accountId 账户id
-        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
-        "m": false,                       // isMaker 
-        "S": "SELL"                       // side  SELL or BUY
-    }
-]
-```
+平均价格可以通过`Z`除以`z`来获得。
 
 ### 订单方向
 
@@ -2327,3 +2311,31 @@ None
 - STOP_LONG_LOSS 多仓止损
 - STOP_SHORT_PROFIT 计划委托-空仓止盈
 - STOP_SHORT_LOSS 计划委托-空仓止损
+
+
+## 交易推送
+
+> Payload
+
+``` json
+[
+    {
+        "e": "ticketInfo",                // Event type 事件类型
+        "E": "1668693440976",             // Event time 事件时间
+        "s": "BTCUSDT",                   // Symbol 币对
+        "q": "0.205",                     // quantity 数量
+        "t": "1668693440899",             // time 时间
+        "p": "441.0",                     // price 价格
+        "T": "1291488620385157122",       // ticketId
+        "o": "1291488620167835136",       // orderId 订单id
+        "c": "1668693440093",             // clientOrderId 客户订单id
+        "O": "1291354087841869312",       // matchOrderId 对手方订单ID
+        "a": "1286424214388204801",       // accountId 账户id
+        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
+        "m": false,                       // isMaker 
+        "S": "SELL"                       // side  SELL or BUY
+    }
+]
+```
+
+
