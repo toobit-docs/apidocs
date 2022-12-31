@@ -438,10 +438,16 @@
                     <a href="#close-user-data-stream-user_stream" class="toc-h2 toc-link" data-title="Close User Data Stream (USER_STREAM)">Close User Data Stream (USER_STREAM)</a>
                   </li>
                   <li>
-                    <a href="#event-balance-and-position-update" class="toc-h2 toc-link" data-title="Event: Balance and Position Update">Event: Balance and Position Update</a>
+                    <a href="#event-balance" class="toc-h2 toc-link" data-title="Event: Balance">Event: Balance</a>
                   </li>
                   <li>
-                    <a href="#event-order-and-trade-update" class="toc-h2 toc-link" data-title="Event: Order and Trade Update">Event: Order and Trade Update</a>
+                    <a href="#event-position-update" class="toc-h2 toc-link" data-title="Event:  Position Update">Event:  Position Update</a>
+                  </li>
+                  <li>
+                    <a href="#event-order" class="toc-h2 toc-link" data-title="Event: Order">Event: Order</a>
+                  </li>
+                  <li>
+                    <a href="#event-trade-update" class="toc-h2 toc-link" data-title="Event: Trade Update">Event: Trade Update</a>
                   </li>
               </ul>
           </li>
@@ -3323,11 +3329,11 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='event-balance-and-position-update'>Event: Balance and Position Update</h2>
+<h2 id='event-balance'>Event: Balance</h2>
 <p>The <code>event type</code> of the account update event is fixed to <code>ACCOUNT_UPDATE</code></p>
 
 <blockquote>
-<p>Balance Payload</p>
+<p>Payload</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACCOUNT_UPDATE"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">event</span><span class="w"> </span><span class="err">type</span><span class="w">
@@ -3345,6 +3351,14 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
+<ul>
+<li>When the account information changes, this event will be pushed:
+
+<ul>
+<li>This event will only be pushed when there is a change in account information</li>
+</ul></li>
+</ul>
+<h2 id='event-position-update'>Event:  Position Update</h2>
 <blockquote>
 <p>Position Payload</p>
 </blockquote>
@@ -3366,16 +3380,10 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <ul>
-<li><p>When the account information changes, this event will be pushed:</p>
-
-<ul>
-<li>This event will only be pushed when there is a change in account information (including changes in funds, positions, margin modes, etc.);</li>
-<li>If the change in order status does not cause changes in account and positions, this event will not be pushed;</li>
 <li>position information: push only when there is a change in the symbol position.</li>
-</ul></li>
-<li><p>The field <code>mt</code> represents the position type <code>CROSS</code> cross margin; <code>ISOLATED</code> isolated margin</p></li>
+<li>The field <code>mt</code> represents the position type <code>CROSS</code> cross margin; <code>ISOLATED</code> isolated margin</li>
 </ul>
-<h2 id='event-order-and-trade-update'>Event: Order and Trade Update</h2>
+<h2 id='event-order'>Event: Order</h2>
 <p>This type of event will be pushed when a new order is created, an order has a new deal, or a new state change.</p>
 
 <blockquote>
@@ -3406,28 +3414,8 @@ Considering the possible data latency from RESTful endpoints during an extremely
   </span><span class="s2">"Z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">transacted</span><span class="w"> </span><span class="err">quantity</span><span class="w"> 
 
 </span></code></pre>
-<blockquote>
-<p>Trade Payload</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticketInfo"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> 
-        </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440976"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> 
-        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> 
-        </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.205"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w"> 
-        </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440899"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w"> 
-        </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441.0"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w"> 
-        </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620385157122"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">ticketId</span><span class="w">
-        </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">orderId</span><span class="w"> 
-        </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440093"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">clientOrderId</span><span class="w"> 
-        </span><span class="s2">"O"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291354087841869312"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchOrderId</span><span class="w"> 
-        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1286424214388204801"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">accountId</span><span class="w"> 
-        </span><span class="s2">"A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1270447370291795457"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchAccountId</span><span class="w"> 
-        </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
-        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  </span><span class="err">SELL</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">BUY</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='side'>Side</h3>
+<p>The average price can be found by dividing <code>Z</code> by <code>z</code></p>
+<h3 id='side'>Side</h3>
 <ul>
 <li>BUY </li>
 <li>SELL </li>
@@ -3475,7 +3463,29 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <li>STOP_SHORT_PROFIT Plan entrustment-short position take profit</li>
 <li>STOP_SHORT_LOSS Plan order - short position stop loss</li>
 </ul>
-
+<h2 id='event-trade-update'>Event: Trade Update</h2>
+<blockquote>
+<p>Trade Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticketInfo"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> 
+        </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440976"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> 
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> 
+        </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.205"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w"> 
+        </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440899"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w"> 
+        </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441.0"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w"> 
+        </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620385157122"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">ticketId</span><span class="w">
+        </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">orderId</span><span class="w"> 
+        </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440093"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">clientOrderId</span><span class="w"> 
+        </span><span class="s2">"O"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291354087841869312"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchOrderId</span><span class="w"> 
+        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1286424214388204801"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">accountId</span><span class="w"> 
+        </span><span class="s2">"A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1270447370291795457"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchAccountId</span><span class="w"> 
+        </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
+        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  </span><span class="err">SELL</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">BUY</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
