@@ -2194,6 +2194,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>YES</td>
 <td></td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='query-sub-account-user_data'>Query Sub-account (USER_DATA)</h2>
 <ul>
@@ -2332,6 +2344,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>NO</td>
 <td></td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='change-margin-type-trade'>Change Margin Type (TRADE)</h2>
 <ul>
@@ -2368,6 +2392,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>ENUM</td>
 <td>YES</td>
 <td><code>CROSS</code> <code>ISOLATED</code></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
 </tr>
 </tbody></table>
 <h2 id='change-initial-leverage-trade'>Change Initial Leverage (TRADE)</h2>
@@ -2406,6 +2442,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>YES</td>
 <td></td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='get-the-leverage-multiple-and-position-mode-user_data'>Get the leverage multiple and position mode (USER_DATA)</h2>
 <ul>
@@ -2437,6 +2485,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
 <td></td>
 </tr>
 </tbody></table>
@@ -2880,6 +2940,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>NO</td>
 <td>position direction <code>LONG</code> or <code>SHORT</code></td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 
 <p>Notes：</p>
@@ -3031,6 +3103,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>YES</td>
 <td>Increase (positive value) or decrease (negative value) the amount of margin. Please note that this quantity refers to the underlying pricing asset of the contract (that is, the underlying of the contract settlement)</td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='account-trade-list-user_data'>Account Trade List (USER_DATA)</h2>
 <ul>
@@ -3093,6 +3177,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>NO</td>
 <td>To the end of TradeId (used to query transaction orders)</td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='query-risk-limit-user_data'>Query Risk Limit (USER_DATA)</h2>
 <ul>
@@ -3135,6 +3231,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>YES</td>
 <td></td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='set-risk-limits-user_data'>Set Risk Limits (USER_DATA)</h2>
 <ul>
@@ -3174,6 +3282,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>YES</td>
 <td>true:<code>LONG</code>;<code>false</code>:SHORT</td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='user-commission-rate-user_data'>User Commission Rate (USER_DATA)</h2>
 <ul>
@@ -3201,6 +3321,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <tr>
 <td>symbol</td>
 <td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
 <td>YES</td>
 <td></td>
 </tr>
