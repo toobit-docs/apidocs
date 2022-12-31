@@ -2016,8 +2016,9 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
       </span><span class="p">[</span><span class="s2">"11369.6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0047"</span><span class="p">],</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11369.17"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.3"</span><span class="p">],</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11369.16"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.2"</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="s2">"11369.04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.3203"</span><span class="p">],</span><span class="w">
-    </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">//Asks</span><span class="w">
+      </span><span class="p">[</span><span class="s2">"11369.04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1.3203"</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"a"</span><span class="p">:[</span><span class="err">//Asks</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11375.41"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0053"</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="p">[</span><span class="err">价格</span><span class="p">,</span><span class="w"> </span><span class="err">数量</span><span class="p">]</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11375.42"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0043"</span><span class="p">],</span><span class="w">
       </span><span class="p">[</span><span class="s2">"11375.48"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0052"</span><span class="p">],</span><span class="w">
@@ -2154,6 +2155,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>YES</td>
 <td>转账数量</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
 <h2 id='87a7130ac5'>获取划转历史</h2>
 <ul>
@@ -2256,6 +2269,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>NO</td>
 <td>每页记录数</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
 <h2 id='user_data'>查询子账户 (USER_DATA)</h2>
 <ul>
@@ -2292,7 +2317,27 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='749d765242-15'>参数</h3>
-<p>NONE</p>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
 <h2 id='trade'>变换逐全仓模式 (TRADE)</h2>
 <ul>
 <li><code>POST /api/v1/futures/marginType</code></li>
@@ -2328,6 +2373,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>ENUM</td>
 <td>YES</td>
 <td><code>CROSS</code>：全仓 <code>ISOLATED</code>：逐仓</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 <h2 id='trade-2'>调整开仓杠杆 (TRADE)</h2>
@@ -2366,6 +2423,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>YES</td>
 <td>杠杠倍数</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
 <h2 id='user_data-2'>查询杠杆倍数和仓位模式(USER_DATA)</h2>
 <ul>
@@ -2398,6 +2467,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>STRING</td>
 <td>NO</td>
 <td>交易对</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 <h2 id='trade-3'>下单 (TRADE)</h2>
@@ -2491,13 +2572,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 <h2 id='user_data-3'>查询订单 (USER_DATA)</h2>
@@ -2557,13 +2638,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 
@@ -2650,13 +2731,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 
@@ -2702,13 +2783,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 <h2 id='user_data-4'>查看当前全部挂单 (USER_DATA)</h2>
@@ -2776,13 +2857,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 
@@ -2839,6 +2920,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>ENUM</td>
 <td>NO</td>
 <td>仓位方向，<code>LONG</code>（多仓）或者<code>SHORT</code>（空仓）。</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 
@@ -2913,13 +3006,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>时间戳</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 
@@ -2945,7 +3038,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999999999.982"</span><span class="p">,</span><span class="w"> </span><span class="err">//总余额</span><span class="w">
         </span><span class="s2">"availableMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1899999999978.4995"</span><span class="p">,</span><span class="w"> </span><span class="err">//可用保证金</span><span class="w">
         </span><span class="s2">"positionMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.9825"</span><span class="p">,</span><span class="w"> </span><span class="err">//仓位保证金</span><span class="w">
-        </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="w"> </span><span class="err">//委托保证金（下单锁定）</span><span class="w">
+        </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="w"> </span><span class="p">,</span><span class="err">//委托保证金（下单锁定）</span><span class="w">
         </span><span class="s2">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//全仓未实现盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
@@ -2994,6 +3087,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>DECIMAL</td>
 <td>YES</td>
 <td>增加（正值）或者减少（负值）保证金的数量。请注意这个数量指的是合约标的定价资产（即合约结算的标的）</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 <h2 id='user_data-8'>账户成交历史 (USER_DATA)</h2>
@@ -3057,6 +3162,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>NO</td>
 <td>到TradeId结束（用来查询成交订单）</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
 <h2 id='user_data-9'>风险限额查询 (USER_DATA)</h2>
 <ul>
@@ -3099,6 +3216,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>YES</td>
 <td>交易对</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
 <h2 id='user_data-10'>设置风险限额(USER_DATA)</h2>
 <ul>
@@ -3138,6 +3267,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>YES</td>
 <td>true:LONG（多仓） false:SHORT（空仓）</td>
 </tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
 <h2 id='user_data-11'>用户手续费率 (USER_DATA)</h2>
 <ul>
@@ -3167,6 +3308,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>STRING</td>
 <td>YES</td>
 <td>交易对</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
 </tr>
 </tbody></table>
 <h1 id='websocket-2'>Websocket 账户信息推送</h1>
