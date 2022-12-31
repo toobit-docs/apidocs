@@ -1388,7 +1388,8 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
       ["11369.6", "0.0047"],
       ["11369.17", "0.3"],
       ["11369.16", "0.2"],
-      ["11369.04", "1.3203"],
+      ["11369.04", "1.3203"]
+    ],
     "a": [//Asks
       ["11375.41", "0.0053"], //[price, quantity]
       ["11375.42", "0.0043"],
@@ -1558,7 +1559,11 @@ Execute the transfer between the spot account and the contract account
 
 ### Parameters
 
-NONE
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
 
 ## Get Future Account Transaction History List (USER_DATA)
 - `GET /api/v1/account/balanceFlow`
@@ -1998,14 +2003,19 @@ Notes：
         "balance": "999999999999.982", // total
         "availableMargin": "1899999999978.4995", //available margin
         "positionMargin": "11.9825", //position Margin
-        "orderMargin": "9.5" //order Margin
+        "orderMargin": "9.5", //order Margin
         "crossUnRealizedPnl": "10.01" //The unrealized profit and loss of cross position
     }
 ]
 ```
 ### Parameters
 
-None
+### Parameters
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| timestamp | LONG | YES | |
+| recvWindow | LONG | NO | |
+
 
 ## Modify Isolated Position Margin (TRADE)
 - `POST  /api/v1/futures/positionMargin`
