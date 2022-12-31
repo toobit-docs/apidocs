@@ -3318,9 +3318,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>当账户信息有变动时，会推送此事件：
 
 <ul>
-<li>仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；</li>
-<li>订单状态变化没有引起账户和持仓变化的，不会推送此事件；</li>
-<li>position 信息：仅当symbol仓位有变动时推送。</li>
+<li>仅当账户信息有变动时，才会推送此事件</li>
 </ul></li>
 </ul>
 <h2 id='position'>Position更新推送</h2>
@@ -3345,6 +3343,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <ul>
+<li>position 信息：仅当symbol仓位有变动时推送。</li>
 <li>字段 <code>mt</code> 代表仓位类型 <code>CROSS</code> 全仓; <code>ISOLATED</code> 逐仓</li>
 </ul>
 <h2 id='2436316dfe'>订单更新推送</h2>
