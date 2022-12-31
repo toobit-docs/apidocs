@@ -2005,7 +2005,10 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 
 ### 参数
 
-NONE
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
 
 ## 账户内资产划转 (USER_DATA)
 
