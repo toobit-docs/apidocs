@@ -435,10 +435,16 @@
                     <a href="#listenkey-user_stream-3" class="toc-h2 toc-link" data-title="关闭listenKey (USER_STREAM)">关闭listenKey (USER_STREAM)</a>
                   </li>
                   <li>
-                    <a href="#balance-position" class="toc-h2 toc-link" data-title="Balance和Position更新推送">Balance和Position更新推送</a>
+                    <a href="#balance" class="toc-h2 toc-link" data-title="Balance推送">Balance推送</a>
                   </li>
                   <li>
-                    <a href="#060a012f0b" class="toc-h2 toc-link" data-title="订单/交易 更新推送">订单/交易 更新推送</a>
+                    <a href="#position" class="toc-h2 toc-link" data-title="Position更新推送">Position更新推送</a>
+                  </li>
+                  <li>
+                    <a href="#2436316dfe" class="toc-h2 toc-link" data-title="订单更新推送">订单更新推送</a>
+                  </li>
+                  <li>
+                    <a href="#a3e63ea9c0" class="toc-h2 toc-link" data-title="交易推送">交易推送</a>
                   </li>
               </ul>
           </li>
@@ -3286,7 +3292,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>recv窗口</td>
 </tr>
 </tbody></table>
-<h2 id='balance-position'>Balance和Position更新推送</h2>
+<h2 id='balance'>Balance推送</h2>
 <p>账户更新事件的 <code>event type</code> 固定为 <code>ACCOUNT_UPDATE</code></p>
 
 <blockquote>
@@ -3308,8 +3314,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
+<ul>
+<li>当账户信息有变动时，会推送此事件：
+
+<ul>
+<li>仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；</li>
+<li>订单状态变化没有引起账户和持仓变化的，不会推送此事件；</li>
+<li>position 信息：仅当symbol仓位有变动时推送。</li>
+</ul></li>
+</ul>
+<h2 id='position'>Position更新推送</h2>
 <blockquote>
-<p>Position Payload</p>
+<p>Payload</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -3329,20 +3345,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <ul>
-<li><p>当账户信息有变动时，会推送此事件：</p>
-
-<ul>
-<li>仅当账户信息有变动时(包括资金、仓位、保证金模式等发生变化)，才会推送此事件；</li>
-<li>订单状态变化没有引起账户和持仓变化的，不会推送此事件；</li>
-<li>position 信息：仅当symbol仓位有变动时推送。</li>
-</ul></li>
-<li><p>字段 <code>mt</code> 代表仓位类型 <code>CROSS</code> 全仓; <code>ISOLATED</code> 逐仓</p></li>
+<li>字段 <code>mt</code> 代表仓位类型 <code>CROSS</code> 全仓; <code>ISOLATED</code> 逐仓</li>
 </ul>
-<h2 id='060a012f0b'>订单/交易 更新推送</h2>
+<h2 id='2436316dfe'>订单更新推送</h2>
 <p>当有新订单创建、订单有新成交或者新的状态变化时会推送此类事件</p>
 
 <blockquote>
-<p>订单 Payload</p>
+<p>Payload</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -3369,28 +3378,8 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"Z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">transacted</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易金额</span><span class="w">
 
 </span></code></pre>
-<blockquote>
-<p>交易 Payload</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticketInfo"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
-        </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440976"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
-        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> </span><span class="err">币对</span><span class="w">
-        </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.205"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">数量</span><span class="w">
-        </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440899"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">时间</span><span class="w">
-        </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441.0"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">价格</span><span class="w">
-        </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620385157122"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">ticketId</span><span class="w">
-        </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">orderId</span><span class="w"> </span><span class="err">订单id</span><span class="w">
-        </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440093"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">clientOrderId</span><span class="w"> </span><span class="err">客户订单id</span><span class="w">
-        </span><span class="s2">"O"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291354087841869312"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchOrderId</span><span class="w"> </span><span class="err">对手方订单ID</span><span class="w">
-        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1286424214388204801"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">accountId</span><span class="w"> </span><span class="err">账户id</span><span class="w">
-        </span><span class="s2">"A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1270447370291795457"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchAccountId</span><span class="w"> </span><span class="err">对手方账户ID</span><span class="w">
-        </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
-        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  </span><span class="err">SELL</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">BUY</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='ba0138f8ea'>订单方向</h3>
+<p>平均价格可以通过<code>Z</code>除以<code>z</code>来获得。</p>
+<h3 id='ba0138f8ea'>订单方向</h3>
 <ul>
 <li>BUY 买入</li>
 <li>SELL 卖出</li>
@@ -3438,7 +3427,29 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>STOP_SHORT_PROFIT 计划委托-空仓止盈</li>
 <li>STOP_SHORT_LOSS 计划委托-空仓止损</li>
 </ul>
-
+<h2 id='a3e63ea9c0'>交易推送</h2>
+<blockquote>
+<p>Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ticketInfo"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
+        </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440976"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
+        </span><span class="s2">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> </span><span class="err">币对</span><span class="w">
+        </span><span class="s2">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.205"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">数量</span><span class="w">
+        </span><span class="s2">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440899"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">时间</span><span class="w">
+        </span><span class="s2">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"441.0"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">价格</span><span class="w">
+        </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620385157122"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">ticketId</span><span class="w">
+        </span><span class="s2">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">orderId</span><span class="w"> </span><span class="err">订单id</span><span class="w">
+        </span><span class="s2">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440093"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">clientOrderId</span><span class="w"> </span><span class="err">客户订单id</span><span class="w">
+        </span><span class="s2">"O"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291354087841869312"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchOrderId</span><span class="w"> </span><span class="err">对手方订单ID</span><span class="w">
+        </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1286424214388204801"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">accountId</span><span class="w"> </span><span class="err">账户id</span><span class="w">
+        </span><span class="s2">"A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1270447370291795457"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchAccountId</span><span class="w"> </span><span class="err">对手方账户ID</span><span class="w">
+        </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
+        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  </span><span class="err">SELL</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">BUY</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
