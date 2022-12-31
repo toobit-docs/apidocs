@@ -1544,7 +1544,6 @@ Symbol的深度信息。
 - `POST /api/v1/spot/batchOrders      (HMAC SHA256)`
 
 批量创建新订单,单次最多`20`条订单，必须为同一`symbol`。
-**其中batchOrders应以list of JSON格式填写订单参数**
 
 > 例子：
 
@@ -1629,6 +1628,14 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 
 | 参数名称     | 类型      | 是否必需      | 描述           |
 | ----------- | ------- | ------------- | -------------- |
+|  |  list<JSON> | YES | `RequestBody` 参数|
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+**其中RequestBody中batchOrders应以list of JSON格式填写订单参数**
+
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
 | symbol | STRING | YES | 交易对 |
 | side | ENUM | YES | `BUY`或`SELL `|
 | type | ENUM | YES | 详见枚举定义：订单类型 |
@@ -1636,8 +1643,20 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | quantity | DECIMAL | YES | 数量 |
 | price | DECIMAL | NO | 价格 |
 | newClientOrderId | STRING | NO | 一个自己给订单定义的ID，如果没有发送会自动生成。 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+
+
+基于订单 `type`不同，强制要求某些参数:
+
+| 类型     | 额外强制参数      | 
+| ----------- | ------- | 
+| `LIMIT` | `timeInForce`, `quantity`,` price` |
+| `MARKET` |  `quantity` |
+| `STOP_LOSS` | `quantity`, `stopPrice` **当前不可用** |
+| `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **当前不可用**|
+| `TAKE_PROFIT` | `quantity`, `stopPrice` **当前不可用** |
+| `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` **当前不可用** |
+| `LIMIT_MAKER` | `quantity`, `price` |
+
 
 ## 撤销订单 (TRADE)
 - `DELETE /api/v1/spot/order  (HMAC SHA256)`
@@ -1693,6 +1712,45 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | symbol | STRING | NO | 现货名称（多个用,隔开） |
 | side | ENUM| NO | BUY或SELL |
 
+## 批量撤单 (TRADE)
+
+- `DELETE /api/v1/spot/cancelOrderByIds (HMAC SHA256)`
+
+根据订单id批量撤单，**单次最多100条**
+
+> 响应
+
+``` json
+// 取消全部成功
+{
+  "code":0, // 0 代表执行成功
+  "result":[] //批量撤单结果
+}
+
+// 取消部分或全部失败
+{
+   "code":0,
+   "result":[
+       {
+          "orderId":"202212231234567895",
+          "code":-2013 //
+       },
+       {
+           "orderId":"202212231234567896",
+           "code":-2013
+       }
+   ]
+}
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述           |
+| ----------- | ------- | ------------- | -------------- |
+| ids | STRING | YES | 订单id（多个用`,`隔开） |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳 |
+
+注意：**code**返回`0`代表撤单请求被执行，是否成功还需要看`result`里的结果,如果`result`为空代表全部成功，不为空`orderId`代表撤销失败的订单id，`code`代表撤销失败原因。
 
 ## 查询订单  (USER_DATA)
 - `GET /api/v1/spot/order (HMAC SHA256)`
