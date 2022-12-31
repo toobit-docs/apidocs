@@ -1571,7 +1571,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 > 响应
 
 ``` json
-成功返回
+成功返回:
 {
         "code": 0,
         "result": [{
@@ -1611,7 +1611,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
         }]
 }
 
-失败返回
+失败返回:
 {
         "code": 0,
         "result": [{
@@ -1721,13 +1721,13 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 > 响应
 
 ``` json
-// 取消全部成功
+取消全部成功:
 {
   "code":0, // 0 代表执行成功
   "result":[] //批量撤单结果
 }
 
-// 取消部分或全部失败
+ 取消部分或全部失败:
 {
    "code":0,
    "result":[
