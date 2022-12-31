@@ -1604,6 +1604,8 @@ Either `orderId `or `clientOrderId `must be sent.
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING | NO | |
 | side | ENUM| NO | `BUY` or `SELL` |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 
 ## Query Order  (USER_DATA)
