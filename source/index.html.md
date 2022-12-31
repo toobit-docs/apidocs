@@ -1941,7 +1941,28 @@ Notes：
 | recvWindow | LONG | NO |  |
 | timestamp | LONG | YES |  |
 
+## Get API KEY Type (USER_DATA)
 
+- `GET /api/v1/account/checkApiKey`
+
+> Response
+
+``` json
+{
+    "accountType": "master"
+}
+```
+
+### 参数
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+-  accountType:
+  - master
+  - spot
+  - contract
 
 # User Data Streams
 
