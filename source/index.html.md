@@ -2210,11 +2210,11 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 | timestamp | LONG | YES |  |
 | recvWindow | LONG | NO |  |
 
-## Event: Balance and Position Update
+## Event: Balance 
 
 The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
 
-> Balance Payload
+> Payload
 
 ``` json
 {
@@ -2233,6 +2233,15 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
 }
     
 ```
+
+
+- When the account information changes, this event will be pushed:
+   - This event will only be pushed when there is a change in account information
+   
+
+
+## Event:  Position Update
+
 
 > Position Payload
 
@@ -2255,14 +2264,10 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
 ]
 ```
 
-- When the account information changes, this event will be pushed:
-   - This event will only be pushed when there is a change in account information (including changes in funds, positions, margin modes, etc.);
-   - If the change in order status does not cause changes in account and positions, this event will not be pushed;
-   - position information: push only when there is a change in the symbol position.
-
+- position information: push only when there is a change in the symbol position.
 - The field `mt` represents the position type `CROSS` cross margin; `ISOLATED` isolated margin
 
-## Event: Order and Trade Update
+## Event: Order 
 
 This type of event will be pushed when a new order is created, an order has a new deal, or a new state change.
 
@@ -2295,28 +2300,7 @@ This type of event will be pushed when a new order is created, an order has a ne
 
 ```
 
-> Trade Payload
-
-``` json
-[
-    {
-        "e": "ticketInfo",                // Event type 
-        "E": "1668693440976",             // Event time 
-        "s": "BTCUSDT",                   // Symbol 
-        "q": "0.205",                     // quantity 
-        "t": "1668693440899",             // time 
-        "p": "441.0",                     // price 
-        "T": "1291488620385157122",       // ticketId
-        "o": "1291488620167835136",       // orderId 
-        "c": "1668693440093",             // clientOrderId 
-        "O": "1291354087841869312",       // matchOrderId 
-        "a": "1286424214388204801",       // accountId 
-        "A": "1270447370291795457",       // matchAccountId 
-        "m": false,                       // isMaker 
-        "S": "SELL"                       // side  SELL or BUY
-    }
-]
-```
+The average price can be found by dividing `Z` by `z`
 
 ### Side
 
@@ -2365,3 +2349,33 @@ This type of event will be pushed when a new order is created, an order has a ne
 - STOP_LONG_LOSS Long position stop loss
 - STOP_SHORT_PROFIT Plan entrustment-short position take profit
 - STOP_SHORT_LOSS Plan order - short position stop loss
+
+
+
+
+## Event: Trade Update
+
+> Trade Payload
+
+``` json
+[
+    {
+        "e": "ticketInfo",                // Event type 
+        "E": "1668693440976",             // Event time 
+        "s": "BTCUSDT",                   // Symbol 
+        "q": "0.205",                     // quantity 
+        "t": "1668693440899",             // time 
+        "p": "441.0",                     // price 
+        "T": "1291488620385157122",       // ticketId
+        "o": "1291488620167835136",       // orderId 
+        "c": "1668693440093",             // clientOrderId 
+        "O": "1291354087841869312",       // matchOrderId 
+        "a": "1286424214388204801",       // accountId 
+        "A": "1270447370291795457",       // matchAccountId 
+        "m": false,                       // isMaker 
+        "S": "SELL"                       // side  SELL or BUY
+    }
+]
+```
+
+
