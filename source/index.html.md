@@ -1515,7 +1515,8 @@ Execute the transfer between the spot account and the contract account
 | toAccountId | LONG | YES |  |
 | coin | STRING | YES |  |
 | quantity | DECIMAL | YES |  |
-
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Query Sub-account (USER_DATA)
 
@@ -1611,7 +1612,8 @@ Obtain the history of fund transfers between the spot account and the contract a
 | startTime | LONG | NO | start timestamp |
 | endTime | LONG | NO | end timestamp |
 | limit | INT | NO |  |
-
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Change Margin Type (TRADE)
 - `POST /api/v1/futures/marginType `
@@ -1635,7 +1637,8 @@ Change the user's margin mode on the specified symbol contract: isolated margin 
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
 | marginType | ENUM | YES | `CROSS` `ISOLATED` |
-
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Change Initial Leverage (TRADE)
 
@@ -1660,7 +1663,8 @@ Adjust the user's opening leverage in the specified symbol contract.
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
 | leverage | INT | YES |  |
-
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Get the leverage multiple and position mode (USER_DATA)
 - `GET /api/v1/futures/accountLeverage`
@@ -1683,7 +1687,8 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO |  |
-
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 
 ## New Order (TRADE)
@@ -1925,6 +1930,8 @@ Returns the current position information, this API requires a request signature.
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO |  |
 | side | ENUM | NO | position direction `LONG` or `SHORT` |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 Notes：
 
@@ -2024,6 +2031,8 @@ None
 | symbol | STRING | YES |  |
 | positionSide | ENUM | YES | `LONG` or `SHORT` |
 | amount | DECIMAL | YES | Increase (positive value) or decrease (negative value) the amount of margin. Please note that this quantity refers to the underlying pricing asset of the contract (that is, the underlying of the contract settlement) |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Account Trade List (USER_DATA)
 - `GET /api/v1/futures/userTrades`
@@ -2062,6 +2071,8 @@ Get trades for a specific account and symbol.
 | limit | INT | NO |  |
 | fromId | LONG | NO | Start from TradeId (used to query transaction orders) |
 | toId | LONG | NO | To the end of TradeId (used to query transaction orders) |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Query Risk Limit (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
@@ -2094,6 +2105,8 @@ To query the risk limit, this API endpoint requires a request signature.
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## Set Risk Limits (USER_DATA)
 - `POST /api/v1/futures/setRiskLimit`
@@ -2114,6 +2127,8 @@ To query the risk limit, this API endpoint requires a request signature.
 | symbol | STRING | YES |  |
 | riskLimitId | LONG | YES | |
 | isLong | BOOLEAN | YES | true:`LONG`;` false`:SHORT |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 ## User Commission Rate (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
@@ -2135,6 +2150,8 @@ To query the risk limit, this API endpoint requires a request signature.
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 # User Data Streams
 
