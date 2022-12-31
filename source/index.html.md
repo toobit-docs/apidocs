@@ -1817,6 +1817,132 @@ Notes：
 - If fromId is set and toId is set, it will get orders < that fromId and > that toId in descending order.
 - If fromId is not set and toId it not set, most recent order are returned in descending order.
 
+## Query Sub-account (USER_DATA)
+
+- `GET /api/v1/account/subAccount`
+
+
+### Weight：5
+
+> Response：
+
+``` json
+[
+    {
+        "accountId": "122216245228131",
+        "accountName": "",
+        "accountType": 1,
+        "accountIndex": 0 
+    },
+    {
+        "accountId": "482694560475091200",
+        "accountName": "createSubAccountByCurl", 
+        "accountType": 1, // 1 Spot Account 3 Futures Account
+        "accountIndex": 1
+    },
+    {
+        "accountId": "422446415267060992",
+        "accountName": "",
+        "accountType": 3,
+        "accountIndex": 0
+    },
+    {
+        "accountId": "482711469199298816",
+        "accountName": "createSubAccountByCurl",
+        "accountType": 3,
+        "accountIndex": 1
+    },
+]
+```
+
+### Parameters
+
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+
+## New Account Transfer
+
+- `POST /api/v1/account/assetTransfer`
+
+### Weight：1
+
+> Response：
+
+``` json
+{
+    "success":"true" 
+}
+```
+
+### Parameters
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| fromAccountId | LONG | YES |  |
+| toAccountId | LONG | YES |  |
+| coin | STRING | YES |  |
+| quantity | DECIMAL | YES |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+
+## Get Account Transaction History List (USER_DATA)
+- `GET /api/v1/account/balanceFlow`
+
+### Weight：5
+
+> Response：
+
+``` json
+[
+    {
+        "id": "539870570957903104",
+        "accountId": "122216245228131",
+        "coin": "BTC",
+        "coinId": "BTC",
+        "coinName": "BTC",
+        "flowTypeValue": 51, 
+        "flowType": "USER_ACCOUNT_TRANSFER", 
+        "flowName": "Transfer", 
+        "change": "-12.5", 
+        "total": "379.624059937852365", 
+        "created": "1579093587214"
+    },
+    {
+        "id": "536072393645448960",
+        "accountId": "122216245228131",
+        "coin": "USDT",
+        "coinId": "USDT",
+        "coinName": "USDT",
+        "flowTypeValue": 7,
+        "flowType": "AIRDROP",
+        "flowName": "Airdrop",
+        "change": "-2000",
+        "total": "918662.0917630848",
+        "created": "1578640809195"
+    }
+]
+```
+
+### Parameters
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| accountType | INT | NO |  |
+| accountIndex | INT | NO |  |
+| coin | STRING | NO |  |
+| flowType | INT | NO | transfer：3 |
+| fromId | LONG | NO |  |
+| endId | LONG | NO |  |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp |
+| limit | INT | NO |  |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+
+
 # User Data Streams
 
 - The base API endpoint is : **https://api.toobit.com** 
