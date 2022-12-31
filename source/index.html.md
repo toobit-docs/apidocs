@@ -1346,8 +1346,9 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
       ["11369.6", "0.0047"],
       ["11369.17", "0.3"],
       ["11369.16", "0.2"],
-      ["11369.04", "1.3203"],
-    "a": [//Asks
+      ["11369.04", "1.3203"]
+    ],
+    "a":[//Asks
       ["11375.41", "0.0053"], //[价格, 数量]
       ["11375.42", "0.0043"],
       ["11375.48", "0.0052"],
@@ -1478,7 +1479,8 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | toAccountId | LONG | YES | 目标账户id |
 | coin | STRING | YES | tokenID |
 | quantity | DECIMAL | YES | 转账数量 |
-
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 获取划转历史
 - `GET /api/v1/account/balanceFlow`
@@ -1532,6 +1534,8 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | startTime | LONG | NO | 开始时间 |
 | endTime | LONG | NO | 结束时间 |
 | limit | INT | NO | 每页记录数 |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 查询子账户 (USER_DATA)
 
@@ -1573,7 +1577,10 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ### 参数
 
-NONE
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 变换逐全仓模式 (TRADE)
 - `POST /api/v1/futures/marginType `
@@ -1597,7 +1604,8 @@ NONE
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
 | marginType | ENUM | YES | `CROSS`：全仓 `ISOLATED`：逐仓 |
-
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 调整开仓杠杆 (TRADE)
 
@@ -1622,6 +1630,8 @@ NONE
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
 | leverage | INT | YES | 杠杠倍数 |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 
 ## 查询杠杆倍数和仓位模式(USER_DATA)
@@ -1645,7 +1655,8 @@ NONE
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
-
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 
 ## 下单 (TRADE)
@@ -1686,8 +1697,8 @@ NONE
 | stopPrice | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要** |
 | timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER` |
 | newClientOrderId | STRING | YES | 订单的ID，用户自己定义 |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 
 ## 查询订单 (USER_DATA)
@@ -1724,8 +1735,8 @@ NONE
 | orderId | LONG | NO | 订单ID |
 | origClientOrderId | STRING | NO | 用户定义的订单ID |
 | type | ENUM | NO | 订单类型（LIMIT和STOP） |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
  
 注意: 
 
@@ -1776,8 +1787,8 @@ NONE
 | type | ENUM | NO | 订单类型（LIMIT和STOP） |
 | fastCancel | INT | NO | 默认`0`(同步撤单)，`1`异步撤单 |
 | symbol | STRING | NO | 交易对 |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 注意：
 
@@ -1804,8 +1815,8 @@ NONE
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 （或者用,分割的交易对的list）|
 | side | ENUM | NO | `BUY`或`SELL` |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 查看当前全部挂单 (USER_DATA)
 - `GET /api/v1/futures/openOrders`
@@ -1845,8 +1856,8 @@ NONE
 | orderId | LONG | NO | 订单ID |
 | type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
 | limit | INT | NO | |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 注意：
 
@@ -1887,6 +1898,8 @@ NONE
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
 | side | ENUM | NO | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓）。 |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 注意：
 
@@ -1930,8 +1943,8 @@ NONE
 | orderId | LONG | NO | 订单ID |
 | type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
 | limit | INT | NO | |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 注意：
 
@@ -1954,7 +1967,7 @@ NONE
         "balance": "999999999999.982", //总余额
         "availableMargin": "1899999999978.4995", //可用保证金
         "positionMargin": "11.9825", //仓位保证金
-        "orderMargin": "9.5" //委托保证金（下单锁定）
+        "orderMargin": "9.5" ,//委托保证金（下单锁定）
         "crossUnRealizedPnl": "10.01" //全仓未实现盈亏
     }
 ]
@@ -1988,6 +2001,8 @@ None
 | symbol | STRING | YES | 交易对 |
 | positionSide | ENUM | YES | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓） |
 | amount | DECIMAL | YES | 增加（正值）或者减少（负值）保证金的数量。请注意这个数量指的是合约标的定价资产（即合约结算的标的） |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 账户成交历史 (USER_DATA)
 - `GET /api/v1/futures/userTrades`
@@ -2026,6 +2041,8 @@ None
 | limit | INT | NO | 返回限制(最大值为1000) |
 | fromId | LONG | NO | 从TradeId开始（用来查询成交订单） |
 | toId | LONG | NO | 到TradeId结束（用来查询成交订单） |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 风险限额查询 (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
@@ -2058,6 +2075,8 @@ None
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 设置风险限额(USER_DATA)
 - `POST /api/v1/futures/setRiskLimit`
@@ -2078,6 +2097,8 @@ None
 | symbol | STRING | YES | 交易对 |
 | riskLimitId | LONG | YES | |
 | isLong | BOOLEAN | YES | true:LONG（多仓） false:SHORT（空仓） |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 ## 用户手续费率 (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
@@ -2099,6 +2120,8 @@ None
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
 
 # Websocket 账户信息推送
 
