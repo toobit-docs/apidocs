@@ -1644,7 +1644,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | timeInForce | ENUM | NO | 详见枚举定义：有效方式 |
 | quantity | DECIMAL | YES | 数量 |
 | price | DECIMAL | NO | 价格 |
-| newClientOrderId | STRING | NO | 一个自己给订单定义的ID，如果没有发送会自动生成。 |
+| newClientOrderId | STRING | YES | 用户自定义订单ID。 |
 
 
 基于订单 `type`不同，强制要求某些参数:
