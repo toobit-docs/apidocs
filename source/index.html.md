@@ -1551,6 +1551,123 @@ Additional mandatory parameters based on `type`:
 | `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` **currently unavailable** |
 | `LIMIT_MAKER` | `quantity`, `price` |
 
+## Place Multiple Orders (TRADE)
+
+- `POST /api/v1/spot/batchOrders      (HMAC SHA256)`
+
+### Weight：1
+
+Create new orders in batches, up to `20` orders at a time, must be the same `symbol`.
+
+> example：
+
+``` json
+curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq" -X POST -d '[   
+{     "newClientOrderId": "pl12241234567898",     
+      "symbol": "BTCUSDT",     
+      "side": "SELL",     
+      "type": "LIMIT",     
+      "price": 17001,     
+      "quantity": 1   
+},   
+{     "newClientOrderId": "pl12241234567899",     
+      "symbol": "BTCUSDT",     
+      "side": "SELL",     
+      "type": "LIMIT",     
+      "price": 17002,     
+      "quantity": 1  
+ } ]' 'https://api.toobit.com/api/v1/spot/batchOrders?timestamp=1671880913657&signature=7548b6834613afed3b7d3b0b9bfb0e0b3e3799c46db3ea6b952439fde35cb88f'
+
+```
+
+> Response
+
+``` json
+success :
+{
+        "code": 0,
+        "result": [{
+                "code": 0,
+                "order": {
+                        "accountId": "1287091689761137921",
+                        "symbol": "BTCUSDT",
+                        "symbolName": "BTCUSDT",
+                        "clientOrderId": "pl12241234567898",
+                        "orderId": "202212241234567898",
+                        "transactTime": "1671880251836",
+                        "price": "17001",
+                        "origQty": "1",
+                        "executedQty": "0",
+                        "status": "NEW",
+                        "timeInForce": "GTC",
+                        "type": "LIMIT",
+                        "side": "SELL"
+                }
+        }, {
+                "code": 0,
+                "order": {
+                        "accountId": "1287091689761137921",
+                        "symbol": "BTCUSDT",
+                        "symbolName": "BTCUSDT",
+                        "clientOrderId": "pl12241234567899",
+                        "orderId": "202212241234567899",
+                        "transactTime": "1671880251853",
+                        "price": "17002",
+                        "origQty": "1",
+                        "executedQty": "0",
+                        "status": "NEW",
+                        "timeInForce": "GTC",
+                        "type": "LIMIT",
+                        "side": "SELL"
+                }
+        }]
+}
+
+fail :
+{
+        "code": 0,
+        "result": [{
+                "code": -1149,
+                "msg": "Create order failed"
+        }, {
+                "code": -1149,
+                "msg": "Create order failed"
+        }]
+}
+```
+
+### Parameters
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+|  |  list<JSON> | YES | `RequestBody` parameter|
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+**The batchOrders in RequestBody should fill in the order parameters in list of JSON format**
+
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| symbol | STRING | YES |  |
+| side | ENUM | YES | `BUY` or `SELL `|
+| type | ENUM | YES | See enumeration definition for details: `orderType` |
+| timeInForce | ENUM | NO | See enumeration definition for details: `timeInForce` |
+| quantity | DECIMAL | YES |  |
+| price | DECIMAL | NO |  |
+| newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent. |
+
+
+Depending on the order `type`, certain parameters are mandatory:
+
+| Type     | Additional mandatory parameters      | 
+| ----------- | ------- | 
+| `LIMIT` | `timeInForce`, `quantity`,` price` |
+| `MARKET` |  `quantity` |
+| `STOP_LOSS` | `quantity`, `stopPrice` **currently unavailable** |
+| `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **currently unavailable**|
+| `TAKE_PROFIT` | `quantity`, `stopPrice` **currently unavailable** |
+| `TAKE_PROFIT_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice` **currently unavailable** |
+
 ## Cancel Order  (TRADE)
 - `DELETE /api/v1/spot/order  (HMAC SHA256)`
 
@@ -1586,7 +1703,7 @@ Cancel an active order.
 
 Either `orderId `or `clientOrderId `must be sent.
 
-##  Cancel Multiple Orders (TRADE)
+##  Cancel All Open Orders (TRADE)
 - `DELETE /api/v1/spot/openOrders (HMAC SHA256)`
 
 ### Weight：5
@@ -1606,6 +1723,48 @@ Either `orderId `or `clientOrderId `must be sent.
 | side | ENUM| NO | `BUY` or `SELL` |
 | recvWindow | LONG | NO |  |
 | timestamp | LONG | YES |  |
+
+## Cancel Multiple Orders (TRADE)
+
+- `DELETE /api/v1/spot/cancelOrderByIds (HMAC SHA256)`
+
+Cancel orders in batches according to the order id, **maximum 100 items at a time**
+
+### Weight：5
+
+> Response
+
+``` json
+success :
+{
+  "code":0, // 0 On behalf of successful execution
+  "result":[] //
+}
+
+ Some or all of the cancellations failed:
+{
+   "code":0,
+   "result":[
+       {
+          "orderId":"202212231234567895",
+          "code":-2013 //
+       },
+       {
+           "orderId":"202212231234567896",
+           "code":-2013
+       }
+   ]
+}
+```
+
+### Parameters
+| Name     | Type      | Mandatory      | Description           |
+| ----------- | ------- | ------------- | -------------- |
+| ids | STRING | YES | order Id （Multiple separated by `,`） |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+Note: **code** returns `0` to indicate that the order cancellation request has been executed. Whether it is successful or not depends on the results in `result`. If `result` is empty, it means that all of them are successful, and if `orderId` is not empty, it means that the cancellation failed The order id, `code` represents the reason for the cancellation failure.
 
 
 ## Query Order  (USER_DATA)
