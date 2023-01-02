@@ -1654,8 +1654,9 @@ fail :
 | timeInForce | ENUM | NO | See enumeration definition for details: `timeInForce` |
 | quantity | DECIMAL | YES |  |
 | price | DECIMAL | NO |  |
-| newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent. |
-
+| newClientOrderId | STRING | YES | The ID of the order, defined by the user |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
 
 Depending on the order `type`, certain parameters are mandatory:
 
