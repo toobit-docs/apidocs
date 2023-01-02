@@ -383,10 +383,16 @@
                     <a href="#trade-2" class="toc-h2 toc-link" data-title="下单 (TRADE)">下单 (TRADE)</a>
                   </li>
                   <li>
-                    <a href="#trade-3" class="toc-h2 toc-link" data-title="撤销订单 (TRADE)">撤销订单 (TRADE)</a>
+                    <a href="#trade-3" class="toc-h2 toc-link" data-title="批量下单 (TRADE)">批量下单 (TRADE)</a>
                   </li>
                   <li>
-                    <a href="#trade-4" class="toc-h2 toc-link" data-title="批量撤单 (TRADE)">批量撤单 (TRADE)</a>
+                    <a href="#trade-4" class="toc-h2 toc-link" data-title="撤销订单 (TRADE)">撤销订单 (TRADE)</a>
+                  </li>
+                  <li>
+                    <a href="#trade-5" class="toc-h2 toc-link" data-title="批量撤单 (TRADE)">批量撤单 (TRADE)</a>
+                  </li>
+                  <li>
+                    <a href="#trade-6" class="toc-h2 toc-link" data-title="批量撤单 (TRADE)">批量撤单 (TRADE)</a>
                   </li>
                   <li>
                     <a href="#user_data-5" class="toc-h2 toc-link" data-title="查询订单  (USER_DATA)">查询订单  (USER_DATA)</a>
@@ -402,6 +408,18 @@
                   </li>
                   <li>
                     <a href="#user_data-9" class="toc-h2 toc-link" data-title="账户成交历史 (USER_DATA)">账户成交历史 (USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#user_data-10" class="toc-h2 toc-link" data-title="查询子账户 (USER_DATA)">查询子账户 (USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#user_data-11" class="toc-h2 toc-link" data-title="账户内资产划转 (USER_DATA)">账户内资产划转 (USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#user_data-12" class="toc-h2 toc-link" data-title="查询账户流水 (USER_DATA)">查询账户流水 (USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#api-key-user_data" class="toc-h2 toc-link" data-title="获取API KEY类型 (USER_DATA)">获取API KEY类型 (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -2300,13 +2318,216 @@ HMAC SHA256 签名:
 <td><code>quantity</code>, <code>price</code></td>
 </tr>
 </tbody></table>
-<h2 id='trade-3'>撤销订单 (TRADE)</h2>
+<h2 id='trade-3'>批量下单 (TRADE)</h2>
+<ul>
+<li><code>POST /api/v1/spot/batchOrders      (HMAC SHA256)</code></li>
+</ul>
+<h3 id='1-13'>权重：1</h3>
+<p>批量创建新订单,单次最多<code>20</code>条订单，必须为同一<code>symbol</code>。</p>
+
+<blockquote>
+<p>例子：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w">  </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span><span class="w"> </span><span class="err">-X</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="p">[</span><span class="w">   
+</span><span class="p">{</span><span class="w">     </span><span class="s2">"newClientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567898"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">202212241234567898</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">17001</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">   
+</span><span class="p">},</span><span class="w">   
+</span><span class="p">{</span><span class="w">     </span><span class="s2">"newClientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567899"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="mi">202212241234567899</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">17002</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  
+ </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="err">'</span><span class="w"> </span><span class="err">'https</span><span class="p">:</span><span class="err">//api.toobit.com/api/v</span><span class="mi">1</span><span class="err">/spot/batchOrders?timestamp=</span><span class="mi">1671880913657</span><span class="err">&amp;signature=</span><span class="mi">7548</span><span class="err">b</span><span class="mi">6834613</span><span class="err">afed</span><span class="mi">3</span><span class="err">b</span><span class="mi">7</span><span class="err">d</span><span class="mi">3</span><span class="err">b</span><span class="mi">0</span><span class="err">b</span><span class="mi">9</span><span class="err">bfb</span><span class="mi">0</span><span class="err">e</span><span class="mi">0</span><span class="err">b</span><span class="mi">3</span><span class="err">e</span><span class="mi">3799</span><span class="err">c</span><span class="mi">46</span><span class="err">db</span><span class="mi">3</span><span class="err">ea</span><span class="mi">6</span><span class="err">b</span><span class="mi">952439</span><span class="err">fde</span><span class="mi">35</span><span class="err">cb</span><span class="mi">88</span><span class="err">f'</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">成功返回</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287091689761137921"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567898"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212241234567898"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671880251836"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17001"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287091689761137921"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567899"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212241234567899"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671880251853"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17002"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">失败返回</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1149</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create order failed"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1149</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create order failed"</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-17'>参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>list<JSON></td>
+<td>YES</td>
+<td><code>RequestBody</code> 参数</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+
+<p><strong>其中RequestBody中batchOrders应以list of JSON格式填写订单参数</strong></p>
+
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td><code>BUY</code>或<code>SELL</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>详见枚举定义：订单类型</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>详见枚举定义：有效方式</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>价格</td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>YES</td>
+<td>用户自定义订单ID。</td>
+</tr>
+</tbody></table>
+
+<p>基于订单 <code>type</code>不同，强制要求某些参数:</p>
+
+<table><thead>
+<tr>
+<th>类型</th>
+<th>额外强制参数</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>,<code>price</code></td>
+</tr>
+<tr>
+<td><code>MARKET</code></td>
+<td><code>quantity</code></td>
+</tr>
+<tr>
+<td><code>STOP_LOSS</code></td>
+<td><code>quantity</code>, <code>stopPrice</code> <strong>当前不可用</strong></td>
+</tr>
+<tr>
+<td><code>STOP_LOSS_LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code>, <code>stopPrice</code>  <strong>当前不可用</strong></td>
+</tr>
+<tr>
+<td><code>TAKE_PROFIT</code></td>
+<td><code>quantity</code>, <code>stopPrice</code> <strong>当前不可用</strong></td>
+</tr>
+<tr>
+<td><code>TAKE_PROFIT_LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code>, <code>stopPrice</code> <strong>当前不可用</strong></td>
+</tr>
+<tr>
+<td><code>LIMIT_MAKER</code></td>
+<td><code>quantity</code>, <code>price</code></td>
+</tr>
+</tbody></table>
+<h2 id='trade-4'>撤销订单 (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/spot/order  (HMAC SHA256)</code></li>
 </ul>
 
 <p>取消有效订单。</p>
-<h3 id='1-13'>权重：1</h3>
+<h3 id='1-14'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2323,7 +2544,7 @@ HMAC SHA256 签名:
   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-17'>参数</h3>
+</span></code></pre><h3 id='749d765242-18'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2359,7 +2580,7 @@ HMAC SHA256 签名:
 </tbody></table>
 
 <p><code>orderId</code> 或 <code>origClientOrderId</code> 必须至少发送一个</p>
-<h2 id='trade-4'>批量撤单 (TRADE)</h2>
+<h2 id='trade-5'>批量撤单 (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/spot/openOrders (HMAC SHA256)</code></li>
 </ul>
@@ -2370,7 +2591,7 @@ HMAC SHA256 签名:
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-18'>参数</h3>
+</span></code></pre><h3 id='749d765242-19'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2391,12 +2612,84 @@ HMAC SHA256 签名:
 <td>NO</td>
 <td>BUY或SELL</td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
 </tbody></table>
+<h2 id='trade-6'>批量撤单 (TRADE)</h2>
+<ul>
+<li><code>DELETE /api/v1/spot/cancelOrderByIds (HMAC SHA256)</code></li>
+</ul>
+
+<p>根据订单id批量撤单，<strong>单次最多100条</strong></p>
+<h3 id='5-4'>权重：5</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">取消全部成功</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">代表执行成功</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:[]</span><span class="w"> </span><span class="err">//批量撤单结果</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+ </span><span class="err">取消部分或全部失败</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"202212231234567895"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w"> </span><span class="err">//</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"202212231234567896"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-20'>参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>STRING</td>
+<td>YES</td>
+<td>订单id（多个用<code>,</code>隔开）</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+
+<p>注意：<strong>code</strong>返回<code>0</code>代表撤单请求被执行，是否成功还需要看<code>result</code>里的结果,如果<code>result</code>为空代表全部成功，不为空<code>orderId</code>代表撤销失败的订单id，<code>code</code>代表撤销失败原因。</p>
 <h2 id='user_data-5'>查询订单  (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='1-14'>权重：1</h3>
+<h3 id='1-15'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2418,7 +2711,7 @@ HMAC SHA256 签名:
   </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-19'>参数</h3>
+</span></code></pre><h3 id='749d765242-21'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2465,7 +2758,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>获取交易对的所有当前挂单， 请小心使用不带交易对参数的调用。</p>
-<h3 id='1-15'>权重 ：1</h3>
+<h3 id='1-16'>权重 ：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2489,7 +2782,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-20'>参数</h3>
+</span></code></pre><h3 id='749d765242-22'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2541,7 +2834,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>获取所有帐户订单； 有效，已取消或已完成。</p>
-<h3 id='5-4'>权重：5</h3>
+<h3 id='5-5'>权重：5</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2565,7 +2858,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-21'>参数</h3>
+</span></code></pre><h3 id='749d765242-23'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2621,7 +2914,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/account</code></li>
 </ul>
-<h3 id='5-5'>权重：5</h3>
+<h3 id='5-6'>权重：5</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2637,7 +2930,7 @@ HMAC SHA256 签名:
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-22'>参数</h3>
+</span></code></pre><h3 id='749d765242-24'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2663,7 +2956,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/account/trades</code></li>
 </ul>
-<h3 id='5-6'>权重：5</h3>
+<h3 id='5-7'>权重：5</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2691,7 +2984,7 @@ HMAC SHA256 签名:
         </span><span class="s2">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-23'>参数</h3>
+</span></code></pre><h3 id='749d765242-25'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2758,6 +3051,255 @@ HMAC SHA256 签名:
 <li>如果同时有fromId和toId, 会返回订单号在fromId和toId的，倒序排列。</li>
 <li>如果fromId和toId都没有，会返回最新的成交记录，倒序排列。</li>
 </ul>
+<h2 id='user_data-10'>查询子账户 (USER_DATA)</h2>
+<ul>
+<li><code>GET /api/v1/account/subAccount</code></li>
+</ul>
+<h3 id='5-8'>权重：5</h3>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">账户index</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">默认账户</span><span class="w"> </span><span class="err">&gt;</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">创建的子账户</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"482694560475091200"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户类型</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">币币账户</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="err">合约账户</span><span class="w">
+        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422446415267060992"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"482711469199298816"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-26'>参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+<h2 id='user_data-11'>账户内资产划转 (USER_DATA)</h2>
+<ul>
+<li><code>POST /api/v1/account/assetTransfer</code></li>
+</ul>
+<h3 id='5-9'>权重： 5</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="s2">"true"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">成功</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-27'>参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromAccountId</td>
+<td>LONG</td>
+<td>YES</td>
+<td>源账户id</td>
+</tr>
+<tr>
+<td>toAccountId</td>
+<td>LONG</td>
+<td>YES</td>
+<td>目标账户id</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>STRING</td>
+<td>YES</td>
+<td>资产</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td>数量</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+<h2 id='user_data-12'>查询账户流水 (USER_DATA)</h2>
+<ul>
+<li><code>GET /api/v1/account/balanceFlow</code></li>
+</ul>
+<h3 id='5-10'>权重： 5</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"539870570957903104"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"flowTypeValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">流水类型</span><span class="w">
+        </span><span class="s2">"flowType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_ACCOUNT_TRANSFER"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">流水类型名称</span><span class="w">
+        </span><span class="s2">"flowName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transfer"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">流水类型说明</span><span class="w">
+        </span><span class="s2">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-12.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">变动值</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"379.624059937852365"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">变动后当前tokenId总资产</span><span class="w">
+        </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1579093587214"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='749d765242-28'>参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountType</td>
+<td>INT</td>
+<td>NO</td>
+<td>源账户id</td>
+</tr>
+<tr>
+<td>accountIndex</td>
+<td>INT</td>
+<td>NO</td>
+<td>目标账户id</td>
+</tr>
+<tr>
+<td>coin</td>
+<td>STRING</td>
+<td>NO</td>
+<td>资产</td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONT</td>
+<td>NO</td>
+<td>顺向查询数据</td>
+</tr>
+<tr>
+<td>endId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>反向查询数据</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>每页记录数</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+<h2 id='api-key-user_data'>获取API KEY类型 (USER_DATA)</h2>
+<ul>
+<li><code>GET /api/v1/account/checkApiKey</code></li>
+</ul>
+
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-29'>参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>类型</th>
+<th>是否必需</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li> accountType类型:
+
+<ul>
+<li>master</li>
+<li>spot</li>
+<li>contract</li>
+</ul></li>
+</ul>
 <h1 id='websocket-2'>Websocket账户信息推送</h1>
 <ul>
 <li>本篇所列出API接口的base url :  <strong>https://api.toobit.com</strong></li>
@@ -2776,14 +3318,14 @@ HMAC SHA256 签名:
 </ul>
 
 <p>开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。</p>
-<h4 id='1-16'>权重：1</h4>
+<h4 id='1-17'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='749d765242-24'>参数</h4>
+</span></code></pre><h4 id='749d765242-30'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2811,12 +3353,12 @@ HMAC SHA256 签名:
 </ul>
 
 <p>有效期延长至本次调用后60分钟,建议每30分钟发送一个 ping 。</p>
-<h4 id='1-17'>权重：1</h4>
+<h4 id='1-18'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='749d765242-25'>参数</h4>
+</span></code></pre><h4 id='749d765242-31'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2848,12 +3390,12 @@ HMAC SHA256 签名:
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='1-18'>权重：1</h4>
+<h4 id='1-19'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='749d765242-26'>参数</h4>
+</span></code></pre><h4 id='749d765242-32'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
