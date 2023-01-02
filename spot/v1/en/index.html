@@ -383,7 +383,13 @@
                     <a href="#new-order-trade" class="toc-h2 toc-link" data-title="New Order  (TRADE)">New Order  (TRADE)</a>
                   </li>
                   <li>
+                    <a href="#place-multiple-orders-trade" class="toc-h2 toc-link" data-title="Place Multiple Orders (TRADE)">Place Multiple Orders (TRADE)</a>
+                  </li>
+                  <li>
                     <a href="#cancel-order-trade" class="toc-h2 toc-link" data-title="Cancel Order  (TRADE)">Cancel Order  (TRADE)</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-all-open-orders-trade" class="toc-h2 toc-link" data-title="Cancel All Open Orders (TRADE)">Cancel All Open Orders (TRADE)</a>
                   </li>
                   <li>
                     <a href="#cancel-multiple-orders-trade" class="toc-h2 toc-link" data-title="Cancel Multiple Orders (TRADE)">Cancel Multiple Orders (TRADE)</a>
@@ -2336,13 +2342,210 @@ If the next returned data contains:</p>
 <td><code>quantity</code>, <code>price</code></td>
 </tr>
 </tbody></table>
+<h2 id='place-multiple-orders-trade'>Place Multiple Orders (TRADE)</h2>
+<ul>
+<li><code>POST /api/v1/spot/batchOrders      (HMAC SHA256)</code></li>
+</ul>
+<h3 id='weight-1-13'>Weight：1</h3>
+<p>Create new orders in batches, up to <code>20</code> orders at a time, must be the same <code>symbol</code>.</p>
+
+<blockquote>
+<p>example：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w">  </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span><span class="w"> </span><span class="err">-X</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="p">[</span><span class="w">   
+</span><span class="p">{</span><span class="w">     </span><span class="s2">"newClientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567898"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">17001</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">   
+</span><span class="p">},</span><span class="w">   
+</span><span class="p">{</span><span class="w">     </span><span class="s2">"newClientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567899"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">17002</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  
+ </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="err">'</span><span class="w"> </span><span class="err">'https</span><span class="p">:</span><span class="err">//api.toobit.com/api/v</span><span class="mi">1</span><span class="err">/spot/batchOrders?timestamp=</span><span class="mi">1671880913657</span><span class="err">&amp;signature=</span><span class="mi">7548</span><span class="err">b</span><span class="mi">6834613</span><span class="err">afed</span><span class="mi">3</span><span class="err">b</span><span class="mi">7</span><span class="err">d</span><span class="mi">3</span><span class="err">b</span><span class="mi">0</span><span class="err">b</span><span class="mi">9</span><span class="err">bfb</span><span class="mi">0</span><span class="err">e</span><span class="mi">0</span><span class="err">b</span><span class="mi">3</span><span class="err">e</span><span class="mi">3799</span><span class="err">c</span><span class="mi">46</span><span class="err">db</span><span class="mi">3</span><span class="err">ea</span><span class="mi">6</span><span class="err">b</span><span class="mi">952439</span><span class="err">fde</span><span class="mi">35</span><span class="err">cb</span><span class="mi">88</span><span class="err">f'</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">success</span><span class="w"> </span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287091689761137921"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567898"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212241234567898"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671880251836"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17001"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287091689761137921"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567899"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212241234567899"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671880251853"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17002"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">fail</span><span class="w"> </span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1149</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create order failed"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1149</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create order failed"</span><span class="w">
+        </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-17'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>list<JSON></td>
+<td>YES</td>
+<td><code>RequestBody</code> parameter</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>The batchOrders in RequestBody should fill in the order parameters in list of JSON format</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td><code>BUY</code> or <code>SELL</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>See enumeration definition for details: <code>orderType</code></td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>See enumeration definition for details: <code>timeInForce</code></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique id among open orders. Automatically generated if not sent.</td>
+</tr>
+</tbody></table>
+
+<p>Depending on the order <code>type</code>, certain parameters are mandatory:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Additional mandatory parameters</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>,<code>price</code></td>
+</tr>
+<tr>
+<td><code>MARKET</code></td>
+<td><code>quantity</code></td>
+</tr>
+<tr>
+<td><code>STOP_LOSS</code></td>
+<td><code>quantity</code>, <code>stopPrice</code> <strong>currently unavailable</strong></td>
+</tr>
+<tr>
+<td><code>STOP_LOSS_LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code>, <code>stopPrice</code>  <strong>currently unavailable</strong></td>
+</tr>
+<tr>
+<td><code>TAKE_PROFIT</code></td>
+<td><code>quantity</code>, <code>stopPrice</code> <strong>currently unavailable</strong></td>
+</tr>
+<tr>
+<td><code>TAKE_PROFIT_LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code>, <code>stopPrice</code> <strong>currently unavailable</strong></td>
+</tr>
+</tbody></table>
 <h2 id='cancel-order-trade'>Cancel Order  (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/spot/order  (HMAC SHA256)</code></li>
 </ul>
 
 <p>Cancel an active order.</p>
-<h3 id='weight-1-13'>Weight：1</h3>
+<h3 id='weight-1-14'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2359,7 +2562,7 @@ If the next returned data contains:</p>
   </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-17'>Parameters</h3>
+</span></code></pre><h3 id='parameters-18'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2395,7 +2598,7 @@ If the next returned data contains:</p>
 </tbody></table>
 
 <p>Either <code>orderId</code>or <code>clientOrderId</code>must be sent.</p>
-<h2 id='cancel-multiple-orders-trade'>Cancel Multiple Orders (TRADE)</h2>
+<h2 id='cancel-all-open-orders-trade'>Cancel All Open Orders (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/spot/openOrders (HMAC SHA256)</code></li>
 </ul>
@@ -2406,7 +2609,7 @@ If the next returned data contains:</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-18'>Parameters</h3>
+</span></code></pre><h3 id='parameters-19'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2440,11 +2643,71 @@ If the next returned data contains:</p>
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='cancel-multiple-orders-trade'>Cancel Multiple Orders (TRADE)</h2>
+<ul>
+<li><code>DELETE /api/v1/spot/cancelOrderByIds (HMAC SHA256)</code></li>
+</ul>
+
+<p>Cancel orders in batches according to the order id, <strong>maximum 100 items at a time</strong></p>
+<h3 id='weight-5-4'>Weight：5</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">success</span><span class="w"> </span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">On</span><span class="w"> </span><span class="err">behalf</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">successful</span><span class="w"> </span><span class="err">execution</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:[]</span><span class="w"> </span><span class="err">//</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+ </span><span class="err">Some</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">cancellations</span><span class="w"> </span><span class="err">failed</span><span class="p">:</span><span class="w">
+</span><span class="p">{</span><span class="w">
+   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"202212231234567895"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w"> </span><span class="err">//</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"202212231234567896"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-20'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>STRING</td>
+<td>YES</td>
+<td>order Id （Multiple separated by <code>,</code>）</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Note: <strong>code</strong> returns <code>0</code> to indicate that the order cancellation request has been executed. Whether it is successful or not depends on the results in <code>result</code>. If <code>result</code> is empty, it means that all of them are successful, and if <code>orderId</code> is not empty, it means that the cancellation failed The order id, <code>code</code> represents the reason for the cancellation failure.</p>
 <h2 id='query-order-user_data'>Query Order  (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='weight-1-14'>Weight：1</h3>
+<h3 id='weight-1-15'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2466,7 +2729,7 @@ If the next returned data contains:</p>
   </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499827319559</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-19'>Parameters</h3>
+</span></code></pre><h3 id='parameters-21'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2513,7 +2776,7 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Get all open orders on a symbol. <strong>Careful</strong> when accessing this with no symbol.</p>
-<h3 id='weight-1-15'>Weight ：1</h3>
+<h3 id='weight-1-16'>Weight ：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2537,7 +2800,7 @@ If the next returned data contains:</p>
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-20'>Parameters</h3>
+</span></code></pre><h3 id='parameters-22'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2589,7 +2852,7 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Get all account orders; active, canceled, or filled.</p>
-<h3 id='weight-5-4'>Weight：5</h3>
+<h3 id='weight-5-5'>Weight：5</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2613,7 +2876,7 @@ If the next returned data contains:</p>
     </span><span class="s2">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-21'>Parameters</h3>
+</span></code></pre><h3 id='parameters-23'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2669,7 +2932,7 @@ If the next returned data contains:</p>
 <ul>
 <li><code>GET /api/v1/account</code></li>
 </ul>
-<h3 id='weight-5-5'>Weight：5</h3>
+<h3 id='weight-5-6'>Weight：5</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2685,7 +2948,7 @@ If the next returned data contains:</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-22'>Parameters</h3>
+</span></code></pre><h3 id='parameters-24'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2711,7 +2974,7 @@ If the next returned data contains:</p>
 <ul>
 <li><code>GET /api/v1/account/trades</code></li>
 </ul>
-<h3 id='weight-5-6'>Weight：5</h3>
+<h3 id='weight-5-7'>Weight：5</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2739,7 +3002,7 @@ If the next returned data contains:</p>
         </span><span class="s2">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-23'>Parameters</h3>
+</span></code></pre><h3 id='parameters-25'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2810,7 +3073,7 @@ If the next returned data contains:</p>
 <ul>
 <li><code>GET /api/v1/account/subAccount</code></li>
 </ul>
-<h3 id='weight-5-7'>Weight：5</h3>
+<h3 id='weight-5-8'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -2840,7 +3103,7 @@ If the next returned data contains:</p>
         </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-24'>Parameters</h3>
+</span></code></pre><h3 id='parameters-26'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2866,14 +3129,14 @@ If the next returned data contains:</p>
 <ul>
 <li><code>POST /api/v1/account/assetTransfer</code></li>
 </ul>
-<h3 id='weight-1-16'>Weight：1</h3>
+<h3 id='weight-1-17'>Weight：1</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"success"</span><span class="p">:</span><span class="s2">"true"</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-25'>Parameters</h3>
+</span></code></pre><h3 id='parameters-27'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2923,7 +3186,7 @@ If the next returned data contains:</p>
 <ul>
 <li><code>GET /api/v1/account/balanceFlow</code></li>
 </ul>
-<h3 id='weight-5-8'>Weight：5</h3>
+<h3 id='weight-5-9'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -2955,7 +3218,7 @@ If the next returned data contains:</p>
         </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1578640809195"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-26'>Parameters</h3>
+</span></code></pre><h3 id='parameters-28'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3092,14 +3355,14 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active <code>listenKey</code>, that <code>listenKey</code> will be returned and its validity will be extended for 60 minutes.</p>
-<h4 id='weight-1-17'>Weight：1</h4>
+<h4 id='weight-1-18'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h4 id='parameters-27'>Parameters</h4>
+</span></code></pre><h4 id='parameters-29'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3127,12 +3390,12 @@ If the next returned data contains:</p>
 </ul>
 
 <p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It&#39;s recommended to send a ping about every 30 minutes.</p>
-<h4 id='weight-1-18'>Weight：1</h4>
+<h4 id='weight-1-19'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='parameters-28'>Parameters</h4>
+</span></code></pre><h4 id='parameters-30'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3164,12 +3427,12 @@ If the next returned data contains:</p>
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='weight-1-19'>Weight：1</h4>
+<h4 id='weight-1-20'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h4 id='parameters-29'>Parameters</h4>
+</span></code></pre><h4 id='parameters-31'>Parameters</h4>
 <table><thead>
 <tr>
 <th>Name</th>
