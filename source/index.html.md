@@ -1657,7 +1657,7 @@ accountType：
 ### 参数
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
+| symbol | STRING | YES | 交易对 |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
