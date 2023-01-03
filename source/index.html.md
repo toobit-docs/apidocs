@@ -1456,9 +1456,45 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 </aside>
 
 
+
+
+## 查询子账户
+
+- `GET /api/v1/account/subAccount`
+
+
+### 权重：5
+
+### 参数
+
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+> 响应：
+``` json
+[
+    {
+        "uid":"122216245228131",  // 子账户uid
+        "accountName":"huitailang", // 子账户名称
+        "createTime":154443332212,  // 子账户创建时间
+        "isFreeze":false  // 是否冻结
+    },
+    {
+        "uid":"122216245228131",   // 子账户uid
+        "accountName":"huitailang2",  // 子账户名称
+        "createTime":1544433328002, // 子账户创建时间
+        "isFreeze":false  // 是否冻结
+    }
+]
+```
+
+
+
 ## 划转
 
-- `POST /api/v1/account/assetTransfer`
+- `POST /api/v1/subAccount/assetTransfer`
 
 执行现货账户与合约账户之间的划转
 
@@ -1473,14 +1509,23 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| fromAccountId | LONG | YES | 源账户id |
-| toAccountId | LONG | YES | 目标账户id |
-| coin | STRING | YES | tokenID |
-| quantity | DECIMAL | YES | 转账数量 |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| 名称              | 类型      |    是否必须           | 描述      |
+|-----------------|---------| ------- |---------|
+| fromUid         | LONG    | YES | 源账户id   |
+| toUid           | LONG    | YES | 目标账户id  |
+| fromAccountType | String  | YES | 源账户类型   |
+| toAccountType   | String    | YES | 目标账户类型  |
+| coin            | STRING  | YES | tokenID |
+| quantity        | DECIMAL | YES | 转账数量    |
+| timestamp       | LONG    | YES | 时间戳     |
+| recvWindow      | LONG    | NO | recv窗口  |
+
+
+accountType：
+`MAIN`: 现货
+`FUTURES`:  合约
+
+
 
 ## 获取划转历史
 - `GET /api/v1/account/balanceFlow`
@@ -1537,50 +1582,6 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
-## 查询子账户 (USER_DATA)
-
-- `GET /api/v1/account/subAccount`
-
-
-### 权重：5
-
-> 响应：
-
-``` json
-[
-    {
-        "accountId": "122216245228131",
-        "accountName": "",
-        "accountType": 1,
-        "accountIndex": 0 // 账户index 0 默认账户 >0, 创建的子账户
-    },
-    {
-        "accountId": "482694560475091200",
-        "accountName": "createSubAccountByCurl", // 子账户名称
-        "accountType": 1, // 子账户类型 1 币币账户 3 合约账户
-        "accountIndex": 1
-    },
-    {
-        "accountId": "422446415267060992",
-        "accountName": "",
-        "accountType": 3,
-        "accountIndex": 0
-    },
-    {
-        "accountId": "482711469199298816",
-        "accountName": "createSubAccountByCurl",
-        "accountType": 3,
-        "accountIndex": 1
-    },
-]
-```
-
-### 参数
-
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
 
 ## 变换逐全仓模式 (TRADE)
 - `POST /api/v1/futures/marginType `
@@ -2199,13 +2200,13 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ## Balance推送
 
-账户更新事件的 `event type` 固定为 `ACCOUNT_UPDATE`
+账户更新事件的 `event type` 固定为 `outboundContractAccountInfo`
 
 > Balance Payload
 
 ``` json
 {
-  "e": "ACCOUNT_UPDATE",                // 事件类型
+  "e": "outboundContractAccountInfo",                // 事件类型
   "E": 1564745798939,                   // 事件时间
   "T": 1564745798938 ,                  // Can trade 可否交易
   "W": 1564745798938 ,                  // Can withdraw 可否提币
@@ -2213,8 +2214,8 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
   "B": [                        // Balances changed 余额变更
     {
       "a": "LTC",               // Asset 资产
-      "f": "17366.18538083",    // Free amount 可用金额 用未实现盈亏下单时，f会返回负数
-      "l": "0.00000000"         // Locked amount 冻结金额
+      "f": "17366.18538083",    // Free amount 可用金额,不包含未实现盈亏, 用未实现盈亏下单是会未负数
+      "l": "0.00000000"         // 冻结金额：仓位保证金 + 委托保证金(下单锁定)
     }
   ]
 }
@@ -2234,16 +2235,20 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
     {
         "e": "outboundContractPositionInfo",                // Event type 事件类型
         "E": "1668693440976",             // Event time 事件时间
-        "A": "1270447370291795457",      // 账户ID
+        "A": "1270447370291795457",      // accountId 账户ID
         "s": "BTCUSDT",                   // Symbol 币对
-        "S": "LONG",                      // 多空方向
-        "p": "441.0",                     // 持仓平均 价格
-        "P": "1291488620385157122",       // 总仓位
-        "a": "1000",                      // 可用仓位
-        "f": "1291488620167835136",       // 强平价格
-        "m": "18.2",                      // 仓位保证金
-        "r": "44",                        // 已实现盈亏
-        "mt": "CROSS"                     // 仓位类型
+        "S": "LONG",                      // side 多空方向
+        "p": "441.0",                     // avgPrice 持仓平均 价格
+        "P": "1291488620385157122",       // position 总仓位 (张)
+        "a": "1000",                      // available 可用仓位 (张)
+        "f": "1291488620167835136",       // flp 强平价格
+        "m": "18.2",                      // margin 仓位保证金
+        "r": "44",                        // realizedPnL已实现盈亏
+        "mt": "CROSS"                     // marginType仓位类型
+        "rr": "89"                        // riskRate 账户风险率 达到100触发强平
+        "up": "12"                        // unrealizedPnL 未实现盈亏
+        "pr": "0.003"                     // profitRate 当前仓位盈利率
+        "pv": "123"                       // positionValue 仓位价值(USDT)
     }
 ]
 ```
@@ -2261,19 +2266,19 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 ``` json
 
 {
-  "e": "executionReport",        // Event type 事件类型
+  "e": "contractExecutionReport",        // Event type 事件类型
   "E": 1499405658658,            // Event time 事件时间
   "s": "ETHBTC",                 // Symbol 币对
   "c": 1000087761,               // Client order ID 客户订单id
   "S": "BUY",                    // Side 订单方向
-  "o": "LIMIT",                  // Order type 订单类型
+  "o": "LIMIT",                  // type 订单类型
   "f": "GTC",                    // Time in force 有效方式
-  "q": "1.00000000",             // Order quantity 数量
-  "p": "0.10264410",             // Order price 价格
-  "X": "NEW",                    // Current order status 订单状态
-  "i": 4293153,                  // Order ID 订单id
+  "q": "1.00000000",             // origQty 数量
+  "p": "0.10264410",             // price 价格
+  "X": "NEW",                    // status 订单状态
+  "i": 4293153,                  // orderId 订单id
   "l": "0.00000000",             // Last executed quantity 上次数量
-  "z": "0.00000000",             // Cumulative filled quantity 交易数量
+  "z": "0.00000000",             // executedQty 交易数量
   "L": "0.00000000",             // Last executed price 上次价格
   "n": "0",                      // Commission amount 佣金
   "N": null,                     // Commission asset 佣金资产
@@ -2281,11 +2286,15 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
   "w": true,                     // Is the order working Stops will have
   "m": false,                    // Is this trade the maker side
   "O": 1499405658657,            // Order creation time 创建时间
-  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 交易金额
-
+  "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
+  "la": "20",                     // leverage 杠杆倍数
+  "mt": "CROSS"                     // marginType 订单类型
 ```
 
-平均价格可以通过`Z`除以`z`来获得。
+
+- 字段 `mt` 代表仓位类型 `CROSS` 全仓; `ISOLATED` 逐仓
+- 平均价格可以通过`Z`除以`z`来获得。
+
 
 ### 订单方向
 
