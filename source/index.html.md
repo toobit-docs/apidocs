@@ -1728,7 +1728,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | symbol | STRING | YES |  |
 | side | ENUM | YES |  `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
 | type | ENUM | YES |  `LIMIT` and `STOP` |
-| quantity | DECIMAL | YES |  |
+| quantity | LONG | YES |  |
 | price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need** |
 | priceType | ENUM | NO |  `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
 | stopPrice | DECIMAL | NO | `type` = `STOP` order **Mandatory need** |
@@ -2001,7 +2001,7 @@ Notes：
      {
         "asset": "USDT", // asset
         "balance": "999999999999.982", // total
-        "availableMargin": "1899999999978.4995", //available margin
+        "availableBalance": "1899999999978.4995", //available balance
         "positionMargin": "11.9825", //position Margin
         "orderMargin": "9.5", //order Margin
         "crossUnRealizedPnl": "10.01" //The unrealized profit and loss of cross position
