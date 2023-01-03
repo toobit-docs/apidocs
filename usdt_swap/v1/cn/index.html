@@ -2137,25 +2137,23 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </tbody></table>
 
 <blockquote>
-<p>响应：
-<code>json
-[
-    {
-        &quot;uid&quot;:&quot;122216245228131&quot;,  // 子账户uid
-        &quot;accountName&quot;:&quot;huitailang&quot;, // 子账户名称
-        &quot;createTime&quot;:154443332212,  // 子账户创建时间
-        &quot;isFreeze&quot;:false  // 是否冻结
-    },
-    {
-        &quot;uid&quot;:&quot;122216245228131&quot;,   // 子账户uid
-        &quot;accountName&quot;:&quot;huitailang2&quot;,  // 子账户名称
-        &quot;createTime&quot;:1544433328002, // 子账户创建时间
-        &quot;isFreeze&quot;:false  // 是否冻结
-    }
-]
-</code></p>
+<p>响应：</p>
 </blockquote>
-<h2 id='1045de04a1'>划转</h2>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
+        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="s2">"huitailang"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"createTime"</span><span class="p">:</span><span class="mi">154443332212</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户创建时间</span><span class="w">
+        </span><span class="s2">"isFreeze"</span><span class="p">:</span><span class="kc">false</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">是否冻结</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
+        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="s2">"huitailang2"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"createTime"</span><span class="p">:</span><span class="mi">1544433328002</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户创建时间</span><span class="w">
+        </span><span class="s2">"isFreeze"</span><span class="p">:</span><span class="kc">false</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">是否冻结</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h2 id='1045de04a1'>划转</h2>
 <ul>
 <li><code>POST /api/v1/subAccount/assetTransfer</code></li>
 </ul>
