@@ -1691,7 +1691,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
+| symbol | STRING | YES |  |
 | recvWindow | LONG | NO |  |
 | timestamp | LONG | YES |  |
 
