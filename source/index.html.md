@@ -1983,7 +1983,7 @@ accountType：
      {
         "asset": "USDT", //资产
         "balance": "999999999999.982", //总余额
-        "availableBalance": "1899999999978.4995", //可用保证金
+        "availableBalance": "1899999999978.4995", //可用保证金，包含未实现盈亏
         "positionMargin": "11.9825", //仓位保证金
         "orderMargin": "9.5" ,//委托保证金（下单锁定）
         "crossUnRealizedPnl": "10.01" //全仓未实现盈亏
@@ -2225,9 +2225,9 @@ accountType：
 {
   "e": "outboundContractAccountInfo",                // 事件类型
   "E": 1564745798939,                   // 事件时间
-  "T": 1564745798938 ,                  // Can trade 可否交易
-  "W": 1564745798938 ,                  // Can withdraw 可否提币
-  "D": 1564745798938 ,                  // Can deposit 可否充币
+  "T": true ,                  // Can trade 可否交易
+  "W": true ,                  // Can withdraw 可否提币
+  "D": true ,                  // Can deposit 可否充币
   "B": [                        // Balances changed 余额变更
     {
       "a": "LTC",               // Asset 资产
@@ -2261,11 +2261,11 @@ accountType：
         "f": "1291488620167835136",       // flp 强平价格
         "m": "18.2",                      // margin 仓位保证金
         "r": "44",                        // realizedPnL已实现盈亏
-        "mt": "CROSS"                     // marginType仓位类型
-        "rr": "89"                        // riskRate 账户风险率 达到100触发强平
-        "up": "12"                        // unrealizedPnL 未实现盈亏
-        "pr": "0.003"                     // profitRate 当前仓位盈利率
-        "pv": "123"                       // positionValue 仓位价值(USDT)
+        "mt": "CROSS",                    // marginType仓位类型
+        "rr": "89",                       // riskRate 账户风险率 达到100触发强平
+        "up": "12",                      // unrealizedPnL 未实现盈亏
+        "pr": "0.003",                  // profitRate 当前仓位盈利率
+        "pv": "123"                     // positionValue 仓位价值(USDT)
     }
 ]
 ```
@@ -2306,6 +2306,7 @@ accountType：
   "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
   "la": "20",                     // leverage 杠杆倍数
   "mt": "CROSS"                     // marginType 订单类型
+}
 ```
 
 
@@ -2364,6 +2365,8 @@ accountType：
 
 ## 交易推送
 
+自己有成交时会推送
+
 > Payload
 
 ``` json
@@ -2382,7 +2385,7 @@ accountType：
         "a": "1286424214388204801",       // accountId 账户id
         "A": "1270447370291795457",       // matchAccountId 对手方账户ID
         "m": false,                       // isMaker 
-        "S": "SELL"                       // side  SELL or BUY
+        "S": "SELL"                       // side  
     }
 ]
 ```
