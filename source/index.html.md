@@ -954,12 +954,12 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | 交易对 |
-| fromId | LONG | NO | 起始id |
-| endId | LONG | NO | 结束id |
-| limit | INT | NO | 返回条数 |
+| 名称    | 类型  |    是否必须           | 描述               |
+| ----------------- | ---- | ------- |------------------|
+| symbol | STRING | YES | 交易对              |
+| fromId | LONG | NO | 起始id             |
+| endId | LONG | NO | 结束id             |
+| limit | INT | NO | 返回条数 默认20 最大1000 |
 
 ## 24hr价格变动情况
 - `GET /quote/v1/ticker/24hr`
@@ -1468,9 +1468,9 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 
 
-## 查询子账户
+## 查询子账户(暂时忽略 2022-01-04给最终版)
 
-- `GET /api/v1/account/subAccount`
+- `GET /api/v1/subAccount`
 
 
 ### 权重：5
@@ -1488,26 +1488,31 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 [
     {
         "uid":"122216245228131",  // 子账户uid
-        "nickName":"huitailang", // 子账户名称
+        "email":"c123456_mo3nXl@spyzn8.com", // 子账户的邮箱
         "createTime":154443332212,  // 子账户创建时间
-        "isFreeze":false  // 是否冻结
+        "status": 1  // 1:启用 2:禁用
     },
     {
-        "uid":"122216245228131",   // 子账户uid
-        "nickName":"huitailang2",  // 子账户名称
+        "uid":"122216245228132",   // 子账户uid
+        "email":"c12345_mo3nXl@spyzn8.com",  // 子账户的邮箱
         "createTime":1544433328002, // 子账户创建时间
-        "isFreeze":false  // 是否冻结
+        "status": 1  // 1:启用 2:禁用
     }
 ]
 ```
 
 
 
-## 划转
+## 母子账户万能划转
 
-- `POST /api/v1/subAccount/assetTransfer`
+- `POST /api/v1/subAccount/transfer`
 
-执行现货账户与合约账户之间的划转
+改接口支持的划转操作有:
+  - 母账户操作 母账户`现货账户`、`U本位合约账户`划转到任意子账户`现货账户`、`U本位合约账户`
+  - 母账户操作 母账户`现货账户`、`U本位合约账户`之间的划转
+  - 母账户操作 某一个子账户的`现货账户`、`U本位合约账户`之间的划转
+  - 子用户操作 当前子账户`现货账户`、`U本位合约账户`到母用户`现货账户`、`U本位合约账户`的划转
+  - 子用户操作 当前子用户`现货账户`、`U本位合约账户`之间的划转
 
 ### 权重：1
 
@@ -1535,7 +1540,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 accountType：
 `MAIN`: 现货
-`FUTURES`:  合约
+`FUTURES`:  U本位合约
 
 
 
@@ -1868,14 +1873,14 @@ accountType：
 
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
-| orderId | LONG | NO | 订单ID |
+| 名称    | 类型  |    是否必须           | 描述                   |
+| ----------------- | ---- | ------- |----------------------|
+| symbol | STRING | NO | 交易对                  |
+| orderId | LONG | NO | 订单ID                 |
 | type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
-| limit | INT | NO | |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| limit | INT | NO | 默认20 最大1000          |
+| timestamp | LONG | YES | 时间戳                  |
+| recvWindow | LONG | NO | recv窗口               |
 
 注意：
 
