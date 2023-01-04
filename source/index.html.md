@@ -954,12 +954,12 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述               |
-| ----------------- | ---- | ------- |------------------|
-| symbol | STRING | YES | 交易对              |
-| fromId | LONG | NO | 起始id             |
-| endId | LONG | NO | 结束id             |
-| limit | INT | NO | 返回条数 默认20 最大1000 |
+| 名称    | 类型  |    是否必须           | 描述                   |
+| ----------------- | ---- | ------- |----------------------|
+| symbol | STRING | YES | 交易对                  |
+| fromId | LONG | NO | 起始id                 |
+| endId | LONG | NO | 结束id                 |
+| limit | INT | NO | 返回条数 默认20 最小1 最大1000 |
 
 ## 24hr价格变动情况
 - `GET /quote/v1/ticker/24hr`
