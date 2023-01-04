@@ -364,10 +364,10 @@
             <a href="#93d49cc2e5" class="toc-h1 toc-link" data-title="账户和交易接口">账户和交易接口</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#72fee96a3e" class="toc-h2 toc-link" data-title="查询子账户">查询子账户</a>
+                    <a href="#2022-01-04" class="toc-h2 toc-link" data-title="查询子账户(暂时忽略 2022-01-04给最终版)">查询子账户(暂时忽略 2022-01-04给最终版)</a>
                   </li>
                   <li>
-                    <a href="#1045de04a1" class="toc-h2 toc-link" data-title="划转">划转</a>
+                    <a href="#b5dc8d3607" class="toc-h2 toc-link" data-title="母子账户万能划转">母子账户万能划转</a>
                   </li>
                   <li>
                     <a href="#87a7130ac5" class="toc-h2 toc-link" data-title="获取划转历史">获取划转历史</a>
@@ -1618,7 +1618,7 @@ HMAC SHA256 签名:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>返回条数</td>
+<td>返回条数 默认20 最大1000</td>
 </tr>
 </tbody></table>
 <h2 id='24hr'>24hr价格变动情况</h2>
@@ -2119,9 +2119,9 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <aside class="warning">
  考虑到剧烈行情下, RESTful接口可能存在查询延迟，我们强烈建议您优先从Websocket user data stream推送的消息来获取订单，成交，仓位等信息。
 </aside>
-<h2 id='72fee96a3e'>查询子账户</h2>
+<h2 id='2022-01-04'>查询子账户(暂时忽略 2022-01-04给最终版)</h2>
 <ul>
-<li><code>GET /api/v1/account/subAccount</code></li>
+<li><code>GET /api/v1/subAccount</code></li>
 </ul>
 <h3 id='5'>权重：5</h3><h3 id='749d765242-13'>参数</h3>
 <table><thead>
@@ -2152,23 +2152,28 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
-        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="s2">"huitailang"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"c123456_mo3nXl@spyzn8.com"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户的邮箱</span><span class="w">
         </span><span class="s2">"createTime"</span><span class="p">:</span><span class="mi">154443332212</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户创建时间</span><span class="w">
-        </span><span class="s2">"isFreeze"</span><span class="p">:</span><span class="kc">false</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">是否冻结</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="err">启用</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="err">禁用</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
-        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="s2">"huitailang2"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228132"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"c12345_mo3nXl@spyzn8.com"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户的邮箱</span><span class="w">
         </span><span class="s2">"createTime"</span><span class="p">:</span><span class="mi">1544433328002</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户创建时间</span><span class="w">
-        </span><span class="s2">"isFreeze"</span><span class="p">:</span><span class="kc">false</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">是否冻结</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="err">启用</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="err">禁用</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h2 id='1045de04a1'>划转</h2>
+</span></code></pre><h2 id='b5dc8d3607'>母子账户万能划转</h2>
 <ul>
-<li><code>POST /api/v1/subAccount/assetTransfer</code></li>
+<li><code>POST /api/v1/subAccount/transfer</code></li>
 </ul>
 
-<p>执行现货账户与合约账户之间的划转</p>
+<p>改接口支持的划转操作有:
+  - 母账户操作 母账户<code>现货账户</code>、<code>U本位合约账户</code>划转到任意子账户<code>现货账户</code>、<code>U本位合约账户</code>
+  - 母账户操作 母账户<code>现货账户</code>、<code>U本位合约账户</code>之间的划转
+  - 母账户操作 某一个子账户的<code>现货账户</code>、<code>U本位合约账户</code>之间的划转
+  - 子用户操作 当前子账户<code>现货账户</code>、<code>U本位合约账户</code>到母用户<code>现货账户</code>、<code>U本位合约账户</code>的划转
+  - 子用户操作 当前子用户<code>现货账户</code>、<code>U本位合约账户</code>之间的划转</p>
 <h3 id='1-9'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
@@ -2238,7 +2243,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 
 <p>accountType：
 <code>MAIN</code>: 现货
-<code>FUTURES</code>:  合约</p>
+<code>FUTURES</code>:  U本位合约</p>
 <h2 id='87a7130ac5'>获取划转历史</h2>
 <ul>
 <li><code>GET /api/v1/account/balanceFlow</code></li>
@@ -2863,7 +2868,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>默认20 最大1000</td>
 </tr>
 <tr>
 <td>timestamp</td>
