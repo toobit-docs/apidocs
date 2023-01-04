@@ -1573,7 +1573,6 @@ accountType：
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | accountType | INT | NO | 账户对应的account_type |
-| accountIndex | INT | NO | 账户对应的account_index |
 | coin | STRING | NO | tokenID |
 | flowType | INT | NO | 划转：3 |
 | fromId | LONG | NO | 顺向查询数据 |
