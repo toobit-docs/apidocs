@@ -2435,6 +2435,39 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ### -1147 ORDER_CANCELLATION_TIMEOUT
 - 订单取消超时
 
+### -1193 ORDER_COUNT_LIMIT
+- 订单数量限制
+
+### -1194 MARKET_ORDER_FORBIDDEN
+- 禁止创建市价单
+
+### -1195 LIMIT_ORDER_PRICE_TOO_SMALL
+- 创建限价单价格太低
+
+### -1196 LIMIT_ORDER_PRICE_TOO_BIG
+- 创建限价订单价格太高
+
+### -1197 LIMIT_ORDER_BUY_PRICE_TOO_BIG
+- 创建限价单买入价格太高
+
+### -1198 LIMIT_ORDER_SELL_PRICE_TOO_SMALL
+- 创建限价单卖出价太低
+
+### -1199 ORDER_BUY_QUANTITY_TOO_SMALL
+- 订单购买数量太少
+
+### -1200 ORDER_BUY_QUANTITY_TOO_BIG
+- 订单购买数量太多
+
+### -1201 LIMIT_ORDER_SELL_PRICE_TOO_BIG
+- 创建限价单卖出价太高
+
+### -1202 ORDER_SELL_QUANTITY_TOO_SMALL
+- 创建订单卖出数量太少
+
+### -1203 ORDER_SELL_QUANTITY_TOO_BIG
+- 创建订单卖出数量太多
+
 ### -2010 NEW_ORDER_REJECTED
 - 新订单被拒绝
 
