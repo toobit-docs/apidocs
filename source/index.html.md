@@ -974,7 +974,7 @@ Get the mark price of a trading pair.
 | symbol | STRING | YES |  |
 | fromId | LONG | NO | start id |
 | endId | LONG | NO | end id |
-| limit | INT | NO |  |
+| limit | INT | NO | Number of Returns Default `20` Min `1` Max `1000` |
 
 ## 24hr Ticker Price Change Statistics
 
