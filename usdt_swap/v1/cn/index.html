@@ -657,7 +657,7 @@ HMAC SHA256 签名:
 <li>CASH - 现金</li>
 <li>MARGIN - 保证金</li>
 </ul>
-<h4 id='9d97842b35'>订单状态:</h4>
+<h4 id='status'>订单状态 (status):</h4>
 <ul>
 <li>NEW - 新订单，暂无成交</li>
 <li>PARTIALLY_FILLED - 部分成交</li>
@@ -666,7 +666,7 @@ HMAC SHA256 签名:
 <li>PENDING_CANCEL - 等待取消</li>
 <li>REJECTED - 被拒绝</li>
 </ul>
-<h4 id='ccc1043a13'>订单类型:</h4>
+<h4 id='type'>订单类型 (type):</h4>
 <ul>
 <li>LIMIT - 限价单</li>
 <li>MARKET - 市价单</li>
@@ -679,7 +679,7 @@ HMAC SHA256 签名:
 <li>LIQUI_IOC_ORDER 强平</li>
 <li>LIQUI_ADL_ORDER ADL</li>
 </ul>
-<h3 id='71bd733fc3'>计划委托 或者 止盈止损订单状态</h3>
+<h3 id='status-2'>计划委托 或者 止盈止损订单状态 (status):</h3>
 <ul>
 <li>ORDER_NEW 新建委托</li>
 <li>ORDER_FILLED 委托触发成功</li>
@@ -687,19 +687,29 @@ HMAC SHA256 签名:
 <li>ORDER_CANCELED 取消委托</li>
 <li>ORDER_FAILED 委托触发失败</li>
 </ul>
-<h3 id='a8e01fef2a'>止盈止损类型</h3>
+<h3 id='type-2'>止盈止损类型(type):</h3>
 <ul>
 <li>STOP_LONG_PROFIT  多仓止盈</li>
 <li>STOP_LONG_LOSS 多仓止损</li>
 <li>STOP_SHORT_PROFIT 计划委托-空仓止盈</li>
 <li>STOP_SHORT_LOSS 计划委托-空仓止损</li>
 </ul>
-<h4 id='2ca0747f2a'>订单方向:</h4>
+<h4 id='side'>订单方向 (side):</h4>
 <ul>
-<li>BUY - 买单</li>
-<li>SELL - 卖单</li>
+<li>BUY_OPEN   开多买单开仓买入</li>
+<li>BUY_CLOSE  平空买单平仓买入</li>
+<li>SELL_OPEN   开空卖单开仓卖出</li>
+<li>SELL_CLOSE  平多卖单平仓卖出</li>
 </ul>
-<h4 id='cdbe9023a2'>有效方式:</h4>
+<h4 id='pricetype'>价格类型 (priceType):</h4>
+<ul>
+<li>INPUT 系统将会用你输入的价格来撮合订单。</li>
+<li>OPPONENT 订单会以对手盘最优价格撮合。</li>
+<li>QUEUE 订单会以相同方向的最优价格撮合。</li>
+<li>OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。</li>
+<li>MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。</li>
+</ul>
+<h4 id='timeinforce'>有效方式(timeInForce):</h4>
 <ul>
 <li>GTC - Good Till Cancel 成交为止</li>
 <li>IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销</li>
@@ -2142,13 +2152,13 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="s2">"huitailang"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="s2">"huitailang"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
         </span><span class="s2">"createTime"</span><span class="p">:</span><span class="mi">154443332212</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户创建时间</span><span class="w">
         </span><span class="s2">"isFreeze"</span><span class="p">:</span><span class="kc">false</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">是否冻结</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">子账户uid</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="s2">"huitailang2"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="s2">"huitailang2"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
         </span><span class="s2">"createTime"</span><span class="p">:</span><span class="mi">1544433328002</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户创建时间</span><span class="w">
         </span><span class="s2">"isFreeze"</span><span class="p">:</span><span class="kc">false</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">是否冻结</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2281,12 +2291,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>INT</td>
 <td>NO</td>
 <td>账户对应的account_type</td>
-</tr>
-<tr>
-<td>accountIndex</td>
-<td>INT</td>
-<td>NO</td>
-<td>账户对应的account_index</td>
 </tr>
 <tr>
 <td>coin</td>
@@ -2541,7 +2545,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>quantity</td>
 <td>LONG</td>
 <td>YES</td>
-<td>订单的合约数量</td>
+<td>订单的合约数量（张）</td>
 </tr>
 <tr>
 <td>price</td>
@@ -2586,6 +2590,21 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>recv窗口</td>
 </tr>
 </tbody></table>
+<h3 id='side-2'>订单方向 (side):</h3>
+<ul>
+<li>BUY_OPEN   开多买单开仓买入</li>
+<li>BUY_CLOSE  平空买单平仓买入</li>
+<li>SELL_OPEN   开空卖单开仓卖出</li>
+<li>SELL_CLOSE  平多卖单平仓卖出</li>
+</ul>
+<h3 id='pricetype-2'>价格类型 (priceType):</h3>
+<ul>
+<li>INPUT 系统将会用你输入的价格来撮合订单。</li>
+<li>OPPONENT 订单会以对手盘最优价格撮合。</li>
+<li>QUEUE 订单会以相同方向的最优价格撮合。</li>
+<li>OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。</li>
+<li>MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。</li>
+</ul>
 <h2 id='user_data-2'>查询订单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
@@ -3597,7 +3616,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>IOC</li>
 <li>FOK</li>
 </ul>
-<h3 id='71bd733fc3-2'>计划委托 或者 止盈止损订单状态</h3>
+<h3 id='71bd733fc3'>计划委托 或者 止盈止损订单状态</h3>
 <ul>
 <li>ORDER_NEW 新建委托</li>
 <li>ORDER_FILLED 委托触发成功</li>
@@ -3605,7 +3624,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>ORDER_CANCELED 取消委托</li>
 <li>ORDER_FAILED 委托触发失败</li>
 </ul>
-<h3 id='a8e01fef2a-2'>止盈止损类型</h3>
+<h3 id='a8e01fef2a'>止盈止损类型</h3>
 <ul>
 <li>STOP_LONG_PROFIT  多仓止盈</li>
 <li>STOP_LONG_LOSS 多仓止损</li>
