@@ -1693,7 +1693,7 @@ accountType：
 | symbol | STRING | YES | 交易对 |
 | side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
 | type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP` |
-| quantity | LONG | YES | 订单的合约数量 |
+| quantity | LONG | YES | 订单的合约数量（张） |
 | price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要** |
 | priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
 | stopPrice | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要** |
