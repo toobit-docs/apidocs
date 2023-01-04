@@ -2005,7 +2005,7 @@ Notes：
      {
         "asset": "USDT", // asset
         "balance": "999999999999.982", // total
-        "availableBalance": "1899999999978.4995", //available balance
+        "availableBalance": "1899999999978.4995", //available balance Include unrealized profit and loss
         "positionMargin": "11.9825", //position Margin
         "orderMargin": "9.5", //order Margin
         "crossUnRealizedPnl": "10.01" //The unrealized profit and loss of cross position
@@ -2251,9 +2251,9 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
 {
   "e": "ACCOUNT_UPDATE",                // event type
   "E": 1564745798939,                   // event time
-  "T": 1564745798938 ,                  // Can trade 
-  "W": 1564745798938 ,                  // Can withdraw 
-  "D": 1564745798938 ,                  // Can deposit 
+  "T": true ,                  // Can trade 
+  "W": true ,                  // Can withdraw 
+  "D": true ,                  // Can deposit 
   "B": [                        // Balances changed 
     {
       "a": "LTC",               // Asset 
@@ -2386,6 +2386,8 @@ The average price can be found by dividing `Z` by `z`
 
 ## Event: Trade Update
 
+Will push when there is a deal
+
 > Trade Payload
 
 ``` json
@@ -2404,7 +2406,7 @@ The average price can be found by dividing `Z` by `z`
         "a": "1286424214388204801",       // accountId 
         "A": "1270447370291795457",       // matchAccountId 
         "m": false,                       // isMaker 
-        "S": "SELL"                       // side  SELL or BUY
+        "S": "SELL"                       // side  
     }
 ]
 ```
