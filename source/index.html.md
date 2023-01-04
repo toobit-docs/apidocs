@@ -216,10 +216,10 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - STOP_SHORT_LOSS 计划委托-空仓止损
 
 #### 订单方向 (side):
-- BUY_OPEN   开多买单开仓买入
-- BUY_CLOSE  平空买单平仓买入
-- SELL_OPEN   开空卖单开仓卖出
-- SELL_CLOSE  平多卖单平仓卖出
+- BUY_OPEN   开多 买单 开仓买入
+- BUY_CLOSE  平空 买单 平仓买入
+- SELL_OPEN   开空 卖单 开仓卖出
+- SELL_CLOSE  平多 卖单 平仓卖出
 
 #### 价格类型 (priceType):
 
@@ -2087,7 +2087,7 @@ accountType：
                 "riskLimitAmount": "1000000.0", //风险限额(最大持仓量)
                 "maintainMargin": "0.005", //维持保证金率
                 "initialMargin": "0.01", //起始保证金率
-                "side": "SELL_OPEN" //订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+                "side": "SELL_OPEN" //订单方向（BUY_OPEN、SELL_OPEN）
             },
             {
                 "riskLimitId": "200000133",
