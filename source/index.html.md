@@ -2269,10 +2269,10 @@ accountType：
         "m": "18.2",                      // margin 仓位保证金
         "r": "44",                        // realizedPnL已实现盈亏
         "mt": "CROSS",                    // marginType仓位类型
-        "rr": "89",                       // riskRate 账户风险率 达到100触发强平
         "up": "12",                      // unrealizedPnL 未实现盈亏
         "pr": "0.003",                  // profitRate 当前仓位盈利率
         "pv": "123"                     // positionValue 仓位价值(USDT)
+        "lv": "123"                     // leverage 杠杆倍数
     }
 ]
 ```
@@ -2311,7 +2311,7 @@ accountType：
   "m": false,                    // Is this trade the maker side
   "O": 1499405658657,            // Order creation time 创建时间
   "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
-  "la": "20"                     // leverage 杠杆倍数
+  "lv": "20"                     // leverage 杠杆倍数
 }
 ```
 
