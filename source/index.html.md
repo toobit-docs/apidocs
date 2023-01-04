@@ -1596,7 +1596,6 @@ Obtain the history of fund transfers between the spot account and the contract a
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | accountType | INT | NO |  |
-| accountIndex | INT | NO |  |
 | coin | STRING | NO |  |
 | flowType | INT | NO | transfer：3 |
 | fromId | LONG | NO |  |
