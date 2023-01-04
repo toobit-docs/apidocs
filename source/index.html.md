@@ -2458,6 +2458,39 @@ Errors consist of two parts: an error code and a message. Codes are universal, b
 ### -1147 ORDER_CANCELLATION_TIMEOUT
 - Order cancellation timeout
 
+### -1193 ORDER_COUNT_LIMIT
+- Create order count limit
+
+### -1194 MARKET_ORDER_FORBIDDEN
+- Create market order forbidden
+
+### -1195 LIMIT_ORDER_PRICE_TOO_SMALL
+- Create limit order price too small
+
+### -1196 LIMIT_ORDER_PRICE_TOO_BIG
+- Create limit order price too big
+
+### -1197 LIMIT_ORDER_BUY_PRICE_TOO_BIG
+- Create limit order buy price too big
+
+### -1198 LIMIT_ORDER_SELL_PRICE_TOO_SMALL
+- Create limit order sell price too small
+
+### -1199 ORDER_BUY_QUANTITY_TOO_SMALL
+- Create order buy quantity too small
+
+### -1200 ORDER_BUY_QUANTITY_TOO_BIG
+- Create order buy quantity too big
+
+### -1201 LIMIT_ORDER_SELL_PRICE_TOO_BIG
+- Create limit order sell price too big
+
+### -1202 ORDER_SELL_QUANTITY_TOO_SMALL
+- Create order sell quantity too small
+
+### -1203 ORDER_SELL_QUANTITY_TOO_BIG
+- Create order sell quantity too big
+
 ### -2010 NEW_ORDER_REJECTED
 - NEW_ORDER_REJECTED
 
