@@ -1990,28 +1990,16 @@ Notes：
 [
     {
         "accountId": "122216245228131",
-        "accountName": "",
+        "nickName": "",
         "accountType": 1,
         "accountIndex": 0 
     },
     {
         "accountId": "482694560475091200",
-        "accountName": "createSubAccountByCurl", 
+        "nickName": "createSubAccountByCurl", 
         "accountType": 1, // 1 Spot Account 3 Futures Account
         "accountIndex": 1
-    },
-    {
-        "accountId": "422446415267060992",
-        "accountName": "",
-        "accountType": 3,
-        "accountIndex": 0
-    },
-    {
-        "accountId": "482711469199298816",
-        "accountName": "createSubAccountByCurl",
-        "accountType": 3,
-        "accountIndex": 1
-    },
+    }
 ]
 ```
 
