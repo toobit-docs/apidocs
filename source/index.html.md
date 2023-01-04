@@ -1478,13 +1478,13 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 [
     {
         "uid":"122216245228131",  // 子账户uid
-        "accountName":"huitailang", // 子账户名称
+        "nickName":"huitailang", // 子账户名称
         "createTime":154443332212,  // 子账户创建时间
         "isFreeze":false  // 是否冻结
     },
     {
         "uid":"122216245228131",   // 子账户uid
-        "accountName":"huitailang2",  // 子账户名称
+        "nickName":"huitailang2",  // 子账户名称
         "createTime":1544433328002, // 子账户创建时间
         "isFreeze":false  // 是否冻结
     }
