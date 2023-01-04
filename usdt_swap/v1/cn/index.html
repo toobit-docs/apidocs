@@ -2171,10 +2171,11 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <p>支持的划转操作:</p>
 
 <ul>
-<li>母账户操作 母账户<code>现货账户</code>、<code>U本位合约账户</code>划转到任意子账户<code>现货账户</code>、<code>U本位合约账户</code></li>
+<li>母账户操作 母账户<code>现货账户</code>划转到任意子账户<code>现货账户</code>、<code>U本位合约账户</code></li>
 <li>母账户操作 母账户<code>现货账户</code>、<code>U本位合约账户</code>之间的划转</li>
+<li>母账户操作 任意子账户<code>现货账户</code>、<code>U本位合约账户</code>划转到母账户<code>现货账户</code></li>
 <li>母账户操作 某一个子账户的<code>现货账户</code>、<code>U本位合约账户</code>之间的划转</li>
-<li>子用户操作 当前子账户<code>现货账户</code>、<code>U本位合约账户</code>到母用户<code>现货账户</code>、<code>U本位合约账户</code>的划转</li>
+<li>子用户操作 当前子账户<code>现货账户</code>到母用户<code>现货账户</code>、<code>U本位合约账户</code>的划转</li>
 <li>子用户操作 当前子用户<code>现货账户</code>、<code>U本位合约账户</code>之间的划转</li>
 </ul>
 <h3 id='1-9'>权重：1</h3>
@@ -2219,10 +2220,10 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>目标账户类型</td>
 </tr>
 <tr>
-<td>coin</td>
-<td>STRING</td>
+<td>asset</td>
+<td>String</td>
 <td>YES</td>
-<td>tokenID</td>
+<td>币种</td>
 </tr>
 <tr>
 <td>quantity</td>
