@@ -2078,7 +2078,6 @@ Notes：
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | accountType | INT | NO |  |
-| accountIndex | INT | NO |  |
 | coin | STRING | NO |  |
 | flowType | INT | NO | transfer：3 |
 | fromId | LONG | NO |  |
