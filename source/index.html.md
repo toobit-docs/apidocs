@@ -1714,7 +1714,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | symbol | STRING | YES |  |
 | side | ENUM | YES |  `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
 | type | ENUM | YES |  `LIMIT` and `STOP` |
-| quantity | LONG | YES |  |
+| quantity | LONG | YES | Numbers of orders (volume) |
 | price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need** |
 | priceType | ENUM | NO |  `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
 | stopPrice | DECIMAL | NO | `type` = `STOP` order **Mandatory need** |
