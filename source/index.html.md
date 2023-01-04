@@ -2289,7 +2289,11 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
         "f": "1291488620167835136",       // liquidation price
         "m": "18.2",                      // Position Margin
         "r": "44",                        // Realized profit and loss
-        "mt": "CROSS"                     // Position type
+        "mt": "CROSS",                     // Position type
+        "rr": "89",                       // riskRate Account risk rate reaches 100 to trigger forced liquidation
+        "up": "12",                      // unrealizedPnL 
+        "pr": "0.003",                  //  Profit rate of current position
+        "pv": "123"                     //  Position value (USDT)
     }
 ]
 ```
@@ -2326,11 +2330,15 @@ This type of event will be pushed when a new order is created, an order has a ne
   "w": true,                     // Is the order working Stops will have
   "m": false,                    // Is this trade the maker side
   "O": 1499405658657,            // Order creation time 
-  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 
+  "Z": "0.00000000",              // Cumulative quote asset transacted quantity 
+  "la": "20",                     // leverage 
+  "mt": "CROSS"                     // marginType 
+}
 
 ```
 
-The average price can be found by dividing `Z` by `z`
+- The field `mt` represents the position type `CROSS` cross margin; `ISOLATED` isolated margin
+- The average price can be found by dividing `Z` by `z`
 
 ### Side
 
