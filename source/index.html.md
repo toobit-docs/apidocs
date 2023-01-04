@@ -2043,7 +2043,7 @@ Notes：
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
-| positionSide | ENUM | YES | `LONG` or `SHORT` |
+| side | ENUM | YES | `LONG` or `SHORT` |
 | amount | DECIMAL | YES | Increase (positive value) or decrease (negative value) the amount of margin. Please note that this quantity refers to the underlying pricing asset of the contract (that is, the underlying of the contract settlement) |
 | recvWindow | LONG | NO |  |
 | timestamp | LONG | YES |  |
