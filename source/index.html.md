@@ -180,7 +180,7 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - CASH - 现金
 - MARGIN - 保证金
 
-#### 订单状态:
+#### 订单状态 (status):
 - NEW - 新订单，暂无成交
 - PARTIALLY_FILLED - 部分成交
 - FILLED - 完全成交
@@ -188,7 +188,7 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - PENDING_CANCEL - 等待取消
 - REJECTED - 被拒绝
 
-#### 订单类型:
+#### 订单类型 (type):
 - LIMIT - 限价单
 - MARKET - 市价单
 - LIMIT_MAKER - maker限价单
@@ -200,7 +200,7 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - LIQUI_IOC_ORDER 强平
 - LIQUI_ADL_ORDER ADL
 
-### 计划委托 或者 止盈止损订单状态
+### 计划委托 或者 止盈止损订单状态 (status):
 
 - ORDER_NEW 新建委托
 - ORDER_FILLED 委托触发成功
@@ -208,18 +208,28 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 - ORDER_CANCELED 取消委托
 - ORDER_FAILED 委托触发失败
 
-### 止盈止损类型
+### 止盈止损类型(type):
 
 - STOP_LONG_PROFIT  多仓止盈
 - STOP_LONG_LOSS 多仓止损
 - STOP_SHORT_PROFIT 计划委托-空仓止盈
 - STOP_SHORT_LOSS 计划委托-空仓止损
 
-#### 订单方向:
-- BUY - 买单
-- SELL - 卖单
+#### 订单方向 (side):
+- BUY_OPEN   开多买单开仓买入
+- BUY_CLOSE  平空买单平仓买入
+- SELL_OPEN   开空卖单开仓卖出
+- SELL_CLOSE  平多卖单平仓卖出
 
-#### 有效方式:
+#### 价格类型 (priceType):
+
+- INPUT 系统将会用你输入的价格来撮合订单。
+- OPPONENT 订单会以对手盘最优价格撮合。
+- QUEUE 订单会以相同方向的最优价格撮合。
+- OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。
+- MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。
+
+#### 有效方式(timeInForce):
 - GTC - Good Till Cancel 成交为止
 - IOC - Immediate or Cancel 无法立即成交(吃单)的部分就撤销
 - FOK - Fill or Kill 无法全部立即成交就撤销
@@ -1702,6 +1712,19 @@ accountType：
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
+### 订单方向 (side):
+- BUY_OPEN   开多买单开仓买入
+- BUY_CLOSE  平空买单平仓买入
+- SELL_OPEN   开空卖单开仓卖出
+- SELL_CLOSE  平多卖单平仓卖出
+
+### 价格类型 (priceType):
+
+- INPUT 系统将会用你输入的价格来撮合订单。
+- OPPONENT 订单会以对手盘最优价格撮合。
+- QUEUE 订单会以相同方向的最优价格撮合。
+- OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。
+- MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。
 
 ## 查询订单 (USER_DATA)
 - `GET /api/v1/futures/order`
