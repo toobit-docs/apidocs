@@ -1981,28 +1981,16 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 [
     {
         "accountId": "122216245228131",
-        "accountName": "",
+        "nickName": "",
         "accountType": 1,
         "accountIndex": 0 // 账户index 0 默认账户 >0, 创建的子账户
     },
     {
         "accountId": "482694560475091200",
-        "accountName": "createSubAccountByCurl", // 子账户名称
+        "nickName": "createSubAccountByCurl", // 子账户名称
         "accountType": 1, // 子账户类型 1 币币账户 3 合约账户
         "accountIndex": 1
-    },
-    {
-        "accountId": "422446415267060992",
-        "accountName": "",
-        "accountType": 3,
-        "accountIndex": 0
-    },
-    {
-        "accountId": "482711469199298816",
-        "accountName": "createSubAccountByCurl",
-        "accountType": 3,
-        "accountIndex": 1
-    },
+    }
 ]
 ```
 
