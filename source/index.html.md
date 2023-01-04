@@ -183,7 +183,7 @@ Note that the signature is different in example 3.There is no & between "GTC" an
 - CASH 
 - MARGIN 
 
-#### Order status:
+#### Order status (status):
 - NEW 
 - PARTIALLY_FILLED 
 - FILLED 
@@ -191,7 +191,7 @@ Note that the signature is different in example 3.There is no & between "GTC" an
 - PENDING_CANCEL 
 - REJECTED 
 
-#### Order type:
+#### Order type (type):
 - MARKET 
 - LIMIT 
 - LIMIT_MAKER  
@@ -203,7 +203,7 @@ Note that the signature is different in example 3.There is no & between "GTC" an
 - LIQUI_IOC_ORDER 
 - LIQUI_ADL_ORDER 
 
-### Plan order or stop loss order status
+### Plan order or stop loss order status (ststus):
 
 - ORDER_NEW 
 - ORDER_FILLED 
@@ -211,18 +211,29 @@ Note that the signature is different in example 3.There is no & between "GTC" an
 - ORDER_CANCELED 
 - ORDER_FAILED 
 
-### Take profit and stop loss type
+### Take profit and stop loss type (type):
 
 - STOP_LONG_PROFIT  Long position take profit
 - STOP_LONG_LOSS Long position stop loss
 - STOP_SHORT_PROFIT Plan entrustment-short position take profit
 - STOP_SHORT_LOSS Plan order - short position stop loss
 
-#### Order side :
-- BUY 
-- SELL 
+#### Order Side (side):
+- BUY_OPEN   Open a long buy order to open a position to buy
+- BUY_CLOSE  Close Buy Order Close Buy
+- SELL_OPEN   Open a short sell order to open a position to sell
+- SELL_CLOSE  Flat long sell order, close position and sell
 
-#### Time in force :
+
+#### Price Type (priceType):
+
+- INPUT  The system will match the order with the price you entered.
+- OPPONENT  The order will be matched at the best price of the counterparty.
+- QUEUE  Orders will be matched at the best price in the same direction.
+- OVER The order will be matched at the best price of the counterparty + over-price (floating).
+- MARKET Orders will be matched at the latest transaction price * (1 ± 5%).
+
+#### Time in force (timeInForce):
 - GTC - Good Till Cancel 
 - IOC - Immediate or Cancel 
 - FOK - Fill or Kill 
@@ -249,7 +260,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 - REQUESTS_WEIGHT
 - ORDERS
 
-#### Rate limit intervals
+#### Rate limit intervals:
 - SECOND
 - MINUTE
 - DAY
@@ -1723,6 +1734,21 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
 
+
+### Order Side :
+- BUY_OPEN   Open a long buy order to open a position to buy
+- BUY_CLOSE  Close Buy Order Close Buy
+- SELL_OPEN   Open a short sell order to open a position to sell
+- SELL_CLOSE  Flat long sell order, close position and sell
+
+
+### Price Type:
+
+- INPUT  The system will match the order with the price you entered.
+- OPPONENT  The order will be matched at the best price of the counterparty.
+- QUEUE  Orders will be matched at the best price in the same direction.
+- OVER The order will be matched at the best price of the counterparty + over-price (floating).
+- MARKET Orders will be matched at the latest transaction price * (1 ± 5%).
 
 ## Query Order (USER_DATA)
 - `GET /api/v1/futures/order`
