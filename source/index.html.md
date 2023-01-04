@@ -2128,8 +2128,7 @@ Notes：
 ### Create a ListenKey  (USER_STREAM)
 - `POST /api/v1/userDataStream`
 
-Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.
-
+Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.
 #### Weight：1
 
 > Response
