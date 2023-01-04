@@ -3062,28 +3062,16 @@ HMAC SHA256 签名:
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">账户index</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">默认账户</span><span class="w"> </span><span class="err">&gt;</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">创建的子账户</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"482694560475091200"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
+        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户名称</span><span class="w">
         </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">子账户类型</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">币币账户</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="err">合约账户</span><span class="w">
         </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422446415267060992"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"482711469199298816"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='749d765242-26'>参数</h3>
 <table><thead>
@@ -3203,12 +3191,6 @@ HMAC SHA256 签名:
 <td>账户对应的<code>account_type</code></td>
 </tr>
 <tr>
-<td>accountIndex</td>
-<td>INT</td>
-<td>NO</td>
-<td>账户对应的<code>account_index</code></td>
-</tr>
-<tr>
 <td>coin</td>
 <td>STRING</td>
 <td>NO</td>
@@ -3317,7 +3299,7 @@ HMAC SHA256 签名:
 <li><code>POST /api/v1/userDataStream</code></li>
 </ul>
 
-<p>开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。</p>
+<p>开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。</p>
 <h4 id='1-17'>权重：1</h4>
 <blockquote>
 <p>响应</p>
