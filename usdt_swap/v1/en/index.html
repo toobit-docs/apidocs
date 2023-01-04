@@ -661,7 +661,7 @@ HMAC SHA256 signature:
 <li>CASH </li>
 <li>MARGIN </li>
 </ul>
-<h4 id='order-status'>Order status:</h4>
+<h4 id='order-status-status'>Order status (status):</h4>
 <ul>
 <li>NEW </li>
 <li>PARTIALLY_FILLED </li>
@@ -670,7 +670,7 @@ HMAC SHA256 signature:
 <li>PENDING_CANCEL </li>
 <li>REJECTED </li>
 </ul>
-<h4 id='order-type'>Order type:</h4>
+<h4 id='order-type-type'>Order type (type):</h4>
 <ul>
 <li>MARKET </li>
 <li>LIMIT </li>
@@ -683,7 +683,7 @@ HMAC SHA256 signature:
 <li>LIQUI_IOC_ORDER </li>
 <li>LIQUI_ADL_ORDER </li>
 </ul>
-<h3 id='plan-order-or-stop-loss-order-status'>Plan order or stop loss order status</h3>
+<h3 id='plan-order-or-stop-loss-order-status-ststus'>Plan order or stop loss order status (ststus):</h3>
 <ul>
 <li>ORDER_NEW </li>
 <li>ORDER_FILLED </li>
@@ -691,19 +691,29 @@ HMAC SHA256 signature:
 <li>ORDER_CANCELED </li>
 <li>ORDER_FAILED </li>
 </ul>
-<h3 id='take-profit-and-stop-loss-type'>Take profit and stop loss type</h3>
+<h3 id='take-profit-and-stop-loss-type-type'>Take profit and stop loss type (type):</h3>
 <ul>
 <li>STOP_LONG_PROFIT  Long position take profit</li>
 <li>STOP_LONG_LOSS Long position stop loss</li>
 <li>STOP_SHORT_PROFIT Plan entrustment-short position take profit</li>
 <li>STOP_SHORT_LOSS Plan order - short position stop loss</li>
 </ul>
-<h4 id='order-side'>Order side :</h4>
+<h4 id='order-side-side'>Order Side (side):</h4>
 <ul>
-<li>BUY </li>
-<li>SELL </li>
+<li>BUY_OPEN   Open a long buy order to open a position to buy</li>
+<li>BUY_CLOSE  Close Buy Order Close Buy</li>
+<li>SELL_OPEN   Open a short sell order to open a position to sell</li>
+<li>SELL_CLOSE  Flat long sell order, close position and sell</li>
 </ul>
-<h4 id='time-in-force'>Time in force :</h4>
+<h4 id='price-type-pricetype'>Price Type (priceType):</h4>
+<ul>
+<li>INPUT  The system will match the order with the price you entered.</li>
+<li>OPPONENT  The order will be matched at the best price of the counterparty.</li>
+<li>QUEUE  Orders will be matched at the best price in the same direction.</li>
+<li>OVER The order will be matched at the best price of the counterparty + over-price (floating).</li>
+<li>MARKET Orders will be matched at the latest transaction price * (1 ± 5%).</li>
+</ul>
+<h4 id='time-in-force-timeinforce'>Time in force (timeInForce):</h4>
 <ul>
 <li>GTC - Good Till Cancel </li>
 <li>IOC - Immediate or Cancel </li>
@@ -733,7 +743,7 @@ HMAC SHA256 signature:
 <li>REQUESTS_WEIGHT</li>
 <li>ORDERS</li>
 </ul>
-<h4 id='rate-limit-intervals'>Rate limit intervals</h4>
+<h4 id='rate-limit-intervals'>Rate limit intervals:</h4>
 <ul>
 <li>SECOND</li>
 <li>MINUTE</li>
@@ -2219,29 +2229,16 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> 
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"482694560475091200"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"nickName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w"> 
         </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">Spot</span><span class="w"> </span><span class="err">Account</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="err">Futures</span><span class="w"> </span><span class="err">Account</span><span class="w">
         </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422446415267060992"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"482711469199298816"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createSubAccountByCurl"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='parameters-17'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2313,12 +2310,6 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </thead><tbody>
 <tr>
 <td>accountType</td>
-<td>INT</td>
-<td>NO</td>
-<td></td>
-</tr>
-<tr>
-<td>accountIndex</td>
 <td>INT</td>
 <td>NO</td>
 <td></td>
@@ -2576,7 +2567,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>quantity</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>Numbers of orders (volume)</td>
 </tr>
 <tr>
 <td>price</td>
@@ -2621,6 +2612,21 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td></td>
 </tr>
 </tbody></table>
+<h3 id='order-side'>Order Side :</h3>
+<ul>
+<li>BUY_OPEN   Open a long buy order to open a position to buy</li>
+<li>BUY_CLOSE  Close Buy Order Close Buy</li>
+<li>SELL_OPEN   Open a short sell order to open a position to sell</li>
+<li>SELL_CLOSE  Flat long sell order, close position and sell</li>
+</ul>
+<h3 id='price-type'>Price Type:</h3>
+<ul>
+<li>INPUT  The system will match the order with the price you entered.</li>
+<li>OPPONENT  The order will be matched at the best price of the counterparty.</li>
+<li>QUEUE  Orders will be matched at the best price in the same direction.</li>
+<li>OVER The order will be matched at the best price of the counterparty + over-price (floating).</li>
+<li>MARKET Orders will be matched at the latest transaction price * (1 ± 5%).</li>
+</ul>
 <h2 id='query-order-user_data'>Query Order (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
@@ -3593,7 +3599,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <li>BUY </li>
 <li>SELL </li>
 </ul>
-<h3 id='order-type-2'>Order Type</h3>
+<h3 id='order-type'>Order Type</h3>
 <ul>
 <li>MARKET </li>
 <li>LIMIT </li>
@@ -3606,7 +3612,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <li>LIQUI_IOC_ORDER  liquidation</li>
 <li>LIQUI_ADL_ORDER ADL</li>
 </ul>
-<h3 id='order-status-2'>Order Status</h3>
+<h3 id='order-status'>Order Status</h3>
 <ul>
 <li>NEW<br></li>
 <li>PARTIALLY_FILLED<br></li>
@@ -3615,13 +3621,13 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <li>PENDING_CANCEL<br></li>
 <li>REJECTED<br></li>
 </ul>
-<h3 id='time-in-force-2'>Time in force</h3>
+<h3 id='time-in-force'>Time in force</h3>
 <ul>
 <li>GTC</li>
 <li>IOC</li>
 <li>FOK</li>
 </ul>
-<h3 id='plan-order-or-stop-loss-order-status-2'>Plan order or stop loss order status</h3>
+<h3 id='plan-order-or-stop-loss-order-status'>Plan order or stop loss order status</h3>
 <ul>
 <li>ORDER_NEW </li>
 <li>ORDER_FILLED </li>
@@ -3629,7 +3635,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <li>ORDER_CANCELED </li>
 <li>ORDER_FAILED </li>
 </ul>
-<h3 id='take-profit-and-stop-loss-type-2'>Take profit and stop loss type</h3>
+<h3 id='take-profit-and-stop-loss-type'>Take profit and stop loss type</h3>
 <ul>
 <li>STOP_LONG_PROFIT  Long position take profit</li>
 <li>STOP_LONG_LOSS Long position stop loss</li>
