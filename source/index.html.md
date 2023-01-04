@@ -2156,7 +2156,7 @@ accountType：
 ## 生成listenKey (USER_STREAM)
 - `POST /api/v1/listenKey`
 
-创建一个新的user data stream，返回值为一个listenKey，即websocket订阅的stream名称。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。
+创建一个新的user data stream，返回值为一个listenKey，即websocket订阅的stream名称。
 
 ### 权重： 1
 
