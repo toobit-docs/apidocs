@@ -2685,8 +2685,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <blockquote>
 <p>响应：</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="err">同步撤单响应：</span><span class="w">
-
+<pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668418485058"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单生成时的时间戳</span><span class="w">
     </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668418485058"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单上次更新的时间戳</span><span class="w">
@@ -2706,11 +2705,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="err">异步撤单响应：</span><span class="w">
-
-</span><span class="p">{</span><span class="w">
-  </span><span class="s2">"isCancelled"</span><span class="p">:</span><span class="kc">true</span><span class="w">  </span><span class="err">//订单是否还在book上存在，如果本来就不在book上</span><span class="w"> </span><span class="err">返回</span><span class="kc">true</span><span class="err">。所以除非连接match</span><span class="w"> </span><span class="err">超时，其他情况返回均为</span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='749d765242-21'>参数</h3>
 <table><thead>
@@ -2738,12 +2732,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>ENUM</td>
 <td>NO</td>
 <td>订单类型（LIMIT和STOP）</td>
-</tr>
-<tr>
-<td>fastCancel</td>
-<td>INT</td>
-<td>NO</td>
-<td>默认<code>0</code>(同步撤单)，<code>1</code>异步撤单</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -3060,7 +3048,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
      </span><span class="p">{</span><span class="w">
         </span><span class="s2">"asset"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//资产</span><span class="w">
         </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999999999.982"</span><span class="p">,</span><span class="w"> </span><span class="err">//总余额</span><span class="w">
-        </span><span class="s2">"availableBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1899999999978.4995"</span><span class="p">,</span><span class="w"> </span><span class="err">//可用保证金</span><span class="w">
+        </span><span class="s2">"availableBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1899999999978.4995"</span><span class="p">,</span><span class="w"> </span><span class="err">//可用保证金，包含未实现盈亏</span><span class="w">
         </span><span class="s2">"positionMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11.9825"</span><span class="p">,</span><span class="w"> </span><span class="err">//仓位保证金</span><span class="w">
         </span><span class="s2">"orderMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="w"> </span><span class="p">,</span><span class="err">//委托保证金（下单锁定）</span><span class="w">
         </span><span class="s2">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//全仓未实现盈亏</span><span class="w">
@@ -3121,7 +3109,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>交易对</td>
 </tr>
 <tr>
-<td>positionSide</td>
+<td>side</td>
 <td>ENUM</td>
 <td>YES</td>
 <td>仓位方向，<code>LONG</code>（多仓）或者<code>SHORT</code>（空仓）</td>
@@ -3498,9 +3486,9 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outboundContractAccountInfo"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
   </span><span class="s2">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798939</span><span class="p">,</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
-  </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798938</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">可否交易</span><span class="w">
-  </span><span class="s2">"W"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798938</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">withdraw</span><span class="w"> </span><span class="err">可否提币</span><span class="w">
-  </span><span class="s2">"D"</span><span class="p">:</span><span class="w"> </span><span class="mi">1564745798938</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">deposit</span><span class="w"> </span><span class="err">可否充币</span><span class="w">
+  </span><span class="s2">"T"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">可否交易</span><span class="w">
+  </span><span class="s2">"W"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">withdraw</span><span class="w"> </span><span class="err">可否提币</span><span class="w">
+  </span><span class="s2">"D"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">deposit</span><span class="w"> </span><span class="err">可否充币</span><span class="w">
   </span><span class="s2">"B"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">Balances</span><span class="w"> </span><span class="err">changed</span><span class="w"> </span><span class="err">余额变更</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Asset</span><span class="w"> </span><span class="err">资产</span><span class="w">
@@ -3535,11 +3523,11 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">flp</span><span class="w"> </span><span class="err">强平价格</span><span class="w">
         </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.2"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">仓位保证金</span><span class="w">
         </span><span class="s2">"r"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">realizedPnL已实现盈亏</span><span class="w">
-        </span><span class="s2">"mt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CROSS"</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">marginType仓位类型</span><span class="w">
-        </span><span class="s2">"rr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89"</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">riskRate</span><span class="w"> </span><span class="err">账户风险率</span><span class="w"> </span><span class="err">达到</span><span class="mi">100</span><span class="err">触发强平</span><span class="w">
-        </span><span class="s2">"up"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">unrealizedPnL</span><span class="w"> </span><span class="err">未实现盈亏</span><span class="w">
-        </span><span class="s2">"pr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.003"</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">profitRate</span><span class="w"> </span><span class="err">当前仓位盈利率</span><span class="w">
-        </span><span class="s2">"pv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">positionValue</span><span class="w"> </span><span class="err">仓位价值(USDT)</span><span class="w">
+        </span><span class="s2">"mt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CROSS"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">marginType仓位类型</span><span class="w">
+        </span><span class="s2">"rr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89"</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">riskRate</span><span class="w"> </span><span class="err">账户风险率</span><span class="w"> </span><span class="err">达到</span><span class="mi">100</span><span class="err">触发强平</span><span class="w">
+        </span><span class="s2">"up"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">unrealizedPnL</span><span class="w"> </span><span class="err">未实现盈亏</span><span class="w">
+        </span><span class="s2">"pr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.003"</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">profitRate</span><span class="w"> </span><span class="err">当前仓位盈利率</span><span class="w">
+        </span><span class="s2">"pv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">positionValue</span><span class="w"> </span><span class="err">仓位价值(USDT)</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -3578,6 +3566,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"Z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">transacted</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易金额</span><span class="w">
   </span><span class="s2">"la"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">leverage</span><span class="w"> </span><span class="err">杠杆倍数</span><span class="w">
   </span><span class="s2">"mt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CROSS"</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">marginType</span><span class="w"> </span><span class="err">订单类型</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <ul>
 <li>字段 <code>mt</code> 代表仓位类型 <code>CROSS</code> 全仓; <code>ISOLATED</code> 逐仓</li>
@@ -3632,6 +3621,8 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>STOP_SHORT_LOSS 计划委托-空仓止损</li>
 </ul>
 <h2 id='a3e63ea9c0'>交易推送</h2>
+<p>自己有成交时会推送</p>
+
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -3650,7 +3641,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1286424214388204801"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">accountId</span><span class="w"> </span><span class="err">账户id</span><span class="w">
         </span><span class="s2">"A"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1270447370291795457"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchAccountId</span><span class="w"> </span><span class="err">对手方账户ID</span><span class="w">
         </span><span class="s2">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
-        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  </span><span class="err">SELL</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">BUY</span><span class="w">
+        </span><span class="s2">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
