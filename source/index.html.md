@@ -2019,7 +2019,7 @@ accountType：
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
-| positionSide | ENUM | YES | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓） |
+| side | ENUM | YES | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓） |
 | amount | DECIMAL | YES | 增加（正值）或者减少（负值）保证金的数量。请注意这个数量指的是合约标的定价资产（即合约结算的标的） |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
