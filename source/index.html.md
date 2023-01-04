@@ -2055,7 +2055,6 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | 参数名称     | 类型      | 是否必需      | 描述           |
 | ----------- | ------- | ------------- | -------------- |
 | accountType | INT | NO | 账户对应的`account_type` |
-| accountIndex | INT | NO | 账户对应的`account_index` |
 | coin | STRING | NO | 资产 |
 | fromId | LONT | NO  | 顺向查询数据 |
 | endId | LONG | NO | 反向查询数据 |
