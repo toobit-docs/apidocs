@@ -2105,7 +2105,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ### 生成 Listen Key (USER_STREAM)
 - `POST /api/v1/userDataStream`
 
-开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。如果该帐户具有有效的listenKey，则将返回该listenKey并将其有效期延长60分钟。
+开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。
 
 #### 权重：1
 
