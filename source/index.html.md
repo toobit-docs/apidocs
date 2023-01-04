@@ -1799,7 +1799,6 @@ Notes:
 > Response：
 
 ``` json
-Synchronous Cancellation Response：
 
 {
     "time": "1668418485058", // create time
@@ -1820,12 +1819,6 @@ Synchronous Cancellation Response：
     "priceType": "INPUT" 
 }
 
-Asynchronous Cancellation Response：
-
-{
-  "isCancelled":true  
-}
-
 ```
 
 ### Parameters
@@ -1834,7 +1827,6 @@ Asynchronous Cancellation Response：
 | orderId | LONG | NO |  |
 | origClientOrderId | STRING | NO | User defined order ID |
 | type | ENUM | NO | `LIMIT` or `STOP` |
-| fastCancel | INT | NO | Default `0`(Synchronous Cancellation)，`1`Asynchronous order cancellation |
 | symbol | STRING | NO |  |
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
