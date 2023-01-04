@@ -1775,7 +1775,6 @@ accountType：
 > 响应：
 
 ``` json
-同步撤单响应：
 
 {
     "time": "1668418485058", // 订单生成时的时间戳
@@ -1796,11 +1795,6 @@ accountType：
     "priceType": "INPUT" //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
 }
 
-异步撤单响应：
-
-{
-  "isCancelled":true  //订单是否还在book上存在，如果本来就不在book上 返回true。所以除非连接match 超时，其他情况返回均为true
-}
 
 ```
 
@@ -1810,7 +1804,6 @@ accountType：
 | orderId | LONG | NO | 订单ID |
 | origClientOrderId | STRING | NO | 用户定义的订单ID |
 | type | ENUM | NO | 订单类型（LIMIT和STOP） |
-| fastCancel | INT | NO | 默认`0`(同步撤单)，`1`异步撤单 |
 | symbol | STRING | NO | 交易对 |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
