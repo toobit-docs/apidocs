@@ -743,7 +743,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 |
 | scale | INT |  NO | 档位: `0`,`1`,`2`,`3`,`4`,`5` 例如：0表示1档，1表示2档  |
-| limit | INT |  NO | 限制条数 |
+| limit | INT |  NO | 返回条数 |
 
 
 ## 近期成交
@@ -959,7 +959,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 | symbol | STRING | YES | 交易对                  |
 | fromId | LONG | NO | 起始id                 |
 | endId | LONG | NO | 结束id                 |
-| limit | INT | NO | 返回条数 默认20 最小1 最大1000 |
+| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000` |
 
 ## 24hr价格变动情况
 - `GET /quote/v1/ticker/24hr`
@@ -1596,7 +1596,7 @@ accountType：
 | endId | LONG | NO | 反向查询数据 |
 | startTime | LONG | NO | 开始时间 |
 | endTime | LONG | NO | 结束时间 |
-| limit | INT | NO | 每页记录数 |
+| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000` |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -1879,8 +1879,8 @@ accountType：
 | ----------------- | ---- | ------- |----------------------|
 | symbol | STRING | NO | 交易对                  |
 | orderId | LONG | NO | 订单ID                 |
-| type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
-| limit | INT | NO | 默认20 最大1000          |
+| type | ENUM | NO | 默认`LIMIT` 订单类型（`LIMIT`、`STOP`） |
+| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`         |
 | timestamp | LONG | YES | 时间戳                  |
 | recvWindow | LONG | NO | recv窗口               |
 
@@ -1966,8 +1966,10 @@ accountType：
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
 | orderId | LONG | NO | 订单ID |
-| type | ENUM | YES | 订单类型（`LIMIT`、`STOP`） |
-| limit | INT | NO | |
+| type | ENUM | NO | 默认`LIMIT` 订单类型（`LIMIT`、`STOP`） |
+| startTime | LONG | NO  | 开始时间戳 |
+| endTime | LONT | NO | 截止时间戳 |
+| limit | INT | NO |返回条数 默认`20` 最小`1` 最大`1000`  |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2065,9 +2067,11 @@ accountType：
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
-| limit | INT | NO | 返回限制(最大值为1000) |
 | fromId | LONG | NO | 从TradeId开始（用来查询成交订单） |
 | toId | LONG | NO | 到TradeId结束（用来查询成交订单） |
+| startTime | LONG | NO  | 开始时间戳 |
+| endTime | LONT | NO | 截止时间戳 |
+| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`  |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
