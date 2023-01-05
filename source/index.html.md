@@ -1856,7 +1856,7 @@ Notes：
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | |
-| side | ENUM | NO | `BUY` or `SELL` |
+| side | ENUM | YES | `BUY` or `SELL` |
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
 
