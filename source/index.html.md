@@ -1829,6 +1829,7 @@ accountType：
 
 ``` json
 {
+  "code": 200,
   "message":"success",
   "timestamp":1541161088303
 }
@@ -1839,7 +1840,7 @@ accountType：
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 （或者用,分割的交易对的list）|
-| side | ENUM | NO | `BUY`或`SELL` |
+| side | ENUM | YES | `BUY`或`SELL` |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
