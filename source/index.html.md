@@ -974,7 +974,7 @@ Get the mark price of a trading pair.
 | symbol | STRING | YES |  |
 | fromId | LONG | NO | start id |
 | endId | LONG | NO | end id |
-| limit | INT | NO | Number of Returns Default `20` Min `1` Max `1000` |
+| limit | INT | NO | Default `20` Min `1` Max `1000` |
 
 ## 24hr Ticker Price Change Statistics
 
@@ -1613,7 +1613,7 @@ Obtain the history of fund transfers between the spot account and the contract a
 | endId | LONG | NO |  |
 | startTime | LONG | NO | start timestamp |
 | endTime | LONG | NO | end timestamp |
-| limit | INT | NO |  |
+| limit | INT | NO | Default `20` Min `1` Max `1000` |
 | recvWindow | LONG | NO |  |
 | timestamp | LONG | YES |  |
 
@@ -1895,8 +1895,8 @@ Notes：
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO |  |
 | orderId | LONG | NO |  |
-| type | ENUM | YES | `LIMIT` or `STOP` |
-| limit | INT | NO | |
+| type | ENUM | NO |  Default `LINIT`  `LIMIT` or `STOP` |
+| limit | INT | NO | Default `20` Min `1` Max `1000` |
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
 
@@ -1982,8 +1982,10 @@ Notes：
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO |  |
 | orderId | LONG | NO |  |
-| type | ENUM | YES | `LIMIT` or `STOP` |
-| limit | INT | NO | |
+| type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP` |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp |
+| limit | INT | NO | Default `20` Min `1` Max `1000` |
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
 
@@ -2082,7 +2084,9 @@ Get trades for a specific account and symbol.
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO |  |
-| limit | INT | NO |  |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp |
+| limit | INT | NO | Default `20` Min `1` Max `1000` |
 | fromId | LONG | NO | Start from TradeId (used to query transaction orders) |
 | toId | LONG | NO | To the end of TradeId (used to query transaction orders) |
 | recvWindow | LONG | NO |  |
