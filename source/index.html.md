@@ -2272,7 +2272,7 @@ accountType：
         "up": "12",                      // unrealizedPnL 未实现盈亏
         "pr": "0.003",                  // profitRate 当前仓位盈利率
         "pv": "123"                     // positionValue 仓位价值(USDT)
-        "lv": "123"                     // leverage 杠杆倍数
+        "v": "123"                     // leverage 杠杆倍数
     }
 ]
 ```
@@ -2311,7 +2311,7 @@ accountType：
   "m": false,                    // Is this trade the maker side
   "O": 1499405658657,            // Order creation time 创建时间
   "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
-  "lv": "20"                     // leverage 杠杆倍数
+  "v": "20"                     // leverage 杠杆倍数
 }
 ```
 
