@@ -1258,7 +1258,7 @@ HMAC SHA256 签名:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>限制条数</td>
+<td>返回条数</td>
 </tr>
 </tbody></table>
 <h2 id='404aacd9b3'>近期成交</h2>
@@ -1618,7 +1618,7 @@ HMAC SHA256 签名:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>返回条数 默认20 最小1 最大1000</td>
+<td>返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code></td>
 </tr>
 </tbody></table>
 <h2 id='24hr'>24hr价格变动情况</h2>
@@ -2341,7 +2341,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>每页记录数</td>
+<td>返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -2865,14 +2865,14 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <tr>
 <td>type</td>
 <td>ENUM</td>
-<td>YES</td>
-<td>订单类型（<code>LIMIT</code>、<code>STOP</code>）</td>
+<td>NO</td>
+<td>默认<code>LIMIT</code> 订单类型（<code>LIMIT</code>、<code>STOP</code>）</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>默认20 最大1000</td>
+<td>返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3014,14 +3014,26 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <tr>
 <td>type</td>
 <td>ENUM</td>
-<td>YES</td>
-<td>订单类型（<code>LIMIT</code>、<code>STOP</code>）</td>
+<td>NO</td>
+<td>默认<code>LIMIT</code> 订单类型（<code>LIMIT</code>、<code>STOP</code>）</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>开始时间戳</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONT</td>
+<td>NO</td>
+<td>截止时间戳</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3186,12 +3198,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>交易对</td>
 </tr>
 <tr>
-<td>limit</td>
-<td>INT</td>
-<td>NO</td>
-<td>返回限制(最大值为1000)</td>
-</tr>
-<tr>
 <td>fromId</td>
 <td>LONG</td>
 <td>NO</td>
@@ -3202,6 +3208,24 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>LONG</td>
 <td>NO</td>
 <td>到TradeId结束（用来查询成交订单）</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>开始时间戳</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONT</td>
+<td>NO</td>
+<td>截止时间戳</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
