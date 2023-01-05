@@ -1632,7 +1632,7 @@ HMAC SHA256 signature:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>Number of Returns Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
+<td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 </tbody></table>
 <h2 id='24hr-ticker-price-change-statistics'>24hr Ticker Price Change Statistics</h2>
@@ -2354,7 +2354,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -2877,14 +2877,14 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <tr>
 <td>type</td>
 <td>ENUM</td>
-<td>YES</td>
-<td><code>LIMIT</code> or <code>STOP</code></td>
+<td>NO</td>
+<td>Default <code>LINIT</code>  <code>LIMIT</code> or <code>STOP</code></td>
 </tr>
 <tr>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3026,14 +3026,26 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <tr>
 <td>type</td>
 <td>ENUM</td>
-<td>YES</td>
-<td><code>LIMIT</code> or <code>STOP</code></td>
+<td>NO</td>
+<td>Default <code>LINIT</code>  <code>LIMIT</code> or <code>STOP</code></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>start timestamp</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>end timestamp</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3194,10 +3206,22 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td></td>
 </tr>
 <tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>start timestamp</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>end timestamp</td>
+</tr>
+<tr>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 <tr>
 <td>fromId</td>
