@@ -1724,7 +1724,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES |  |
 | side | ENUM | YES |  `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
-| type | ENUM | YES |  `LIMIT` and `STOP` |
+| type | ENUM | YES |  `LIMIT` or `STOP` |
 | quantity | LONG | YES | Numbers of orders (volume) |
 | price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need** |
 | priceType | ENUM | NO |  `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
@@ -1749,6 +1749,99 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 - QUEUE  Orders will be matched at the best price in the same direction.
 - OVER The order will be matched at the best price of the counterparty + over-price (floating).
 - MARKET Orders will be matched at the latest transaction price * (1 ± 5%).
+
+## Place Multiple Orders (TRADE)
+- `POST /api/v1/futures/batchOrders`
+
+A maximum of 20 orders at a time, must be the same `symbol`.
+
+### Weight: 2
+
+> Example:
+
+``` shell
+curl  -H "Content-Type:application/json" 
+-H "X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs" 
+-X POST -d '[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]' '#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'
+```
+
+> Response：
+
+``` json
+{
+    "code": 200, //success
+    "result": [
+         {
+            "code": 200, //success
+            "order": {
+                    "time": "1673062993867", //time
+                    "updateTime": "1673062993867", 
+                    "orderId": "1328143087352970240", 
+                    "clientOrderId": "pl2023010712345678900", 
+                    "symbol": "BTC-SWAP-USDT",
+                    "price": "16500",//price
+                    "leverage": "0",//leverage
+                    "origQty": "10", //quantity
+                    "executedQty": "0", //Executed Quantity
+                    "avgPrice": "0", //average  price
+                    "marginLocked": "0", //The margin locked for this order.
+                    "type": "LIMIT", // type（LIMIT and STOP）
+                    "side": "BUY_OPEN", // side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+                    "timeInForce": "GTC",  //Time in Force (GTC、FOK、IOC、LIMIT_MAKER)
+                    "status": "NEW", //status（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+                    "priceType": "INPUT"  //price type（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+                    }        
+        }, 
+        {
+                "code": -1131, //fail
+                "msg": "Balance insufficient " //reason
+        }
+   ]
+}
+```
+
+### Parameters
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+|  | LIST | YES | `RequestBody` parameters |
+| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |  |
+
+The batchOrders in RequestBody should fill in the order parameters in list of JSON format
+
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES |  |
+| side | ENUM | YES | side `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
+| type | ENUM | YES | type `LIMIT` or `STOP` |
+| quantity | LONG | YES |  Numbers of orders (volume) |
+| price | DECIMAL | NO | price (`LIMIT`&`INPUT`)订单 **Mandatory need** |
+| priceType | ENUM | NO | price type `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
+| timeInForce | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
+| newClientOrderId | STRING | YES |  The ID of the order, defined by the user |
+
+Notes：
+- For **market order**, you need to set `type` to `LIMIT` and set `priceType` to `MARKET`. You can obtain the contract price and quantity precision configuration information at the `brokerInfo` endpoint.
+- If your balance does not meet the margin requirements (initial margin + opening fee + closing fee), there will be an `insufficient balance` (insufficient balance) error return.
+
 
 ## Query Order (USER_DATA)
 - `GET /api/v1/futures/order`
@@ -1859,6 +1952,48 @@ Notes：
 | side | ENUM | YES | `BUY` or `SELL` |
 | timestamp | LONG | YES | |
 | recvWindow | LONG | NO | |
+
+## Cancel Multiple Orders  (TRADE)
+- `DELETE /api/v1/futures/cancelOrderByIds`
+
+Cancel orders in bulk. A maximum of `100` entries at a time.
+
+### Weight：5
+
+> Response
+
+``` json
+// success
+{
+  "code":200, 
+  "result":[]
+}
+
+// Some or all of the cancellations failed
+{
+   "code":200,
+   "result":[
+       {
+          "orderId":"1327047813809448704",
+          "code":-2013
+       },
+       {
+           "orderId":"1327047814212101888",
+           "code":-2013
+       }
+   ]
+}
+```
+
+### Parameters
+
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| ids | STRING | YES | Order id (multiple separated by `,`)|
+| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |  |
+
+Note: `code` returns 200 to indicate that the order cancellation request has been executed. Whether it is successful or not depends on the results in `result`. If `result` is empty, it means all successes. If it is not empty, `orderId` means that the order id failed to be canceled.` code` represents the reason for the undo failure.
 
 ## Query Current Open Order  (USER_DATA)
 - `GET /api/v1/futures/openOrders`
