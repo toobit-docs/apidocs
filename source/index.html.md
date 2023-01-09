@@ -2167,20 +2167,22 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 > Payload
 
 ``` json
-{
-  "e": "outboundAccountInfo",   // Event type事件类型
-  "E": 1499405658849,           // Event time事件时间
-  "T": true,                    // Can trade? 可否交易
-  "W": true,                    // Can withdraw? 可否提币
-  "D": true,                    // Can deposit? 可否充币
-  "B": [                        // Balances changed 余额变更
-    {
-      "a": "LTC",               // Asset 资产
-      "f": "17366.18538083",    // Free amount 可用金额
-      "l": "0.00000000"         // Locked amount 冻结金额
-    }
-  ]
-}
+[
+  {
+    "e": "outboundAccountInfo",   // Event type事件类型
+    "E": 1499405658849,           // Event time事件时间
+    "T": true,                    // Can trade? 可否交易
+    "W": true,                    // Can withdraw? 可否提币
+    "D": true,                    // Can deposit? 可否充币
+    "B": [                        // Balances changed 余额变更
+      {
+        "a": "LTC",               // Asset 资产
+        "f": "17366.18538083",    // Free amount 可用金额
+        "l": "0.00000000"         // Locked amount 冻结金额
+      }
+    ]
+  }
+]
 ```
 
 每当帐户余额发生更改时，都会发送一个事件`outboundAccountInfo`，其中包含可能由生成余额变动的事件而变动的资产。
