@@ -2388,21 +2388,22 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
 > Payload
 
 ``` json
-{
-  "e": "ACCOUNT_UPDATE",                // event type
-  "E": 1564745798939,                   // event time
-  "T": true ,                  // Can trade 
-  "W": true ,                  // Can withdraw 
-  "D": true ,                  // Can deposit 
-  "B": [                        // Balances changed 
-    {
-      "a": "LTC",               // Asset 
-      "f": "17366.18538083",    // Free amount 
-      "l": "0.00000000"         // Locked amount 
-    }
-  ]
-}
-    
+[
+  {
+    "e": "ACCOUNT_UPDATE",                // event type
+    "E": 1564745798939,                   // event time
+    "T": true ,                  // Can trade 
+    "W": true ,                  // Can withdraw 
+    "D": true ,                  // Can deposit 
+    "B": [                        // Balances changed 
+      {
+        "a": "LTC",               // Asset 
+        "f": "17366.18538083",    // Free amount 
+        "l": "0.00000000"         // Locked amount 
+      }
+    ]
+  }
+]   
 ```
 
 
