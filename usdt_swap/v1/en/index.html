@@ -2801,9 +2801,12 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </tr>
 </tbody></table>
 
-<p>Notes：
-- For <strong>market order</strong>, you need to set <code>type</code> to <code>LIMIT</code> and set <code>priceType</code> to <code>MARKET</code>. You can obtain the contract price and quantity precision configuration information at the <code>brokerInfo</code> endpoint.
-- If your balance does not meet the margin requirements (initial margin + opening fee + closing fee), there will be an <code>insufficient balance</code> (insufficient balance) error return.</p>
+<p>Notes：</p>
+
+<ul>
+<li>For <strong>market order</strong>, you need to set <code>type</code> to <code>LIMIT</code> and set <code>priceType</code> to <code>MARKET</code>. You can obtain the contract price and quantity precision configuration information at the <code>brokerInfo</code> endpoint.</li>
+<li>If your balance does not meet the margin requirements (initial margin + opening fee + closing fee), there will be an <code>insufficient balance</code> (insufficient balance) error return.</li>
+</ul>
 <h2 id='query-order-user_data'>Query Order (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
