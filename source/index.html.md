@@ -1936,6 +1936,48 @@ curl  -H "Content-Type:application/json"
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
+## 批量撤销订单 (TRADE)
+- `DELETE /api/v1/futures/cancelOrderByIds`
+
+批量撤销订单。单次最多`100`条。
+
+### 权重：5
+
+> 响应
+
+``` json
+// 取消成功
+{
+  "code":200, //代表执行成功
+  "result":[]
+}
+
+// 取消部分或全部失败
+{
+   "code":200,
+   "result":[
+       {
+          "orderId":"1327047813809448704",
+          "code":-2013
+       },
+       {
+           "orderId":"1327047814212101888",
+           "code":-2013
+       }
+   ]
+}
+```
+
+### 参数
+
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| ids | STRING | YES | 订单id（多个用`,`隔开）|
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+注意：`code`返回200代表撤单请求被执行，是否成功还需要看`result`里的结果,如果`result`为空代表全部成功，不为空`orderId`代表撤销失败的订单id，`code`代表撤销失败原因。
+
 ## 查看当前全部挂单 (USER_DATA)
 - `GET /api/v1/futures/openOrders`
 
