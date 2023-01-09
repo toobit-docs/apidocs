@@ -385,13 +385,19 @@
                     <a href="#trade-3" class="toc-h2 toc-link" data-title="下单 (TRADE)">下单 (TRADE)</a>
                   </li>
                   <li>
+                    <a href="#trade-4" class="toc-h2 toc-link" data-title="批量下单 (TRADE)">批量下单 (TRADE)</a>
+                  </li>
+                  <li>
                     <a href="#user_data-2" class="toc-h2 toc-link" data-title="查询订单 (USER_DATA)">查询订单 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#trade-4" class="toc-h2 toc-link" data-title="撤销订单 (TRADE)">撤销订单 (TRADE)</a>
+                    <a href="#trade-5" class="toc-h2 toc-link" data-title="撤销订单 (TRADE)">撤销订单 (TRADE)</a>
                   </li>
                   <li>
-                    <a href="#trade-5" class="toc-h2 toc-link" data-title="撤销全部订单 (TRADE)">撤销全部订单 (TRADE)</a>
+                    <a href="#trade-6" class="toc-h2 toc-link" data-title="撤销全部订单 (TRADE)">撤销全部订单 (TRADE)</a>
+                  </li>
+                  <li>
+                    <a href="#trade-7" class="toc-h2 toc-link" data-title="批量撤销订单 (TRADE)">批量撤销订单 (TRADE)</a>
                   </li>
                   <li>
                     <a href="#user_data-3" class="toc-h2 toc-link" data-title="查看当前全部挂单 (USER_DATA)">查看当前全部挂单 (USER_DATA)</a>
@@ -406,7 +412,7 @@
                     <a href="#user_data-6" class="toc-h2 toc-link" data-title="账户余额 (USER_DATA)">账户余额 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#trade-6" class="toc-h2 toc-link" data-title="调整逐仓保证金 (TRADE)">调整逐仓保证金 (TRADE)</a>
+                    <a href="#trade-8" class="toc-h2 toc-link" data-title="调整逐仓保证金 (TRADE)">调整逐仓保证金 (TRADE)</a>
                   </li>
                   <li>
                     <a href="#user_data-7" class="toc-h2 toc-link" data-title="账户成交历史 (USER_DATA)">账户成交历史 (USER_DATA)</a>
@@ -2614,6 +2620,163 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。</li>
 <li>MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。</li>
 </ul>
+<h2 id='trade-4'>批量下单 (TRADE)</h2>
+<ul>
+<li><code>POST /api/v1/futures/batchOrders</code></li>
+</ul>
+
+<p>单次最多20条订单，必须为同一<code>symbol</code>。</p>
+<h3 id='2'>权重 2</h3>
+<blockquote>
+<p>例子：</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -H <span class="s2">"Content-Type:application/json"</span> 
+-H <span class="s2">"X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs"</span> 
+-X POST -d <span class="s1">'[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]'</span> <span class="s1">'#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&amp;signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'</span>
+</code></pre>
+<blockquote>
+<p>响应：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//成功</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//成功</span><span class="w">
+            </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1673062993867"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单生成时的时间戳</span><span class="w">
+                    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1673062993867"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单上次更新的时间戳</span><span class="w">
+                    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1328143087352970240"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单ID</span><span class="w">
+                    </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl2023010712345678900"</span><span class="p">,</span><span class="w"> </span><span class="err">//用户定义的订单ID</span><span class="w">
+                    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="err">//交易对</span><span class="w">
+                    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16500"</span><span class="p">,</span><span class="err">//订单价格</span><span class="w">
+                    </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="err">//订单杠杆</span><span class="w">
+                    </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单数量</span><span class="w">
+                    </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单已执行数量</span><span class="w">
+                    </span><span class="s2">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//平均交易价格</span><span class="w">
+                    </span><span class="s2">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
+                    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
+                    </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
+                    </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+                    </span><span class="p">}</span><span class="w">        
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1131</span><span class="p">,</span><span class="w"> </span><span class="err">//失败</span><span class="w">
+                </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Balance insufficient "</span><span class="w"> </span><span class="err">//失败原因</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-20'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>LIST</td>
+<td>YES</td>
+<td><code>RequestBody</code> 参数</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
+
+<p>其中RequestBody中batchOrders应以list of JSON格式填写订单参数</p>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>下单方向，方向类型为 <code>BUY_OPEN</code>、<code>SELL_OPEN</code>、<code>BUY_CLOSE</code>、<code>SELL_CLOSE</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>订单类型，支持订单类型为 <code>LIMIT</code>和<code>STOP</code></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>LONG</td>
+<td>YES</td>
+<td>订单的合约数量（张）</td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>订单价格 (<code>LIMIT</code>&amp;<code>INPUT</code>)订单 <strong>强制需要</strong></td>
+</tr>
+<tr>
+<td>priceType</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>价格类型，支持的价格类型为 <code>INPUT</code>、<code>OPPONENT</code>、<code>QUEUE</code>、<code>OVER</code>、<code>MARKET</code></td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td><code>LIMIT</code>订单的时间指令（Time in Force），目前支持的类型为<code>GTC</code>、<code>FOK</code>、<code>IOC</code>、<code>LIMIT_MAKER</code></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>YES</td>
+<td>订单的ID，用户自己定义</td>
+</tr>
+</tbody></table>
+
+<p>注意：
+-  对于 <strong>市价订单</strong>, 你需要设置<code>type</code>为 <code>LIMIT</code> 并且设置 <code>priceType</code> 为 <code>MARKET</code>。你可以在<code>brokerInfo</code>端点获取合约价格，数量的精度配置信息。
+- 如果你的余额没有达到需要保证金的要求（初始保证金+开仓手续费+平仓手续费），将会有<code>insufficient balance</code>（余额不足）的错误返回。</p>
 <h2 id='user_data-2'>查询订单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
@@ -2640,7 +2803,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-20'>参数</h3>
+</span></code></pre><h3 id='749d765242-21'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2686,7 +2849,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</li>
 </ul>
-<h2 id='trade-4'>撤销订单 (TRADE)</h2>
+<h2 id='trade-5'>撤销订单 (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/futures/order</code></li>
 </ul>
@@ -2715,7 +2878,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </span><span class="p">}</span><span class="w">
 
 
-</span></code></pre><h3 id='749d765242-21'>参数</h3>
+</span></code></pre><h3 id='749d765242-22'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2767,7 +2930,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>orderId</code> 或者 <code>origClientOrderId</code> 必须发送其中之一</li>
 </ul>
-<h2 id='trade-5'>撤销全部订单 (TRADE)</h2>
+<h2 id='trade-6'>撤销全部订单 (TRADE)</h2>
 <ul>
 <li><code>DELETE /api/v1/futures/batchOrders</code></li>
 </ul>
@@ -2780,7 +2943,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-22'>参数</h3>
+</span></code></pre><h3 id='749d765242-23'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2814,6 +2977,66 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>recv窗口</td>
 </tr>
 </tbody></table>
+<h2 id='trade-7'>批量撤销订单 (TRADE)</h2>
+<ul>
+<li><code>DELETE /api/v1/futures/cancelOrderByIds</code></li>
+</ul>
+
+<p>批量撤销订单。单次最多<code>100</code>条。</p>
+<h3 id='5-4'>权重：5</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">取消成功</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//代表执行成功</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">取消部分或全部失败</span><span class="w">
+</span><span class="p">{</span><span class="w">
+   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1327047813809448704"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1327047814212101888"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='749d765242-24'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>STRING</td>
+<td>YES</td>
+<td>订单id（多个用<code>,</code>隔开）</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
+
+<p>注意：<code>code</code>返回200代表撤单请求被执行，是否成功还需要看<code>result</code>里的结果,如果<code>result</code>为空代表全部成功，不为空<code>orderId</code>代表撤销失败的订单id，<code>code</code>代表撤销失败原因。</p>
 <h2 id='user_data-3'>查看当前全部挂单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/openOrders</code></li>
@@ -2842,7 +3065,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-23'>参数</h3>
+</span></code></pre><h3 id='749d765242-25'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2900,7 +3123,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>返回现在的仓位信息，这个API需要请求签名。</p>
-<h3 id='5-4'>权重：5</h3>
+<h3 id='5-5'>权重：5</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2922,7 +3145,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"realizedPnL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.018"</span><span class="w"> </span><span class="err">//当前</span><span class="w"> </span><span class="err">合约</span><span class="w"> </span><span class="err">的已实现盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-24'>参数</h3>
+</span></code></pre><h3 id='749d765242-26'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -2967,7 +3190,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
 </ul>
-<h3 id='5-5'>权重：5</h3>
+<h3 id='5-6'>权重：5</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -2991,7 +3214,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-25'>参数</h3>
+</span></code></pre><h3 id='749d765242-27'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3061,7 +3284,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>返回合约账户余额，这个端点需要请求签名。</p>
-<h3 id='5-6'>权重：5</h3>
+<h3 id='5-7'>权重：5</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -3076,7 +3299,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//全仓未实现盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-26'>参数</h3>
+</span></code></pre><h3 id='749d765242-28'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3098,7 +3321,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>recv窗口</td>
 </tr>
 </tbody></table>
-<h2 id='trade-6'>调整逐仓保证金 (TRADE)</h2>
+<h2 id='trade-8'>调整逐仓保证金 (TRADE)</h2>
 <ul>
 <li><code>POST  /api/v1/futures/positionMargin</code></li>
 </ul>
@@ -3115,7 +3338,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="err">//更新后的仓位保证金</span><span class="w">
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> </span><span class="err">//更新时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-27'>参数</h3>
+</span></code></pre><h3 id='749d765242-29'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3161,7 +3384,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>获取某交易对的成交历史</p>
-<h3 id='5-7'>权重：5</h3>
+<h3 id='5-8'>权重：5</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -3183,7 +3406,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="s2">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> </span><span class="err">//成交盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-28'>参数</h3>
+</span></code></pre><h3 id='749d765242-30'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3247,7 +3470,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>查询风险限额，这个API端点需要请求签名。</p>
-<h3 id='5-8'>权重：5</h3>
+<h3 id='5-9'>权重：5</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -3267,7 +3490,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='749d765242-29'>参数</h3>
+</span></code></pre><h3 id='749d765242-31'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3306,7 +3529,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
     </span><span class="s2">"success"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-30'>参数</h3>
+</span></code></pre><h3 id='749d765242-32'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3350,7 +3573,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li><code>GET /api/v1/futures/commissionRate</code></li>
 </ul>
-<h3 id='5-9'>权重：5</h3>
+<h3 id='5-10'>权重：5</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -3360,7 +3583,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="s2">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//平仓挂单的手续费费率</span><span class="w">
     </span><span class="s2">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//平仓吃单的手续费费率</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-31'>参数</h3>
+</span></code></pre><h3 id='749d765242-33'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3411,7 +3634,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-32'>参数</h3>
+</span></code></pre><h3 id='749d765242-34'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3445,7 +3668,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-33'>参数</h3>
+</span></code></pre><h3 id='749d765242-35'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3483,7 +3706,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='749d765242-34'>参数</h3>
+</span></code></pre><h3 id='749d765242-36'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
