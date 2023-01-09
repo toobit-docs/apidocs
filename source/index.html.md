@@ -2369,20 +2369,22 @@ curl  -H "Content-Type:application/json"
 > Balance Payload
 
 ``` json
-{
-  "e": "outboundContractAccountInfo",                // 事件类型
-  "E": 1564745798939,                   // 事件时间
-  "T": true ,                  // Can trade 可否交易
-  "W": true ,                  // Can withdraw 可否提币
-  "D": true ,                  // Can deposit 可否充币
-  "B": [                        // Balances changed 余额变更
-    {
-      "a": "LTC",               // Asset 资产
-      "f": "17366.18538083",    // Free amount 可用金额,不包含未实现盈亏, 用未实现盈亏下单是会未负数
-      "l": "0.00000000"         // 冻结金额：仓位保证金 + 委托保证金(下单锁定)
-    }
-  ]
-}
+[
+  {
+    "e": "outboundContractAccountInfo",                // 事件类型
+    "E": 1564745798939,                   // 事件时间
+    "T": true ,                  // Can trade 可否交易
+    "W": true ,                  // Can withdraw 可否提币
+    "D": true ,                  // Can deposit 可否充币
+    "B": [                        // Balances changed 余额变更
+      {
+        "a": "LTC",               // Asset 资产
+        "f": "17366.18538083",    // Free amount 可用金额,不包含未实现盈亏, 用未实现盈亏下单是会未负数
+        "l": "0.00000000"         // 冻结金额：仓位保证金 + 委托保证金(下单锁定)
+      }
+    ]
+  }
+]
     
 ```
 
