@@ -1738,11 +1738,11 @@ accountType：
 
 单次最多20条订单，必须为同一`symbol`。
 
-### 权重 2
+### 权重: 2
 
 > 例子：
 
-``` shell
+``` json
 curl  -H "Content-Type:application/json" 
 -H "X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs" 
 -X POST -d '[   
@@ -2767,3 +2767,85 @@ curl  -H "Content-Type:application/json"
 
 ### -2016 NO_TRADING_WINDOW
 - 找不到该品种的交易窗口。试试股票代码/24小时。
+
+## 3xxx - Filters and other Issues
+
+### -3050 CREATE_API_KEY_EXCEED_LIMIT 
+
+账号对应的ApiKey已经存在
+
+### -3101 OPEN_MARGIN_ACCOUNT_ERROR 
+
+开设保证金账户错误
+
+### -3102 GET_MARGIN_SAFETY_ERROR 
+
+获取保证金安全错误
+
+### -3103 RISK_IS_NOT_EXIT 
+
+风险配置未退出
+
+### -3105 MARGIN_TOKEN_NOT_BORROW 
+
+无权限token
+
+### -3107 MARGIN_TOKEN_NOT_WITHDRAW 
+
+不能提现
+
+### -3108 GET_AVAIL_WITHDRAW_ERROR 
+
+获取令牌可用提现错误
+
+### -3109 MARGIN_WITHDRAW_ERROR 
+
+提取保证金失败
+
+### -3110 MARGIN_AVAIL_WITHDRAW_NOT_ENOUGH_FAILED 
+
+可用保证金提取不足失败
+
+### -3116 REPAY_ERROR 
+
+还款失败
+
+### -3117 GET_MARGIN_ALL_POSITION_ERROR 
+
+获取保证金所有持仓失败
+
+### -3120 GET_REPAY_ORDER_ERROR 
+
+获取还款订单失败
+
+### -3124 POSITION_AND_ORDER_DATA_ERROR 
+
+仓位和订单数据错误
+
+### -3125 POSITION_SIZE_CANNOT_MEET_TARGET_LEVERAGE_ERROR 
+
+头寸规模无法达到目标杠杆
+
+### -3126 ADJUST_LEVERAGE_FAIL 
+
+调整杠杆失败
+
+### -3127 ADJUST_LEVERAGE_TIMEOUT 
+
+调整杠杆超时
+
+### -3128 ADJUST_MARGIN_TYPE_CHECK_FAILED 
+
+当您有未结订单/头寸时，保证金模式无法更改
+
+### -3129 CONE_FUTURES_CHANGE_POSITION_TYPE_ERROR 
+
+期货换仓类型错误
+
+### -3130 ORDER_REJECT_FUTURES_ORDER_MARGIN_INSUFFICIENT 
+
+订单保证金不足
+
+### -3131 LEVERAGE_REDUCTION_IS_NOT_SUPPORTED
+
+持仓的逐仓模式不支持减杠杆
