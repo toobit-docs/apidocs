@@ -1839,6 +1839,7 @@ The batchOrders in RequestBody should fill in the order parameters in list of JS
 | newClientOrderId | STRING | YES |  The ID of the order, defined by the user |
 
 Notes：
+
 - For **market order**, you need to set `type` to `LIMIT` and set `priceType` to `MARKET`. You can obtain the contract price and quantity precision configuration information at the `brokerInfo` endpoint.
 - If your balance does not meet the margin requirements (initial margin + opening fee + closing fee), there will be an `insufficient balance` (insufficient balance) error return.
 
