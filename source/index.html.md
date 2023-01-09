@@ -1822,6 +1822,7 @@ curl  -H "Content-Type:application/json"
 | newClientOrderId | STRING | YES | 订单的ID，用户自己定义 |
 
 注意：
+
 -  对于 **市价订单**, 你需要设置`type`为 `LIMIT` 并且设置 `priceType` 为 `MARKET`。你可以在`brokerInfo`端点获取合约价格，数量的精度配置信息。
 - 如果你的余额没有达到需要保证金的要求（初始保证金+开仓手续费+平仓手续费），将会有`insufficient balance`（余额不足）的错误返回。
 
