@@ -2793,3 +2793,85 @@ Errors consist of two parts: an error code and a message. Codes are universal, b
 
 ### -2016 NO_TRADING_WINDOW
 - No trading window could be found for the symbol. Try ticker/24hrs instead.
+
+## 3xxx - Filters and other Issues
+
+### -3050 CREATE_API_KEY_EXCEED_LIMIT 
+
+The ApiKey corresponding to the account already exists 
+
+### -3101 OPEN_MARGIN_ACCOUNT_ERROR 
+
+open margin account error 
+
+### -3102 GET_MARGIN_SAFETY_ERROR 
+
+get margin safety error 
+
+### -3103 RISK_IS_NOT_EXIT 
+
+risk config is not exit 
+
+### -3105 MARGIN_TOKEN_NOT_BORROW 
+
+token can not borrow 
+
+### -3107 MARGIN_TOKEN_NOT_WITHDRAW 
+
+token can not withdraw 
+
+### -3108 GET_AVAIL_WITHDRAW_ERROR 
+
+get token avail withdraw error 
+
+### -3109 MARGIN_WITHDRAW_ERROR 
+
+margin withdraw failed 
+
+### -3110 MARGIN_AVAIL_WITHDRAW_NOT_ENOUGH_FAILED 
+
+margin avail withdraw not enough failed 
+
+### -3116 REPAY_ERROR 
+
+repay fail 
+
+### -3117 GET_MARGIN_ALL_POSITION_ERROR 
+
+get margin all position fail 
+
+### -3120 GET_REPAY_ORDER_ERROR 
+
+get repay order fail 
+
+### -3124 POSITION_AND_ORDER_DATA_ERROR 
+
+Position and order data error 
+
+### -3125 POSITION_SIZE_CANNOT_MEET_TARGET_LEVERAGE_ERROR 
+
+Position size cannot meet target leverage 
+
+### -3126 ADJUST_LEVERAGE_FAIL 
+
+Adjust leverage fail 
+
+### -3127 ADJUST_LEVERAGE_TIMEOUT 
+
+Adjust leverage timeout 
+
+### -3128 ADJUST_MARGIN_TYPE_CHECK_FAILED 
+
+The margin mode cannot be changed while you have an open order/position 
+
+### -3129 CONE_FUTURES_CHANGE_POSITION_TYPE_ERROR 
+
+cone futures change position type error 
+
+### -3130 ORDER_REJECT_FUTURES_ORDER_MARGIN_INSUFFICIENT 
+
+order margin insufficient
+
+### -3131 LEVERAGE_REDUCTION_IS_NOT_SUPPORTED
+
+Leverage reduction is not supported in Isolated Margin Mode with open positions.
