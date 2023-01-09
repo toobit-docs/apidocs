@@ -388,6 +388,9 @@
                     <a href="#new-order-trade" class="toc-h2 toc-link" data-title="New Order (TRADE)">New Order (TRADE)</a>
                   </li>
                   <li>
+                    <a href="#place-multiple-orders-trade" class="toc-h2 toc-link" data-title="Place Multiple Orders (TRADE)">Place Multiple Orders (TRADE)</a>
+                  </li>
+                  <li>
                     <a href="#query-order-user_data" class="toc-h2 toc-link" data-title="Query Order (USER_DATA)">Query Order (USER_DATA)</a>
                   </li>
                   <li>
@@ -395,6 +398,9 @@
                   </li>
                   <li>
                     <a href="#cancel-orders-trade" class="toc-h2 toc-link" data-title="Cancel Orders (TRADE)">Cancel Orders (TRADE)</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-multiple-orders-trade" class="toc-h2 toc-link" data-title="Cancel Multiple Orders  (TRADE)">Cancel Multiple Orders  (TRADE)</a>
                   </li>
                   <li>
                     <a href="#query-current-open-order-user_data" class="toc-h2 toc-link" data-title="Query Current Open Order  (USER_DATA)">Query Current Open Order  (USER_DATA)</a>
@@ -2561,7 +2567,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td>type</td>
 <td>ENUM</td>
 <td>YES</td>
-<td><code>LIMIT</code> and <code>STOP</code></td>
+<td><code>LIMIT</code> or <code>STOP</code></td>
 </tr>
 <tr>
 <td>quantity</td>
@@ -2627,6 +2633,163 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <li>OVER The order will be matched at the best price of the counterparty + over-price (floating).</li>
 <li>MARKET Orders will be matched at the latest transaction price * (1 ± 5%).</li>
 </ul>
+<h2 id='place-multiple-orders-trade'>Place Multiple Orders (TRADE)</h2>
+<ul>
+<li><code>POST /api/v1/futures/batchOrders</code></li>
+</ul>
+
+<p>A maximum of 20 orders at a time, must be the same <code>symbol</code>.</p>
+<h3 id='weight-2'>Weight: 2</h3>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -H <span class="s2">"Content-Type:application/json"</span> 
+-H <span class="s2">"X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs"</span> 
+-X POST -d <span class="s1">'[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]'</span> <span class="s1">'#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&amp;signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'</span>
+</code></pre>
+<blockquote>
+<p>Response：</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//success</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//success</span><span class="w">
+            </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1673062993867"</span><span class="p">,</span><span class="w"> </span><span class="err">//time</span><span class="w">
+                    </span><span class="s2">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1673062993867"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1328143087352970240"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl2023010712345678900"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16500"</span><span class="p">,</span><span class="err">//price</span><span class="w">
+                    </span><span class="s2">"leverage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="err">//leverage</span><span class="w">
+                    </span><span class="s2">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//quantity</span><span class="w">
+                    </span><span class="s2">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//Executed</span><span class="w"> </span><span class="err">Quantity</span><span class="w">
+                    </span><span class="s2">"avgPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//average</span><span class="w">  </span><span class="err">price</span><span class="w">
+                    </span><span class="s2">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">locked</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order.</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">type（LIMIT</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">STOP）</span><span class="w">
+                    </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
+                    </span><span class="s2">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force</span><span class="w"> </span><span class="err">(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//status（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
+                    </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//price</span><span class="w"> </span><span class="err">type（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+                    </span><span class="p">}</span><span class="w">        
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1131</span><span class="p">,</span><span class="w"> </span><span class="err">//fail</span><span class="w">
+                </span><span class="s2">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Balance insufficient "</span><span class="w"> </span><span class="err">//reason</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-23'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>LIST</td>
+<td>YES</td>
+<td><code>RequestBody</code> parameters</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>The batchOrders in RequestBody should fill in the order parameters in list of JSON format</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>side <code>BUY_OPEN</code>、<code>SELL_OPEN</code>、<code>BUY_CLOSE</code>、<code>SELL_CLOSE</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>type <code>LIMIT</code> or <code>STOP</code></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>LONG</td>
+<td>YES</td>
+<td>Numbers of orders (volume)</td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>price (<code>LIMIT</code>&amp;<code>INPUT</code>)订单 <strong>Mandatory need</strong></td>
+</tr>
+<tr>
+<td>priceType</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>price type <code>INPUT</code>、<code>OPPONENT</code>、<code>QUEUE</code>、<code>OVER</code>、<code>MARKET</code></td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>The time command (Time in Force) of <code>LIMIT</code> order, the currently supported types are <code>GTC</code>, <code>FOK</code>, <code>IOC</code>, <code>LIMIT_MAKER</code></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>YES</td>
+<td>The ID of the order, defined by the user</td>
+</tr>
+</tbody></table>
+
+<p>Notes：
+- For <strong>market order</strong>, you need to set <code>type</code> to <code>LIMIT</code> and set <code>priceType</code> to <code>MARKET</code>. You can obtain the contract price and quantity precision configuration information at the <code>brokerInfo</code> endpoint.
+- If your balance does not meet the margin requirements (initial margin + opening fee + closing fee), there will be an <code>insufficient balance</code> (insufficient balance) error return.</p>
 <h2 id='query-order-user_data'>Query Order (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/order</code></li>
@@ -2653,7 +2816,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED</span><span class="w">
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、OPPONENT、QUEUE、OVER、MARKET</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-23'>Parameters</h3>
+</span></code></pre><h3 id='parameters-24'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2727,7 +2890,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='parameters-24'>Parameters</h3>
+</span></code></pre><h3 id='parameters-25'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2792,7 +2955,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
   </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-25'>Parameters</h3>
+</span></code></pre><h3 id='parameters-26'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2826,6 +2989,66 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='cancel-multiple-orders-trade'>Cancel Multiple Orders  (TRADE)</h2>
+<ul>
+<li><code>DELETE /api/v1/futures/cancelOrderByIds</code></li>
+</ul>
+
+<p>Cancel orders in bulk. A maximum of <code>100</code> entries at a time.</p>
+<h3 id='weight-5-4'>Weight：5</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">//</span><span class="w"> </span><span class="err">success</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"result"</span><span class="p">:[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">//</span><span class="w"> </span><span class="err">Some</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">cancellations</span><span class="w"> </span><span class="err">failed</span><span class="w">
+</span><span class="p">{</span><span class="w">
+   </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"result"</span><span class="p">:[</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1327047813809448704"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"orderId"</span><span class="p">:</span><span class="s2">"1327047814212101888"</span><span class="p">,</span><span class="w">
+           </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='parameters-27'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>STRING</td>
+<td>YES</td>
+<td>Order id (multiple separated by <code>,</code>)</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>Note: <code>code</code> returns 200 to indicate that the order cancellation request has been executed. Whether it is successful or not depends on the results in <code>result</code>. If <code>result</code> is empty, it means all successes. If it is not empty, <code>orderId</code> means that the order id failed to be canceled.<code>code</code> represents the reason for the undo failure.</p>
 <h2 id='query-current-open-order-user_data'>Query Current Open Order  (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/openOrders</code></li>
@@ -2854,7 +3077,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-26'>Parameters</h3>
+</span></code></pre><h3 id='parameters-28'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2912,7 +3135,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </ul>
 
 <p>Returns the current position information, this API requires a request signature.</p>
-<h3 id='weight-5-4'>Weight: 5</h3>
+<h3 id='weight-5-5'>Weight: 5</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2934,7 +3157,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
         </span><span class="s2">"realizedPnL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.018"</span><span class="w"> </span><span class="err">//Realized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-27'>Parameters</h3>
+</span></code></pre><h3 id='parameters-29'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2979,7 +3202,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
 </ul>
-<h3 id='weight-5-5'>Weight：5</h3>
+<h3 id='weight-5-6'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3003,7 +3226,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-28'>Parameters</h3>
+</span></code></pre><h3 id='parameters-30'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3071,7 +3294,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <ul>
 <li><code>GET  /api/v1/futures/balance</code></li>
 </ul>
-<h3 id='weight-5-6'>Weight：5</h3>
+<h3 id='weight-5-7'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3086,7 +3309,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
         </span><span class="s2">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">unrealized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">cross</span><span class="w"> </span><span class="err">position</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-29'>Parameters</h3><h3 id='parameters-30'>Parameters</h3>
+</span></code></pre><h3 id='parameters-31'>Parameters</h3><h3 id='parameters-32'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3123,7 +3346,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> 
     </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> 
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-31'>Parameters</h3>
+</span></code></pre><h3 id='parameters-33'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3169,7 +3392,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </ul>
 
 <p>Get trades for a specific account and symbol.</p>
-<h3 id='weight-5-7'>Weight：5</h3>
+<h3 id='weight-5-8'>Weight：5</h3>
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -3191,7 +3414,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
         </span><span class="s2">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> 
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-32'>Parameters</h3>
+</span></code></pre><h3 id='parameters-34'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3255,7 +3478,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </ul>
 
 <p>To query the risk limit, this API endpoint requires a request signature.</p>
-<h3 id='weight-5-8'>Weight：5</h3>
+<h3 id='weight-5-9'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3275,7 +3498,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
                 </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='parameters-33'>Parameters</h3>
+</span></code></pre><h3 id='parameters-35'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3314,7 +3537,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w"> 
     </span><span class="s2">"success"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-34'>Parameters</h3>
+</span></code></pre><h3 id='parameters-36'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3358,7 +3581,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <ul>
 <li><code>GET /api/v1/futures/commissionRate</code></li>
 </ul>
-<h3 id='weight-5-9'>Weight：5</h3>
+<h3 id='weight-5-10'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3368,7 +3591,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
     </span><span class="s2">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
     </span><span class="s2">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">taker</span><span class="w"> </span><span class="err">order</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-35'>Parameters</h3>
+</span></code></pre><h3 id='parameters-37'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3421,7 +3644,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-36'>Parameters</h3>
+</span></code></pre><h3 id='parameters-38'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3455,7 +3678,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='parameters-37'>Parameters</h3>
+</span></code></pre><h3 id='parameters-39'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3492,7 +3715,7 @@ Considering the possible data latency from RESTful endpoints during an extremely
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre><h3 id='parameters-38'>Parameters</h3>
+</span></code></pre><h3 id='parameters-40'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
