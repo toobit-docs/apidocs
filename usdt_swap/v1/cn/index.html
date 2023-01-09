@@ -463,6 +463,9 @@
                   <li>
                     <a href="#11xx-2xxx-request-issues" class="toc-h2 toc-link" data-title="11xx - 2xxx Request issues">11xx - 2xxx Request issues</a>
                   </li>
+                  <li>
+                    <a href="#3xxx-filters-and-other-issues" class="toc-h2 toc-link" data-title="3xxx - Filters and other Issues">3xxx - Filters and other Issues</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -2637,32 +2640,32 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 
 <p>单次最多20条订单，必须为同一<code>symbol</code>。</p>
-<h3 id='2'>权重 2</h3>
+<h3 id='2'>权重: 2</h3>
 <blockquote>
 <p>例子：</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -H <span class="s2">"Content-Type:application/json"</span> 
--H <span class="s2">"X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs"</span> 
--X POST -d <span class="s1">'[   
-   {     
-      "newClientOrderId": "pl2023010712345678900",     
-      "symbol": "BTC-SWAP-USDT",     
-      "side": "BUY_OPEN",     
-      "type": "LIMIT",     
-      "price": 16500,     
-      "quantity": 10,     
-      "priceType": "INPUT"   
-   },   
-   {  
-       "newClientOrderId": "pl2023010712345678901",     
-       "symbol": "BTC-SWAP-USDT",     
-       "side": "BUY_OPEN",     
-       "type": "LIMIT",     
-       "price": 16000,     
-       "quantity": 10,     
-       "priceType": "INPUT"   
-   } ]'</span> <span class="s1">'#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&amp;signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'</span>
-</code></pre>
+<pre class="highlight json tab-json"><code><span class="err">curl</span><span class="w">  </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> 
+</span><span class="err">-H</span><span class="w"> </span><span class="s2">"X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs"</span><span class="w"> 
+</span><span class="err">-X</span><span class="w"> </span><span class="err">POST</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="p">[</span><span class="w">   
+   </span><span class="p">{</span><span class="w">     
+      </span><span class="s2">"newClientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl2023010712345678900"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">16500</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">     
+      </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">   
+   </span><span class="p">},</span><span class="w">   
+   </span><span class="p">{</span><span class="w">  
+       </span><span class="s2">"newClientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl2023010712345678901"</span><span class="p">,</span><span class="w">     
+       </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">     
+       </span><span class="s2">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w">     
+       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">     
+       </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">16000</span><span class="p">,</span><span class="w">     
+       </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">     
+       </span><span class="s2">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">   
+   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="err">'</span><span class="w"> </span><span class="err">'#HOST/api/v</span><span class="mi">1</span><span class="err">/futures/batchOrders?timestamp=</span><span class="mi">1673062952473</span><span class="err">&amp;signature=f</span><span class="mi">746</span><span class="err">cebecf</span><span class="mi">9</span><span class="err">cf</span><span class="mi">53601</span><span class="err">d</span><span class="mi">2</span><span class="err">ab</span><span class="mi">69</span><span class="err">b</span><span class="mi">2</span><span class="err">f</span><span class="mi">88</span><span class="err">f</span><span class="mi">426</span><span class="err">a</span><span class="mi">1</span><span class="err">c</span><span class="mi">93</span><span class="err">a</span><span class="mi">5</span><span class="err">f</span><span class="mi">7</span><span class="err">bcc</span><span class="mi">8</span><span class="err">bbdc</span><span class="mi">5</span><span class="err">a</span><span class="mi">2</span><span class="err">ce</span><span class="mi">95</span><span class="err">c</span><span class="mi">3</span><span class="err">fa</span><span class="mi">976</span><span class="err">'</span><span class="w">
+</span></code></pre>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -4204,6 +4207,46 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <ul>
 <li>找不到该品种的交易窗口。试试股票代码/24小时。</li>
 </ul>
+<h2 id='3xxx-filters-and-other-issues'>3xxx - Filters and other Issues</h2><h3 id='3050-create_api_key_exceed_limit'>-3050 CREATE_API_KEY_EXCEED_LIMIT</h3>
+<p>账号对应的ApiKey已经存在</p>
+<h3 id='3101-open_margin_account_error'>-3101 OPEN_MARGIN_ACCOUNT_ERROR</h3>
+<p>开设保证金账户错误</p>
+<h3 id='3102-get_margin_safety_error'>-3102 GET_MARGIN_SAFETY_ERROR</h3>
+<p>获取保证金安全错误</p>
+<h3 id='3103-risk_is_not_exit'>-3103 RISK_IS_NOT_EXIT</h3>
+<p>风险配置未退出</p>
+<h3 id='3105-margin_token_not_borrow'>-3105 MARGIN_TOKEN_NOT_BORROW</h3>
+<p>无权限token</p>
+<h3 id='3107-margin_token_not_withdraw'>-3107 MARGIN_TOKEN_NOT_WITHDRAW</h3>
+<p>不能提现</p>
+<h3 id='3108-get_avail_withdraw_error'>-3108 GET_AVAIL_WITHDRAW_ERROR</h3>
+<p>获取令牌可用提现错误</p>
+<h3 id='3109-margin_withdraw_error'>-3109 MARGIN_WITHDRAW_ERROR</h3>
+<p>提取保证金失败</p>
+<h3 id='3110-margin_avail_withdraw_not_enough_failed'>-3110 MARGIN_AVAIL_WITHDRAW_NOT_ENOUGH_FAILED</h3>
+<p>可用保证金提取不足失败</p>
+<h3 id='3116-repay_error'>-3116 REPAY_ERROR</h3>
+<p>还款失败</p>
+<h3 id='3117-get_margin_all_position_error'>-3117 GET_MARGIN_ALL_POSITION_ERROR</h3>
+<p>获取保证金所有持仓失败</p>
+<h3 id='3120-get_repay_order_error'>-3120 GET_REPAY_ORDER_ERROR</h3>
+<p>获取还款订单失败</p>
+<h3 id='3124-position_and_order_data_error'>-3124 POSITION_AND_ORDER_DATA_ERROR</h3>
+<p>仓位和订单数据错误</p>
+<h3 id='3125-position_size_cannot_meet_target_leverage_error'>-3125 POSITION_SIZE_CANNOT_MEET_TARGET_LEVERAGE_ERROR</h3>
+<p>头寸规模无法达到目标杠杆</p>
+<h3 id='3126-adjust_leverage_fail'>-3126 ADJUST_LEVERAGE_FAIL</h3>
+<p>调整杠杆失败</p>
+<h3 id='3127-adjust_leverage_timeout'>-3127 ADJUST_LEVERAGE_TIMEOUT</h3>
+<p>调整杠杆超时</p>
+<h3 id='3128-adjust_margin_type_check_failed'>-3128 ADJUST_MARGIN_TYPE_CHECK_FAILED</h3>
+<p>当您有未结订单/头寸时，保证金模式无法更改</p>
+<h3 id='3129-cone_futures_change_position_type_error'>-3129 CONE_FUTURES_CHANGE_POSITION_TYPE_ERROR</h3>
+<p>期货换仓类型错误</p>
+<h3 id='3130-order_reject_futures_order_margin_insufficient'>-3130 ORDER_REJECT_FUTURES_ORDER_MARGIN_INSUFFICIENT</h3>
+<p>订单保证金不足</p>
+<h3 id='3131-leverage_reduction_is_not_supported'>-3131 LEVERAGE_REDUCTION_IS_NOT_SUPPORTED</h3>
+<p>持仓的逐仓模式不支持减杠杆</p>
 
       </div>
       <div class="dark-box">
