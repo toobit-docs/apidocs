@@ -2533,4 +2533,237 @@ curl  -H "Content-Type:application/json"
 ]
 ```
 
+# 错误代码
 
+错误由两部分组成：错误代码和消息。代码是通用的，但消息可以不同。
+
+> 错误JSON格式
+
+``` json
+{  
+  "code":-1121, 
+  "msg":"Invalid symbol."
+}
+```
+
+## 10xx-通用服务器或网络问题
+
+### -1000 UNKNOWN
+- 处理请求时发生未知错误。
+
+### -1001 DISCONNECTED
+- 内部错误；无法处理您的请求。请重试。
+
+### -1002 UNAUTHORIZED
+- 您无权限执行此请求。请求需要包含API密钥。我们建议在任何请求中包含API密钥。
+
+### -1003 TOO_MANY_REQUESTS
+- 请求太多；请使用WebSocket进行实时更新。
+- 请求太多；当前限制为每分钟%s个请求。请使用webSocket进行实时更新以避免轮询API。
+- 请求太多；IP直到%s才被禁止。请使用WebSocket进行实时更新以避免禁止。
+
+### -1006 UNEXPECTED_RESP
+- 从消息总线收到意外响应。执行状态未知。OPENAPI服务器在执行请求中发现异常。请向客户服务报告。
+
+### -1007 TIMEOUT
+- 等待后端服务器响应的超时。发送状态未知；执行状态未知。
+
+### -1014 UNKNOWN_ORDER_COMPOSITION
+- 不支持的订单组合。
+
+### -1015 TOO_MANY_ORDERS
+- 达到速率限制。请放慢您的请求速度。
+- 太多的新订单。
+- 新订单太多；当前限制为%s每%s的订单数。
+
+### -1016 SERVICE_SHUTTING_DOWN
+- 此服务不再可用。
+
+### -1020 UNSUPPORTED_OPERATION
+- 不支持此操作。
+
+### -1021 INVALID_TIMESTAMP
+- 此请求的时间戳在recvWindow之外。
+- 此请求的时间戳比服务器的时间早1000毫秒。
+- 请检查您的本地时间和服务器时间之间的差异。
+
+### -1022 INVALID_SIGNATURE
+- 此请求的签名无效。
+
+## 11xx - 2xxx Request issues
+
+### -1100 ILLEGAL_CHARS
+- 在参数中发现非法字符。
+- 在参数“%s”中找到非法字符；合法范围为“%s”。
+
+### -1101 TOO_MANY_PARAMETERS
+- 为此端点发送的参数太多。
+- 参数太多；期望'%s'并收到'%s'。
+- 检测到的参数的重复值。
+
+### -1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED
+- 未发送强制参数、为空/null或格式错误。
+- 强制参数'%s'未发送，是空/null或格式错误。
+- 必须发送参数'%s'或'%s'，但两者都是空/null！
+
+### -1103 UNKNOWN_PARAM
+- 发送了一个未知参数。
+- 在BBEx Open Api中，每个请求至少需要一个参数。{Timestamp}。
+
+### -1104 UNREAD_PARAMETERS
+- 并非所有发送的参数都被读取。
+- 并非所有发送的参数都被读取；读取'%s'参数，但发送了'%s'。
+
+### -1105 PARAM_EMPTY
+- 参数为空。
+- 参数"%1！"为空。
+
+### -1106 PARAM_NOT_REQUIRED
+- 不需要时发送参数。
+- 参数“%1！”在不需要时发送。
+
+### -1111 BAD_PRECISION
+- 精度高于为此资产定义的最大值。
+
+### -1112 NO_DEPTH
+- 书上没有符号的订单。
+
+### -1114 TIF_NOT_REQUIRED
+- 不需要时发送的TimeInForce参数。
+
+### -1115 INVALID_TIF
+- 无效的时间。
+- 在当前版本中，此参数为空或GTC。
+
+### -1116 INVALID_ORDER_TYPE
+- 订单类型无效。
+- 在当前版本中，ORDER_TYPE值是LIMIT或MARKET。
+
+### -1117 INVALID_SIDE
+- 无效边。
+- ORDER_SIDE值是买入或卖出
+
+### -1118 EMPTY_NEW_CL_ORD_ID
+- 新客户端订单ID为空。
+
+### -1119 EMPTY_ORG_CL_ORD_ID
+- 原始客户端订单ID为空。
+
+### -1120 BAD_INTERVAL
+- 无效的间隔。
+
+### -1121 BAD_SYMBOL
+- 无效符号。
+
+### -1125 INVALID_LISTEN_KEY
+- 此listenKey不存在。
+
+### -1127 MORE_THAN_XX_HOURS
+- 查找间隔太大。
+- 开始时间和结束时间之间超过%s小时。
+
+### -1128 OPTIONAL_PARAMS_BAD_COMBO
+- 可选参数的组合无效。
+
+### -1130 INVALID_PARAMETER
+- 为参数发送的数据无效。
+- 为参数"%1！"发送的数据无效。
+
+### -1132 ORDER_PRICE_TOO_HIGH
+- 订单价格太高。
+
+### -1133 ORDER_PRICE_TOO_SMALL
+- 订单价格低于最低，请检查一般经纪人信息。
+
+### -1134 ORDER_PRICE_PRECISION_TOO_LONG
+- 订单价格小数太长，请检查一般经纪人信息。
+
+### -1135 ORDER_QUANTITY_TOO_BIG
+- 订单数量太大。
+
+### -1136 ORDER_QUANTITY_TOO_SMALL
+- 订单数量低于最低数量。
+
+### -1137 ORDER_QUANTITY_PRECISION_TOO_LONG
+- 订购数量小数太长。
+
+### -1138 ORDER_PRICE_WAVE_EXCEED
+- 订单价格超出允许范围。
+
+### -1139 ORDER_HAS_FILLED
+- 订单已完成。
+
+### -1140 ORDER_AMOUNT_TOO_SMALL
+- 交易金额低于最低金额。
+
+### -1141 ORDER_DUPLICATED
+- 客户端订单重复
+
+### -1142 ORDER_CANCELLED
+- 订单已被取消
+
+### -1143 ORDER_NOT_FOUND_ON_ORDER_BOOK
+- 在订单簿上找不到
+
+### -1144 ORDER_LOCKED
+- 订单已被锁定
+
+### -1145 ORDER_NOT_SUPPORT_CANCELLATION
+- 此订单类型不支持取消
+
+### -1146 ORDER_CREATION_TIMEOUT
+- 订单创建超时
+
+### -1147 ORDER_CANCELLATION_TIMEOUT
+- 订单取消超时
+
+### -1193 ORDER_COUNT_LIMIT
+- 订单数量限制
+
+### -1194 MARKET_ORDER_FORBIDDEN
+- 禁止创建市价单
+
+### -1195 LIMIT_ORDER_PRICE_TOO_SMALL
+- 创建限价单价格太低
+
+### -1196 LIMIT_ORDER_PRICE_TOO_BIG
+- 创建限价订单价格太高
+
+### -1197 LIMIT_ORDER_BUY_PRICE_TOO_BIG
+- 创建限价单买入价格太高
+
+### -1198 LIMIT_ORDER_SELL_PRICE_TOO_SMALL
+- 创建限价单卖出价太低
+
+### -1199 ORDER_BUY_QUANTITY_TOO_SMALL
+- 订单购买数量太少
+
+### -1200 ORDER_BUY_QUANTITY_TOO_BIG
+- 订单购买数量太多
+
+### -1201 LIMIT_ORDER_SELL_PRICE_TOO_BIG
+- 创建限价单卖出价太高
+
+### -1202 ORDER_SELL_QUANTITY_TOO_SMALL
+- 创建订单卖出数量太少
+
+### -1203 ORDER_SELL_QUANTITY_TOO_BIG
+- 创建订单卖出数量太多
+
+### -2010 NEW_ORDER_REJECTED
+- 新订单被拒绝
+
+### -2011 CANCEL_REJECTED
+- 取消订单被拒绝
+
+### -2013 NO_SUCH_ORDER
+- 订单不存在
+
+### -2014 BAD_API_KEY_FMT
+- API密钥格式无效。
+
+### -2015 REJECTED_MBX_KEY
+- 操作的API、IP或权限无效。
+
+### -2016 NO_TRADING_WINDOW
+- 找不到该品种的交易窗口。试试股票代码/24小时。
