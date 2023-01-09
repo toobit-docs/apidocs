@@ -1733,6 +1733,98 @@ accountType：
 - OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。
 - MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。
 
+## 批量下单 (TRADE)
+- `POST /api/v1/futures/batchOrders`
+
+单次最多20条订单，必须为同一`symbol`。
+
+### 权重 2
+
+> 例子：
+
+``` shell
+curl  -H "Content-Type:application/json" 
+-H "X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs" 
+-X POST -d '[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]' '#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'
+```
+
+> 响应：
+
+``` json
+{
+    "code": 200, //成功
+    "result": [
+         {
+            "code": 200, //成功
+            "order": {
+                    "time": "1673062993867", //订单生成时的时间戳
+                    "updateTime": "1673062993867", //订单上次更新的时间戳
+                    "orderId": "1328143087352970240", //订单ID
+                    "clientOrderId": "pl2023010712345678900", //用户定义的订单ID
+                    "symbol": "BTC-SWAP-USDT",//交易对
+                    "price": "16500",//订单价格
+                    "leverage": "0",//订单杠杆
+                    "origQty": "10", //订单数量
+                    "executedQty": "0", //订单已执行数量
+                    "avgPrice": "0", //平均交易价格
+                    "marginLocked": "0", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
+                    "type": "LIMIT", // 订单类型（LIMIT和STOP）
+                    "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
+                    "timeInForce": "GTC",  // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+                    "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
+                    "priceType": "INPUT"  //价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+                    }        
+        }, 
+        {
+                "code": -1131, //失败
+                "msg": "Balance insufficient " //失败原因
+        }
+   ]
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+|  | LIST | YES | `RequestBody` 参数 |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+其中RequestBody中batchOrders应以list of JSON格式填写订单参数
+
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| symbol | STRING | YES | 交易对 |
+| side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
+| type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP` |
+| quantity | LONG | YES | 订单的合约数量（张） |
+| price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要** |
+| priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
+| timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER` |
+| newClientOrderId | STRING | YES | 订单的ID，用户自己定义 |
+
+注意：
+-  对于 **市价订单**, 你需要设置`type`为 `LIMIT` 并且设置 `priceType` 为 `MARKET`。你可以在`brokerInfo`端点获取合约价格，数量的精度配置信息。
+- 如果你的余额没有达到需要保证金的要求（初始保证金+开仓手续费+平仓手续费），将会有`insufficient balance`（余额不足）的错误返回。
+
 ## 查询订单 (USER_DATA)
 - `GET /api/v1/futures/order`
 
