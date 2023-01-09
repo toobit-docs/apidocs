@@ -2189,20 +2189,22 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 > Payload
 
 ``` json
-{
-  "e": "outboundAccountInfo",   // Event type
-  "E": 1499405658849,           // Event time
-  "T": true,                    // Can trade? 
-  "W": true,                    // Can withdraw? 
-  "D": true,                    // Can deposit? 
-  "B": [                        // Balances changed 
-    {
-      "a": "LTC",               // Asset 
-      "f": "17366.18538083",    // Free amount 
-      "l": "0.00000000"         // Locked amount 
-    }
-  ]
-}
+[
+  {
+    "e": "outboundAccountInfo",   // Event type
+    "E": 1499405658849,           // Event time
+    "T": true,                    // Can trade? 
+    "W": true,                    // Can withdraw? 
+    "D": true,                    // Can deposit? 
+    "B": [                        // Balances changed 
+      {
+        "a": "LTC",               // Asset 
+        "f": "17366.18538083",    // Free amount 
+        "l": "0.00000000"         // Locked amount 
+      }
+    ]
+  }
+]
 ```
 
 Whenever the account balance changes, an event `outboundAccountInfo` is sent containing the assets that may have been moved by the event that generated the balance change.
