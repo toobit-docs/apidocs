@@ -1580,7 +1580,7 @@ Symbol的深度信息。
 
 | 类型     | 额外强制参数      | 
 | ----------- | ------- | 
-| `LIMIT` | `timeInForce`, `quantity`,` price` |
+| `LIMIT` |  `quantity`,` price` |
 | `MARKET` |  `quantity` |
 | `STOP_LOSS` | `quantity`, `stopPrice` **当前不可用** |
 | `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **当前不可用**|
@@ -1701,7 +1701,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 
 | 类型     | 额外强制参数      | 
 | ----------- | ------- | 
-| `LIMIT` | `timeInForce`, `quantity`,` price` |
+| `LIMIT` |  `quantity`,` price` |
 | `MARKET` |  `quantity` |
 | `STOP_LOSS` | `quantity`, `stopPrice` **当前不可用** |
 | `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **当前不可用**|
@@ -2519,6 +2519,9 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 
 ### -1203 ORDER_SELL_QUANTITY_TOO_BIG
 - 创建订单卖出数量太多
+
+### -1206 ORDER_AMOUNT_TOO_BIG
+- 订单超过最大交易额
 
 ### -2010 NEW_ORDER_REJECTED
 - 新订单被拒绝
