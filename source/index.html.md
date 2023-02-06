@@ -1722,7 +1722,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ``` json
 {
   "symbol": "LTCBTC",
-  "orderId": 1,
+  "orderId": "1",
   "clientOrderId": "9t1M2K0Ya092",
   "price": "0.1",
   "origQty": "1.0",
@@ -1731,7 +1731,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
   "timeInForce": "GTC",
   "type": "LIMIT",
   "side": "BUY",
-  "transactTime": 1499827319559
+  "transactTime": "1499827319559"
 }
 ```
 
@@ -1819,7 +1819,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ``` json
 {
   "symbol": "LTCBTC",
-  "orderId": 1,
+  "orderId": "1",
   "clientOrderId": "9t1M2K0Ya092",
   "price": "0.1",
   "origQty": "1.0",
@@ -1831,8 +1831,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
   "side": "BUY",
   "stopPrice": "0.0",
   "icebergQty": "0.0",
-  "time": 1499827319559,
-  "updateTime": 1499827319559,
+  "time": "1499827319559",
+  "updateTime": "1499827319559",
   "isWorking": true
 }
 ```
@@ -1863,7 +1863,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 [
   {
     "symbol": "LTCBTC",
-    "orderId": 1,
+    "orderId": "1",
     "clientOrderId": "t7921223K12",
     "price": "0.1",
     "origQty": "1.0",
@@ -1875,8 +1875,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
     "side": "BUY",
     "stopPrice": "0.0",
     "icebergQty": "0.0",
-    "time": 1499827319559,
-    "updateTime": 1499827319559,
+    "time": "1499827319559",
+    "updateTime": "1499827319559",
     "isWorking": true
   }
 ]
@@ -1908,7 +1908,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 [
   {
     "symbol": "LTCBTC",
-    "orderId": 1,
+    "orderId": "1",
     "clientOrderId": "987yjj2Ym",
     "price": "0.1",
     "origQty": "1.0",
@@ -1920,8 +1920,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
     "side": "BUY",
     "stopPrice": "0.0",
     "icebergQty": "0.0",
-    "time": 1499827319559,
-    "updateTime": 1499827319559,
+    "time": "1499827319559",
+    "updateTime": "1499827319559",
     "isWorking": true
   }
 ]
