@@ -726,7 +726,7 @@ Adjusted based on the limit:
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| symbol | STRING | YES | symbol |
 | limit | INT | NO | Default 100; Max 100|
 
 Notes：If `limit=0` is set, a lot of data will be returned.
@@ -778,7 +778,7 @@ Merged deep interface.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| symbol | STRING | YES | symbol |
 | scale | INT |  NO | Gears: `0`,`1`,`2`,`3`,`4`,`5` For example: `0 `means gear `1`, `1` means gear `2` |
 | limit | INT |  NO |  |
 
@@ -808,7 +808,7 @@ Get recent market trades
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| symbol | STRING | YES | symbol |
 | limit | INT | NO | Default 60; Max 60|
 
 
@@ -843,8 +843,8 @@ Kline/candlestick bars for a symbol. Klines are uniquely identified by their ope
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| interval | ENUM | YES |  |
+| symbol | STRING | YES |symbol  |
+| interval | ENUM | YES | interval |
 | startTime | LONG | NO | start timestamp |
 | endTime | LONG | NO | en d timestamp|
 | limit | INT | NO | Default 100; Max 1000|
@@ -891,11 +891,11 @@ Kline/candlestick bars for the index price of a pair.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| interval | ENUM | YES |  |
+| symbol | STRING | YES | symbol |
+| interval | ENUM | YES | interval |
 | from | LONG | YES | start timestamp |
 | to | LONG | YES | end timestamp|
-| limit | INT | NO |  |
+| limit | INT | NO | limit |
 
 
 ## Mark Price Kline/Candlestick Data
@@ -927,11 +927,11 @@ Kline/candlestick bars for the mark price of a symbol.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| interval | ENUM | YES |  |
+| symbol | STRING | YES | symbol |
+| interval | ENUM | YES | interval |
 | from | LONG | YES | start timestamp |
 | to | LONG | YES | end timestamp|
-| limit | INT | NO |  |
+| limit | INT | NO | limit |
 
 
 ## Mark Price
@@ -953,7 +953,7 @@ Get the mark price of a trading pair.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| symbol | STRING | YES | symbol |
 
 ## Funding Rate
 - `GET /api/v1/futures/fundingRate` 
@@ -974,7 +974,7 @@ Get the mark price of a trading pair.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| symbol | STRING | YES | symbol |
 
 ## Get Funding Rate History
 
@@ -996,7 +996,7 @@ Get the mark price of a trading pair.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| symbol | STRING | YES | symbol |
 | fromId | LONG | NO | start id |
 | endId | LONG | NO | end id |
 | limit | INT | NO | Default `20` Min `1` Max `1000` |
@@ -1035,7 +1035,7 @@ Get the mark price of a trading pair.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
+| symbol | STRING | NO | symbol |
 | realtimeInterval | ENUM | NO | `24h`,`1d`,`1d+8` |
 
 - If the symbol is not sent, tickers for all symbols will be returned in an array.
@@ -1059,9 +1059,9 @@ Latest price for a symbol or symbols.
 ]
 ```
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | NO | symbol            |
 
 - If the symbol is not sent, tickers for all symbols will be returned in an array.
 
@@ -1089,9 +1089,9 @@ Best price/qty on the order book for a symbol or symbols.
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | NO | symbol      |
 
 - If the symbol is not sent, bookTickers for all symbols will be returned in an array.
 
@@ -1538,10 +1538,10 @@ Considering the possible data latency from RESTful endpoints during an extremely
 
 ### Parameters
 
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |   timestamp          |
 
 > Response：
 
@@ -1731,11 +1731,11 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | YES | symbol      |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |  timestamp           |
 
 
 ## New Order (TRADE)
@@ -1765,19 +1765,19 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| side | ENUM | YES |  `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
-| type | ENUM | YES |  `LIMIT` or `STOP` |
-| quantity | LONG | YES | Numbers of orders (volume) |
-| price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need** |
-| priceType | ENUM | NO |  `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
-| stopPrice | DECIMAL | NO | `type` = `STOP` order **Mandatory need** |
+| Name    | Type  |    Mandatory           | Description                                                                                                             |
+| ----------------- | ---- | ------- |-------------------------------------------------------------------------------------------------------------------------|
+| symbol | STRING | YES | symbol                                                                                                                  |
+| side | ENUM | YES | `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                         |
+| type | ENUM | YES | `LIMIT` or `STOP`                                                                                                       |
+| quantity | LONG | YES | Numbers of orders (volume)                                                                                              |
+| price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need**                                                                                      |
+| priceType | ENUM | NO | `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                                                                              |
+| stopPrice | DECIMAL | NO | `type` = `STOP` order **Mandatory need**                                                                                |
 | timeInForce | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
-| newClientOrderId | STRING | YES | The ID of the order, defined by the user |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| newClientOrderId | STRING | YES | The ID of the order, defined by the user                                                                                |
+| timestamp | LONG | YES | timestamp                                                                                                               |
+| recvWindow | LONG | NO | recv window                                                                                                             |
 
 
 ### Order Side :
@@ -1918,13 +1918,13 @@ Notes：
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| orderId | LONG | NO |  |
-| origClientOrderId | STRING | NO |  |
+| Name    | Type  |    Mandatory           | Description       |
+| ----------------- | ---- | ------- |-------------------|
+| orderId | LONG | NO | order id          |
+| origClientOrderId | STRING | NO | client order id   |
 | type | ENUM | NO | `LIMIT` or `STOP` |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES |     timestamp              |
+| recvWindow | LONG | NO |     recvWindow              |
  
 Notes: 
 
@@ -1963,12 +1963,12 @@ Notes:
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- |-----------------------|
-| orderId | LONG | NO |                       |
+| orderId | LONG | NO | order id              |
 | origClientOrderId | STRING | NO | User defined order ID |
 | type | ENUM | NO | `LIMIT` or `STOP`     |
 | symbol | STRING | NO | symbol                |
-| timestamp | LONG | YES |    timestamp       |
-| recvWindow | LONG | NO |    recv window                    |
+| timestamp | LONG | YES | timestamp             |
+| recvWindow | LONG | NO | recv window           |
 
 Notes：
 
@@ -1992,12 +1992,12 @@ Notes：
 
 ### Parameters
 
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | |
+| Name    | Type  |    Mandatory           | Description     |
+| ----------------- | ---- | ------- |-----------------|
+| symbol | STRING | YES | symbol          |
 | side | ENUM | YES | `BUY` or `SELL` |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| timestamp | LONG | YES | timestamp       |
+| recvWindow | LONG | NO | recv window     |
 
 ## Cancel Multiple Orders  (TRADE)
 - `DELETE /api/v1/futures/cancelOrderByIds`
@@ -2033,11 +2033,11 @@ Cancel orders in bulk. A maximum of `100` entries at a time.
 
 ### Parameters
 
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| ids | STRING | YES | Order id (multiple separated by `,`)|
-| timestamp | LONG | YES |  |
-| recvWindow | LONG | NO |  |
+| Name    | Type  |    Mandatory           | Description                          |
+| ----------------- | ---- | ------- |--------------------------------------|
+| ids | STRING | YES | Order id (multiple separated by `,`) |
+| timestamp | LONG | YES | timestamp                            |
+| recvWindow | LONG | NO | recv window                          |
 
 Note: `code` returns 200 to indicate that the order cancellation request has been executed. Whether it is successful or not depends on the results in `result`. If `result` is empty, it means all successes. If it is not empty, `orderId` means that the order id failed to be canceled.` code` represents the reason for the undo failure.
 
@@ -2073,14 +2073,14 @@ Note: `code` returns 200 to indicate that the order cancellation request has bee
 
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
-| orderId | LONG | NO |  |
-| type | ENUM | NO |  Default `LINIT`  `LIMIT` or `STOP` |
-| limit | INT | NO | Default `20` Min `1` Max `1000` |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| Name    | Type  |    Mandatory           | Description                        |
+| ----------------- | ---- | ------- |------------------------------------|
+| symbol | STRING | NO | symbol                             |
+| orderId | LONG | NO | orderId                            |
+| type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP` |
+| limit | INT | NO | Default `20` Min `1` Max `1000`    |
+| timestamp | LONG | YES | timestamp                          |
+| recvWindow | LONG | NO | recv window                        |
 
 Notes：
 
@@ -2117,12 +2117,12 @@ Returns the current position information, this API requires a request signature.
 ]
 ```
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
+| Name    | Type  |    Mandatory           | Description                          |
+| ----------------- | ---- | ------- |--------------------------------------|
+| symbol | STRING | NO | symbol                               |
 | side | ENUM | NO | position direction `LONG` or `SHORT` |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window                          |
+| timestamp | LONG | YES |   timestamp                                   |
 
 Notes：
 
@@ -2263,16 +2263,16 @@ Get trades for a specific account and symbol.
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | end timestamp |
-| limit | INT | NO | Default `20` Min `1` Max `1000` |
-| fromId | LONG | NO | Start from TradeId (used to query transaction orders) |
+| Name    | Type  |    Mandatory           | Description                                              |
+| ----------------- | ---- | ------- |----------------------------------------------------------|
+| symbol | STRING | NO | symbol                                                   |
+| startTime | LONG | NO | start timestamp                                          |
+| endTime | LONG | NO | end timestamp                                            |
+| limit | INT | NO | Default `20` Min `1` Max `1000`                          |
+| fromId | LONG | NO | Start from TradeId (used to query transaction orders)    |
 | toId | LONG | NO | To the end of TradeId (used to query transaction orders) |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window                                              |
+| timestamp | LONG | YES |     timestamp                                                     |
 
 ## Query Risk Limit (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
@@ -2325,11 +2325,11 @@ To query the risk limit, this API endpoint requires a request signature.
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | YES | symbol      |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |   timestamp          |
 
 # User Data Streams
 
