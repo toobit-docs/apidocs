@@ -330,6 +330,31 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
         {
           "minNotional": "10",
           "filterType": "MIN_NOTIONAL"
+        },
+        {
+          "minTradeQuantity": "0", // 最小交易量（期货）
+          "maxTradeQuantity": "0", // 最大交易量（期货）
+          "minTradeAmount": "0", // 最小成交额（现货）
+          "maxTradeAmount": "0", // 最大成交额（现货）
+          "minBuyPrice": "0", // 最小买入价格（现货）
+          "limitMaxSellPrice": "0", // 限价最大卖出价格 
+          "limitMinTradeQuantity": "0", //  限价最小交易量（现货）
+          "limitMaxTradeQuantity": "0", // 限价最大交易量（现货）
+          "marketMinTradeQuantity": "0", // 市价最小交易量（现货）
+          "marketMaxTradeQuantity": "0", // 市价最大交易量（现货）
+          "limitBuyMarkPriceRate": "0", // 限价买入不能高于标记价格的比率
+          "limitSellMarkPriceRate": "0", // 限价卖出不能高于标记价格的比率
+          "limitMaxDelegateOrderQuantity": 0, // 限制委托单挂单最大笔数
+          "limitMaxConditionOrderQuantity": 0, // 限制条件单挂单最大笔数
+          "marketBuyMarkPriceRate": "0", // 市价买入不能高于“标记（期货）/最新（现货）”价格的比率
+          "marketSellMarkPriceRate": "0", // 市价卖出不能高于“标记（期货）/最新（现货）”价格的比率
+          "noAllowMarketStartAt": "1674057600000", // 不允许使用市价单开始时间
+          "noAllowMarketEndAt": "1674057600000", // 不允许使用市价单结束时间
+          "limitLimitOrderStartAt": "1674057600000", // 限制限价单开始时间
+          "limitLimitOrderEndAt": "1674057600000", // 限制限价单结束时间
+          "limitAtMinPrice": "0", // 限制时间内最低价格
+          "limitAtMaxPrice": "0", // 限制时间内最高价格
+          "filterType": "TRADE_RULE"
         }
       ],
       "exchangeId": "301",
@@ -446,6 +471,31 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
         {
           "minNotional": "0.000000001",
           "filterType": "MIN_NOTIONAL"
+        },
+        {
+          "minTradeQuantity": "0", // 最小交易量（期货）
+          "maxTradeQuantity": "0", // 最大交易量（期货）
+          "minTradeAmount": "0", // 最小成交额（现货）
+          "maxTradeAmount": "0", // 最大成交额（现货）
+          "minBuyPrice": "0", // 最小买入价格（现货）
+          "limitMaxSellPrice": "0", // 限价最大卖出价格 
+          "limitMinTradeQuantity": "0", //  限价最小交易量（现货）
+          "limitMaxTradeQuantity": "0", // 限价最大交易量（现货）
+          "marketMinTradeQuantity": "0", // 市价最小交易量（现货）
+          "marketMaxTradeQuantity": "0", // 市价最大交易量（现货）
+          "limitBuyMarkPriceRate": "0", // 限价买入不能高于标记价格的比率
+          "limitSellMarkPriceRate": "0", // 限价卖出不能高于标记价格的比率
+          "limitMaxDelegateOrderQuantity": 0, // 限制委托单挂单最大笔数
+          "limitMaxConditionOrderQuantity": 0, // 限制条件单挂单最大笔数
+          "marketBuyMarkPriceRate": "0", // 市价买入不能高于“标记（期货）/最新（现货）”价格的比率
+          "marketSellMarkPriceRate": "0", // 市价卖出不能高于“标记（期货）/最新（现货）”价格的比率
+          "noAllowMarketStartAt": "1674057600000", // 不允许使用市价单开始时间
+          "noAllowMarketEndAt": "1674057600000", // 不允许使用市价单结束时间
+          "limitLimitOrderStartAt": "1674057600000", // 限制限价单开始时间
+          "limitLimitOrderEndAt": "1674057600000", // 限制限价单结束时间
+          "limitAtMinPrice": "0", // 限制时间内最低价格
+          "limitAtMaxPrice": "0", // 限制时间内最高价格
+          "filterType": "TRADE_RULE"
         }
       ],
       "exchangeId": "301",
@@ -1528,16 +1578,16 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 ```
 
 ### 参数
-| 名称              | 类型      |    是否必须           | 描述 |
-|-----------------|---------| ------- |--|
-| fromUid         | LONG    | YES | 源账户id |
-| toUid           | LONG    | YES | 目标账户id |
-| fromAccountType | String  | YES | 源账户类型 |
-| toAccountType   | String    | YES | 目标账户类型 |
-| asset           | String  | YES | 币种 |
-| quantity        | DECIMAL | YES | 转账数量 |
-| timestamp       | LONG    | YES | 时间戳 |
-| recvWindow      | LONG    | NO | recv窗口 |
+| 名称              | 类型      |    是否必须           | 描述       |
+|-----------------|---------| ------- |----------|
+| fromUid         | LONG    | YES | 源账户id    |
+| toUid           | LONG    | YES | 目标账户id   |
+| fromAccountType | String  | YES | 源账户类型    |
+| toAccountType   | String    | YES | 目标账户类型   |
+| asset           | String  | YES | 币种       |
+| quantity        | DECIMAL | YES | 转账数量     |
+| timestamp       | LONG    | YES | 时间戳      |
+| recvWindow      | LONG    | NO | recv窗口   |
 
 
 accountType：
@@ -2245,28 +2295,6 @@ curl  -H "Content-Type:application/json"
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
-## 设置风险限额(USER_DATA)
-- `POST /api/v1/futures/setRiskLimit`
-
-### 权重：1
-
-> 响应：
-
-``` json
-  { 
-    "success":  true
-  }
-```
-
-### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | 交易对 |
-| riskLimitId | LONG | YES | |
-| isLong | BOOLEAN | YES | true:LONG（多仓） false:SHORT（空仓） |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
-
 ## 用户手续费率 (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
 
@@ -2336,10 +2364,10 @@ curl  -H "Content-Type:application/json"
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| listenKey | STRING | YES | |
-| timestamp | LONG | YES | 时间戳 |
+| 名称    | 类型  |    是否必须           | 描述     |
+| ----------------- | ---- | ------- |--------|
+| listenKey | STRING | YES | listenKey       |
+| timestamp | LONG | YES | 时间戳    |
 | recvWindow | LONG | NO | recv窗口 |
 
 ## 关闭listenKey (USER_STREAM)
@@ -2356,11 +2384,11 @@ curl  -H "Content-Type:application/json"
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| listenKey | STRING | YES | |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| 名称    | 类型  |    是否必须           | 描述         |
+| ----------------- | ---- | ------- |------------|
+| listenKey | STRING | YES | listenKey  |
+| timestamp | LONG | YES | 时间戳        |
+| recvWindow | LONG | NO | recv窗口     |
 
 ## Balance推送
 
@@ -2414,7 +2442,7 @@ curl  -H "Content-Type:application/json"
         "up": "12",                      // unrealizedPnL 未实现盈亏
         "pr": "0.003",                  // profitRate 当前仓位盈利率
         "pv": "123"                     // positionValue 仓位价值(USDT)
-        "v": "123"                     // leverage 杠杆倍数
+        "v": "10"                     // leverage 杠杆倍数
     }
 ]
 ```
@@ -2430,31 +2458,32 @@ curl  -H "Content-Type:application/json"
 > Payload
 
 ``` json
-
-{
-  "e": "contractExecutionReport",        // Event type 事件类型
-  "E": 1499405658658,            // Event time 事件时间
-  "s": "ETHBTC",                 // Symbol 币对
-  "c": 1000087761,               // Client order ID 客户订单id
-  "S": "BUY",                    // Side 订单方向
-  "o": "LIMIT",                  // type 订单类型
-  "f": "GTC",                    // Time in force 有效方式
-  "q": "1.00000000",             // origQty 数量
-  "p": "0.10264410",             // price 价格
-  "X": "NEW",                    // status 订单状态
-  "i": 4293153,                  // orderId 订单id
-  "l": "0.00000000",             // Last executed quantity 上次数量
-  "z": "0.00000000",             // executedQty 交易数量
-  "L": "0.00000000",             // Last executed price 上次价格
-  "n": "0",                      // Commission amount 佣金
-  "N": null,                     // Commission asset 佣金资产
-  "u": true,                     // Is the trade normal, ignore for now 是否正常
-  "w": true,                     // Is the order working Stops will have
-  "m": false,                    // Is this trade the maker side
-  "O": 1499405658657,            // Order creation time 创建时间
-  "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
-  "v": "20"                     // leverage 杠杆倍数
-}
+[
+  {
+    "e": "contractExecutionReport",        // Event type 事件类型
+    "E": 1499405658658,            // Event time 事件时间
+    "s": "ETHBTC",                 // Symbol 币对
+    "c": 1000087761,               // Client order ID 客户订单id
+    "S": "BUY",                    // Side 订单方向
+    "o": "LIMIT",                  // type 订单类型
+    "f": "GTC",                    // Time in force 有效方式
+    "q": "1.00000000",             // origQty 数量
+    "p": "0.10264410",             // price 价格
+    "X": "NEW",                    // status 订单状态
+    "i": 4293153,                  // orderId 订单id
+    "l": "0.00000000",             // Last executed quantity 上次数量
+    "z": "0.00000000",             // executedQty 交易数量
+    "L": "0.00000000",             // Last executed price 上次价格
+    "n": "0",                      // Commission amount 佣金
+    "N": null,                     // Commission asset 佣金资产
+    "u": true,                     // Is the trade normal, ignore for now 是否正常
+    "w": true,                     // Is the order working Stops will have
+    "m": false,                    // Is this trade the maker side
+    "O": 1499405658657,            // Order creation time 创建时间
+    "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
+    "v": "20"                     // leverage 杠杆倍数
+  }
+]
 ```
 
 - 平均价格可以通过`Z`除以`z`来获得。
