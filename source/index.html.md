@@ -920,7 +920,7 @@ Adjusted based on the limit:：
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| YES | |
+| symbol | STRING| YES |symbol |
 | limit | INT | NO | Default 100; Max 100. |
 
 Notes:
@@ -985,11 +985,11 @@ Klines are uniquely identified by their open time.
 ### Parameters
 
 | Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| YES | |
-| interval | ENUM | YES | |
-| startTime | LONG | NO | |
-| endTime | LONG | NO |
+| ----------- | ------- | ------------- |-----------------------|
+| symbol | STRING| YES | symbol                |
+| interval | ENUM | YES | interval              |
+| startTime | LONG | NO | start timestamp           |
+| endTime | LONG | NO | end timestamp              |
 | limit | INT | NO | Default 100; Max 100. |
 
 - If `startTime` and `endTime` are not sent, only the latest K line will be returned.
@@ -1026,7 +1026,7 @@ Klines are uniquely identified by their open time.
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| NO | |
+| symbol | STRING| NO |symbol |
 
 - If the symbol is not sent, all symbol data will be returned.
 
@@ -1052,7 +1052,7 @@ Latest price for a symbol or symbols.
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| NO | |
+| symbol | STRING| NO |symbol |
 
 - If the symbol is not sent, all symbol data will be returned.
 
@@ -1081,7 +1081,7 @@ Best price/qty on the order book for a symbol or symbols.
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| NO | |
+| symbol | STRING| NO |symbol |
 
 - If the symbol is not sent, the best order book price for all symbols will be returned.
 
@@ -1131,9 +1131,9 @@ Best price/qty on the order book for a symbol or symbols.
 
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| YES |  |
+| symbol | STRING| YES | symbol |
 | scale | INT | NO | Gears: `0`,`1`,`2`,`3`,`4`,`5` For example: `0 `means gear `1`, `1` means gear `2` |
-| limit | INT | NO |  |
+| limit | INT | NO | limit |
 
 # Websocket Market Streams
 
@@ -1571,20 +1571,20 @@ Send in a new order.
 
 ### Parameters
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | YES |  |
-| assetType | ENUM | NO | `CASH`、`MARGIN`，only supports `CASH` |
-| side | ENUM | YES | `BUY` or `SELL `|
-| type | ENUM | YES | See enumeration definition for details: order type |
-| timeInForce | ENUM | NO | For details, see enumeration definition: valid methods |
-| quantity | DECIMAL | YES |  |
-| price | DECIMAL | NO |  |
-| newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent. |
-| stopPrice | DECIMAL | NO | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders. **currently unavailable** |
+| Name     | Type      | Mandatory      | Description                                                                                                          |
+| ----------- | ------- | ------------- |----------------------------------------------------------------------------------------------------------------------|
+| symbol | STRING | YES | symbol                                                                                                               |
+| assetType | ENUM | NO | `CASH`、`MARGIN`，only supports `CASH`                                                                                 |
+| side | ENUM | YES | `BUY` or `SELL `                                                                                                     |
+| type | ENUM | YES | See enumeration definition for details: order type                                                                   |
+| timeInForce | ENUM | NO | For details, see enumeration definition: valid methods                                                               |
+| quantity | DECIMAL | YES | quantity                                                                                                             |
+| price | DECIMAL | NO | price                                                                                                                |
+| newClientOrderId | STRING | NO | A unique id among open orders. Automatically generated if not sent.                                                  |
+| stopPrice | DECIMAL | NO | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders. **currently unavailable**   |
 | icebergQty | DECIMAL | NO | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and ` TAKE_PROFIT_LIMIT` to create an iceberg order. **currently unavailable** |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window                                                                                                          |
+| timestamp | LONG | YES |     timestamp                                                                                                                 |
 
 Additional mandatory parameters based on `type`:
 
@@ -1685,23 +1685,23 @@ fail :
 
 ### Parameters
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-|  |  list<JSON> | YES | `RequestBody` parameter|
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name     | Type      | Mandatory      | Description             |
+| ----------- | ------- | ------------- |-------------------------|
+|  |  list<JSON> | YES | `RequestBody` parameter |
+| recvWindow | LONG | NO | recv window             |
+| timestamp | LONG | YES |     timestamp                    |
 
 **The batchOrders in RequestBody should fill in the order parameters in list of JSON format**
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | YES |  |
-| side | ENUM | YES | `BUY` or `SELL `|
-| type | ENUM | YES | See enumeration definition for details: `orderType` |
+| Name     | Type      | Mandatory      | Description                                           |
+| ----------- | ------- | ------------- |-------------------------------------------------------|
+| symbol | STRING | YES | symbol                                                |
+| side | ENUM | YES | `BUY` or `SELL `                                      |
+| type | ENUM | YES | See enumeration definition for details: `orderType`   |
 | timeInForce | ENUM | NO | See enumeration definition for details: `timeInForce` |
-| quantity | DECIMAL | YES |  |
-| price | DECIMAL | NO |  |
-| newClientOrderId | STRING | YES | The ID of the order, defined by the user |
+| quantity | DECIMAL | YES |       quantity                                                |
+| price | DECIMAL | NO |           price                                            |
+| newClientOrderId | STRING | YES | The ID of the order, defined by the user              |
 
 Depending on the order `type`, certain parameters are mandatory:
 
@@ -1763,12 +1763,12 @@ Either `orderId `or `clientOrderId `must be sent.
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | NO | |
+| Name     | Type      | Mandatory      | Description     |
+| ----------- | ------- | ------------- |-----------------|
+| symbol | STRING | NO | symbol          |
 | side | ENUM| NO | `BUY` or `SELL` |
-| recvWindow | LONG | NO | recv window |
-| timestamp | LONG | YES | Timestamp |
+| recvWindow | LONG | NO | recv window     |
+| timestamp | LONG | YES | Timestamp       |
 
 ## Cancel Multiple Orders (TRADE)
 
@@ -1806,11 +1806,11 @@ Some or all of the cancellations failed:
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
+| Name     | Type      | Mandatory      | Description                          |
+| ----------- | ------- | ------------- |--------------------------------------|
 | ids | STRING | YES | order Id （Multiple separated by `,`） |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window                          |
+| timestamp | LONG | YES |     timestamp                                 |
 
 Note: **code** returns `0` to indicate that the order cancellation request has been executed. Whether it is successful or not depends on the results in `result`. If `result` is empty, it means that all of them are successful, and if `orderId` is not empty, it means that the cancellation failed The order id, `code` represents the reason for the cancellation failure.
 
@@ -1935,15 +1935,15 @@ Get all account orders; active, canceled, or filled.
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO |  |
-| symbol | STRING | NO |  |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG| NO | end timestamp |
+| Name     | Type      | Mandatory      | Description            |
+| ----------- | ------- | ------------- |------------------------|
+| orderId | LONG | NO | order id               |
+| symbol | STRING | NO | symbol                 |
+| startTime | LONG | NO | start timestamp        |
+| endTime | LONG| NO | end timestamp          |
 | limit | INT | NO | Default 500; Max 1000. |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window            |
+| timestamp | LONG | YES |        timestamp                |
 
 ## Account Information (USER_DATA)
 - `GET /api/v1/account`
@@ -2016,8 +2016,8 @@ Get all account orders; active, canceled, or filled.
 | fromId | LONG | NO  | from id                            |
 | toId | LONG | NO | end id                             |
 | limit | INT | NO | Number of items displayed per page |
-| recvWindow | LONG | NO |                                    |
-| timestamp | LONG | YES |                                    |
+| recvWindow | LONG | NO | recv window                        |
+| timestamp | LONG | YES |       timestamp                             |
 
 Notes：
 
@@ -2150,10 +2150,10 @@ Notes：
 ```
 
 ### 参数
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name     | Type      | Mandatory      | Description |
+| ----------- | ------- | ------------- |-------------|
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |    timestamp         |
 
 -  accountType:
   - master
@@ -2227,11 +2227,11 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 ```
 
 #### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| listenKey | STRING | YES | |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name     | Type      | Mandatory      | Description |
+| ----------- | ------- | ------------- |-------------|
+| listenKey | STRING | YES | listenKey   |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |    timestamp         |
 
 ## Payload: Account Update
 
