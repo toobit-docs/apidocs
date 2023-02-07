@@ -340,6 +340,31 @@ NONE
         {
           "minNotional": "10",
           "filterType": "MIN_NOTIONAL"
+        },
+        {
+          "minTradeQuantity": "0", // Minimum Trading Volume (Futures)
+          "maxTradeQuantity": "0", // Maximum trading volume (futures)
+          "minTradeAmount": "0", // Minimum Volume (Spot)
+          "maxTradeAmount": "0", // Maximum Turnover (Spot)
+          "minBuyPrice": "0", // Minimum buy price (spot)
+          "limitMaxSellPrice": "0", // Limit maximum selling price 
+          "limitMinTradeQuantity": "0", //  Limit minimum trading volume (spot)
+          "limitMaxTradeQuantity": "0", // Maximum trading volume of limit price (spot)
+          "marketMinTradeQuantity": "0", // Market Minimum Trading Volume (Spot)
+          "marketMaxTradeQuantity": "0", // Market Max Trade Quantity (spot)
+          "limitBuyMarkPriceRate": "0", // the rate at which the limit buy cannot be higher than the mark price
+          "limitSellMarkPriceRate": "0", // the rate at which the limit sell price cannot be higher than the marked price
+          "limitMaxDelegateOrderQuantity": 0, // Limit the maximum number of pending orders for a delegate order
+          "limitMaxConditionOrderQuantity": 0, // Limit the maximum number of pending orders for condition orders
+          "marketBuyMarkPriceRate": "0", //  the market buy price cannot be higher than the "mark (futures)/latest (spot)" price ratio
+          "marketSellMarkPriceRate": "0", // the rate at which the market sell price cannot be higher than the "mark(futures)/latest(spot)" price
+          "noAllowMarketStartAt": "1674057600000", // market order start time is not allowed
+          "noAllowMarketEndAt": "1674057600000", // do not allow to use market order end time
+          "limitLimitOrderStartAt": "1674057600000", //Limit Limit order start time
+          "limitLimitOrderEndAt": "1674057600000", // Limit Limit order end time
+          "limitAtMinPrice": "0", // the lowest price within the limit time
+          "limitAtMaxPrice": "0", // the maximum price within the time limit
+          "filterType": "TRADE_RULE"
         }
       ],
       "exchangeId": "301",
@@ -1504,10 +1529,56 @@ This means that the quantity corresponding to this price has disappeared and wil
 Considering the possible data latency from RESTful endpoints during an extremely volatile market, it is highly recommended to get the order status, position, etc from the Websocket user data stream.
 </aside>
 
+## Query Sub-account (USER_DATA)
+
+- `GET /api/v1/subAccount`
+
+
+### Weight：5
+
+### Parameters
+
+| Name    | Type  |    Mandatory           | Description           |
+| ----------------- | ---- | ------- | ------------- |
+| recvWindow | LONG | NO |  |
+| timestamp | LONG | YES |  |
+
+> Response：
+
+``` json
+[
+    {
+        "uid":"122216245228131",  // sub-account uid
+        "email":"c123456_mo3nXl@spyzn8.com", // sub-account email
+        "createTime":154443332212,  // Sub-account creation time
+        "status": 1  // 1: Enabled . 2:Disable
+    },
+    {
+        "uid":"122216245228132",   //  sub-account uid
+        "email":"c12345_mo3nXl@spyzn8.com",  // sub-account email
+        "createTime":1544433328002, // Sub-account creation time
+        "status": 1  // 1: Enabled . 2:Disable
+    }
+]
+```
+
+
+
 ## New Future Account Transfer
 
-- `POST /api/v1/account/assetTransfer`
+- `POST /api/v1/subAccount/transfer`
 
+
+Supported transfer operations:
+
+- Parent account operation Transfer from parent `spot account` to any sub-account `spot account`, `U-position contract account`.
+- Transfer between parent account `Spot account` and `U-position contract account`.
+- Parent account operation Transfer of any sub-account `Spot account`, `U-contract account` to parent account `Spot account`
+- Parent account operation Transfer between `spot account` and `U-contract account` of a particular sub-account
+- Sub-user operation Transfer from the current sub-account `spot account` to the parent account `spot account` and `U-contract account
+- Sub-user operation Transfer between the current sub-user's `Spot account` and `U-contract account
+
+Translated with www.DeepL.com/Translator (free version)
 Execute the transfer between the spot account and the contract account
 
 ### Weight：1
@@ -1516,51 +1587,25 @@ Execute the transfer between the spot account and the contract account
 
 ``` json
 {
-    "success":"true" 
+    "code": 200, // 200 = success
+    "msg": "success" // response message
 }
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| fromAccountId | LONG | YES |  |
-| toAccountId | LONG | YES |  |
-| coin | STRING | YES |  |
-| quantity | DECIMAL | YES |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
-
-## Query Sub-account (USER_DATA)
-
-- `GET /api/v1/account/subAccount`
+| 名称              | 类型      |    是否必须           | 描述                |
+|-----------------|---------| ------- |-------------------|
+| fromUid         | LONG    | YES | from uid          |
+| toUid           | LONG    | YES | to uid            |
+| fromAccountType | String  | YES | from account type |
+| toAccountType   | String    | YES | to account type   |
+| asset           | String  | YES | asset             |
+| quantity        | DECIMAL | YES | transfer quantity         |
+| timestamp       | LONG    | YES | timestamp               |
+| recvWindow      | LONG    | NO | recv window            |
 
 
-### Weight：5
 
-> Response：
-
-``` json
-[
-    {
-        "accountId": "122216245228131",
-        "nickName": "",
-        "accountType": 1,
-        "accountIndex": 0 
-    },
-    {
-        "accountId": "482694560475091200",
-        "nickName": "createSubAccountByCurl", 
-        "accountType": 1, // 1 Spot Account 3 Futures Account
-        "accountIndex": 1
-    }
-```
-
-### Parameters
-
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
 
 
 ## Get Future Account Transaction History List (USER_DATA)
@@ -1604,18 +1649,18 @@ Obtain the history of fund transfers between the spot account and the contract a
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| accountType | INT | NO |  |
-| coin | STRING | NO |  |
-| flowType | INT | NO | transfer：3 |
-| fromId | LONG | NO |  |
-| endId | LONG | NO |  |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | end timestamp |
-| limit | INT | NO | Default `20` Min `1` Max `1000` |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description                                 |
+| ----------------- | ---- | ------- |---------------------------------------------|
+| accountType | INT | NO | `account_type` corresponding to the account |
+| coin | STRING | NO | coin                                        |
+| flowType | INT | NO | transfer：3                                  |
+| fromId | LONG | NO | from id                                     |
+| endId | LONG | NO | end id                                      |
+| startTime | LONG | NO | start timestamp                             |
+| endTime | LONG | NO | end timestamp                               |
+| limit | INT | NO | Default `20` Min `1` Max `1000`             |
+| recvWindow | LONG | NO |   recv window                                          |
+| timestamp | LONG | YES |    Timestamp                                         |
 
 ## Change Margin Type (TRADE)
 - `POST /api/v1/futures/marginType `
@@ -1635,12 +1680,12 @@ Change the user's margin mode on the specified symbol contract: isolated margin 
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
+| Name    | Type  |    Mandatory           | Description        |
+| ----------------- | ---- | ------- |--------------------|
+| symbol | STRING | YES | symbol             |
 | marginType | ENUM | YES | `CROSS` `ISOLATED` |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |   recv window                 |
+| timestamp | LONG | YES |     Timestamp               |
 
 ## Change Initial Leverage (TRADE)
 
@@ -1661,12 +1706,12 @@ Adjust the user's opening leverage in the specified symbol contract.
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| leverage | INT | YES |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | YES | symbol      |
+| leverage | INT | YES | leverage            |
+| recvWindow | LONG | NO |   recv window           |
+| timestamp | LONG | YES |      timestamp       |
 
 ## Get the leverage multiple and position mode (USER_DATA)
 - `GET /api/v1/futures/accountLeverage`
@@ -1679,7 +1724,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 [
     {
         "symbol":"BTC-SWAP-USDT", //symbol
-        "leverage":"20", 
+        "leverage":"20",  // leverage
         "marginType":"CROSS" // CROSS;ISOLATED
     }
 ]
@@ -1917,13 +1962,13 @@ Notes:
 
 ### Parameters
 | Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| orderId | LONG | NO |  |
+| ----------------- | ---- | ------- |-----------------------|
+| orderId | LONG | NO |                       |
 | origClientOrderId | STRING | NO | User defined order ID |
-| type | ENUM | NO | `LIMIT` or `STOP` |
-| symbol | STRING | NO |  |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| type | ENUM | NO | `LIMIT` or `STOP`     |
+| symbol | STRING | NO | symbol                |
+| timestamp | LONG | YES |    timestamp       |
+| recvWindow | LONG | NO |    recv window                    |
 
 Notes：
 
@@ -2115,16 +2160,16 @@ Notes：
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO |  |
-| orderId | LONG | NO |  |
+| Name    | Type  |    Mandatory           | Description                        |
+| ----------------- | ---- | ------- |------------------------------------|
+| symbol | STRING | NO | symbol                             |
+| orderId | LONG | NO | order id                           |
 | type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP` |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | end timestamp |
-| limit | INT | NO | Default `20` Min `1` Max `1000` |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| startTime | LONG | NO | start timestamp                    |
+| endTime | LONG | NO | end timestamp                      |
+| limit | INT | NO | Default `20` Min `1` Max `1000`    |
+| timestamp | LONG | YES | timestamp                          |
+| recvWindow | LONG | NO | recv window                        |
 
 Notes：
 
@@ -2154,10 +2199,10 @@ Notes：
 ### Parameters
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| timestamp | LONG | YES | |
-| recvWindow | LONG | NO | |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| timestamp | LONG | YES | timestamp   |
+| recvWindow | LONG | NO | recv window |
 
 
 ## Modify Isolated Position Margin (TRADE)
@@ -2170,22 +2215,22 @@ Notes：
 
 ``` json
 {
-    "code":200, 
-    "msg":"success", 
+    "code":200,  // 200 = success
+    "msg":"success",  // response message
     "symbol":"BTC-PERP-REV", 
-    "margin":15, 
-    "timestamp":1541161088303 
+    "margin":15,  // Number of Margin
+    "timestamp":1541161088303 // timestamp
 }
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| side | ENUM | YES | `LONG` or `SHORT` |
+| Name    | Type  |    Mandatory           | Description                                                                                                                                                                                                            |
+| ----------------- | ---- | ------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| symbol | STRING | YES | symbol                                                                                                                                                                                                                 |
+| side | ENUM | YES | `LONG` or `SHORT`                                                                                                                                                                                                      |
 | amount | DECIMAL | YES | Increase (positive value) or decrease (negative value) the amount of margin. Please note that this quantity refers to the underlying pricing asset of the contract (that is, the underlying of the contract settlement) |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window                                                                                                                                                                                                            |
+| timestamp | LONG | YES |      timestamp                                                                                                                                                                                                                  |
 
 ## Account Trade List (USER_DATA)
 - `GET /api/v1/futures/userTrades`
@@ -2257,33 +2302,11 @@ To query the risk limit, this API endpoint requires a request signature.
  ]
 ```
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
-
-## Set Risk Limits (USER_DATA)
-- `POST /api/v1/futures/setRiskLimit`
-
-### Weight：1
-
-> Response：
-
-``` json
-  { 
-    "success":  true
-  }
-```
-
-### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| riskLimitId | LONG | YES | |
-| isLong | BOOLEAN | YES | true:`LONG`;` false`:SHORT |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | YES | symbol      |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |    timestamp         |
 
 ## User Commission Rate (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
@@ -2336,10 +2359,10 @@ Start a new user data stream. The stream will close after 60 minutes unless a ke
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| timestamp | LONG | YES |  |
-| recvWindow | LONG | NO |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| timestamp | LONG | YES | timestamp   |
+| recvWindow | LONG | NO | recv window |
 
 ## Keepalive User Data Stream (USER_STREAM)
 - `PUT /api/v1/listenKey`
@@ -2356,11 +2379,11 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| listenKey | STRING | YES | |
-| timestamp | LONG | YES |  |
-| recvWindow | LONG | NO |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| listenKey | STRING | YES | listenKey   |
+| timestamp | LONG | YES | timestamp   |
+| recvWindow | LONG | NO | recv window |
 
 ## Close User Data Stream (USER_STREAM)
 
@@ -2375,11 +2398,11 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| listenKey | STRING | YES | |
-| timestamp | LONG | YES |  |
-| recvWindow | LONG | NO |  |
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| listenKey | STRING | YES | listenKey   |
+| timestamp | LONG | YES | timestamp   |
+| recvWindow | LONG | NO | recv window |
 
 ## Event: Balance 
 
@@ -2390,7 +2413,7 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
 ``` json
 [
   {
-    "e": "ACCOUNT_UPDATE",                // event type
+    "e": "outboundContractAccountInfo",                // event type
     "E": 1564745798939,                   // event time
     "T": true ,                  // Can trade 
     "W": true ,                  // Can withdraw 
@@ -2435,7 +2458,8 @@ The `event type` of the account update event is fixed to `ACCOUNT_UPDATE`
         "rr": "89",                       // riskRate Account risk rate reaches 100 to trigger forced liquidation
         "up": "12",                      // unrealizedPnL 
         "pr": "0.003",                  //  Profit rate of current position
-        "pv": "123"                     //  Position value (USDT)
+        "pv": "123",                    //  Position value (USDT)
+        "v": "10"                     // leverage
     }
 ]
 ```
@@ -2450,36 +2474,35 @@ This type of event will be pushed when a new order is created, an order has a ne
 > Order Payload
 
 ``` json
-
-{
-  "e": "executionReport",        // Event type 
-  "E": 1499405658658,            // Event time 
-  "s": "ETHBTC",                 // Symbol 
-  "c": 1000087761,               // Client order ID 
-  "S": "BUY",                    // Side 
-  "o": "LIMIT",                  // Order type 
-  "f": "GTC",                    // Time in force 
-  "q": "1.00000000",             // Order quantity 
-  "p": "0.10264410",             // Order price 
-  "X": "NEW",                    // Current order status 
-  "i": 4293153,                  // Order ID 
-  "l": "0.00000000",             // Last executed quantity 
-  "z": "0.00000000",             // Cumulative filled quantity 
-  "L": "0.00000000",             // Last executed price 
-  "n": "0",                      // Commission amount 
-  "N": null,                     // Commission asset 
-  "u": true,                     // Is the trade normal, ignore for now 
-  "w": true,                     // Is the order working Stops will have
-  "m": false,                    // Is this trade the maker side
-  "O": 1499405658657,            // Order creation time 
-  "Z": "0.00000000",              // Cumulative quote asset transacted quantity 
-  "la": "20",                     // leverage 
-  "mt": "CROSS"                     // marginType 
-}
-
+[
+  {
+    "e": "contractExecutionReport",        // Event type 
+    "E": 1499405658658,            // Event time 
+    "s": "ETHBTC",                 // Symbol 
+    "c": 1000087761,               // Client order ID 
+    "S": "BUY",                    // Side 
+    "o": "LIMIT",                  // Order type 
+    "f": "GTC",                    // Time in force 
+    "q": "1.00000000",             // Order quantity 
+    "p": "0.10264410",             // Order price 
+    "X": "NEW",                    // Current order status 
+    "i": 4293153,                  // Order ID 
+    "l": "0.00000000",             // Last executed quantity 
+    "z": "0.00000000",             // Cumulative filled quantity 
+    "L": "0.00000000",             // Last executed price 
+    "n": "0",                      // Commission amount 
+    "N": null,                     // Commission asset 
+    "u": true,                     // Is the trade normal, ignore for now 
+    "w": true,                     // Is the order working Stops will have
+    "m": false,                    // Is this trade the maker side
+    "O": 1499405658657,            // Order creation time 
+    "Z": "0.00000000",              // Cumulative quote asset transacted quantity 
+    "la": "20",                     // leverage 
+    "mt": "CROSS"                     // marginType 
+  }
+]
 ```
 
-- The field `mt` represents the position type `CROSS` cross margin; `ISOLATED` isolated margin
 - The average price can be found by dividing `Z` by `z`
 
 ### Side
