@@ -2144,21 +2144,15 @@ HMAC SHA256 签名:
   </span><span class="err">}</span><span class="p">],</span><span class="w">
   </span><span class="nl">"f"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="err">//是否为第一个返回</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='ad052b1e2a-5'>请求订阅数据样例:</h3>
-<p><code>{</code></p>
+</span></code></pre></div><h3 id='ad052b1e2a-5'>请求订阅数据样例:</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 
-<p><code>&quot;symbol&quot;: &quot;$symbol0, $symbol1&quot;,</code></p>
-
-<p><code>&quot;topic&quot;: &quot;depth&quot;,</code></p>
-
-<p><code>&quot;event&quot;: &quot;sub&quot;,</code></p>
-
-<p><code>&quot;params&quot;: {</code></p>
-
-<p><code>&quot;binary&quot;: false</code></p>
-
-<p><code>}</code></p>
-<h2 id='1654ad2dd2'>增量深度信息</h2>
+  </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$symbol0, $symbol1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"depth"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='1654ad2dd2'>增量深度信息</h2>
 <blockquote>
 <p>Payload</p>
 </blockquote>
@@ -2409,60 +2403,62 @@ HMAC SHA256 签名:
 
 </span></code></pre></div>
 <blockquote>
-<p>响应</p>
+<p>响应
+成功返回:
+``` json
+{
+        &quot;code&quot;: 0,
+        &quot;result&quot;: [{
+                &quot;code&quot;: 0,
+                &quot;order&quot;: {
+                        &quot;accountId&quot;: &quot;1287091689761137921&quot;,
+                        &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+                        &quot;symbolName&quot;: &quot;BTCUSDT&quot;,
+                        &quot;clientOrderId&quot;: &quot;pl12241234567898&quot;,
+                        &quot;orderId&quot;: &quot;202212241234567898&quot;,
+                        &quot;transactTime&quot;: &quot;1671880251836&quot;,
+                        &quot;price&quot;: &quot;17001&quot;,
+                        &quot;origQty&quot;: &quot;1&quot;,
+                        &quot;executedQty&quot;: &quot;0&quot;,
+                        &quot;status&quot;: &quot;NEW&quot;,
+                        &quot;timeInForce&quot;: &quot;GTC&quot;,
+                        &quot;type&quot;: &quot;LIMIT&quot;,
+                        &quot;side&quot;: &quot;SELL&quot;
+                }
+        }, {
+                &quot;code&quot;: 0,
+                &quot;order&quot;: {
+                        &quot;accountId&quot;: &quot;1287091689761137921&quot;,
+                        &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+                        &quot;symbolName&quot;: &quot;BTCUSDT&quot;,
+                        &quot;clientOrderId&quot;: &quot;pl12241234567899&quot;,
+                        &quot;orderId&quot;: &quot;202212241234567899&quot;,
+                        &quot;transactTime&quot;: &quot;1671880251853&quot;,
+                        &quot;price&quot;: &quot;17002&quot;,
+                        &quot;origQty&quot;: &quot;1&quot;,
+                        &quot;executedQty&quot;: &quot;0&quot;,
+                        &quot;status&quot;: &quot;NEW&quot;,
+                        &quot;timeInForce&quot;: &quot;GTC&quot;,
+                        &quot;type&quot;: &quot;LIMIT&quot;,
+                        &quot;side&quot;: &quot;SELL&quot;
+                }
+        }]
+}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">成功返回:</span><span class="w">
-</span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287091689761137921"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567898"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212241234567898"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671880251836"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17001"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287091689761137921"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"symbolName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"clientOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pl12241234567899"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202212241234567899"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1671880251853"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17002"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"origQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"executedQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
-                        </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span><span class="err">失败返回:</span><span class="w">
-</span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1149</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create order failed"</span><span class="w">
-        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1149</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create order failed"</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-17'>参数</h3>
+<div class="highlight"><pre class="highlight plaintext"><code>
+失败返回:
+``` json
+{
+        "code": 0,
+        "result": [{
+                "code": -1149,
+                "msg": "Create order failed"
+        }, {
+                "code": -1149,
+                "msg": "Create order failed"
+        }]
+}
+</code></pre></div><h3 id='749d765242-17'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2696,27 +2692,32 @@ HMAC SHA256 签名:
 <blockquote>
 <p>响应</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">取消全部成功:</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">代表执行成功</span><span class="w">
-  </span><span class="nl">"result"</span><span class="p">:[]</span><span class="w"> </span><span class="err">//批量撤单结果</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
- </span><span class="err">取消部分或全部失败:</span><span class="w">
-</span><span class="p">{</span><span class="w">
-   </span><span class="nl">"code"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"result"</span><span class="p">:[</span><span class="w">
-       </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"orderId"</span><span class="p">:</span><span class="s2">"202212231234567895"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w"> </span><span class="err">//</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-       </span><span class="p">{</span><span class="w">
-           </span><span class="nl">"orderId"</span><span class="p">:</span><span class="s2">"202212231234567896"</span><span class="p">,</span><span class="w">
-           </span><span class="nl">"code"</span><span class="p">:</span><span class="mi">-2013</span><span class="w">
-       </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-20'>参数</h3>
+<p>取消全部成功:
+<code>json
+{
+  &quot;code&quot;:0, // 0 代表执行成功
+  &quot;result&quot;:[] //批量撤单结果
+}
+</code></p>
+
+<p>取消部分或全部失败:
+<code>json
+{
+   &quot;code&quot;:0,
+   &quot;result&quot;:[
+       {
+          &quot;orderId&quot;:&quot;202212231234567895&quot;,
+          &quot;code&quot;:-2013 //
+       },
+       {
+           &quot;orderId&quot;:&quot;202212231234567896&quot;,
+           &quot;code&quot;:-2013
+       }
+   ]
+}
+</code></p>
+<h3 id='749d765242-20'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3076,13 +3077,13 @@ HMAC SHA256 签名:
 <td>fromId</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>起始id</td>
 </tr>
 <tr>
 <td>toId</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>结束id</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3256,6 +3257,12 @@ HMAC SHA256 签名:
 <td>STRING</td>
 <td>NO</td>
 <td>资产</td>
+</tr>
+<tr>
+<td>flowType</td>
+<td>INT</td>
+<td>NO</td>
+<td>划转：3</td>
 </tr>
 <tr>
 <td>fromId</td>
@@ -3474,9 +3481,9 @@ HMAC SHA256 签名:
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outboundAccountInfo"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type事件类型</span><span class="w">
     </span><span class="nl">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499405658849</span><span class="p">,</span><span class="w">           </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time事件时间</span><span class="w">
-    </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">trade?</span><span class="w"> </span><span class="err">可否交易</span><span class="w">
-    </span><span class="nl">"W"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">withdraw?</span><span class="w"> </span><span class="err">可否提币</span><span class="w">
-    </span><span class="nl">"D"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">deposit?</span><span class="w"> </span><span class="err">可否充币</span><span class="w">
+    </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">可否交易</span><span class="w">
+    </span><span class="nl">"W"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">withdraw</span><span class="w"> </span><span class="err">可否提币</span><span class="w">
+    </span><span class="nl">"D"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Can</span><span class="w"> </span><span class="err">deposit</span><span class="w"> </span><span class="err">可否充币</span><span class="w">
     </span><span class="nl">"B"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">                        </span><span class="err">//</span><span class="w"> </span><span class="err">Balances</span><span class="w"> </span><span class="err">changed</span><span class="w"> </span><span class="err">余额变更</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LTC"</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Asset</span><span class="w"> </span><span class="err">资产</span><span class="w">
@@ -3492,28 +3499,31 @@ HMAC SHA256 签名:
 <blockquote>
 <p>Payload</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"executionReport"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
-  </span><span class="nl">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499405658658</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
-  </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHBTC"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> </span><span class="err">币对</span><span class="w">
-  </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000087761</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Client</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">客户订单id</span><span class="w">
-  </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Side</span><span class="w"> </span><span class="err">订单方向</span><span class="w">
-  </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">订单类型</span><span class="w">
-  </span><span class="nl">"f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">force</span><span class="w"> </span><span class="err">有效方式</span><span class="w">
-  </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">数量</span><span class="w">
-  </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10264410"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">价格</span><span class="w">
-  </span><span class="nl">"X"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Current</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">订单状态</span><span class="w">
-  </span><span class="nl">"i"</span><span class="p">:</span><span class="w"> </span><span class="mi">4293153</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">订单id</span><span class="w">
-  </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">executed</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">上次数量</span><span class="w">
-  </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易数量</span><span class="w">
-  </span><span class="nl">"L"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">executed</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">上次价格</span><span class="w">
-  </span><span class="nl">"n"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">Commission</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">佣金</span><span class="w">
-  </span><span class="nl">"N"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Commission</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">佣金资产</span><span class="w">
-  </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">normal</span><span class="p">,</span><span class="w"> </span><span class="err">ignore</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">now</span><span class="w"> </span><span class="err">是否正常</span><span class="w">
-  </span><span class="nl">"w"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">working?</span><span class="w"> </span><span class="err">Stops</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">have</span><span class="w">
-  </span><span class="nl">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">maker</span><span class="w"> </span><span class="err">side?</span><span class="w">
-  </span><span class="nl">"O"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499405658657</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">creation</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">创建时间</span><span class="w">
-  </span><span class="nl">"Z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">transacted</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易金额</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"executionReport"</span><span class="p">,</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">事件类型</span><span class="w">
+    </span><span class="nl">"E"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499405658658</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">Event</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">事件时间</span><span class="w">
+    </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHBTC"</span><span class="p">,</span><span class="w">                 </span><span class="err">//</span><span class="w"> </span><span class="err">Symbol</span><span class="w"> </span><span class="err">币对</span><span class="w">
+    </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000087761</span><span class="p">,</span><span class="w">               </span><span class="err">//</span><span class="w"> </span><span class="err">Client</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">客户订单id</span><span class="w">
+    </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Side</span><span class="w"> </span><span class="err">订单方向</span><span class="w">
+    </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">订单类型</span><span class="w">
+    </span><span class="nl">"f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">force</span><span class="w"> </span><span class="err">有效方式</span><span class="w">
+    </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">数量</span><span class="w">
+    </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10264410"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">价格</span><span class="w">
+    </span><span class="nl">"X"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Current</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">订单状态</span><span class="w">
+    </span><span class="nl">"i"</span><span class="p">:</span><span class="w"> </span><span class="mi">4293153</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">订单id</span><span class="w">
+    </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">executed</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">上次数量</span><span class="w">
+    </span><span class="nl">"z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">filled</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易数量</span><span class="w">
+    </span><span class="nl">"L"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">executed</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">上次价格</span><span class="w">
+    </span><span class="nl">"n"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">                      </span><span class="err">//</span><span class="w"> </span><span class="err">Commission</span><span class="w"> </span><span class="err">amount</span><span class="w"> </span><span class="err">佣金</span><span class="w">
+    </span><span class="nl">"N"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Commission</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">佣金资产</span><span class="w">
+    </span><span class="nl">"u"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">normal</span><span class="p">,</span><span class="w"> </span><span class="err">ignore</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">now</span><span class="w"> </span><span class="err">是否正常</span><span class="w">
+    </span><span class="nl">"w"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">order</span><span class="w"> </span><span class="err">working?</span><span class="w"> </span><span class="err">Stops</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">have</span><span class="w">
+    </span><span class="nl">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">maker</span><span class="w"> </span><span class="err">side?</span><span class="w">
+    </span><span class="nl">"O"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499405658657</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">creation</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">创建时间</span><span class="w">
+    </span><span class="nl">"Z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="w">              </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">transacted</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易金额</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>订单更新会通过 <code>executionReport</code> 事件更新。查看API文档和下面的相关枚举定义。
 平均价格可以通过Z除以z来找到。</p>
