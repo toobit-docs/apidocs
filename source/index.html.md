@@ -318,9 +318,9 @@ Submit a withdraw request.
 | ----------- | ------- | ------------- | -------------- |
 | coin | STRING | YES | asset |
 | clientOrderId | LONG | YES | 	client id for withdraw |
-| address | STRING  | YES |  |
+| address | STRING  | YES | Withdrawal address (Note: the withdrawal address must be maintained in the PC terminal or APP terminal in the common address list inside the address) |
 | addressExt | STRING | NO | tag |
-| quantity  | DECIMAL | YES |  |
+| quantity  | DECIMAL | YES | Number of coin withdrawals |
 | chainType | STRING | NO | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI |
 
 
@@ -353,7 +353,7 @@ Submit a withdraw request.
         "fee":"0.1",
         "requiredConfirmTimes ":0, // Number of confirmation requests
         "confirmTimes ":0, // number of confirmations
-        "kernelId":"", 
+        "kernelId":"", // Exclusive to BEAM and GRIN
         "isInternalTransfer": false // Whether internal transfer
     }
 ]
@@ -369,8 +369,8 @@ Submit a withdraw request.
 | fromId | LONG | NO | From which OrderId to start fetching |
 | withdrawOrderId | LONG | NO | Withdrawal order ID |
 | limit | INT | NO | default 500; maximum 1000 |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES | Timestamp |
 
 ## Deposit Address (USER_DATA)
 - `GET /api/v1/account/deposit/address  (HMAC SHA256)`
@@ -394,9 +394,9 @@ Fetch deposit address with network.
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| coin | STRING | YES |  |
+| Name     | Type      | Mandatory      | Description                                                                                 |
+| ----------- | ------- | ------------- |---------------------------------------------------------------------------------------------|
+| coin | STRING | YES | asset                                                                                       |
 | chainType | STRING | YES | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI |
 
 ## Deposit History (USER_DATA)
@@ -430,15 +430,15 @@ Fetch deposit address with network.
 
 ### Parameters
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| coin | STRING | NO |  |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | end timestamp |
+| Name     | Type      | Mandatory      | Description                     |
+| ----------- | ------- | ------------- |---------------------------------|
+| coin | STRING | NO | asset                           |
+| startTime | LONG | NO | start timestamp                 |
+| endTime | LONG | NO | end timestamp                   |
 | fromId | LONG | NO | From which Id to start crawling |
-| limit | INT | NO | Default 500; Max 1000 |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| limit | INT | NO | Default 500; Max 1000           |
+| recvWindow | LONG | NO |       recv window                          |
+| timestamp | LONG | YES |        时间戳                         |
 
 Notes:
 
@@ -517,6 +517,31 @@ Current exchange trading rules and symbol information
         {
           "minNotional": "10",
           "filterType": "MIN_NOTIONAL"
+        },
+        {
+          "minTradeQuantity": "0", // Minimum Trading Volume (Futures)
+          "maxTradeQuantity": "0", // Maximum trading volume (futures)
+          "minTradeAmount": "0", // Minimum Volume (Spot)
+          "maxTradeAmount": "0", // Maximum Turnover (Spot)
+          "minBuyPrice": "0", // Minimum buy price (spot)
+          "limitMaxSellPrice": "0", // Limit maximum selling price 
+          "limitMinTradeQuantity": "0", //  Limit minimum trading volume (spot)
+          "limitMaxTradeQuantity": "0", // Maximum trading volume of limit price (spot)
+          "marketMinTradeQuantity": "0", // Market Minimum Trading Volume (Spot)
+          "marketMaxTradeQuantity": "0", // Market Max Trade Quantity (spot)
+          "limitBuyMarkPriceRate": "0", // the rate at which the limit buy cannot be higher than the mark price
+          "limitSellMarkPriceRate": "0", // the rate at which the limit sell price cannot be higher than the marked price
+          "limitMaxDelegateOrderQuantity": 0, // Limit the maximum number of pending orders for a delegate order
+          "limitMaxConditionOrderQuantity": 0, // Limit the maximum number of pending orders for condition orders
+          "marketBuyMarkPriceRate": "0", //  the market buy price cannot be higher than the "mark (futures)/latest (spot)" price ratio
+          "marketSellMarkPriceRate": "0", // the rate at which the market sell price cannot be higher than the "mark(futures)/latest(spot)" price
+          "noAllowMarketStartAt": "1674057600000", // market order start time is not allowed
+          "noAllowMarketEndAt": "1674057600000", // do not allow to use market order end time
+          "limitLimitOrderStartAt": "1674057600000", //Limit Limit order start time
+          "limitLimitOrderEndAt": "1674057600000", // Limit Limit order end time
+          "limitAtMinPrice": "0", // the lowest price within the limit time
+          "limitAtMaxPrice": "0", // the maximum price within the time limit
+          "filterType": "TRADE_RULE"
         }
       ],
       "symbol": "ETHUSDT",
@@ -630,6 +655,31 @@ Current exchange trading rules and symbol information
         {
           "minNotional": "0.000000001",
           "filterType": "MIN_NOTIONAL"
+        },
+        {
+          "minTradeQuantity": "0", // Minimum Trading Volume (Futures)
+          "maxTradeQuantity": "0", // Maximum trading volume (futures)
+          "minTradeAmount": "0", // Minimum Volume (Spot)
+          "maxTradeAmount": "0", // Maximum Turnover (Spot)
+          "minBuyPrice": "0", // Minimum buy price (spot)
+          "limitMaxSellPrice": "0", // Limit maximum selling price 
+          "limitMinTradeQuantity": "0", //  Limit minimum trading volume (spot)
+          "limitMaxTradeQuantity": "0", // Maximum trading volume of limit price (spot)
+          "marketMinTradeQuantity": "0", // Market Minimum Trading Volume (Spot)
+          "marketMaxTradeQuantity": "0", // Market Max Trade Quantity (spot)
+          "limitBuyMarkPriceRate": "0", // the rate at which the limit buy cannot be higher than the mark price
+          "limitSellMarkPriceRate": "0", // the rate at which the limit sell price cannot be higher than the marked price
+          "limitMaxDelegateOrderQuantity": 0, // Limit the maximum number of pending orders for a delegate order
+          "limitMaxConditionOrderQuantity": 0, // Limit the maximum number of pending orders for condition orders
+          "marketBuyMarkPriceRate": "0", //  the market buy price cannot be higher than the "mark (futures)/latest (spot)" price ratio
+          "marketSellMarkPriceRate": "0", // the rate at which the market sell price cannot be higher than the "mark(futures)/latest(spot)" price
+          "noAllowMarketStartAt": "1674057600000", // market order start time is not allowed
+          "noAllowMarketEndAt": "1674057600000", // do not allow to use market order end time
+          "limitLimitOrderStartAt": "1674057600000", //Limit Limit order start time
+          "limitLimitOrderEndAt": "1674057600000", // Limit Limit order end time
+          "limitAtMinPrice": "0", // the lowest price within the limit time
+          "limitAtMaxPrice": "0", // the maximum price within the time limit
+          "filterType": "TRADE_RULE"
         }
       ],
       "symbol": "BTC-SWAP-USDT",
@@ -1394,19 +1444,16 @@ Symbol's depth information.
 
 ### Request:
 
-`{`
+``` json
+{
 
-`  "symbol": "$symbol0, $symbol1",`
-
-`  "topic": "depth",`
-
-`  "event": "sub",`
-
-`  "params": {`
-
-`    "binary": false`
-
-`    }`
+  "symbol": "$symbol0, $symbol1",
+  "topic": "depth",
+  "event": "sub",
+  "params": {
+    "binary": false
+  }
+```
 
 
 ## Diff. Depth Stream
@@ -1541,9 +1588,9 @@ Send in a new order.
 
 Additional mandatory parameters based on `type`:
 
-| Type     | Additional mandatory parameters      | 
+| Type     | Additional mandatory parameters  | 
 | ----------- | ------- | 
-| `LIMIT` | `timeInForce`, `quantity`,` price` |
+| `LIMIT` | `quantity`,` price` |
 | `MARKET` |  `quantity` |
 | `STOP_LOSS` | `quantity`, `stopPrice` **currently unavailable** |
 | `STOP_LOSS_LIMIT` | `timeInForce`, `quantity`, `price`, `stopPrice`  **currently unavailable**|
@@ -1581,9 +1628,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ```
 
 > Response
-
-``` json
 success :
+``` json
 {
         "code": 0,
         "result": [{
@@ -1622,8 +1668,9 @@ success :
                 }
         }]
 }
-
+```
 fail :
+``` json
 {
         "code": 0,
         "result": [{
@@ -1679,7 +1726,7 @@ Cancel an active order.
 ``` json
 {
   "symbol": "LTCBTC",
-  "orderId": 1,
+  "orderId": "1",
   "clientOrderId": "9t1M2K0Ya092",
   "price": "0.1",
   "origQty": "1.0",
@@ -1688,17 +1735,17 @@ Cancel an active order.
   "timeInForce": "GTC",
   "type": "LIMIT",
   "side": "BUY",
-  "transactTime": 1499827319559
+  "transactTime": "1499827319559"
 }
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO |  |
-| clientOrderId | STRING | NO |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name     | Type      | Mandatory      | Description    |
+| ----------- | ------- | ------------- |----------------|
+| orderId | LONG | NO | order id       |
+| clientOrderId | STRING | NO | client order id |
+| recvWindow | LONG | NO |   recv window             |
+| timestamp | LONG | YES |    Timestamp            |
 
 Either `orderId `or `clientOrderId `must be sent.
 
@@ -1720,8 +1767,8 @@ Either `orderId `or `clientOrderId `must be sent.
 | ----------- | ------- | ------------- | -------------- |
 | symbol | STRING | NO | |
 | side | ENUM| NO | `BUY` or `SELL` |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES | Timestamp |
 
 ## Cancel Multiple Orders (TRADE)
 
@@ -1733,14 +1780,16 @@ Cancel orders in batches according to the order id, **maximum 100 items at a tim
 
 > Response
 
-``` json
 success :
+``` json
 {
   "code":0, // 0 On behalf of successful execution
   "result":[] //
 }
+```
 
- Some or all of the cancellations failed:
+Some or all of the cancellations failed:
+``` json
 {
    "code":0,
    "result":[
@@ -1776,7 +1825,7 @@ Note: **code** returns `0` to indicate that the order cancellation request has b
 ``` json
 {
   "symbol": "LTCBTC",
-  "orderId": 1,
+  "orderId": "1",
   "clientOrderId": "9t1M2K0Ya092",
   "price": "0.1",
   "origQty": "1.0",
@@ -1788,19 +1837,19 @@ Note: **code** returns `0` to indicate that the order cancellation request has b
   "side": "BUY",
   "stopPrice": "0.0",
   "icebergQty": "0.0",
-  "time": 1499827319559,
-  "updateTime": 1499827319559,
+  "time": "1499827319559",
+  "updateTime": "1499827319559",
   "isWorking": true
 }
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO |  |
-| origClientOrderId | STRING | NO |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |   |
+| Name     | Type      | Mandatory      | Description    |
+| ----------- | ------- | ------------- |----------------|
+| orderId | LONG | NO | order id       |
+| origClientOrderId | STRING | NO | client order id |
+| recvWindow | LONG | NO |       recv window         |
+| timestamp | LONG | YES |    timestamp            |
 
 Notes：
 
@@ -1820,7 +1869,7 @@ Get all open orders on a symbol. **Careful** when accessing this with no symbol.
 [
   {
     "symbol": "LTCBTC",
-    "orderId": 1,
+    "orderId": "1",
     "clientOrderId": "t7921223K12",
     "price": "0.1",
     "origQty": "1.0",
@@ -1832,21 +1881,21 @@ Get all open orders on a symbol. **Careful** when accessing this with no symbol.
     "side": "BUY",
     "stopPrice": "0.0",
     "icebergQty": "0.0",
-    "time": 1499827319559,
-    "updateTime": 1499827319559,
+    "time": "1499827319559",
+    "updateTime": "1499827319559",
     "isWorking": true
   }
 ]
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO |  |
-| symbol | STRING | NO |  |
+| Name     | Type      | Mandatory      | Description            |
+| ----------- | ------- | ------------- |------------------------|
+| orderId | LONG | NO | order id               |
+| symbol | STRING | NO | symbol                 |
 | limit | INT | NO | Default 500; Max 1000. |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |       recv window                  |
+| timestamp | LONG | YES |       timestamp                 |
 
 Notes：
 
@@ -1866,7 +1915,7 @@ Get all account orders; active, canceled, or filled.
 [
   {
     "symbol": "LTCBTC",
-    "orderId": 1,
+    "orderId": "1",
     "clientOrderId": "987yjj2Ym",
     "price": "0.1",
     "origQty": "1.0",
@@ -1878,8 +1927,8 @@ Get all account orders; active, canceled, or filled.
     "side": "BUY",
     "stopPrice": "0.0",
     "icebergQty": "0.0",
-    "time": 1499827319559,
-    "updateTime": 1499827319559,
+    "time": "1499827319559",
+    "updateTime": "1499827319559",
     "isWorking": true
   }
 ]
@@ -1907,10 +1956,10 @@ Get all account orders; active, canceled, or filled.
 {
     "balances": [
         {
-            "asset": "BTC", 
-            "assetId": "BTC", 
-            "assetName": "BTC", 
-            "total": "995.899", 
+            "asset": "BTC",  // asset
+            "assetId": "BTC",  // asset id
+            "assetName": "BTC",  // asset name
+            "total": "995.899",  // total number
             "free": "995.899", //available number
             "locked": "0" //frozen number
         }
@@ -1921,8 +1970,8 @@ Get all account orders; active, canceled, or filled.
 ### Parameters
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES | Timestamp |
 
 ## Account Trade List (USER_DATA)
 - `GET /api/v1/account/trades`
@@ -1959,16 +2008,16 @@ Get all account orders; active, canceled, or filled.
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | NO |  |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | end timestamp |
-| fromId | LONG | NO  | |
-| toId | LONG | NO | |
+| Name     | Type      | Mandatory      | Description                        |
+| ----------- | ------- | ------------- |------------------------------------|
+| symbol | STRING | NO | symbol                             |
+| startTime | LONG | NO | start timestamp                    |
+| endTime | LONG | NO | end timestamp                      |
+| fromId | LONG | NO  | from id                            |
+| toId | LONG | NO | end id                             |
 | limit | INT | NO | Number of items displayed per page |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO |                                    |
+| timestamp | LONG | YES |                                    |
 
 Notes：
 
@@ -2007,8 +2056,8 @@ Notes：
 
 | Name    | Type  |    Mandatory           | Description           |
 | ----------------- | ---- | ------- | ------------- |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES | Timestamp |
 
 
 ## New Account Transfer
@@ -2026,14 +2075,14 @@ Notes：
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| fromAccountId | LONG | YES |  |
-| toAccountId | LONG | YES |  |
-| coin | STRING | YES |  |
-| quantity | DECIMAL | YES |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description     |
+| ----------------- | ---- | ------- |-----------------|
+| fromAccountId | LONG | YES | from account id |
+| toAccountId | LONG | YES | to account id   |
+| coin | STRING | YES | coin            |
+| quantity | DECIMAL | YES |       quantity          |
+| recvWindow | LONG | NO |    recv window             |
+| timestamp | LONG | YES |    timestamp             |
 
 
 ## Get Account Transaction History List (USER_DATA)
@@ -2075,18 +2124,18 @@ Notes：
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| accountType | INT | NO |  |
-| coin | STRING | NO |  |
-| flowType | INT | NO | transfer：3 |
-| fromId | LONG | NO |  |
-| endId | LONG | NO |  |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | end timestamp |
-| limit | INT | NO |  |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| Name    | Type  |    Mandatory           | Description                             |
+| ----------------- | ---- | ------- |-----------------------------------------|
+| accountType | INT | NO | Account corresponding to `account_type` |
+| coin | STRING | NO | coin                                    |
+| flowType | INT | NO | transfer：3                              |
+| fromId | LONG | NO | from id                                 |
+| endId | LONG | NO | end id                                  |
+| startTime | LONG | NO | start timestamp                         |
+| endTime | LONG | NO | end timestamp                           |
+| limit | INT | NO | limit                                   |
+| recvWindow | LONG | NO |       recv window                                  |
+| timestamp | LONG | YES |       timestamp                                  |
 
 ## Get API KEY Type (USER_DATA)
 
@@ -2142,8 +2191,8 @@ Start a new user data stream. The stream will close after 60 minutes unless a ke
 #### Parameters
 | Name     | Type      | Mandatory      | Description           |
 | ----------- | ------- | ------------- | -------------- |
-| recvWindow | LONG | NO |  |
-| timestamp | LONG | YES |  |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES | timestamp |
 
 ### Ping/Keep-alive a ListenKey (USER_STREAM)
 - `PUT /api/v1/userDataStream`
@@ -2193,9 +2242,9 @@ Keepalive a user data stream to prevent a time out. User data streams will close
   {
     "e": "outboundAccountInfo",   // Event type
     "E": 1499405658849,           // Event time
-    "T": true,                    // Can trade? 
-    "W": true,                    // Can withdraw? 
-    "D": true,                    // Can deposit? 
+    "T": true,                    // Can trade
+    "W": true,                    // Can withdraw
+    "D": true,                    // Can deposit
     "B": [                        // Balances changed 
       {
         "a": "LTC",               // Asset 
@@ -2215,28 +2264,31 @@ Whenever the account balance changes, an event `outboundAccountInfo` is sent con
 > Payload
 
 ``` json
-{
-  "e": "executionReport",        // Event type 
-  "E": 1499405658658,            // Event time 
-  "s": "ETHBTC",                 // Symbol 
-  "c": 1000087761,               // Client order ID 
-  "S": "BUY",                    // Side 
-  "o": "LIMIT",                  // Order type 
-  "f": "GTC",                    // Time in force 
-  "q": "1.00000000",             // Order quantity 
-  "p": "0.10264410",             // Order price 
-  "X": "NEW",                    // Current order status 
-  "i": 4293153,                  // Order ID 
-  "l": "0.00000000",             // Last executed quantity 
-  "z": "0.00000000",             // Cumulative filled quantity 
-  "L": "0.00000000",             // Last executed price 
-  "n": "0",                      // Commission amount 
-  "N": null,                     // Commission asset 
-  "u": true,                     // Is the trade normal, ignore for now 
-  "w": true,                     // Is the order working? Stops will have
-  "m": false,                    // Is this trade the maker side?
-  "O": 1499405658657,            // Order creation time 
-  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 
+[
+  {
+    "e": "executionReport",        // Event type 
+    "E": 1499405658658,            // Event time 
+    "s": "ETHBTC",                 // Symbol 
+    "c": 1000087761,               // Client order ID 
+    "S": "BUY",                    // Side 
+    "o": "LIMIT",                  // Order type 
+    "f": "GTC",                    // Time in force 
+    "q": "1.00000000",             // Order quantity 
+    "p": "0.10264410",             // Order price 
+    "X": "NEW",                    // Current order status 
+    "i": 4293153,                  // Order ID 
+    "l": "0.00000000",             // Last executed quantity 
+    "z": "0.00000000",             // Cumulative filled quantity 
+    "L": "0.00000000",             // Last executed price 
+    "n": "0",                      // Commission amount 
+    "N": null,                     // Commission asset 
+    "u": true,                     // Is the trade normal, ignore for now 
+    "w": true,                     // Is the order working? Stops will have
+    "m": false,                    // Is this trade the maker side?
+    "O": 1499405658657,            // Order creation time 
+    "Z": "0.00000000"              // Cumulative quote asset transacted quantity 
+  }
+]
 ```
 
 Order updates are updated through the `executionReport` event. Check out the API docs and the relevant enum definitions below.
@@ -2492,6 +2544,9 @@ Errors consist of two parts: an error code and a message. Codes are universal, b
 
 ### -1203 ORDER_SELL_QUANTITY_TOO_BIG
 - Create order sell quantity too big
+- 
+### -1206 ORDER_AMOUNT_TOO_BIG
+- Orders over the maximum transaction amount
 
 ### -2010 NEW_ORDER_REJECTED
 - NEW_ORDER_REJECTED
