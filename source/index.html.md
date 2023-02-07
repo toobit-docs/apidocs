@@ -1431,19 +1431,16 @@ Symbol的深度信息。
 
 ### 请求订阅数据样例:
 
-`{`
+``` json
+{
 
-`  "symbol": "$symbol0, $symbol1",`
-
-`  "topic": "depth",`
-
-`  "event": "sub",`
-
-`  "params": {`
-
-`    "binary": false`
-
-`    }`
+  "symbol": "$symbol0, $symbol1",
+  "topic": "depth",
+  "event": "sub",
+  "params": {
+    "binary": false
+  }
+```
 
 
 ## 增量深度信息
@@ -1621,9 +1618,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ```
 
 > 响应
-
-``` json
 成功返回:
+``` json
 {
         "code": 0,
         "result": [{
@@ -1663,7 +1659,10 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
         }]
 }
 
+```
+
 失败返回:
+``` json
 {
         "code": 0,
         "result": [{
@@ -1777,14 +1776,16 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 
 > 响应
 
-``` json
 取消全部成功:
+``` json
 {
   "code":0, // 0 代表执行成功
   "result":[] //批量撤单结果
 }
+```
 
- 取消部分或全部失败:
+取消部分或全部失败:
+``` json
 {
    "code":0,
    "result":[
@@ -2001,16 +2002,16 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | NO | 交易对 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG | NO | 结束时间戳 |
-| fromId | LONG | NO  | |
-| toId | LONG | NO | |
+| 参数名称     | 类型      | 是否必需      | 描述     |
+| ----------- | ------- | ------------- |--------|
+| symbol | STRING | NO | 交易对    |
+| startTime | LONG | NO | 开始时间戳  |
+| endTime | LONG | NO | 结束时间戳  |
+| fromId | LONG | NO  | 起始id   |
+| toId | LONG | NO | 结束id   |
 | limit | INT | NO | 每页显示条数 |
 | recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| timestamp | LONG | YES | 时间戳    |
 
 注意：
 
@@ -2102,17 +2103,18 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
+| 参数名称     | 类型      | 是否必需      | 描述                  |
+| ----------- | ------- | ------------- |---------------------|
 | accountType | INT | NO | 账户对应的`account_type` |
-| coin | STRING | NO | 资产 |
-| fromId | LONT | NO  | 顺向查询数据 |
-| endId | LONG | NO | 反向查询数据 |
-| startTime | LONG | NO | 开始时间 |
-| endTime | LONG | NO | 结束时间 |
-| limit | INT | NO | 每页记录数 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| coin | STRING | NO | 资产                  |
+| flowType | INT | NO | 划转：3                |
+| fromId | LONT | NO  | 顺向查询数据              |
+| endId | LONG | NO | 反向查询数据              |
+| startTime | LONG | NO | 开始时间                |
+| endTime | LONG | NO | 结束时间                |
+| limit | INT | NO | 每页记录数               |
+| recvWindow | LONG | NO | recv窗口              |
+| timestamp | LONG | YES | 时间戳                 |
 
 
 ## 获取API KEY类型 (USER_DATA)
@@ -2221,9 +2223,9 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
   {
     "e": "outboundAccountInfo",   // Event type事件类型
     "E": 1499405658849,           // Event time事件时间
-    "T": true,                    // Can trade? 可否交易
-    "W": true,                    // Can withdraw? 可否提币
-    "D": true,                    // Can deposit? 可否充币
+    "T": true,                    // Can trade 可否交易
+    "W": true,                    // Can withdraw 可否提币
+    "D": true,                    // Can deposit 可否充币
     "B": [                        // Balances changed 余额变更
       {
         "a": "LTC",               // Asset 资产
@@ -2243,28 +2245,31 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 > Payload
 
 ``` json
-{
-  "e": "executionReport",        // Event type 事件类型
-  "E": 1499405658658,            // Event time 事件时间
-  "s": "ETHBTC",                 // Symbol 币对
-  "c": 1000087761,               // Client order ID 客户订单id
-  "S": "BUY",                    // Side 订单方向
-  "o": "LIMIT",                  // Order type 订单类型
-  "f": "GTC",                    // Time in force 有效方式
-  "q": "1.00000000",             // Order quantity 数量
-  "p": "0.10264410",             // Order price 价格
-  "X": "NEW",                    // Current order status 订单状态
-  "i": 4293153,                  // Order ID 订单id
-  "l": "0.00000000",             // Last executed quantity 上次数量
-  "z": "0.00000000",             // Cumulative filled quantity 交易数量
-  "L": "0.00000000",             // Last executed price 上次价格
-  "n": "0",                      // Commission amount 佣金
-  "N": null,                     // Commission asset 佣金资产
-  "u": true,                     // Is the trade normal, ignore for now 是否正常
-  "w": true,                     // Is the order working? Stops will have
-  "m": false,                    // Is this trade the maker side?
-  "O": 1499405658657,            // Order creation time 创建时间
-  "Z": "0.00000000"              // Cumulative quote asset transacted quantity 交易金额
+[
+  {
+    "e": "executionReport",        // Event type 事件类型
+    "E": 1499405658658,            // Event time 事件时间
+    "s": "ETHBTC",                 // Symbol 币对
+    "c": 1000087761,               // Client order ID 客户订单id
+    "S": "BUY",                    // Side 订单方向
+    "o": "LIMIT",                  // Order type 订单类型
+    "f": "GTC",                    // Time in force 有效方式
+    "q": "1.00000000",             // Order quantity 数量
+    "p": "0.10264410",             // Order price 价格
+    "X": "NEW",                    // Current order status 订单状态
+    "i": 4293153,                  // Order ID 订单id
+    "l": "0.00000000",             // Last executed quantity 上次数量
+    "z": "0.00000000",             // Cumulative filled quantity 交易数量
+    "L": "0.00000000",             // Last executed price 上次价格
+    "n": "0",                      // Commission amount 佣金
+    "N": null,                     // Commission asset 佣金资产
+    "u": true,                     // Is the trade normal, ignore for now 是否正常
+    "w": true,                     // Is the order working? Stops will have
+    "m": false,                    // Is this trade the maker side?
+    "O": 1499405658657,            // Order creation time 创建时间
+    "Z": "0.00000000"              // Cumulative quote asset transacted quantity 交易金额
+  } 
+]
 ```
 
 订单更新会通过 `executionReport` 事件更新。查看API文档和下面的相关枚举定义。
