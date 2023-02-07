@@ -1559,7 +1559,7 @@ HMAC SHA256 signature:
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -1650,25 +1650,25 @@ Klines are uniquely identified by their open time.</p>
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>interval</td>
 <td>ENUM</td>
 <td>YES</td>
-<td></td>
+<td>interval</td>
 </tr>
 <tr>
 <td>startTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>start timestamp</td>
 </tr>
 <tr>
 <td>endTime</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>end timestamp</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -1720,7 +1720,7 @@ Klines are uniquely identified by their open time.</p>
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
-<td></td>
+<td>symbol</td>
 </tr>
 </tbody></table>
 
@@ -1756,7 +1756,7 @@ Klines are uniquely identified by their open time.</p>
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
-<td></td>
+<td>symbol</td>
 </tr>
 </tbody></table>
 
@@ -1796,7 +1796,7 @@ Klines are uniquely identified by their open time.</p>
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
-<td></td>
+<td>symbol</td>
 </tr>
 </tbody></table>
 
@@ -1855,7 +1855,7 @@ Klines are uniquely identified by their open time.</p>
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>scale</td>
@@ -1867,7 +1867,7 @@ Klines are uniquely identified by their open time.</p>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td></td>
+<td>limit</td>
 </tr>
 </tbody></table>
 <h1 id='websocket-market-streams'>Websocket Market Streams</h1>
@@ -2293,7 +2293,7 @@ If the next returned data contains:</p>
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>assetType</td>
@@ -2323,13 +2323,13 @@ If the next returned data contains:</p>
 <td>quantity</td>
 <td>DECIMAL</td>
 <td>YES</td>
-<td></td>
+<td>quantity</td>
 </tr>
 <tr>
 <td>price</td>
 <td>DECIMAL</td>
 <td>NO</td>
-<td></td>
+<td>price</td>
 </tr>
 <tr>
 <td>newClientOrderId</td>
@@ -2353,13 +2353,13 @@ If the next returned data contains:</p>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 
@@ -2503,13 +2503,13 @@ fail :
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 
@@ -2527,7 +2527,7 @@ fail :
 <td>symbol</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>side</td>
@@ -2551,13 +2551,13 @@ fail :
 <td>quantity</td>
 <td>DECIMAL</td>
 <td>YES</td>
-<td></td>
+<td>quantity</td>
 </tr>
 <tr>
 <td>price</td>
 <td>DECIMAL</td>
 <td>NO</td>
-<td></td>
+<td>price</td>
 </tr>
 <tr>
 <td>newClientOrderId</td>
@@ -2683,7 +2683,7 @@ fail :
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>side</td>
@@ -2758,13 +2758,13 @@ fail :
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 
@@ -2955,13 +2955,13 @@ fail :
 <td>orderId</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>order id</td>
 </tr>
 <tr>
 <td>symbol</td>
 <td>STRING</td>
 <td>NO</td>
-<td></td>
+<td>symbol</td>
 </tr>
 <tr>
 <td>startTime</td>
@@ -2985,13 +2985,13 @@ fail :
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='account-information-user_data'>Account Information (USER_DATA)</h2>
@@ -3117,13 +3117,13 @@ fail :
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 
@@ -3366,13 +3366,13 @@ fail :
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 
@@ -3493,19 +3493,19 @@ fail :
 <td>listenKey</td>
 <td>STRING</td>
 <td>YES</td>
-<td></td>
+<td>listenKey</td>
 </tr>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>recv window</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
-<td></td>
+<td>timestamp</td>
 </tr>
 </tbody></table>
 <h2 id='payload-account-update'>Payload: Account Update</h2>
