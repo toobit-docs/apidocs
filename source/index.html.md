@@ -1825,7 +1825,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
   "price": "0.1",
   "origQty": "1.0",
   "executedQty": "0.0",
-  "cummulativeQuoteQty": "0.0",
+  "cumulativeQuoteQty": "0.0",
   "status": "NEW",
   "timeInForce": "GTC",
   "type": "LIMIT",
@@ -1849,7 +1849,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 注意：
 
 - 单一 orderId 或者 origClientOrderId 必须被发送。
-- 对于某些历史数据 cummulativeQuoteQty 可能会 < 0, 这说明数据当前不可用。
+- 对于某些历史数据 cumulativeQuoteQty 可能会 < 0, 这说明数据当前不可用。
 
 ## 当前挂单 (USER_DATA)
 - `GET /api/v1/spot/openOrders (HMAC SHA256)`
