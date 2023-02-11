@@ -1830,7 +1830,7 @@ Note: **code** returns `0` to indicate that the order cancellation request has b
   "price": "0.1",
   "origQty": "1.0",
   "executedQty": "0.0",
-  "cummulativeQuoteQty": "0.0",
+  "cumulativeQuoteQty": "0.0",
   "status": "NEW",
   "timeInForce": "GTC",
   "type": "LIMIT",
@@ -1854,7 +1854,7 @@ Note: **code** returns `0` to indicate that the order cancellation request has b
 Notes：
 
 - Either `orderId` or o`rigClientOrderId` must be sent.
-- For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.
+- For some historical orders cumulativeQuoteQty will be < 0, meaning the data is not available at this time.
 
 ## Current Open Orders (USER_DATA)
 - `GET /api/v1/spot/openOrders (HMAC SHA256)`
@@ -1874,7 +1874,7 @@ Get all open orders on a symbol. **Careful** when accessing this with no symbol.
     "price": "0.1",
     "origQty": "1.0",
     "executedQty": "0.0",
-    "cummulativeQuoteQty": "0.0",
+    "cumulativeQuoteQty": "0.0",
     "status": "NEW",
     "timeInForce": "GTC",
     "type": "LIMIT",
@@ -1920,7 +1920,7 @@ Get all account orders; active, canceled, or filled.
     "price": "0.1",
     "origQty": "1.0",
     "executedQty": "0.0",
-    "cummulativeQuoteQty": "0.0",
+    "cumulativeQuoteQty": "0.0",
     "status": "NEW",
     "timeInForce": "GTC",
     "type": "LIMIT",
