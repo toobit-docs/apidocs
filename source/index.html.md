@@ -1851,7 +1851,7 @@ Note: **code** returns `0` to indicate that the order cancellation request has b
 | recvWindow | LONG | NO |       recv window         |
 | timestamp | LONG | YES |    timestamp            |
 
-Notes：
+Notes： 
 
 - Either `orderId` or o`rigClientOrderId` must be sent.
 - For some historical orders cumulativeQuoteQty will be < 0, meaning the data is not available at this time.
