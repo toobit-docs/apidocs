@@ -7,8 +7,8 @@ rvm:
 
 branches:
   only:
-#    - v1_cn
-#    - v1_en
+    - v1_cn
+    - v1_en
 #    - dm_cn
 #   - dm_en
 #    - coin_margined_swap_cn
