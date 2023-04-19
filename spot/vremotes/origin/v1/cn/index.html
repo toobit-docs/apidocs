@@ -601,7 +601,7 @@
   <span class="c1">// reject request</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>关于交易时效性</strong> 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到TooBit服务器的时延会有抖动. 这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
+<p><strong>关于交易时效性</strong> 互联网状况并不100%可靠，不可完全依赖,因此你的程序本地到币安服务器的时延会有抖动. 这是我们设置recvWindow的目的所在，如果你从事高频交易，对交易时效性有较高的要求，可以灵活设置recvWindow以达到你的要求。
 <aside class="notice">
 不推荐使用5秒以上的recvWindow
 </aside></p>
@@ -669,7 +669,7 @@ HMAC SHA256 签名:
 <span class="o">(</span>stdin<span class="o">)=</span> 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
 </code></pre></div><div class="highlight"><pre class="highlight shell"><code>curl 调用:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> <span class="nt">-X</span> POST <span class="s1">'https://api.toobit.com/api/v1/spot/order'</span> <span class="nt">-d</span> <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
+<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> <span class="nt">-X</span> POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order'</span> <span class="nt">-d</span> <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
 
 </code></pre></div>
 <ul>
@@ -689,7 +689,7 @@ HMAC SHA256 签名:
 <span class="o">(</span>stdin<span class="o">)=</span> 8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468
 </code></pre></div><div class="highlight"><pre class="highlight shell"><code>curl 调用:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> <span class="nt">-X</span> POST <span class="s1">'https://api.toobit.com/api/v1/spot/order'</span> <span class="nt">-d</span> <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
+<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> <span class="nt">-X</span> POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order'</span> <span class="nt">-d</span> <span class="s1">'symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=400&amp;recvWindow=100000&amp;timestamp=1668481902307&amp;signature=8420e499e71cce4a00946db16543198b6bcae01791bdb75a06b5a7098b156468'</span>
 </code></pre></div>
 <ul>
 <li><strong>requestBody</strong>
@@ -713,7 +713,7 @@ HMAC SHA256 签名:
 <span class="o">(</span>stdin<span class="o">)=</span> 59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5
 </code></pre></div><div class="highlight"><pre class="highlight shell"><code>curl 调用:
 <span class="o">(</span>HMAC SHA256<span class="o">)</span>
-<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> <span class="nt">-X</span> POST <span class="s1">'https://api.toobit.com/api/v1/spot/order?symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC'</span> <span class="nt">-d</span> <span class="s1">'quantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&amp;signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'</span>
+<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWBQ8OSOtSq"</span> <span class="nt">-X</span> POST <span class="s1">'https://openapi.wcsbapp.com/api/v1/spot/order?symbol=BTCUSDT&amp;side=SELL&amp;type=LIMIT&amp;timeInForce=GTC'</span> <span class="nt">-d</span> <span class="s1">'quantity=1&amp;price=400&amp;recvWindow=10000000&amp;timestamp=1668481902307&amp;signature=59ef0b2085ebb99cca5b6445c202d99add17be2d5d1861c0f4aa17bc785ac4d5'</span>
 
 </code></pre></div>
 <p>注意在例子3里有一点不一样，&quot;GTC&quot;和&quot;quantity=1&quot;之间没有&amp;。</p>
