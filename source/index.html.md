@@ -2480,8 +2480,9 @@ curl  -H "Content-Type:application/json"
     "w": true,                     // Is the order working Stops will have
     "m": false,                    // Is this trade the maker side
     "O": 1499405658657,            // Order creation time 创建时间
-    "Z": "0.00000000",              // Cumulative quote asset transacted quantity 交易金额
-    "v": "20"                     // leverage 杠杆倍数
+    "Z": "0.00000000",             // Cumulative quote asset transacted quantity 交易金额
+    "v": "20",                     // leverage 杠杆倍数
+    "U": 1499332119813             // 订单更新时间 毫秒级时间戳
   }
 ]
 ```
