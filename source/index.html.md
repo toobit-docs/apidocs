@@ -2806,6 +2806,10 @@ curl  -H "Content-Type:application/json"
 
 ### -2016 NO_TRADING_WINDOW
 - 找不到该品种的交易窗口。试试股票代码/24小时。
+- 操作的API、IP或权限无效。
+
+### -2017 API_KEY_EXPIRED
+- API密钥已过期
 
 ## 3xxx - Filters and other Issues
 
