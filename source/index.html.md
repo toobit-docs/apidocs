@@ -26,6 +26,10 @@ search: true
 - 所有接口的响应都是JSON格式
 - 所有时间、时间戳均为UNIX时间，单位为毫秒
 - 所有数据类型采用JAVA的数据类型定义
+- 
+## Websocket 基本信息
+- 本篇列出REST接口的baseurl **wss://stream.toobit.com**
+
 
 ## 访问限制
 - 在  `/api/v1/exchangeInfo`的`rateLimits` 数组里包含有REST接口(不限于本篇的REST接口)的访问限制。包括带权重的访问频次限制、下单速率限制
@@ -1103,6 +1107,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 
 ## 实时订阅/取消数据流
 
+- 本篇列出REST接口的baseurl **wss://stream.toobit.com**
 - 以下数据可以通过websocket发送以实现订阅或取消订阅数据流。示例如下。
 - 直接访问时URL格式为  wss://#HOST/quote/ws/v1
 
@@ -2322,6 +2327,7 @@ curl  -H "Content-Type:application/json"
 
 公共WSS说明
 
+- 本篇列出REST接口的baseurl **wss://stream.toobit.com**
 - 对listenKey执行PUT将使其有效期延长60分钟。
 - 对listenKey执行DELETE将关闭流。
 - 用户信息流可通过 `/api/v1/ws/<listenKey>`访问   (例如`wss://#HOST/api/v1/ws/<listenKey>`)
