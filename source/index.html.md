@@ -26,9 +26,10 @@ search: true
 - 所有接口的响应都是JSON格式
 - 所有时间、时间戳均为UNIX时间，单位为毫秒
 - 所有数据类型采用JAVA的数据类型定义
-- 
+
+
 ## Websocket 基本信息
-- 本篇列出REST接口的baseurl **wss://stream.toobit.com**
+- Base Url: **wss://stream.toobit.com**
 
 
 ## 访问限制
