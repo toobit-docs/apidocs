@@ -30,6 +30,10 @@ Create a document
 - All time and timestamp related fields are in milliseconds.
 - All data types adopt definition in JAVA.
 
+
+## Websocket Information
+- Base Url: **wss://stream.toobit.com**
+
 ## LIMITS
 - The  `/api/v1/exchangeInfo` `rateLimits` array contains objects related to the exchange's `RAW_REQUEST`, `REQUEST_WEIGHT`, and `ORDER `rate limits. 
 - A 429 will be returned when either rate limit is violated.
