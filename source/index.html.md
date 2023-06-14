@@ -328,49 +328,53 @@ NONE
   "brokerFilters": [],
   "symbols": [
     {
-      "filters": [
-        {
-          "minPrice": "0.01",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.01",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "0.01",
-          "maxQty": "100000.00000000",
-          "stepSize": "0.0001",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "10",
-          "filterType": "MIN_NOTIONAL"
-        },
-        {
-          "minTradeQuantity": "0", // Minimum Trading Volume (Futures)
-          "maxTradeQuantity": "0", // Maximum trading volume (futures)
-          "minTradeAmount": "0", // Minimum Volume (Spot)
-          "maxTradeAmount": "0", // Maximum Turnover (Spot)
-          "minBuyPrice": "0", // Minimum buy price (spot)
-          "limitMaxSellPrice": "0", // Limit maximum selling price 
-          "limitMinTradeQuantity": "0", //  Limit minimum trading volume (spot)
-          "limitMaxTradeQuantity": "0", // Maximum trading volume of limit price (spot)
-          "marketMinTradeQuantity": "0", // Market Minimum Trading Volume (Spot)
-          "marketMaxTradeQuantity": "0", // Market Max Trade Quantity (spot)
-          "limitBuyMarkPriceRate": "0", // the rate at which the limit buy cannot be higher than the mark price
-          "limitSellMarkPriceRate": "0", // the rate at which the limit sell price cannot be higher than the marked price
-          "limitMaxDelegateOrderQuantity": 0, // Limit the maximum number of pending orders for a delegate order
-          "limitMaxConditionOrderQuantity": 0, // Limit the maximum number of pending orders for condition orders
-          "marketBuyMarkPriceRate": "0", //  the market buy price cannot be higher than the "mark (futures)/latest (spot)" price ratio
-          "marketSellMarkPriceRate": "0", // the rate at which the market sell price cannot be higher than the "mark(futures)/latest(spot)" price
-          "noAllowMarketStartAt": "1674057600000", // market order start time is not allowed
-          "noAllowMarketEndAt": "1674057600000", // do not allow to use market order end time
-          "limitLimitOrderStartAt": "1674057600000", //Limit Limit order start time
-          "limitLimitOrderEndAt": "1674057600000", // Limit Limit order end time
-          "limitAtMinPrice": "0", // the lowest price within the limit time
-          "limitAtMaxPrice": "0", // the maximum price within the time limit
-          "filterType": "TRADE_RULE"
-        }
-      ],
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+              {
+              "minAmount": "10", // minimum transaction amount
+              "maxAmount": "6600000", // maximum trade amount
+              "minBuyPrice": "0.01", // minimum buy price
+              "filterType": "TRADE_AMOUNT" 
+          }.
+          {
+              "maxSellPrice": "999999999", // limit max sell price
+              "buyPriceUpRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // the maximum sell price of the limit
+              "maxEntrustNum": "100000", // the maximum number of orders (contracts)
+              "maxConditionNum": "100000", // maximum number of condition orders (contracts)
+              "filterType": "LIMIT_TRADING"
+          }.
+          {
+              "buyPriceUpRate": "0.1", // Buy cannot be higher than 10% of the marked (contract)/latest (spot) price
+              "sellPriceDownRate": "0.1", // Sell cannot be less than 10% of the marked (contract)/latest (spot) price
+              "filterType": "MARKET_TRADING"
+          }.
+          {
+              "noAllowMarketStartTime": "0", // Market order start time is not allowed 
+              "noAllowMarketEndTime": "0", // Do not allow the market order end time
+              "limitOrderStartTime": "0", // the start time of a limit order
+              "limitOrderEndTime": "0", // Limit order end time
+              "limitMinPrice": "0", // the minimum price of a limit order
+              "limitMaxPrice": "0", // the maximum price of the limit order
+              "filterType": "OPEN_QUOTE"
+          }
+      ], 
       "exchangeId": "301",
       "symbol": "ETHUSDT",
       "symbolName": "ETHUSDT",
@@ -386,24 +390,53 @@ NONE
       "allowMargin": true
     },
     {
-      "filters": [
-        {
-          "minPrice": "0.01",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.01",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "0.0005",
-          "maxQty": "100000.00000000",
-          "stepSize": "0.000001",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "1",
-          "filterType": "MIN_NOTIONAL"
-        }
-      ],
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+              {
+              "minAmount": "10", // minimum transaction amount
+              "maxAmount": "6600000", // maximum trade amount
+              "minBuyPrice": "0.01", // minimum buy price
+              "filterType": "TRADE_AMOUNT" 
+          }.
+          {
+              "maxSellPrice": "999999999", // limit max sell price
+              "buyPriceUpRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // the maximum sell price of the limit
+              "maxEntrustNum": "100000", // the maximum number of orders (contracts)
+              "maxConditionNum": "100000", // maximum number of condition orders (contracts)
+              "filterType": "LIMIT_TRADING"
+          }.
+          {
+              "buyPriceUpRate": "0.1", // Buy cannot be higher than 10% of the marked (contract)/latest (spot) price
+              "sellPriceDownRate": "0.1", // Sell cannot be less than 10% of the marked (contract)/latest (spot) price
+              "filterType": "MARKET_TRADING"
+          }.
+          {
+              "noAllowMarketStartTime": "0", // Market order start time is not allowed 
+              "noAllowMarketEndTime": "0", // Do not allow the market order end time
+              "limitOrderStartTime": "0", // the start time of a limit order
+              "limitOrderEndTime": "0", // Limit order end time
+              "limitMinPrice": "0", // the minimum price of a limit order
+              "limitMaxPrice": "0", // the maximum price of the limit order
+              "filterType": "OPEN_QUOTE"
+          }
+      ], 
       "exchangeId": "301",
       "symbol": "BTCUSDT",
       "symbolName": "BTCUSDT",
@@ -419,24 +452,53 @@ NONE
       "allowMargin": true
     },
     {
-      "filters": [
-        {
-          "minPrice": "0.01",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.01",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "0.01",
-          "maxQty": "100000.00000000",
-          "stepSize": "0.01",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "0.01",
-          "filterType": "MIN_NOTIONAL"
-        }
-      ],
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+              {
+              "minAmount": "10", // minimum transaction amount
+              "maxAmount": "6600000", // maximum trade amount
+              "minBuyPrice": "0.01", // minimum buy price
+              "filterType": "TRADE_AMOUNT" 
+          }.
+          {
+              "maxSellPrice": "999999999", // limit max sell price
+              "buyPriceUpRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // the maximum sell price of the limit
+              "maxEntrustNum": "100000", // the maximum number of orders (contracts)
+              "maxConditionNum": "100000", // maximum number of condition orders (contracts)
+              "filterType": "LIMIT_TRADING"
+          }.
+          {
+              "buyPriceUpRate": "0.1", // Buy cannot be higher than 10% of the marked (contract)/latest (spot) price
+              "sellPriceDownRate": "0.1", // Sell cannot be less than 10% of the marked (contract)/latest (spot) price
+              "filterType": "MARKET_TRADING"
+          }.
+          {
+              "noAllowMarketStartTime": "0", // Market order start time is not allowed 
+              "noAllowMarketEndTime": "0", // Do not allow the market order end time
+              "limitOrderStartTime": "0", // the start time of a limit order
+              "limitOrderEndTime": "0", // Limit order end time
+              "limitMinPrice": "0", // the minimum price of a limit order
+              "limitMaxPrice": "0", // the maximum price of the limit order
+              "filterType": "OPEN_QUOTE"
+          }
+      ], 
       "exchangeId": "301",
       "symbol": "XRPUSDT",
       "symbolName": "XRPUSDT",
@@ -469,24 +531,53 @@ NONE
   "options": [],
   "contracts": [
     {
-      "filters": [
-        {
-          "minPrice": "0.1",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.1",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "1",
-          "maxQty": "100000.00000000",
-          "stepSize": "1",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "0.000000001",
-          "filterType": "MIN_NOTIONAL"
-        }
-      ],
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+              {
+              "minAmount": "10", // minimum transaction amount
+              "maxAmount": "6600000", // maximum trade amount
+              "minBuyPrice": "0.01", // minimum buy price
+              "filterType": "TRADE_AMOUNT" 
+          }.
+          {
+              "maxSellPrice": "999999999", // limit max sell price
+              "buyPriceUpRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // the maximum sell price of the limit
+              "maxEntrustNum": "100000", // the maximum number of orders (contracts)
+              "maxConditionNum": "100000", // maximum number of condition orders (contracts)
+              "filterType": "LIMIT_TRADING"
+          }.
+          {
+              "buyPriceUpRate": "0.1", // Buy cannot be higher than 10% of the marked (contract)/latest (spot) price
+              "sellPriceDownRate": "0.1", // Sell cannot be less than 10% of the marked (contract)/latest (spot) price
+              "filterType": "MARKET_TRADING"
+          }.
+          {
+              "noAllowMarketStartTime": "0", // Market order start time is not allowed 
+              "noAllowMarketEndTime": "0", // Do not allow the market order end time
+              "limitOrderStartTime": "0", // the start time of a limit order
+              "limitOrderEndTime": "0", // Limit order end time
+              "limitMinPrice": "0", // the minimum price of a limit order
+              "limitMaxPrice": "0", // the maximum price of the limit order
+              "filterType": "OPEN_QUOTE"
+          }
+      ], 
       "exchangeId": "301",
       "symbol": "BTC-SWAP-USDT",
       "symbolName": "BTC-SWAP-USDTUSDT",
@@ -530,24 +621,53 @@ NONE
       ]
     },
     {
-      "filters": [
-        {
-          "minPrice": "0.1",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.1",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "1",
-          "maxQty": "100000.00000000",
-          "stepSize": "1",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "0.000001",
-          "filterType": "MIN_NOTIONAL"
-        }
-      ],
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+              {
+              "minAmount": "10", // minimum transaction amount
+              "maxAmount": "6600000", // maximum trade amount
+              "minBuyPrice": "0.01", // minimum buy price
+              "filterType": "TRADE_AMOUNT" 
+          }.
+          {
+              "maxSellPrice": "999999999", // limit max sell price
+              "buyPriceUpRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // maximum sell price
+              "sellPriceDownRate": "0.1", // the maximum sell price of the limit
+              "maxEntrustNum": "100000", // the maximum number of orders (contracts)
+              "maxConditionNum": "100000", // maximum number of condition orders (contracts)
+              "filterType": "LIMIT_TRADING"
+          }.
+          {
+              "buyPriceUpRate": "0.1", // Buy cannot be higher than 10% of the marked (contract)/latest (spot) price
+              "sellPriceDownRate": "0.1", // Sell cannot be less than 10% of the marked (contract)/latest (spot) price
+              "filterType": "MARKET_TRADING"
+          }.
+          {
+              "noAllowMarketStartTime": "0", // Market order start time is not allowed 
+              "noAllowMarketEndTime": "0", // Do not allow the market order end time
+              "limitOrderStartTime": "0", // the start time of a limit order
+              "limitOrderEndTime": "0", // Limit order end time
+              "limitMinPrice": "0", // the minimum price of a limit order
+              "limitMaxPrice": "0", // the maximum price of the limit order
+              "filterType": "OPEN_QUOTE"
+          }
+      ], 
       "exchangeId": "301",
       "symbol": "BTC-SWAP",
       "symbolName": "BTC-SWAP",
