@@ -319,48 +319,52 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
   "brokerFilters": [],
   "symbols": [
     {
-      "filters": [
-        {
-          "minPrice": "0.01",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.01",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "0.01",
-          "maxQty": "100000.00000000",
-          "stepSize": "0.0001",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "10",
-          "filterType": "MIN_NOTIONAL"
-        },
-        {
-          "minTradeQuantity": "0", // 最小交易量（期货）
-          "maxTradeQuantity": "0", // 最大交易量（期货）
-          "minTradeAmount": "0", // 最小成交额（现货）
-          "maxTradeAmount": "0", // 最大成交额（现货）
-          "minBuyPrice": "0", // 最小买入价格（现货）
-          "limitMaxSellPrice": "0", // 限价最大卖出价格 
-          "limitMinTradeQuantity": "0", //  限价最小交易量（现货）
-          "limitMaxTradeQuantity": "0", // 限价最大交易量（现货）
-          "marketMinTradeQuantity": "0", // 市价最小交易量（现货）
-          "marketMaxTradeQuantity": "0", // 市价最大交易量（现货）
-          "limitBuyMarkPriceRate": "0", // 限价买入不能高于标记价格的比率
-          "limitSellMarkPriceRate": "0", // 限价卖出不能高于标记价格的比率
-          "limitMaxDelegateOrderQuantity": 0, // 限制委托单挂单最大笔数
-          "limitMaxConditionOrderQuantity": 0, // 限制条件单挂单最大笔数
-          "marketBuyMarkPriceRate": "0", // 市价买入不能高于“标记（期货）/最新（现货）”价格的比率
-          "marketSellMarkPriceRate": "0", // 市价卖出不能高于“标记（期货）/最新（现货）”价格的比率
-          "noAllowMarketStartAt": "1674057600000", // 不允许使用市价单开始时间
-          "noAllowMarketEndAt": "1674057600000", // 不允许使用市价单结束时间
-          "limitLimitOrderStartAt": "1674057600000", // 限制限价单开始时间
-          "limitLimitOrderEndAt": "1674057600000", // 限制限价单结束时间
-          "limitAtMinPrice": "0", // 限制时间内最低价格
-          "limitAtMaxPrice": "0", // 限制时间内最高价格
-          "filterType": "TRADE_RULE"
-        }
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+          {
+              "minAmount":"10", // 最小交易额
+  "                    "maxAmount":"6600000", // 最大交易额
+              "minBuyPrice":"0.01", // 最小买入价格
+              "filterType":"TRADE_AMOUNT" 
+          },
+          {
+              "maxSellPrice":"99999999", // 限价最大卖出价格
+              "buyPriceUpRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxConditionNum":"100000", // 条件单最大比数（合约
+              "filterType":"LIMIT_TRADING"
+          },
+          {
+              "buyPriceUpRate":"0.1", // 买入不能高于标记（合约）/最新（现货）价的 10%
+              "sellPriceDownRate":"0.1", // 卖出不能低于标记（合约）/最新（现货）价的 10%
+              "filterType":"MARKET_TRADING"
+          },
+          {
+              "noAllowMarketStartTime":"0", // 不允许使用市价单开始时间 
+              "noAllowMarketEndTime":"0", // 不允许使用市价单结束时间
+              "limitOrderStartTime":"0", // 限时限价单开始时间
+              "limitOrderEndTime":"0", // 限时限价单结束时间
+              "limitMinPrice":"0", // 限时限价单最低价格
+              "limitMaxPrice":"0", // 限时限价单最高价格
+              "filterType":"OPEN_QUOTE"
+          }
       ],
       "exchangeId": "301",
       "symbol": "ETHUSDT",
@@ -377,23 +381,52 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
       "allowMargin": true
     },
     {
-      "filters": [
-        {
-          "minPrice": "0.01",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.01",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "0.0005",
-          "maxQty": "100000.00000000",
-          "stepSize": "0.000001",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "1",
-          "filterType": "MIN_NOTIONAL"
-        }
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+          {
+              "minAmount":"10", // 最小交易额
+  "                    "maxAmount":"6600000", // 最大交易额
+              "minBuyPrice":"0.01", // 最小买入价格
+              "filterType":"TRADE_AMOUNT" 
+          },
+          {
+              "maxSellPrice":"99999999", // 限价最大卖出价格
+              "buyPriceUpRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxConditionNum":"100000", // 条件单最大比数（合约
+              "filterType":"LIMIT_TRADING"
+          },
+          {
+              "buyPriceUpRate":"0.1", // 买入不能高于标记（合约）/最新（现货）价的 10%
+              "sellPriceDownRate":"0.1", // 卖出不能低于标记（合约）/最新（现货）价的 10%
+              "filterType":"MARKET_TRADING"
+          },
+          {
+              "noAllowMarketStartTime":"0", // 不允许使用市价单开始时间 
+              "noAllowMarketEndTime":"0", // 不允许使用市价单结束时间
+              "limitOrderStartTime":"0", // 限时限价单开始时间
+              "limitOrderEndTime":"0", // 限时限价单结束时间
+              "limitMinPrice":"0", // 限时限价单最低价格
+              "limitMaxPrice":"0", // 限时限价单最高价格
+              "filterType":"OPEN_QUOTE"
+          }
       ],
       "exchangeId": "301",
       "symbol": "BTCUSDT",
@@ -410,23 +443,52 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
       "allowMargin": true
     },
     {
-      "filters": [
-        {
-          "minPrice": "0.01",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.01",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "0.01",
-          "maxQty": "100000.00000000",
-          "stepSize": "0.01",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "0.01",
-          "filterType": "MIN_NOTIONAL"
-        }
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+          {
+              "minAmount":"10", // 最小交易额
+  "                    "maxAmount":"6600000", // 最大交易额
+              "minBuyPrice":"0.01", // 最小买入价格
+              "filterType":"TRADE_AMOUNT" 
+          },
+          {
+              "maxSellPrice":"99999999", // 限价最大卖出价格
+              "buyPriceUpRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxConditionNum":"100000", // 条件单最大比数（合约
+              "filterType":"LIMIT_TRADING"
+          },
+          {
+              "buyPriceUpRate":"0.1", // 买入不能高于标记（合约）/最新（现货）价的 10%
+              "sellPriceDownRate":"0.1", // 卖出不能低于标记（合约）/最新（现货）价的 10%
+              "filterType":"MARKET_TRADING"
+          },
+          {
+              "noAllowMarketStartTime":"0", // 不允许使用市价单开始时间 
+              "noAllowMarketEndTime":"0", // 不允许使用市价单结束时间
+              "limitOrderStartTime":"0", // 限时限价单开始时间
+              "limitOrderEndTime":"0", // 限时限价单结束时间
+              "limitMinPrice":"0", // 限时限价单最低价格
+              "limitMaxPrice":"0", // 限时限价单最高价格
+              "filterType":"OPEN_QUOTE"
+          }
       ],
       "exchangeId": "301",
       "symbol": "XRPUSDT",
@@ -460,48 +522,52 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
   "options": [],
   "contracts": [
     {
-      "filters": [
-        {
-          "minPrice": "0.1",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.1",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "1",
-          "maxQty": "100000.00000000",
-          "stepSize": "1",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "0.000000001",
-          "filterType": "MIN_NOTIONAL"
-        },
-        {
-          "minTradeQuantity": "0", // 最小交易量（期货）
-          "maxTradeQuantity": "0", // 最大交易量（期货）
-          "minTradeAmount": "0", // 最小成交额（现货）
-          "maxTradeAmount": "0", // 最大成交额（现货）
-          "minBuyPrice": "0", // 最小买入价格（现货）
-          "limitMaxSellPrice": "0", // 限价最大卖出价格 
-          "limitMinTradeQuantity": "0", //  限价最小交易量（现货）
-          "limitMaxTradeQuantity": "0", // 限价最大交易量（现货）
-          "marketMinTradeQuantity": "0", // 市价最小交易量（现货）
-          "marketMaxTradeQuantity": "0", // 市价最大交易量（现货）
-          "limitBuyMarkPriceRate": "0", // 限价买入不能高于标记价格的比率
-          "limitSellMarkPriceRate": "0", // 限价卖出不能高于标记价格的比率
-          "limitMaxDelegateOrderQuantity": 0, // 限制委托单挂单最大笔数
-          "limitMaxConditionOrderQuantity": 0, // 限制条件单挂单最大笔数
-          "marketBuyMarkPriceRate": "0", // 市价买入不能高于“标记（期货）/最新（现货）”价格的比率
-          "marketSellMarkPriceRate": "0", // 市价卖出不能高于“标记（期货）/最新（现货）”价格的比率
-          "noAllowMarketStartAt": "1674057600000", // 不允许使用市价单开始时间
-          "noAllowMarketEndAt": "1674057600000", // 不允许使用市价单结束时间
-          "limitLimitOrderStartAt": "1674057600000", // 限制限价单开始时间
-          "limitLimitOrderEndAt": "1674057600000", // 限制限价单结束时间
-          "limitAtMinPrice": "0", // 限制时间内最低价格
-          "limitAtMaxPrice": "0", // 限制时间内最高价格
-          "filterType": "TRADE_RULE"
-        }
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+          {
+              "minAmount":"10", // 最小交易额
+  "                    "maxAmount":"6600000", // 最大交易额
+              "minBuyPrice":"0.01", // 最小买入价格
+              "filterType":"TRADE_AMOUNT" 
+          },
+          {
+              "maxSellPrice":"99999999", // 限价最大卖出价格
+              "buyPriceUpRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxConditionNum":"100000", // 条件单最大比数（合约
+              "filterType":"LIMIT_TRADING"
+          },
+          {
+              "buyPriceUpRate":"0.1", // 买入不能高于标记（合约）/最新（现货）价的 10%
+              "sellPriceDownRate":"0.1", // 卖出不能低于标记（合约）/最新（现货）价的 10%
+              "filterType":"MARKET_TRADING"
+          },
+          {
+              "noAllowMarketStartTime":"0", // 不允许使用市价单开始时间 
+              "noAllowMarketEndTime":"0", // 不允许使用市价单结束时间
+              "limitOrderStartTime":"0", // 限时限价单开始时间
+              "limitOrderEndTime":"0", // 限时限价单结束时间
+              "limitMinPrice":"0", // 限时限价单最低价格
+              "limitMaxPrice":"0", // 限时限价单最高价格
+              "filterType":"OPEN_QUOTE"
+          }
       ],
       "exchangeId": "301",
       "symbol": "BTC-SWAP-USDT",
@@ -546,23 +612,52 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
       ]
     },
     {
-      "filters": [
-        {
-          "minPrice": "0.1",
-          "maxPrice": "100000.00000000",
-          "tickSize": "0.1",
-          "filterType": "PRICE_FILTER"
-        },
-        {
-          "minQty": "1",
-          "maxQty": "100000.00000000",
-          "stepSize": "1",
-          "filterType": "LOT_SIZE"
-        },
-        {
-          "minNotional": "0.000001",
-          "filterType": "MIN_NOTIONAL"
-        }
+      "filters":[
+          {
+              "minPrice":"0.01",
+              "maxPrice":"100000.00000000",
+              "tickSize":"0.01",
+              "filterType":"PRICE_FILTER"
+          },
+          {
+              "minQty":"0.0001",
+              "maxQty":"4000",
+              "stepSize":"0.0001",
+              "filterType":"LOT_SIZE"
+          },
+          {
+              "minNotional":"10",
+              "filterType":"MIN_NOTIONAL"
+          },
+          {
+              "minAmount":"10", // 最小交易额
+  "                    "maxAmount":"6600000", // 最大交易额
+              "minBuyPrice":"0.01", // 最小买入价格
+              "filterType":"TRADE_AMOUNT" 
+          },
+          {
+              "maxSellPrice":"99999999", // 限价最大卖出价格
+              "buyPriceUpRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "sellPriceDownRate":"0.1", // 限价最大卖出价格
+              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxConditionNum":"100000", // 条件单最大比数（合约
+              "filterType":"LIMIT_TRADING"
+          },
+          {
+              "buyPriceUpRate":"0.1", // 买入不能高于标记（合约）/最新（现货）价的 10%
+              "sellPriceDownRate":"0.1", // 卖出不能低于标记（合约）/最新（现货）价的 10%
+              "filterType":"MARKET_TRADING"
+          },
+          {
+              "noAllowMarketStartTime":"0", // 不允许使用市价单开始时间 
+              "noAllowMarketEndTime":"0", // 不允许使用市价单结束时间
+              "limitOrderStartTime":"0", // 限时限价单开始时间
+              "limitOrderEndTime":"0", // 限时限价单结束时间
+              "limitMinPrice":"0", // 限时限价单最低价格
+              "limitMaxPrice":"0", // 限时限价单最高价格
+              "filterType":"OPEN_QUOTE"
+          }
       ],
       "exchangeId": "301",
       "symbol": "BTC-SWAP",
