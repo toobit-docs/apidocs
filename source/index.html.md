@@ -338,7 +338,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
           },
           {
               "minAmount":"10", // 最小交易额
-  "                    "maxAmount":"6600000", // 最大交易额
+              "maxAmount":"6600000", // 最大交易额
               "minBuyPrice":"0.01", // 最小买入价格
               "filterType":"TRADE_AMOUNT" 
           },
@@ -347,7 +347,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
               "buyPriceUpRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
-              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxEntrustNum":"100000",  // 委托单最大比数（合约）
               "maxConditionNum":"100000", // 条件单最大比数（合约
               "filterType":"LIMIT_TRADING"
           },
@@ -400,7 +400,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
           },
           {
               "minAmount":"10", // 最小交易额
-  "                    "maxAmount":"6600000", // 最大交易额
+              "maxAmount":"6600000", // 最大交易额
               "minBuyPrice":"0.01", // 最小买入价格
               "filterType":"TRADE_AMOUNT" 
           },
@@ -409,7 +409,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
               "buyPriceUpRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
-              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxEntrustNum":"100000",  // 委托单最大比数（合约）
               "maxConditionNum":"100000", // 条件单最大比数（合约
               "filterType":"LIMIT_TRADING"
           },
@@ -462,7 +462,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
           },
           {
               "minAmount":"10", // 最小交易额
-  "                    "maxAmount":"6600000", // 最大交易额
+              "maxAmount":"6600000", // 最大交易额
               "minBuyPrice":"0.01", // 最小买入价格
               "filterType":"TRADE_AMOUNT" 
           },
@@ -471,7 +471,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
               "buyPriceUpRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
-              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxEntrustNum":"100000",  // 委托单最大比数（合约）
               "maxConditionNum":"100000", // 条件单最大比数（合约
               "filterType":"LIMIT_TRADING"
           },
@@ -541,7 +541,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
           },
           {
               "minAmount":"10", // 最小交易额
-  "                    "maxAmount":"6600000", // 最大交易额
+              "maxAmount":"6600000", // 最大交易额
               "minBuyPrice":"0.01", // 最小买入价格
               "filterType":"TRADE_AMOUNT" 
           },
@@ -550,7 +550,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
               "buyPriceUpRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
-              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxEntrustNum":"100000",  // 委托单最大比数（合约）
               "maxConditionNum":"100000", // 条件单最大比数（合约
               "filterType":"LIMIT_TRADING"
           },
@@ -631,7 +631,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
           },
           {
               "minAmount":"10", // 最小交易额
-  "                    "maxAmount":"6600000", // 最大交易额
+              "maxAmount":"6600000", // 最大交易额
               "minBuyPrice":"0.01", // 最小买入价格
               "filterType":"TRADE_AMOUNT" 
           },
@@ -640,7 +640,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
               "buyPriceUpRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
               "sellPriceDownRate":"0.1", // 限价最大卖出价格
-              "maxEntrustNum":"100000", " // 委托单最大比数（合约）
+              "maxEntrustNum":"100000",  // 委托单最大比数（合约）
               "maxConditionNum":"100000", // 条件单最大比数（合约
               "filterType":"LIMIT_TRADING"
           },
