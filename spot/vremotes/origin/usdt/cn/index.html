@@ -821,48 +821,52 @@ HMAC SHA256 签名:
   </span><span class="nl">"brokerFilters"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"symbols"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易量（期货）</span><span class="w">
-          </span><span class="nl">"maxTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最大交易量（期货）</span><span class="w">
-          </span><span class="nl">"minTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小成交额（现货）</span><span class="w">
-          </span><span class="nl">"maxTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最大成交额（现货）</span><span class="w">
-          </span><span class="nl">"minBuyPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小买入价格（现货）</span><span class="w">
-          </span><span class="nl">"limitMaxSellPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价最大卖出价格</span><span class="w"> 
-          </span><span class="nl">"limitMinTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">  </span><span class="err">限价最小交易量（现货）</span><span class="w">
-          </span><span class="nl">"limitMaxTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价最大交易量（现货）</span><span class="w">
-          </span><span class="nl">"marketMinTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价最小交易量（现货）</span><span class="w">
-          </span><span class="nl">"marketMaxTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价最大交易量（现货）</span><span class="w">
-          </span><span class="nl">"limitBuyMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价买入不能高于标记价格的比率</span><span class="w">
-          </span><span class="nl">"limitSellMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价卖出不能高于标记价格的比率</span><span class="w">
-          </span><span class="nl">"limitMaxDelegateOrderQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制委托单挂单最大笔数</span><span class="w">
-          </span><span class="nl">"limitMaxConditionOrderQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制条件单挂单最大笔数</span><span class="w">
-          </span><span class="nl">"marketBuyMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价买入不能高于“标记（期货）/最新（现货）”价格的比率</span><span class="w">
-          </span><span class="nl">"marketSellMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价卖出不能高于“标记（期货）/最新（现货）”价格的比率</span><span class="w">
-          </span><span class="nl">"noAllowMarketStartAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w">
-          </span><span class="nl">"noAllowMarketEndAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
-          </span><span class="nl">"limitLimitOrderStartAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制限价单开始时间</span><span class="w">
-          </span><span class="nl">"limitLimitOrderEndAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制限价单结束时间</span><span class="w">
-          </span><span class="nl">"limitAtMinPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制时间内最低价格</span><span class="w">
-          </span><span class="nl">"limitAtMaxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制时间内最高价格</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADE_RULE"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"filters"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"PRICE_FILTER"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minQty"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LOT_SIZE"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minAmount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易额</span><span class="w">
+  </span><span class="s2">"                    "</span><span class="err">maxAmount</span><span class="s2">":"</span><span class="mi">6600000</span><span class="s2">", // 最大交易额
+              "</span><span class="err">minBuyPrice</span><span class="s2">":"</span><span class="mf">0.01</span><span class="s2">", // 最小买入价格
+              "</span><span class="err">filterType</span><span class="s2">":"</span><span class="err">TRADE_AMOUNT</span><span class="s2">" 
+          },
+          {
+              "</span><span class="err">maxSellPrice</span><span class="s2">":"</span><span class="mi">99999999</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">buyPriceUpRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">maxEntrustNum</span><span class="s2">":"</span><span class="mi">100000</span><span class="s2">", "</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">委托单最大比数（合约）</span><span class="w">
+              </span><span class="nl">"maxConditionNum"</span><span class="p">:</span><span class="s2">"100000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">条件单最大比数（合约</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LIMIT_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"buyPriceUpRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">买入不能高于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"sellPriceDownRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">卖出不能低于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MARKET_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"noAllowMarketStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w"> 
+              </span><span class="nl">"noAllowMarketEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
+              </span><span class="nl">"limitOrderStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单开始时间</span><span class="w">
+              </span><span class="nl">"limitOrderEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单结束时间</span><span class="w">
+              </span><span class="nl">"limitMinPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最低价格</span><span class="w">
+              </span><span class="nl">"limitMaxPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最高价格</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"OPEN_QUOTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="w">
@@ -879,23 +883,52 @@ HMAC SHA256 签名:
       </span><span class="nl">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0005"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"filters"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"PRICE_FILTER"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minQty"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LOT_SIZE"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minAmount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易额</span><span class="w">
+  </span><span class="s2">"                    "</span><span class="err">maxAmount</span><span class="s2">":"</span><span class="mi">6600000</span><span class="s2">", // 最大交易额
+              "</span><span class="err">minBuyPrice</span><span class="s2">":"</span><span class="mf">0.01</span><span class="s2">", // 最小买入价格
+              "</span><span class="err">filterType</span><span class="s2">":"</span><span class="err">TRADE_AMOUNT</span><span class="s2">" 
+          },
+          {
+              "</span><span class="err">maxSellPrice</span><span class="s2">":"</span><span class="mi">99999999</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">buyPriceUpRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">maxEntrustNum</span><span class="s2">":"</span><span class="mi">100000</span><span class="s2">", "</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">委托单最大比数（合约）</span><span class="w">
+              </span><span class="nl">"maxConditionNum"</span><span class="p">:</span><span class="s2">"100000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">条件单最大比数（合约</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LIMIT_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"buyPriceUpRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">买入不能高于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"sellPriceDownRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">卖出不能低于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MARKET_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"noAllowMarketStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w"> 
+              </span><span class="nl">"noAllowMarketEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
+              </span><span class="nl">"limitOrderStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单开始时间</span><span class="w">
+              </span><span class="nl">"limitOrderEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单结束时间</span><span class="w">
+              </span><span class="nl">"limitMinPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最低价格</span><span class="w">
+              </span><span class="nl">"limitMaxPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最高价格</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"OPEN_QUOTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">
@@ -912,23 +945,52 @@ HMAC SHA256 签名:
       </span><span class="nl">"allowMargin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"filters"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"PRICE_FILTER"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minQty"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LOT_SIZE"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minAmount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易额</span><span class="w">
+  </span><span class="s2">"                    "</span><span class="err">maxAmount</span><span class="s2">":"</span><span class="mi">6600000</span><span class="s2">", // 最大交易额
+              "</span><span class="err">minBuyPrice</span><span class="s2">":"</span><span class="mf">0.01</span><span class="s2">", // 最小买入价格
+              "</span><span class="err">filterType</span><span class="s2">":"</span><span class="err">TRADE_AMOUNT</span><span class="s2">" 
+          },
+          {
+              "</span><span class="err">maxSellPrice</span><span class="s2">":"</span><span class="mi">99999999</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">buyPriceUpRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">maxEntrustNum</span><span class="s2">":"</span><span class="mi">100000</span><span class="s2">", "</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">委托单最大比数（合约）</span><span class="w">
+              </span><span class="nl">"maxConditionNum"</span><span class="p">:</span><span class="s2">"100000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">条件单最大比数（合约</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LIMIT_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"buyPriceUpRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">买入不能高于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"sellPriceDownRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">卖出不能低于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MARKET_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"noAllowMarketStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w"> 
+              </span><span class="nl">"noAllowMarketEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
+              </span><span class="nl">"limitOrderStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单开始时间</span><span class="w">
+              </span><span class="nl">"limitOrderEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单结束时间</span><span class="w">
+              </span><span class="nl">"limitMinPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最低价格</span><span class="w">
+              </span><span class="nl">"limitMaxPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最高价格</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"OPEN_QUOTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRPUSDT"</span><span class="p">,</span><span class="w">
@@ -962,48 +1024,52 @@ HMAC SHA256 签名:
   </span><span class="nl">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易量（期货）</span><span class="w">
-          </span><span class="nl">"maxTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最大交易量（期货）</span><span class="w">
-          </span><span class="nl">"minTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小成交额（现货）</span><span class="w">
-          </span><span class="nl">"maxTradeAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最大成交额（现货）</span><span class="w">
-          </span><span class="nl">"minBuyPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小买入价格（现货）</span><span class="w">
-          </span><span class="nl">"limitMaxSellPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价最大卖出价格</span><span class="w"> 
-          </span><span class="nl">"limitMinTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w">  </span><span class="err">限价最小交易量（现货）</span><span class="w">
-          </span><span class="nl">"limitMaxTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价最大交易量（现货）</span><span class="w">
-          </span><span class="nl">"marketMinTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价最小交易量（现货）</span><span class="w">
-          </span><span class="nl">"marketMaxTradeQuantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价最大交易量（现货）</span><span class="w">
-          </span><span class="nl">"limitBuyMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价买入不能高于标记价格的比率</span><span class="w">
-          </span><span class="nl">"limitSellMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限价卖出不能高于标记价格的比率</span><span class="w">
-          </span><span class="nl">"limitMaxDelegateOrderQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制委托单挂单最大笔数</span><span class="w">
-          </span><span class="nl">"limitMaxConditionOrderQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制条件单挂单最大笔数</span><span class="w">
-          </span><span class="nl">"marketBuyMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价买入不能高于“标记（期货）/最新（现货）”价格的比率</span><span class="w">
-          </span><span class="nl">"marketSellMarkPriceRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">市价卖出不能高于“标记（期货）/最新（现货）”价格的比率</span><span class="w">
-          </span><span class="nl">"noAllowMarketStartAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w">
-          </span><span class="nl">"noAllowMarketEndAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
-          </span><span class="nl">"limitLimitOrderStartAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制限价单开始时间</span><span class="w">
-          </span><span class="nl">"limitLimitOrderEndAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1674057600000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制限价单结束时间</span><span class="w">
-          </span><span class="nl">"limitAtMinPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制时间内最低价格</span><span class="w">
-          </span><span class="nl">"limitAtMaxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限制时间内最高价格</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRADE_RULE"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"filters"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"PRICE_FILTER"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minQty"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LOT_SIZE"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minAmount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易额</span><span class="w">
+  </span><span class="s2">"                    "</span><span class="err">maxAmount</span><span class="s2">":"</span><span class="mi">6600000</span><span class="s2">", // 最大交易额
+              "</span><span class="err">minBuyPrice</span><span class="s2">":"</span><span class="mf">0.01</span><span class="s2">", // 最小买入价格
+              "</span><span class="err">filterType</span><span class="s2">":"</span><span class="err">TRADE_AMOUNT</span><span class="s2">" 
+          },
+          {
+              "</span><span class="err">maxSellPrice</span><span class="s2">":"</span><span class="mi">99999999</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">buyPriceUpRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">maxEntrustNum</span><span class="s2">":"</span><span class="mi">100000</span><span class="s2">", "</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">委托单最大比数（合约）</span><span class="w">
+              </span><span class="nl">"maxConditionNum"</span><span class="p">:</span><span class="s2">"100000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">条件单最大比数（合约</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LIMIT_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"buyPriceUpRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">买入不能高于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"sellPriceDownRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">卖出不能低于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MARKET_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"noAllowMarketStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w"> 
+              </span><span class="nl">"noAllowMarketEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
+              </span><span class="nl">"limitOrderStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单开始时间</span><span class="w">
+              </span><span class="nl">"limitOrderEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单结束时间</span><span class="w">
+              </span><span class="nl">"limitMinPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最低价格</span><span class="w">
+              </span><span class="nl">"limitMaxPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最高价格</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"OPEN_QUOTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
@@ -1048,23 +1114,52 @@ HMAC SHA256 签名:
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"filters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PRICE_FILTER"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LOT_SIZE"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000001"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"filterType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+      </span><span class="nl">"filters"</span><span class="p">:[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minPrice"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxPrice"</span><span class="p">:</span><span class="s2">"100000.00000000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"PRICE_FILTER"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minQty"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"maxQty"</span><span class="p">:</span><span class="s2">"4000"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"stepSize"</span><span class="p">:</span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LOT_SIZE"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minNotional"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MIN_NOTIONAL"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"minAmount"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">最小交易额</span><span class="w">
+  </span><span class="s2">"                    "</span><span class="err">maxAmount</span><span class="s2">":"</span><span class="mi">6600000</span><span class="s2">", // 最大交易额
+              "</span><span class="err">minBuyPrice</span><span class="s2">":"</span><span class="mf">0.01</span><span class="s2">", // 最小买入价格
+              "</span><span class="err">filterType</span><span class="s2">":"</span><span class="err">TRADE_AMOUNT</span><span class="s2">" 
+          },
+          {
+              "</span><span class="err">maxSellPrice</span><span class="s2">":"</span><span class="mi">99999999</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">buyPriceUpRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">sellPriceDownRate</span><span class="s2">":"</span><span class="mf">0.1</span><span class="s2">", // 限价最大卖出价格
+              "</span><span class="err">maxEntrustNum</span><span class="s2">":"</span><span class="mi">100000</span><span class="s2">", "</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">委托单最大比数（合约）</span><span class="w">
+              </span><span class="nl">"maxConditionNum"</span><span class="p">:</span><span class="s2">"100000"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">条件单最大比数（合约</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"LIMIT_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"buyPriceUpRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">买入不能高于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"sellPriceDownRate"</span><span class="p">:</span><span class="s2">"0.1"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">卖出不能低于标记（合约）/最新（现货）价的</span><span class="w"> </span><span class="mi">10</span><span class="err">%</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"MARKET_TRADING"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"noAllowMarketStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单开始时间</span><span class="w"> 
+              </span><span class="nl">"noAllowMarketEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">不允许使用市价单结束时间</span><span class="w">
+              </span><span class="nl">"limitOrderStartTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单开始时间</span><span class="w">
+              </span><span class="nl">"limitOrderEndTime"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单结束时间</span><span class="w">
+              </span><span class="nl">"limitMinPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最低价格</span><span class="w">
+              </span><span class="nl">"limitMaxPrice"</span><span class="p">:</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">限时限价单最高价格</span><span class="w">
+              </span><span class="nl">"filterType"</span><span class="p">:</span><span class="s2">"OPEN_QUOTE"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"exchangeId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"301"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP"</span><span class="p">,</span><span class="w">
