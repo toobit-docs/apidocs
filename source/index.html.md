@@ -2147,29 +2147,47 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | recvWindow | LONG | NO | recv窗口 |
 | timestamp | LONG | YES | 时间戳 |
 
-## 账户内资产划转 (USER_DATA)
+## 母子账户万能划转
 
-- `POST /api/v1/account/assetTransfer`
+- `POST /api/v1/subAccount/transfer`
 
-### 权重： 5
+支持的划转操作:
 
-> 响应
+- 母账户操作 母账户`现货账户`划转到任意子账户`现货账户`、`U本位合约账户`
+- 母账户操作 母账户`现货账户`、`U本位合约账户`之间的划转
+- 母账户操作 任意子账户`现货账户`、`U本位合约账户`划转到母账户`现货账户`
+- 母账户操作 某一个子账户的`现货账户`、`U本位合约账户`之间的划转
+- 子用户操作 当前子账户`现货账户`到母用户`现货账户`、`U本位合约账户`的划转
+- 子用户操作 当前子用户`现货账户`、`U本位合约账户`之间的划转
+
+### 权重：1
+
+> 响应：
 
 ``` json
 {
-    "success":"true" // 成功
+    "code": 200, // 成功
+    "msg": "success" // 响应消息
 }
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| fromAccountId | LONG | YES | 源账户id |
-| toAccountId | LONG | YES | 目标账户id |
-| coin | STRING | YES | 资产 |
-| quantity | DECIMAL | YES  | 数量 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| 名称              | 类型      |    是否必须           | 描述       |
+|-----------------|---------| ------- |----------|
+| fromUid         | LONG    | YES | 源账户id    |
+| toUid           | LONG    | YES | 目标账户id   |
+| fromAccountType | String  | YES | 源账户类型    |
+| toAccountType   | String    | YES | 目标账户类型   |
+| asset           | String  | YES | 币种       |
+| quantity        | DECIMAL | YES | 转账数量     |
+| timestamp       | LONG    | YES | 时间戳      |
+| recvWindow      | LONG    | NO | recv窗口   |
+
+
+accountType：
+`MAIN`: 现货
+`FUTURES`:  U本位合约
+
 
 ## 查询账户流水 (USER_DATA)
 
