@@ -1730,6 +1730,10 @@ Execute the transfer between the spot account and the contract account
 
 
 
+accountType：
+`MAIN`: spot account
+`FUTURES`:  U-contract account
+
 
 
 ## Get Future Account Transaction History List (USER_DATA)
