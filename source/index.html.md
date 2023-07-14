@@ -2155,9 +2155,21 @@ Notes：
 | timestamp | LONG | YES | Timestamp |
 
 
-## New Account Transfer
+## Account Transfer
 
-- `POST /api/v1/account/assetTransfer`
+- `POST /api/v1/subAccount/transfer`
+
+Supported transfer operations:
+
+- Parent account operation Transfer from parent `spot account` to any sub-account `spot account`, `U-position contract account`.
+- Transfer between parent account `Spot account` and `U-position contract account`.
+- Parent account operation Transfer of any sub-account `Spot account`, `U-contract account` to parent account `Spot account`
+- Parent account operation Transfer between `spot account` and `U-contract account` of a particular sub-account
+- Sub-user operation Transfer from the current sub-account `spot account` to the parent account `spot account` and `U-contract account
+- Sub-user operation Transfer between the current sub-user's `Spot account` and `U-contract account
+
+Translated with www.DeepL.com/Translator (free version)
+Execute the transfer between the spot account and the contract account
 
 ### Weight：1
 
@@ -2165,19 +2177,27 @@ Notes：
 
 ``` json
 {
-    "success":"true" 
+    "code": 200, // 200 = success
+    "msg": "success" // response message
 }
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description     |
-| ----------------- | ---- | ------- |-----------------|
-| fromAccountId | LONG | YES | from account id |
-| toAccountId | LONG | YES | to account id   |
-| coin | STRING | YES | coin            |
-| quantity | DECIMAL | YES |       quantity          |
-| recvWindow | LONG | NO |    recv window             |
-| timestamp | LONG | YES |    timestamp             |
+| 名称              | 类型      |    是否必须           | 描述                |
+|-----------------|---------| ------- |-------------------|
+| fromUid         | LONG    | YES | from uid          |
+| toUid           | LONG    | YES | to uid            |
+| fromAccountType | String  | YES | from account type |
+| toAccountType   | String    | YES | to account type   |
+| asset           | String  | YES | asset             |
+| quantity        | DECIMAL | YES | transfer quantity         |
+| timestamp       | LONG    | YES | timestamp               |
+| recvWindow      | LONG    | NO | recv window            |
+
+
+accountType：
+`MAIN`: spot account
+`FUTURES`:  U-contract account
 
 
 ## Get Account Transaction History List (USER_DATA)
