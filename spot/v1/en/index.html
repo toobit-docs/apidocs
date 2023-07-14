@@ -424,7 +424,7 @@
                     <a href="#query-sub-account-user_data" class="toc-h2 toc-link" data-title="Query Sub-account (USER_DATA)">Query Sub-account (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#new-account-transfer" class="toc-h2 toc-link" data-title="New Account Transfer">New Account Transfer</a>
+                    <a href="#account-transfer" class="toc-h2 toc-link" data-title="Account Transfer">Account Transfer</a>
                   </li>
                   <li>
                     <a href="#get-account-transaction-history-list-user_data" class="toc-h2 toc-link" data-title="Get Account Transaction History List (USER_DATA)">Get Account Transaction History List (USER_DATA)</a>
@@ -3274,49 +3274,82 @@ fail :
 <td>Timestamp</td>
 </tr>
 </tbody></table>
-<h2 id='new-account-transfer'>New Account Transfer</h2>
+<h2 id='account-transfer'>Account Transfer</h2>
 <ul>
-<li><code>POST /api/v1/account/assetTransfer</code></li>
+<li><code>POST /api/v1/subAccount/transfer</code></li>
 </ul>
+
+<p>Supported transfer operations:</p>
+
+<ul>
+<li>Parent account operation Transfer from parent <code>spot account</code> to any sub-account <code>spot account</code>, <code>U-position contract account</code>.</li>
+<li>Transfer between parent account <code>Spot account</code> and <code>U-position contract account</code>.</li>
+<li>Parent account operation Transfer of any sub-account <code>Spot account</code>, <code>U-contract account</code> to parent account <code>Spot account</code></li>
+<li>Parent account operation Transfer between <code>spot account</code> and <code>U-contract account</code> of a particular sub-account</li>
+<li>Sub-user operation Transfer from the current sub-account <code>spot account</code> to the parent account <code>spot account</code> and `U-contract account</li>
+<li>Sub-user operation Transfer between the current sub-user&#39;s <code>Spot account</code> and `U-contract account</li>
+</ul>
+
+<p>Translated with www.DeepL.com/Translator (free version)
+Execute the transfer between the spot account and the contract account</p>
 <h3 id='weight-1-17'>Weight：1</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"success"</span><span class="p">:</span><span class="s2">"true"</span><span class="w"> 
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">success</span><span class="w">
+    </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">message</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='parameters-27'>Parameters</h3>
 <table><thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Description</th>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>fromAccountId</td>
+<td>fromUid</td>
 <td>LONG</td>
 <td>YES</td>
-<td>from account id</td>
+<td>from uid</td>
 </tr>
 <tr>
-<td>toAccountId</td>
+<td>toUid</td>
 <td>LONG</td>
 <td>YES</td>
-<td>to account id</td>
+<td>to uid</td>
 </tr>
 <tr>
-<td>coin</td>
-<td>STRING</td>
+<td>fromAccountType</td>
+<td>String</td>
 <td>YES</td>
-<td>coin</td>
+<td>from account type</td>
+</tr>
+<tr>
+<td>toAccountType</td>
+<td>String</td>
+<td>YES</td>
+<td>to account type</td>
+</tr>
+<tr>
+<td>asset</td>
+<td>String</td>
+<td>YES</td>
+<td>asset</td>
 </tr>
 <tr>
 <td>quantity</td>
 <td>DECIMAL</td>
 <td>YES</td>
-<td>quantity</td>
+<td>transfer quantity</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>timestamp</td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -3324,13 +3357,11 @@ fail :
 <td>NO</td>
 <td>recv window</td>
 </tr>
-<tr>
-<td>timestamp</td>
-<td>LONG</td>
-<td>YES</td>
-<td>timestamp</td>
-</tr>
 </tbody></table>
+
+<p>accountType：
+<code>MAIN</code>: spot account
+<code>FUTURES</code>:  U-contract account</p>
 <h2 id='get-account-transaction-history-list-user_data'>Get Account Transaction History List (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/balanceFlow</code></li>
