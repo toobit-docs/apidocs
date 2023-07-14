@@ -1112,7 +1112,7 @@ HMAC SHA256 signature:
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000135"</span><span class="p">,</span><span class="w">
           </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3000000.0"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.03"</span><span class="p">,</span><span class="err">、</span><span class="w">
           </span><span class="nl">"maintMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.015"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -2467,6 +2467,10 @@ Execute the transfer between the spot account and the contract account</p>
 <td>recv window</td>
 </tr>
 </tbody></table>
+
+<p>accountType：
+<code>MAIN</code>: spot account
+<code>FUTURES</code>:  U-contract account</p>
 <h2 id='get-future-account-transaction-history-list-user_data'>Get Future Account Transaction History List (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/account/balanceFlow</code></li>
