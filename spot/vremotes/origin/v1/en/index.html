@@ -2499,7 +2499,7 @@ If the next returned data contains:</p>
 <ul>
 <li><code>POST /api/v1/spot/batchOrders      (HMAC SHA256)</code></li>
 </ul>
-<h3 id='weight-1-13'>Weight：1</h3>
+<h3 id='weight-2'>Weight：2</h3>
 <p>Create new orders in batches, up to <code>20</code> orders at a time, must be the same <code>symbol</code>.</p>
 
 <blockquote>
@@ -2701,7 +2701,7 @@ fail :
 </ul>
 
 <p>Cancel an active order.</p>
-<h3 id='weight-1-14'>Weight：1</h3>
+<h3 id='weight-1-13'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2868,7 +2868,7 @@ fail :
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='weight-1-15'>Weight：1</h3>
+<h3 id='weight-1-14'>Weight：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -2937,7 +2937,7 @@ fail :
 </ul>
 
 <p>Get all open orders on a symbol. <strong>Careful</strong> when accessing this with no symbol.</p>
-<h3 id='weight-1-16'>Weight ：1</h3>
+<h3 id='weight-1-15'>Weight ：1</h3>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3292,7 +3292,7 @@ fail :
 
 <p>Translated with www.DeepL.com/Translator (free version)
 Execute the transfer between the spot account and the contract account</p>
-<h3 id='weight-1-17'>Weight：1</h3>
+<h3 id='weight-1-16'>Weight：1</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3529,7 +3529,7 @@ Execute the transfer between the spot account and the contract account</p>
 </ul>
 
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.</p>
-<h4 id='weight-1-18'>Weight：1</h4>
+<h4 id='weight-1-17'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3564,7 +3564,7 @@ Execute the transfer between the spot account and the contract account</p>
 </ul>
 
 <p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It&#39;s recommended to send a ping about every 30 minutes.</p>
-<h4 id='weight-1-19'>Weight：1</h4>
+<h4 id='weight-1-18'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -3601,7 +3601,7 @@ Execute the transfer between the spot account and the contract account</p>
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='weight-1-20'>Weight：1</h4>
+<h4 id='weight-1-19'>Weight：1</h4>
 <blockquote>
 <p>Response</p>
 </blockquote>
