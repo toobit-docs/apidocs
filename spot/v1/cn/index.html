@@ -2472,7 +2472,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>POST /api/v1/spot/batchOrders      (HMAC SHA256)</code></li>
 </ul>
-<h3 id='1-13'>权重：1</h3>
+<h3 id='2'>权重：2</h3>
 <p>批量创建新订单,单次最多<code>20</code>条订单，必须为同一<code>symbol</code>。</p>
 
 <blockquote>
@@ -2679,7 +2679,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>取消有效订单。</p>
-<h3 id='1-14'>权重：1</h3>
+<h3 id='1-13'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2846,7 +2846,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>GET /api/v1/spot/order (HMAC SHA256)</code></li>
 </ul>
-<h3 id='1-15'>权重：1</h3>
+<h3 id='1-14'>权重：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -2915,7 +2915,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>获取交易对的所有当前挂单， 请小心使用不带交易对参数的调用。</p>
-<h3 id='1-16'>权重 ：1</h3>
+<h3 id='1-15'>权重 ：1</h3>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -3267,7 +3267,7 @@ HMAC SHA256 签名:
 <li>子用户操作 当前子账户<code>现货账户</code>到母用户<code>现货账户</code>、<code>U本位合约账户</code>的划转</li>
 <li>子用户操作 当前子用户<code>现货账户</code>、<code>U本位合约账户</code>之间的划转</li>
 </ul>
-<h3 id='1-17'>权重：1</h3>
+<h3 id='1-16'>权重：1</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -3491,7 +3491,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>开始一个新的数据流。除非发送 keepalive，否则数据流于60分钟后关闭。</p>
-<h4 id='1-18'>权重：1</h4>
+<h4 id='1-17'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -3526,7 +3526,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>有效期延长至本次调用后60分钟,建议每30分钟发送一个 ping 。</p>
-<h4 id='1-19'>权重：1</h4>
+<h4 id='1-18'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
@@ -3563,7 +3563,7 @@ HMAC SHA256 签名:
 <ul>
 <li><code>DELETE /api/v1/userDataStream</code></li>
 </ul>
-<h4 id='1-20'>权重：1</h4>
+<h4 id='1-19'>权重：1</h4>
 <blockquote>
 <p>响应</p>
 </blockquote>
