@@ -1685,7 +1685,7 @@ Symbol的深度信息。
 
 - `POST /api/v1/spot/batchOrders      (HMAC SHA256)`
 
-### 权重：1
+### 权重：2
 
 批量创建新订单,单次最多`20`条订单，必须为同一`symbol`。
 
