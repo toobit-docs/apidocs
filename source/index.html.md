@@ -1697,7 +1697,7 @@ Additional mandatory parameters based on `type`:
 
 - `POST /api/v1/spot/batchOrders      (HMAC SHA256)`
 
-### Weight：1
+### Weight：2
 
 Create new orders in batches, up to `20` orders at a time, must be the same `symbol`.
 
