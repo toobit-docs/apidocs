@@ -1887,7 +1887,7 @@ accountType：
 ## 批量下单 (TRADE)
 - `POST /api/v1/futures/batchOrders`
 
-单次最多20条订单，必须为同一`symbol`。
+单次最多10条订单，必须为同一`symbol`。
 
 ### 权重: 2
 
