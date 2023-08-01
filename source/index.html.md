@@ -1926,7 +1926,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 ## Place Multiple Orders (TRADE)
 - `POST /api/v1/futures/batchOrders`
 
-A maximum of 20 orders at a time, must be the same `symbol`.
+A maximum of 10 orders at a time, must be the same `symbol`.
 
 ### Weight: 2
 
