@@ -410,8 +410,8 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
         "fromAddressTag": "19029901",
         "time": 1499865549590,
         "quantity": "1.01",
-        "status": "1",
-        "statusCode": "1",
+        "status": "2", // 2=成功,11=拒绝, 12=审核中
+        "statusCode": "DEPOSIT_CAN_WITHDRAW",
         "requiredConfirmTimes": "5",
         "confirmTimes": "5",
         "txId": "98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC",
@@ -420,17 +420,18 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 ]
 ```
 
-### 参数
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| coin | STRING | NO | 资产 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG | NO | 结束时间戳 |
-| fromId | LONG | NO | 从哪个Id起开始抓取 |
+### 请求参数
+
+| 参数名称     | 类型      | 是否必需      | 描述              |
+| ----------- | ------- | ------------- |-----------------|
+| coin | STRING | NO | 资产：例如BTC        |
+| startTime | LONG | NO | 开始时间戳           |
+| endTime | LONG | NO | 结束时间戳           |
+| fromId | LONG | NO | 从哪个Id起开始抓取      |
 | limit | INT | NO | 默认 500; 最大 1000 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |、
+| recvWindow | LONG | NO | recv窗口          |
+| timestamp | LONG | YES | 时间戳             |、
 
 注意：
 
@@ -966,15 +967,6 @@ NONE
 ## 深度信息
 - `GET /quote/v1/depth`
 
-### 权重：
-
-根据limit不同：
-
-| 限制	     | 权重      | 
-| ----------- | ------- |
-| 5, 10, 20, 50, 100 | 1 | 
-| 500 | 5 |
-| 1000  | 10 |
 
 > 响应
 
@@ -1005,10 +997,10 @@ NONE
 
 ### 参数
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| YES | |
-| limit | INT | NO | 默认 100; 最大 100. |
+| 参数名称     | 类型      | 是否必需      | 描述              |
+| ----------- | ------- | ------------- |-----------------|
+| symbol | STRING| YES |                 |
+| limit | INT | NO | 默认 100; 最大 200. |
 
 注意：
 如果设置`limit=0`会返回很多数据。
