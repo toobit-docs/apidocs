@@ -1013,8 +1013,8 @@ HMAC SHA256 signature:
         </span><span class="nl">"fromAddressTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19029901"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499865549590</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.01"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">2</span><span class="err">=SUCCESS</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="err">=REJECT</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="err">=AUDIT</span><span class="w">
+        </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT_CAN_WITHDRAW"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"requiredConfirmTimes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmTimes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC"</span><span class="p">,</span><span class="w">
@@ -1594,28 +1594,6 @@ HMAC SHA256 signature:
 <li><code>GET /quote/v1/depth</code></li>
 </ul>
 <h3 id='0247ab2030'>权重：</h3>
-<p>Adjusted based on the limit:：</p>
-
-<table><thead>
-<tr>
-<th>Limit</th>
-<th>Weight</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>5, 10, 20, 50, 100</td>
-<td>1</td>
-</tr>
-<tr>
-<td>500</td>
-<td>5</td>
-</tr>
-<tr>
-<td>1000</td>
-<td>10</td>
-</tr>
-</tbody></table>
-
 <blockquote>
 <p>Response</p>
 </blockquote>
@@ -1660,7 +1638,7 @@ HMAC SHA256 signature:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>Default 100; Max 100.</td>
+<td>Default 100; Max 200.</td>
 </tr>
 </tbody></table>
 
