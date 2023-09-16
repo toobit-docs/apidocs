@@ -995,15 +995,15 @@ HMAC SHA256 签名:
         </span><span class="nl">"fromAddressTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19029901"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499865549590</span><span class="p">,</span><span class="w">
         </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.01"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="mi">2</span><span class="err">=成功</span><span class="p">,</span><span class="mi">11</span><span class="err">=拒绝</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="err">=审核中</span><span class="w">
+        </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEPOSIT_CAN_WITHDRAW"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"requiredConfirmTimes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"confirmTimes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"txIdUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-4'>参数</h3>
+</span></code></pre></div><h3 id='1f9ac54b15'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1016,7 +1016,7 @@ HMAC SHA256 签名:
 <td>coin</td>
 <td>STRING</td>
 <td>NO</td>
-<td>资产</td>
+<td>资产：例如BTC</td>
 </tr>
 <tr>
 <td>startTime</td>
@@ -1072,7 +1072,7 @@ HMAC SHA256 签名:
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-5'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-4'>参数</h3>
 <p>NONE</p>
 <h2 id='3f1907847c'>获取服务器时间</h2>
 <ul>
@@ -1087,7 +1087,7 @@ HMAC SHA256 签名:
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"serverTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1538323200000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-6'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-5'>参数</h3>
 <p>NONE</p>
 <h2 id='0f3f2d5ee7'>获取交易规则和交易对</h2>
 <ul>
@@ -1569,34 +1569,12 @@ HMAC SHA256 签名:
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='749d765242-7'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-6'>参数</h3>
 <p>NONE</p>
 <h2 id='38a975b802'>深度信息</h2>
 <ul>
 <li><code>GET /quote/v1/depth</code></li>
 </ul>
-<h3 id='0247ab2030'>权重：</h3>
-<p>根据limit不同：</p>
-
-<table><thead>
-<tr>
-<th>限制</th>
-<th>权重</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>5, 10, 20, 50, 100</td>
-<td>1</td>
-</tr>
-<tr>
-<td>500</td>
-<td>5</td>
-</tr>
-<tr>
-<td>1000</td>
-<td>10</td>
-</tr>
-</tbody></table>
 
 <blockquote>
 <p>响应</p>
@@ -1623,7 +1601,7 @@ HMAC SHA256 签名:
     </span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-8'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-7'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1642,7 +1620,7 @@ HMAC SHA256 签名:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>默认 100; 最大 100.</td>
+<td>默认 100; 最大 200.</td>
 </tr>
 </tbody></table>
 
@@ -1666,7 +1644,7 @@ HMAC SHA256 签名:
     </span><span class="nl">"ibm"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">成交方向</span><span class="w"> </span><span class="err">isBuyerMaker</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-9'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-8'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1713,7 +1691,7 @@ HMAC SHA256 签名:
     </span><span class="s2">"28.46694368"</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">Taker</span><span class="w"> </span><span class="err">buy</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset数量</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-10'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-9'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1763,7 +1741,7 @@ HMAC SHA256 签名:
 </ul>
 
 <p>24小时价格变化数据。注意 如果没有发送<code>symbol</code>，会返回很多数据。</p>
-<h3 id='0247ab2030-2'>权重：</h3>
+<h3 id='0247ab2030'>权重：</h3>
 <p>如果只有一个<code>symbol</code>为1; 如果<code>symbol</code>没有被发送为40。</p>
 
 <blockquote>
@@ -1783,7 +1761,7 @@ HMAC SHA256 签名:
         </span><span class="nl">"qv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.30000000"</span><span class="w">   </span><span class="err">//</span><span class="w"> </span><span class="err">成交额</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-11'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-10'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1819,7 +1797,7 @@ HMAC SHA256 签名:
     </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.00000200"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">最新价</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-12'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-11'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1859,7 +1837,7 @@ HMAC SHA256 签名:
       </span><span class="nl">"aq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.00000000"</span><span class="w">        </span><span class="err">//</span><span class="w"> </span><span class="err">最高卖价对应的数量</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-13'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-12'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1918,7 +1896,7 @@ HMAC SHA256 签名:
         </span><span class="p">]</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-14'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-13'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2321,7 +2299,7 @@ HMAC SHA256 签名:
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-15'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-14'>参数</h3>
 <p>同于 <code>POST /api/v1/spot/order</code></p>
 <h2 id='trade-2'>下单 (TRADE)</h2>
 <ul>
@@ -2348,7 +2326,7 @@ HMAC SHA256 签名:
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-16'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-15'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2553,7 +2531,7 @@ HMAC SHA256 签名:
                 "msg": "Create order failed"
         }]
 }
-</code></pre></div><h3 id='749d765242-17'>参数</h3>
+</code></pre></div><h3 id='749d765242-16'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2696,7 +2674,7 @@ HMAC SHA256 签名:
   </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"transactTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1499827319559"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-18'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-17'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2743,7 +2721,7 @@ HMAC SHA256 签名:
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-19'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-18'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2812,7 +2790,7 @@ HMAC SHA256 签名:
    ]
 }
 </code></p>
-<h3 id='749d765242-20'>参数</h3>
+<h3 id='749d765242-19'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2868,7 +2846,7 @@ HMAC SHA256 签名:
   </span><span class="nl">"updateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1499827319559"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-21'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-20'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2939,7 +2917,7 @@ HMAC SHA256 签名:
     </span><span class="nl">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-22'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-21'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3015,7 +2993,7 @@ HMAC SHA256 签名:
     </span><span class="nl">"isWorking"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-23'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-22'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3087,7 +3065,7 @@ HMAC SHA256 签名:
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-24'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-23'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3141,7 +3119,7 @@ HMAC SHA256 签名:
         </span><span class="nl">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-25'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-24'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3230,7 +3208,7 @@ HMAC SHA256 签名:
         </span><span class="nl">"accountIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-26'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-25'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3275,7 +3253,7 @@ HMAC SHA256 签名:
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">成功</span><span class="w">
     </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">响应消息</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-27'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-26'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3360,7 +3338,7 @@ HMAC SHA256 签名:
         </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1579093587214"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-28'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-27'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3441,7 +3419,7 @@ HMAC SHA256 签名:
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-29'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-28'>参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3498,7 +3476,7 @@ HMAC SHA256 签名:
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h4 id='749d765242-30'>参数</h4>
+</span></code></pre></div><h4 id='749d765242-29'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3531,7 +3509,7 @@ HMAC SHA256 签名:
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h4 id='749d765242-31'>参数</h4>
+</span></code></pre></div><h4 id='749d765242-30'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3568,7 +3546,7 @@ HMAC SHA256 签名:
 <p>响应</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h4 id='749d765242-32'>参数</h4>
+</span></code></pre></div><h4 id='749d765242-31'>参数</h4>
 <table><thead>
 <tr>
 <th>参数名称</th>
