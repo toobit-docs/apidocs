@@ -418,8 +418,8 @@ Fetch deposit address with network.
         "fromAddressTag": "19029901",
         "time": 1499865549590,
         "quantity": "1.01",
-        "status": "1",
-        "statusCode": "1",
+        "status": "2", // 2=SUCCESS, 11=REJECT, 12=AUDIT
+        "statusCode": "DEPOSIT_CAN_WITHDRAW",
         "requiredConfirmTimes": "5",
         "confirmTimes": "5",
         "txId": "98A3EA560C6B3336D348B6C83F0F95ECE4F1F5919E94BD006E5BF3BF264FACFC",
@@ -976,14 +976,6 @@ NONE
 
 ### 权重：
 
-Adjusted based on the limit:：
-
-| Limit	     | Weight      | 
-| ----------- | ------- |
-| 5, 10, 20, 50, 100 | 1 | 
-| 500 | 5 |
-| 1000  | 10 |
-
 > Response
 
 ``` json
@@ -1013,10 +1005,10 @@ Adjusted based on the limit:：
 
 ### Parameters
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| YES |symbol |
-| limit | INT | NO | Default 100; Max 100. |
+| Name     | Type      | Mandatory      | Description          |
+| ----------- | ------- | ------------- |----------------------|
+| symbol | STRING| YES | symbol               |
+| limit | INT | NO | Default 100; Max 200. |
 
 Notes:
 If you set `limit=0`, a lot of data will be returned.
