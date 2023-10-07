@@ -1893,19 +1893,27 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description                                                                                                             |
-| ----------------- | ---- | ------- |-------------------------------------------------------------------------------------------------------------------------|
-| symbol | STRING | YES | symbol                                                                                                                  |
-| side | ENUM | YES | `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                         |
-| type | ENUM | YES | `LIMIT` or `STOP`                                                                                                       |
-| quantity | LONG | YES | Numbers of orders (volume)                                                                                              |
-| price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need**                                                                                      |
-| priceType | ENUM | NO | `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                                                                              |
-| stopPrice | DECIMAL | NO | `type` = `STOP` order **Mandatory need**                                                                                |
+| Name    | Type  |    Mandatory           | Description                                                                                                         |
+| ----------------- | ---- | ------- |---------------------------------------------------------------------------------------------------------------------|
+| symbol | STRING | YES | symbol                                                                                                              |
+| side | ENUM | YES | `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                     |
+| type | ENUM | YES | `LIMIT` or `STOP`                                                                                                   |
+| quantity | LONG | YES | Numbers of orders (volume)                                                                                          |
+| price | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need**                                                                                  |
+| priceType | ENUM | NO | `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                                                                          |
+| stopPrice | DECIMAL | NO | `type` = `STOP` order **Mandatory need**                                                                            |
 | timeInForce | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
-| newClientOrderId | STRING | YES | The ID of the order, defined by the user                                                                                |
-| timestamp | LONG | YES | timestamp                                                                                                               |
-| recvWindow | LONG | NO | recv window                                                                                                             |
+| newClientOrderId | STRING | YES | The ID of the order, defined by the user                                                                            |
+| takeProfit | STRING | NO | Take profit price                                                                                                   |
+| triggerBy | STRING | NO | The price type to trigger take profit: MARK_PRICE, CONTRACT_PRICE. Default CONTRACT_PRICE                           |
+| tpLimitPrice | STRING | NO | The limit order price when take profit price is triggered. Only works when tpOrderType=LIMIT                        |
+| tpOrderType | STRING | NO | The order type when take profit is triggered. MARKET(default), LIMIT.                                               |
+| stopLoss | STRING | NO | Stop loss price,                                                                                                    |
+| triggerBy | STRING | NO | The price type to trigger take profit: MARK_PRICE, CONTRACT_PRICE. Default CONTRACT_PRICE                           |
+| tpLimitPrice | STRING | NO | The limit order price when take profit price is triggered. Only works when slOrderType=LIMI                         |
+| tpOrderType | STRING | NO | The order type when take profit is triggered. MARKET(default), LIMIT.                                                                                    |
+| timestamp | LONG | YES | timestamp                                                                                                           |
+| recvWindow | LONG | NO | recv window                                                                                                         |
 
 
 ### Order Side :
