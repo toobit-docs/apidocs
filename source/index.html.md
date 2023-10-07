@@ -1867,10 +1867,10 @@ accountType：
 | stopPrice | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                    |
 | timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER`   |
 | newClientOrderId | STRING | YES | 订单的ID，用户自己定义                                                            |
- | takeProfit | STRING | NO | 止盈价格                                                                    |
- | triggerBy | STRING | NO | 条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE |
- | tpLimitPrice | STRING | NO | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                    |
- | tpOrderType | STRING | NO | 止盈触发后的订单类型. MARKET(默认), LIMIT.                                          |
+| takeProfit | STRING | NO | 止盈价格                                                            |
+| triggerBy | STRING | NO | 条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE |
+| tpLimitPrice | STRING | NO | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                    |
+| tpOrderType | STRING | NO | 止盈触发后的订单类型. MARKET(默认), LIMIT.                                          |
 | stopLoss | STRING | NO | 止盈价格                                                                    |
 | triggerBy | STRING | NO | 条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE |
 | tpLimitPrice | STRING | NO | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                     |
