@@ -2810,6 +2810,54 @@ Execute the transfer between the spot account and the contract account</p>
 <td>The ID of the order, defined by the user</td>
 </tr>
 <tr>
+<td>takeProfit</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Take profit price</td>
+</tr>
+<tr>
+<td>triggerBy</td>
+<td>STRING</td>
+<td>NO</td>
+<td>The price type to trigger take profit: MARK_PRICE, CONTRACT_PRICE. Default CONTRACT_PRICE</td>
+</tr>
+<tr>
+<td>tpLimitPrice</td>
+<td>STRING</td>
+<td>NO</td>
+<td>The limit order price when take profit price is triggered. Only works when tpOrderType=LIMIT</td>
+</tr>
+<tr>
+<td>tpOrderType</td>
+<td>STRING</td>
+<td>NO</td>
+<td>The order type when take profit is triggered. MARKET(default), LIMIT.</td>
+</tr>
+<tr>
+<td>stopLoss</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Stop loss price,</td>
+</tr>
+<tr>
+<td>triggerBy</td>
+<td>STRING</td>
+<td>NO</td>
+<td>The price type to trigger take profit: MARK_PRICE, CONTRACT_PRICE. Default CONTRACT_PRICE</td>
+</tr>
+<tr>
+<td>tpLimitPrice</td>
+<td>STRING</td>
+<td>NO</td>
+<td>The limit order price when take profit price is triggered. Only works when slOrderType=LIMI</td>
+</tr>
+<tr>
+<td>tpOrderType</td>
+<td>STRING</td>
+<td>NO</td>
+<td>The order type when take profit is triggered. MARKET(default), LIMIT.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
