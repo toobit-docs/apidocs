@@ -1856,27 +1856,27 @@ accountType：
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述                                                                      |
-| ----------------- | ---- | ------- |-------------------------------------------------------------------------|
-| symbol | STRING | YES | 交易对                                                                     |
-| side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`              |
-| type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                             |
-| quantity | LONG | YES | 订单的合约数量（张）                                                              |
-| price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                       |
-| priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                |
-| stopPrice | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                    |
-| timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER`   |
-| newClientOrderId | STRING | YES | 订单的ID，用户自己定义                                                            |
-| takeProfit | STRING | NO | 止盈价格                                                            |
+| 名称    | 类型  |    是否必须           | 描述                                                                     |
+| ----------------- | ---- | ------- |------------------------------------------------------------------------|
+| symbol | STRING | YES | 交易对                                                                    |
+| side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`             |
+| type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                            |
+| quantity | LONG | YES | 订单的合约数量（张）                                                             |
+| price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                      |
+| priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`               |
+| stopPrice | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                   |
+| timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER`  |
+| newClientOrderId | STRING | YES | 订单的ID，用户自己定义                                                           |
+| takeProfit | STRING | NO | 止盈价格                                                                   |
 | triggerBy | STRING | NO | 条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE |
-| tpLimitPrice | STRING | NO | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                    |
-| tpOrderType | STRING | NO | 止盈触发后的订单类型. MARKET(默认), LIMIT.                                          |
-| stopLoss | STRING | NO | 止盈价格                                                                    |
+| tpLimitPrice | STRING | NO | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                   |
+| tpOrderType | STRING | NO | 止盈触发后的订单类型. MARKET(默认), LIMIT.                                         |
+| stopLoss | STRING | NO | 止损价格                                                                   |
 | triggerBy | STRING | NO | 条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE |
-| tpLimitPrice | STRING | NO | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                     |
-| tpOrderType | STRING | NO | 止损触发后的订单类型. MARKET(默认), LIMIT.                                          |
-| timestamp | LONG | YES | 时间戳                                                                     |
-| recvWindow | LONG | NO | recv窗口                                                                  |
+| tpLimitPrice | STRING | NO | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                    |
+| tpOrderType | STRING | NO | 止损触发后的订单类型. MARKET(默认), LIMIT.                                         |
+| timestamp | LONG | YES | 时间戳                                                                    |
+| recvWindow | LONG | NO | recv窗口                                                                 |
 
 ### 订单方向 (side):
 - BUY_OPEN   开多买单开仓买入
