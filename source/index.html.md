@@ -2228,7 +2228,7 @@ curl  -H "Content-Type:application/json"
 
 ## 设置持仓止盈止损
 
-- `GET /api/v1/futures/position/trading-stop`
+- `POST /api/v1/futures/position/trading-stop`
 
 设置持仓的止盈止损，这个API需要请求签名。
 
