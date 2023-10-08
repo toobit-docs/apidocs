@@ -2258,10 +2258,6 @@ curl  -H "Content-Type:application/json"
 | timestamp | LONG   | YES  | 时间戳                                                                             |
 | recvWindow | LONG   | NO   | recv窗口                                                                          |
 
-注意：
-
-- 如果`symbol`没有发送，所有的合约仓位信息都会被返回。
-- 如果`side`没有发送，两个方向的仓位信息都会被返回。
 
 ## 查询历史订单 (USER_DATA)
 - `GET /api/v1/futures/historyOrders`
