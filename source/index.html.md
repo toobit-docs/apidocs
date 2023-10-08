@@ -2268,7 +2268,7 @@ Notes：
 
 ## Set Trading Stop
 
-- `GET /api/v1/futures/position/trading-stop`
+- `POST /api/v1/futures/position/trading-stop`
 
 Set the take profit, stop loss
 
