@@ -420,6 +420,9 @@
                     <a href="#user_data-4" class="toc-h2 toc-link" data-title="查询当前持仓 (USER_DATA)">查询当前持仓 (USER_DATA)</a>
                   </li>
                   <li>
+                    <a href="#0d0bef91ab" class="toc-h2 toc-link" data-title="设置持仓止盈止损">设置持仓止盈止损</a>
+                  </li>
+                  <li>
                     <a href="#user_data-5" class="toc-h2 toc-link" data-title="查询历史订单 (USER_DATA)">查询历史订单 (USER_DATA)</a>
                   </li>
                   <li>
@@ -2774,10 +2777,10 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>止盈价格</td>
 </tr>
 <tr>
-<td>triggerBy</td>
-<td>STRING</td>
+<td>tpTriggerBy</td>
+<td>ENUM</td>
 <td>NO</td>
-<td>条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE</td>
+<td>止盈条件单参数. 触发类型: <code>MARK_PRICE</code>(标记价格), <code>CONTRACT_PRICE</code>(合约最新价). 默认 <code>CONTRACT_PRICE</code></td>
 </tr>
 <tr>
 <td>tpLimitPrice</td>
@@ -2787,9 +2790,9 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </tr>
 <tr>
 <td>tpOrderType</td>
-<td>STRING</td>
+<td>ENUM</td>
 <td>NO</td>
-<td>止盈触发后的订单类型. MARKET(默认), LIMIT.</td>
+<td>止盈触发后的订单类型. <code>MARKET</code>(默认), <code>LIMIT</code>.</td>
 </tr>
 <tr>
 <td>stopLoss</td>
@@ -2798,10 +2801,10 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>止损价格</td>
 </tr>
 <tr>
-<td>triggerBy</td>
-<td>STRING</td>
+<td>slTriggerBy</td>
+<td>ENUM</td>
 <td>NO</td>
-<td>条件单参数. 触发类型: MARK_PRICE(标记价格), CONTRACT_PRICE(合约最新价). 默认 CONTRACT_PRICE</td>
+<td>止损条件单参数. 触发类型: <code>MARK_PRICE</code>(标记价格), <code>CONTRACT_PRICE</code>(合约最新价). 默认 <code>CONTRACT_PRICE</code></td>
 </tr>
 <tr>
 <td>tpLimitPrice</td>
@@ -2811,9 +2814,9 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </tr>
 <tr>
 <td>tpOrderType</td>
-<td>STRING</td>
+<td>ENUM</td>
 <td>NO</td>
-<td>止损触发后的订单类型. MARKET(默认), LIMIT.</td>
+<td>止损触发后的订单类型. <code>MARKET</code>(默认), <code>LIMIT</code>.</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3412,6 +3415,82 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <li>如果<code>symbol</code>没有发送，所有的合约仓位信息都会被返回。</li>
 <li>如果<code>side</code>没有发送，两个方向的仓位信息都会被返回。</li>
 </ul>
+<h2 id='0d0bef91ab'>设置持仓止盈止损</h2>
+<ul>
+<li><code>GET /api/v1/futures/position/trading-stop</code></li>
+</ul>
+
+<p>设置持仓的止盈止损，这个API需要请求签名。</p>
+<h3 id='3'>权重：3</h3>
+<blockquote>
+<p>响应</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"takeProfit"</span><span class="p">:</span><span class="s2">"29037.2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stopLoss"</span><span class="p">:</span><span class="s2">"27037"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tpTriggerBy"</span><span class="p">:</span><span class="s2">"CONTRACT_PRICE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"slTriggerBy"</span><span class="p">:</span><span class="s2">"CONTRACT_PRICE"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='749d765242-27'>参数</h3>
+<table><thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td>交易对</td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>仓位方向，<code>LONG</code>（多仓）或者<code>SHORT</code>（空仓）。</td>
+</tr>
+<tr>
+<td>takeProfit</td>
+<td>STRING</td>
+<td>NO</td>
+<td>止盈价格。</td>
+</tr>
+<tr>
+<td>stopLoss</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>止损价格。</td>
+</tr>
+<tr>
+<td>tpTriggerBy</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>止盈条件单参数. 触发类型: <code>MARK_PRICE</code>(标记价格), <code>CONTRACT_PRICE</code>(合约最新价). 默认 <code>CONTRACT_PRICE</code></td>
+</tr>
+<tr>
+<td>slTriggerBy</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>止损条件单参数. 触发类型: <code>MARK_PRICE</code>(标记价格), <code>CONTRACT_PRICE</code>(合约最新价). 默认 <code>CONTRACT_PRICE</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
+</tbody></table>
 <h2 id='user_data-5'>查询历史订单 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
@@ -3440,7 +3519,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-27'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-28'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3525,7 +3604,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="nl">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//全仓未实现盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-28'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-29'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3564,7 +3643,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="err">//更新后的仓位保证金</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> </span><span class="err">//更新时间戳</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-29'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-30'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3632,7 +3711,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="nl">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> </span><span class="err">//成交盈亏</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-30'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-31'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3716,7 +3795,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
                 </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-31'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-32'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3758,7 +3837,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//平仓挂单的手续费费率</span><span class="w">
     </span><span class="nl">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//平仓吃单的手续费费率</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-32'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-33'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3810,7 +3889,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-33'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-34'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3844,7 +3923,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-34'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-35'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -3882,7 +3961,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-35'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-36'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
