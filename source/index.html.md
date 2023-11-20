@@ -2655,6 +2655,7 @@ This type of event will be pushed when a new order is created, an order has a ne
     "f": "GTC",                    // Time in force 
     "q": "1.00000000",             // Order quantity 
     "p": "0.10264410",             // Order price 
+    "pt": "MARKET",                // price type  INPUT: user input price.  MARKET: market price
     "X": "NEW",                    // Current order status 
     "i": 4293153,                  // Order ID 
     "l": "0.00000000",             // Last executed quantity 
@@ -2685,13 +2686,11 @@ This type of event will be pushed when a new order is created, an order has a ne
 - MARKET 
 - LIMIT 
 - LIMIT_MAKER  
-- STOP Plan entrusted
-- STOP_SHORT_PROFIT take profit
-- STOP_LONG_PROFIT take profit
-- STOP_LONG_LOSS  stop loss
-- STOP_SHORT_LOSS stop loss
-- LIQUI_IOC_ORDER  liquidation
-- LIQUI_ADL_ORDER ADL
+- STOP_LIMIT Plan entrusted
+
+### Price Type
+- INPUT user input price
+- MARKET  market price
 
 ### Order Status
 
