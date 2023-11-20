@@ -423,9 +423,6 @@
                     <a href="#query-position-user_data" class="toc-h2 toc-link" data-title="Query  Position (USER_DATA)">Query  Position (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#set-trading-stop" class="toc-h2 toc-link" data-title="Set Trading Stop">Set Trading Stop</a>
-                  </li>
-                  <li>
                     <a href="#query-history-orders-user_data" class="toc-h2 toc-link" data-title="Query History Orders (USER_DATA)">Query History Orders (USER_DATA)</a>
                   </li>
                   <li>
@@ -2819,10 +2816,10 @@ Execute the transfer between the spot account and the contract account</p>
 <td>Take profit price</td>
 </tr>
 <tr>
-<td>tpTriggerBy</td>
-<td>ENUM</td>
+<td>triggerBy</td>
+<td>STRING</td>
 <td>NO</td>
-<td>The price type to trigger take profit: <code>MARK_PRICE</code>, <code>CONTRACT_PRICE</code>. Default <code>CONTRACT_PRICE</code></td>
+<td>The price type to trigger take profit: MARK_PRICE, CONTRACT_PRICE. Default CONTRACT_PRICE</td>
 </tr>
 <tr>
 <td>tpLimitPrice</td>
@@ -2832,9 +2829,9 @@ Execute the transfer between the spot account and the contract account</p>
 </tr>
 <tr>
 <td>tpOrderType</td>
-<td>ENUM</td>
+<td>STRING</td>
 <td>NO</td>
-<td>The order type when take profit is triggered. <code>MARKET</code>(default), <code>LIMIT</code>.</td>
+<td>The order type when take profit is triggered. MARKET(default), LIMIT.</td>
 </tr>
 <tr>
 <td>stopLoss</td>
@@ -2843,22 +2840,22 @@ Execute the transfer between the spot account and the contract account</p>
 <td>Stop loss price,</td>
 </tr>
 <tr>
-<td>slTriggerBy</td>
-<td>ENUM</td>
+<td>triggerBy</td>
+<td>STRING</td>
 <td>NO</td>
-<td>The price type to trigger take profit: <code>MARK_PRICE</code>, <code>CONTRACT_PRICE</code>. Default <code>CONTRACT_PRICE</code></td>
+<td>The price type to trigger take profit: MARK_PRICE, CONTRACT_PRICE. Default CONTRACT_PRICE</td>
 </tr>
 <tr>
-<td>slLimitPrice</td>
+<td>tpLimitPrice</td>
 <td>STRING</td>
 <td>NO</td>
 <td>The limit order price when take profit price is triggered. Only works when slOrderType=LIMI</td>
 </tr>
 <tr>
-<td>slOrderType</td>
-<td>ENUM</td>
+<td>tpOrderType</td>
+<td>STRING</td>
 <td>NO</td>
-<td>The order type when take profit is triggered. <code>MARKET</code>(default), <code>LIMIT</code>.</td>
+<td>The order type when take profit is triggered. MARKET(default), LIMIT.</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3456,82 +3453,6 @@ Execute the transfer between the spot account and the contract account</p>
 <li>If <code>symbol</code> is not sent, all contract position information will be returned.</li>
 <li>If <code>side</code> is not sent, position information in both directions will be returned.</li>
 </ul>
-<h2 id='set-trading-stop'>Set Trading Stop</h2>
-<ul>
-<li><code>POST /api/v1/futures/position/trading-stop</code></li>
-</ul>
-
-<p>Set the take profit, stop loss</p>
-<h3 id='weight-3'>Weight：3</h3>
-<blockquote>
-<p>Response</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"side"</span><span class="p">:</span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"takeProfit"</span><span class="p">:</span><span class="s2">"29037.2"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"stopLoss"</span><span class="p">:</span><span class="s2">"27037"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tpTriggerBy"</span><span class="p">:</span><span class="s2">"CONTRACT_PRICE"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"slTriggerBy"</span><span class="p">:</span><span class="s2">"CONTRACT_PRICE"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-30'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>STRING</td>
-<td>YES</td>
-<td>symbol</td>
-</tr>
-<tr>
-<td>side</td>
-<td>ENUM</td>
-<td>YES</td>
-<td>position side，<code>LONG</code> or <code>SHORT</code></td>
-</tr>
-<tr>
-<td>takeProfit</td>
-<td>STRING</td>
-<td>NO</td>
-<td>take profit price</td>
-</tr>
-<tr>
-<td>stopLoss</td>
-<td>ENUM</td>
-<td>NO</td>
-<td>stop loss price</td>
-</tr>
-<tr>
-<td>tpTriggerBy</td>
-<td>ENUM</td>
-<td>NO</td>
-<td>take profit The price type to trigger take profit: <code>MARK_PRICE</code>, <code>CONTRACT_PRICE</code>. Default <code>CONTRACT_PRICE</code></td>
-</tr>
-<tr>
-<td>slTriggerBy</td>
-<td>ENUM</td>
-<td>NO</td>
-<td>stop loss The price type to trigger take profit: <code>MARK_PRICE</code>, <code>CONTRACT_PRICE</code>. Default <code>CONTRACT_PRICE</code></td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>LONG</td>
-<td>YES</td>
-<td>timestamp</td>
-</tr>
-<tr>
-<td>recvWindow</td>
-<td>LONG</td>
-<td>NO</td>
-<td>recv window</td>
-</tr>
-</tbody></table>
 <h2 id='query-history-orders-user_data'>Query History Orders (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/historyOrders</code></li>
@@ -3560,7 +3481,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> 
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='parameters-31'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-30'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3643,7 +3564,7 @@ Execute the transfer between the spot account and the contract account</p>
         </span><span class="nl">"crossUnRealizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">unrealized</span><span class="w"> </span><span class="err">profit</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">loss</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">cross</span><span class="w"> </span><span class="err">position</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='parameters-32'>Parameters</h3><h3 id='parameters-33'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-31'>Parameters</h3><h3 id='parameters-32'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3680,7 +3601,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"margin"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">Margin</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="mi">1541161088303</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">timestamp</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-34'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-33'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3748,7 +3669,7 @@ Execute the transfer between the spot account and the contract account</p>
         </span><span class="nl">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> 
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='parameters-35'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-34'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3832,7 +3753,7 @@ Execute the transfer between the spot account and the contract account</p>
                 </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='parameters-36'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-35'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3874,7 +3795,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
     </span><span class="nl">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">taker</span><span class="w"> </span><span class="err">order</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-37'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-36'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3927,7 +3848,7 @@ Execute the transfer between the spot account and the contract account</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-38'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-37'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3961,7 +3882,7 @@ Execute the transfer between the spot account and the contract account</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-39'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-38'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3998,7 +3919,7 @@ Execute the transfer between the spot account and the contract account</p>
 <p>Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-40'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-39'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
