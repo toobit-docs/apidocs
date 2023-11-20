@@ -2612,6 +2612,7 @@ curl  -H "Content-Type:application/json"
     "f": "GTC",                    // Time in force 有效方式
     "q": "1.00000000",             // origQty 数量
     "p": "0.10264410",             // price 价格
+    "pt": "MARKET",                // price type 价格类型 INPUT:输入价格 MARKET: 市价
     "X": "NEW",                    // status 订单状态
     "i": 4293153,                  // orderId 订单id
     "l": "0.00000000",             // Last executed quantity 上次数量
@@ -2639,17 +2640,13 @@ curl  -H "Content-Type:application/json"
 - SELL 卖出
 
 ### 订单类型
-
-- MARKET 市价单
 - LIMIT 限价单
 - LIMIT_MAKER  maker限价单
-- STOP 计划委托
-- STOP_SHORT_PROFIT 止盈
-- STOP_LONG_PROFIT 止盈
-- STOP_LONG_LOSS  止损
-- STOP_SHORT_LOSS 止损
-- LIQUI_IOC_ORDER 强平
-- LIQUI_ADL_ORDER ADL
+- STOP_LIMIT 计划委托
+
+### 价格类型
+- INPUT 用户输入价
+- MARKET  市价
 
 ### 订单状态
 
