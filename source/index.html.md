@@ -2382,6 +2382,7 @@ Whenever the account balance changes, an event `outboundAccountInfo` is sent con
     "f": "GTC",                    // Time in force 
     "q": "1.00000000",             // Order quantity 
     "p": "0.10264410",             // Order price 
+    "pt": "MARKET",                // price type  INPUT:input price. MARKET: market price
     "X": "NEW",                    // Current order status 
     "i": 4293153,                  // Order ID 
     "l": "0.00000000",             // Last executed quantity 
