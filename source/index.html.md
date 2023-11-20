@@ -2361,6 +2361,7 @@ accountType：
     "f": "GTC",                    // Time in force 有效方式
     "q": "1.00000000",             // Order quantity 数量
     "p": "0.10264410",             // Order price 价格
+    "pt": "MARKET",                // price type 价格类型 INPUT:输入价格 MARKET: 市价
     "X": "NEW",                    // Current order status 订单状态
     "i": 4293153,                  // Order ID 订单id
     "l": "0.00000000",             // Last executed quantity 上次数量
