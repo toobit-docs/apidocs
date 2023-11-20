@@ -4066,6 +4066,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"f"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">force</span><span class="w"> </span><span class="err">有效方式</span><span class="w">
     </span><span class="nl">"q"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">origQty</span><span class="w"> </span><span class="err">数量</span><span class="w">
     </span><span class="nl">"p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.10264410"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">价格</span><span class="w">
+    </span><span class="nl">"pt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MARKET"</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">price</span><span class="w"> </span><span class="err">type</span><span class="w"> </span><span class="err">价格类型</span><span class="w"> </span><span class="err">INPUT:输入价格</span><span class="w"> </span><span class="err">MARKET:</span><span class="w"> </span><span class="err">市价</span><span class="w">
     </span><span class="nl">"X"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w">                    </span><span class="err">//</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">订单状态</span><span class="w">
     </span><span class="nl">"i"</span><span class="p">:</span><span class="w"> </span><span class="mi">4293153</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">orderId</span><span class="w"> </span><span class="err">订单id</span><span class="w">
     </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Last</span><span class="w"> </span><span class="err">executed</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">上次数量</span><span class="w">
@@ -4093,16 +4094,14 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </ul>
 <h3 id='a1d4eaf18c'>订单类型</h3>
 <ul>
-<li>MARKET 市价单</li>
 <li>LIMIT 限价单</li>
 <li>LIMIT_MAKER  maker限价单</li>
-<li>STOP 计划委托</li>
-<li>STOP_SHORT_PROFIT 止盈</li>
-<li>STOP_LONG_PROFIT 止盈</li>
-<li>STOP_LONG_LOSS  止损</li>
-<li>STOP_SHORT_LOSS 止损</li>
-<li>LIQUI_IOC_ORDER 强平</li>
-<li>LIQUI_ADL_ORDER ADL</li>
+<li>STOP_LIMIT 计划委托</li>
+</ul>
+<h3 id='1229008509'>价格类型</h3>
+<ul>
+<li>INPUT 用户输入价</li>
+<li>MARKET  市价</li>
 </ul>
 <h3 id='4e4ca9ca80'>订单状态</h3>
 <ul>
