@@ -2666,7 +2666,7 @@ This type of event will be pushed when a new order is created, an order has a ne
     "u": true,                     // Is the trade normal, ignore for now 
     "w": true,                     // Is the order working Stops will have
     "m": false,                    // Is this trade the maker side
-    "mt": "CROSS",                 // Position type CROSS or ISOLATED
+    "mt": "CROSS",                 // Position type
     "O": 1499405658657,            // Order creation time 
     "Z": "0.00000000",             // Cumulative quote asset transacted quantity 
     "v": "20",                     // leverage 
