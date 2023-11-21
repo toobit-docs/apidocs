@@ -182,8 +182,7 @@ handle_deploy_files() {
     rm -rf $gh_pages_directory/$version/$language
   fi
   cp -r $build_directory/* $gh_pages_directory
-  cp -r $build_directory/spot/vremotes/origin/usdt/* $gh_pages_directory/usdt_swap/v1/
-  cp -r $build_directory/spot/vremotes/origin/v1/* $gh_pages_directory/spot/v1/
+  cp -r $build_directory/usdt_swap/v1/* $gh_pages_directory/usdt_swap/v1/
 }
 
 check_diff() {
