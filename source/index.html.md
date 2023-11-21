@@ -2623,6 +2623,7 @@ curl  -H "Content-Type:application/json"
     "u": true,                     // Is the trade normal, ignore for now 是否正常
     "w": true,                     // Is the order working Stops will have
     "m": false,                    // Is this trade the maker side
+    "mt": "CROSS",                    // marginType仓位类型
     "O": 1499405658657,            // Order creation time 创建时间
     "Z": "0.00000000",             // Cumulative quote asset transacted quantity 交易金额
     "v": "20",                     // leverage 杠杆倍数
@@ -2632,6 +2633,7 @@ curl  -H "Content-Type:application/json"
 ```
 
 - 平均价格可以通过`Z`除以`z`来获得。
+- 字段 `mt` 代表仓位类型 `CROSS` 全仓; `ISOLATED` 逐仓
 
 
 ### 订单方向
