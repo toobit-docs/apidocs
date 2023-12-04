@@ -315,7 +315,6 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 ``` json
 {
   "timezone": "UTC",
-  "serverTime": "1668407511495",
   "brokerFilters": [],
   "symbols": [
     {
