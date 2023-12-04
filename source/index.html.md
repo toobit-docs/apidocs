@@ -490,7 +490,6 @@ NONE
 ``` json
 {
   "timezone": "UTC",
-  "serverTime": "1668407511495",
   "brokerFilters": [],
   "symbols": [
     {
