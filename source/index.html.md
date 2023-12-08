@@ -2443,6 +2443,47 @@ Get trades for a specific account and symbol.
 | recvWindow | LONG | NO | recv window                                              |
 | timestamp | LONG | YES |     timestamp                                                     |
 
+
+## Get Futures Account Transaction History List (USER_DATA)
+- `GET /api/v1/futures/balanceFlow`
+
+### Weight：5
+
+> Response：
+
+``` json
+[
+    {
+        "id": "539870570957903104",
+        "accountId": "122216245228131",
+        "coin": "BTC",
+        "coinId": "BTC",
+        "coinName": "BTC",
+        "symbol": "BTC-SWAP-USDT",
+        "flowTypeValue": 51, 
+        "flowType": "USER_ACCOUNT_TRANSFER", 
+        "flowName": "Transfer",
+        "change": "-12.5", 
+        "total": "379.624059937852365",
+        "created": "1579093587214"
+    }
+]
+```
+
+### Parameters
+| Name    | Type  |    Mandatory           | Description     |
+| ----------------- | ---- | ------- |-----------------|
+| symbol | STRING | NO | coin            |
+| flowType | INT | NO | flow type       |
+| fromId | LONG | NO | from id         |
+| endId | LONG | NO | end id          |
+| startTime | LONG | NO | start timestamp |
+| endTime | LONG | NO | end timestamp   |
+| limit | INT | NO | limit           |
+| recvWindow | LONG | NO | recv window     |
+| timestamp | LONG | YES | timestamp       |
+
+
 ## Query Risk Limit (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
 
