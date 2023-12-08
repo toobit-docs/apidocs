@@ -2402,6 +2402,48 @@ curl  -H "Content-Type:application/json"
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
+
+## 查询合约账户流水 (USER_DATA)
+
+- `GET /api/v1/futures/balanceFlow`
+
+### 权重： 5
+
+> 响应
+
+``` json
+[
+    {
+        "id": "539870570957903104",
+        "accountId": "122216245228131",
+        "coin": "BTC",
+        "coinId": "BTC",
+        "coinName": "BTC",
+        "symbol": "BTC-SWAP-USDT",
+        "flowTypeValue": 51, // 流水类型
+        "flowType": "USER_ACCOUNT_TRANSFER", // 流水类型名称
+        "flowName": "Transfer", // 流水类型说明
+        "change": "-12.5", // 变动值
+        "total": "379.624059937852365", // 变动后当前tokenId总资产
+        "created": "1579093587214"
+    }
+]
+```
+
+### 参数
+| 参数名称     | 类型      | 是否必需      | 描述     |
+| ----------- | ------- | ------------- |--------|
+| symbol | STRING | NO | 资产     |
+| flowType | INT | NO | 流水类型   |
+| fromId | LONT | NO  | 顺向查询数据 |
+| endId | LONG | NO | 反向查询数据 |
+| startTime | LONG | NO | 开始时间   |
+| endTime | LONG | NO | 结束时间   |
+| limit | INT | NO | 每页记录数  |
+| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳    |
+
+
 ## 风险限额查询 (USER_DATA)
 - `GET /api/v1/futures/riskLimit`
 
