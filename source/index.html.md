@@ -2425,6 +2425,7 @@ Get trades for a specific account and symbol.
         "commission": "0.0162", 
         "makerRebate": "0", 
         "type": "LIMIT", 
+        "isMaker": false, // isMaker
         "side": "BUY_OPEN", //BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE
         "realizedPnl": "0" 
     }
