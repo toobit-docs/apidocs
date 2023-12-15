@@ -438,6 +438,9 @@
                     <a href="#account-trade-list-user_data" class="toc-h2 toc-link" data-title="Account Trade List (USER_DATA)">Account Trade List (USER_DATA)</a>
                   </li>
                   <li>
+                    <a href="#get-futures-account-transaction-history-list-user_data" class="toc-h2 toc-link" data-title="Get Futures Account Transaction History List (USER_DATA)">Get Futures Account Transaction History List (USER_DATA)</a>
+                  </li>
+                  <li>
                     <a href="#query-risk-limit-user_data" class="toc-h2 toc-link" data-title="Query Risk Limit (USER_DATA)">Query Risk Limit (USER_DATA)</a>
                   </li>
                   <li>
@@ -3743,6 +3746,7 @@ Execute the transfer between the spot account and the contract account</p>
         </span><span class="nl">"commission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0162"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"makerRebate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> 
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"isMaker"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
         </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE</span><span class="w">
         </span><span class="nl">"realizedPnl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w"> 
     </span><span class="p">}</span><span class="w">
@@ -3805,13 +3809,101 @@ Execute the transfer between the spot account and the contract account</p>
 <td>timestamp</td>
 </tr>
 </tbody></table>
+<h2 id='get-futures-account-transaction-history-list-user_data'>Get Futures Account Transaction History List (USER_DATA)</h2>
+<ul>
+<li><code>GET /api/v1/futures/balanceFlow</code></li>
+</ul>
+<h3 id='weight-5-9'>Weight：5</h3>
+<blockquote>
+<p>Response：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"539870570957903104"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coinId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"coinName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"flowTypeValue"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"flowType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USER_ACCOUNT_TRANSFER"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"flowName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transfer"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-12.5"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"379.624059937852365"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1579093587214"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h3 id='parameters-36'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td>coin</td>
+</tr>
+<tr>
+<td>flowType</td>
+<td>INT</td>
+<td>NO</td>
+<td>flow type</td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>from id</td>
+</tr>
+<tr>
+<td>endId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>end id</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>start timestamp</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>end timestamp</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>limit</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv window</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>timestamp</td>
+</tr>
+</tbody></table>
 <h2 id='query-risk-limit-user_data'>Query Risk Limit (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/riskLimit</code></li>
 </ul>
 
 <p>To query the risk limit, this API endpoint requires a request signature.</p>
-<h3 id='weight-5-9'>Weight：5</h3>
+<h3 id='weight-5-10'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3831,7 +3923,7 @@ Execute the transfer between the spot account and the contract account</p>
                 </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
             </span><span class="p">}</span><span class="w">
  </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='parameters-36'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-37'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3863,7 +3955,7 @@ Execute the transfer between the spot account and the contract account</p>
 <ul>
 <li><code>GET /api/v1/futures/commissionRate</code></li>
 </ul>
-<h3 id='weight-5-10'>Weight：5</h3>
+<h3 id='weight-5-11'>Weight：5</h3>
 <blockquote>
 <p>Response：</p>
 </blockquote>
@@ -3873,7 +3965,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
     </span><span class="nl">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">taker</span><span class="w"> </span><span class="err">order</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-37'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-38'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3926,7 +4018,7 @@ Execute the transfer between the spot account and the contract account</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-38'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-39'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3960,7 +4052,7 @@ Execute the transfer between the spot account and the contract account</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-39'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-40'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3997,7 +4089,7 @@ Execute the transfer between the spot account and the contract account</p>
 <p>Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-40'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-41'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
