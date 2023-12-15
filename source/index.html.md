@@ -2384,6 +2384,7 @@ curl  -H "Content-Type:application/json"
         "commission": "0.0162", //实际手续费
         "makerRebate": "0", // 负maker返佣
         "type": "LIMIT", //订单类型（LIMIT、MARKET)
+        "isMaker": false, // 是否是maker
         "side": "BUY_OPEN", //订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
         "realizedPnl": "0" //成交盈亏
     }
