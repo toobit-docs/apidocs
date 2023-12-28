@@ -2258,18 +2258,18 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"sendTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1703692664103</span><span class="p">,</span><span class="w">
     </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='ad052b1e2a-4'>请求订阅数据样例:</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"index"</span><span class="p">,</span><span class="w"> </span><span class="err">//用户自定义标识，</span><span class="w">
-    </span><span class="nl">"topic"</span><span class="p">:</span><span class="s2">"index"</span><span class="p">,</span><span class="w">  </span><span class="err">//订阅主题</span><span class="w">
-    </span><span class="nl">"event"</span><span class="p">:</span><span class="s2">"sub"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">  </span><span class="err">//币对</span><span class="w">
-    </span><span class="nl">"params"</span><span class="p">:{</span><span class="w">
-        </span><span class="nl">"reduceSerial"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="err">//减少序列化，推送速度更快</span><span class="w">
-        </span><span class="nl">"binary"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">  </span><span class="err">//是否压缩</span><span class="w">
-        </span><span class="nl">"limit"</span><span class="p">:</span><span class="mi">1500</span><span class="w">  </span><span class="err">//条数限制</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='6ae7c2b506'>有限档深度信息</h2>
+</span></code></pre></div><h3 id='ad052b1e2a-4'>请求订阅数据样例:</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+    "id":"index", //用户自定义标识，
+    "topic":"index",  //订阅主题
+    "event":"sub",
+    "symbol":"BTCUSDT",  //币对
+    "params":{
+        "reduceSerial":true, //减少序列化，推送速度更快
+        "binary":true,  //是否压缩
+        "limit":1500  //条数限制
+    }
+}
+</code></pre></div><h2 id='6ae7c2b506'>有限档深度信息</h2>
 <blockquote>
 <p>Payload</p>
 </blockquote>
