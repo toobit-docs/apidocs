@@ -1188,6 +1188,32 @@ Latest price for a symbol or symbols.
 
 - If the symbol is not sent, tickers for all symbols will be returned in an array.
 
+
+## Symbol Index Price
+- `GET /quote/v1/index`
+
+Index price for a symbol or symbols.
+
+### Weight：1
+
+> Response：
+
+``` json
+{
+    "index":{
+        "BTCUSDT":"42999.21"  // index price
+    },
+    "edp":{
+        "BTCUSDT":"43031.36006" // Average of indices over 10 minutes
+    }
+}
+```
+### Parameters
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- |-------------|
+| symbol | STRING | NO | symbol            |
+- If the symbol is not sent, tickers for all symbols will be returned in an array.
+
 ## Symbol Order Book Ticker
 
 - `GET /quote/v1/ticker/bookTicker`
@@ -1522,6 +1548,50 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 
 `}`
 
+
+
+## Symbol Index Price
+
+symbol index price
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",  // symbol
+    "symbolName": "BTCUSDT", // symbolName
+    "topic": "index",
+    "data": [
+        {
+            "symbol": "BTCUSDT",  // symbol
+            "index": "42992.432", // index price
+            "edp": "43000.95379", // average of indices over 10 minutes
+            "formula": "(42988.52[BYBIT]*0.2+42986.43[HUOBI]*0.2+42991.52[BINANCE]*0.2+42991.8[OKEX]*0.2+43003.89[COINBASE]*0.2)", // weighted average formula
+            "time": 1703692663000  // time
+        }
+    ],
+    "f": false,
+    "sendTime": 1703692664103,
+    "shared": false
+}
+```
+
+### Request:
+
+
+``` json
+{
+    "id":"index", ，
+    "topic":"index",  
+    "event":"sub",
+    "symbol":"BTCUSDT",  
+    "params":{
+        "reduceSerial":true, // less serialization, faster push
+        "binary":true,  // compression or not
+        "limit":1500  // limit
+    }
+}
+```
 
 
 
