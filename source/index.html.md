@@ -1579,19 +1579,27 @@ symbol index price
 ### Request:
 
 
-``` json
-{
-    "id":"index", ，
-    "topic":"index",  
-    "event":"sub",
-    "symbol":"BTCUSDT",  
-    "params":{
-        "reduceSerial":true, // less serialization, faster push
-        "binary":true,  // compression or not
-        "limit":1500  // limit
-    }
-}
-```
+`{`
+
+`"id":"index", //用户自定义标识，`
+
+` "topic":"index",  //订阅主题`
+
+`"event":"sub",`
+
+`"symbol":"BTCUSDT",  //币对`
+
+`"params": {`
+
+` "reduceSerial":true, //减少序列化，推送速度更快`
+
+` "binary":true,  //是否压缩`
+
+` "limit":1500  //条数限制`
+
+`  }`
+
+`}`
 
 
 
