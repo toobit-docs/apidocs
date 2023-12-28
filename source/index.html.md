@@ -1537,20 +1537,27 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ### 请求订阅数据样例:
 
-
 `{`
 
-    `"id":"index", //用户自定义标识，`
-    `"topic":"index",  //订阅主题`
-    `"event":"sub",`
-    `"symbol":"BTCUSDT",  //币对`
-    `"params": {`
-    `"reduceSerial":true, //减少序列化，推送速度更快`
-    `"binary":true,  //是否压缩`
-    `"limit":1500  //条数限制`
-    `}`
-`}`
+`"id":"index", //用户自定义标识，`
 
+` "topic":"index",  //订阅主题`
+
+`"event":"sub",`
+
+`"symbol":"BTCUSDT",  //币对`
+
+`"params": {`
+
+` "reduceSerial":true, //减少序列化，推送速度更快`
+
+` "binary":true,  //是否压缩`
+
+` "limit":1500  //条数限制`
+
+`  }`
+
+`}`
 
 
 ## 有限档深度信息
