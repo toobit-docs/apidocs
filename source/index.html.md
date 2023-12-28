@@ -1483,6 +1483,50 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 
 
+## 指数价格
+
+指数价格订阅
+
+> Payload
+
+``` json
+{
+    "symbol": "BTCUSDT",  //币对
+    "symbolName": "BTCUSDT", //币对名称
+    "topic": "index",
+    "data": [
+        {
+            "symbol": "BTCUSDT",  //币对
+            "index": "42992.432", //指数价格
+            "edp": "43000.95379", //10分钟内指数平均值
+            "formula": "(42988.52[BYBIT]*0.2+42986.43[HUOBI]*0.2+42991.52[BINANCE]*0.2+42991.8[OKEX]*0.2+43003.89[COINBASE]*0.2)", //加权平均值公式
+            "time": 1703692663000  //时间戳
+        }
+    ],
+    "f": false,
+    "sendTime": 1703692664103,
+    "shared": false
+}
+```
+
+### 请求订阅数据样例:
+
+
+``` json
+{
+    "id":"index", //用户自定义标识，
+    "topic":"index",  //订阅主题
+    "event":"sub",
+    "symbol":"BTCUSDT",  //币对
+    "params":{
+        "reduceSerial":true, //减少序列化，推送速度更快
+        "binary":true,  //是否压缩
+        "limit":1500  //条数限制
+    }
+}
+```
+
+
 
 ## 有限档深度信息
 
