@@ -1150,7 +1150,9 @@ Get the mark price of a trading pair.
         "h": "100.00000000",  // high price 
         "l": "0.10000000",    // low price
         "v": "8913.30000000", // Base asset volume
-        "qv": "15.30000000"   // Quote asset volume
+        "qv": "15.30000000",   // otal trade volume (in quote asset)
+        "pc": "15.30000000",   // priceChange
+        "pcp": "15.30000000"   // priceChangePercent
     }
 ]
 ```
