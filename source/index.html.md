@@ -1104,7 +1104,9 @@ Klines are uniquely identified by their open time.
         "h": "100.00000000",  // highest price 
         "l": "0.10000000",    // lowest price
         "v": "8913.30000000", // Total trade volume (in base asset)
-        "qv": "15.30000000"   // otal trade volume (in quote asset)
+        "qv": "15.30000000",   // otal trade volume (in quote asset)
+        "pc": "15.30000000",   // priceChange
+        "pcp": "15.30000000"   // priceChangePercent
     }
 ]
 ```
