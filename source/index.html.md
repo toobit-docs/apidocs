@@ -1111,7 +1111,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 | limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000` |
 
 ## 24hr价格变动情况
-- `GET /quote/v1/ticker/24hr`
+- `GET /quote/v1/contract/ticker/24hr`
 
 24小时价格变化数据。注意 如果没有发送symbol，会返回很多数据。
 
