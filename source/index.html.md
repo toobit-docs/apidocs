@@ -1126,7 +1126,7 @@ Get the mark price of a trading pair.
 
 ## 24hr Ticker Price Change Statistics
 
-- `GET /quote/v1/ticker/24hr`
+- `GET /quote/v1/contract/ticker/24hr`
 
 24 hour rolling window price change statistics.<br>
 **Careful** when accessing this with no symbol.
