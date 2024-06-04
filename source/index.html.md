@@ -2564,40 +2564,70 @@ Get trades for a specific account and symbol.
 | recvWindow | LONG | NO | recv window     |
 | timestamp | LONG | YES | timestamp       |
 
+[//]: # ()
+[//]: # (## Query Risk Limit &#40;USER_DATA&#41;)
 
-## Query Risk Limit (USER_DATA)
-- `GET /api/v1/futures/riskLimit`
+[//]: # (- `GET /api/v1/futures/riskLimit`)
 
-To query the risk limit, this API endpoint requires a request signature.
+[//]: # ()
+[//]: # (To query the risk limit, this API endpoint requires a request signature.)
 
-### Weight：5
+[//]: # ()
+[//]: # (### Weight：5)
 
-> Response：
+[//]: # ()
+[//]: # (> Response：)
 
-``` json
-[
-            {
-                "riskLimitId": "200000133", 
-                "riskLimitAmount": "1000000.0", //risk limit(Maximum position)
-                "maintainMargin": "0.005", //maintenance margin rate
-                "initialMargin": "0.01", //initial margin rate
-                "side": "SELL_OPEN" 
-            },
-            {
-                "riskLimitId": "200000133",
-                "riskLimitAmount": "1000000.0",
-                "maintainMargin": "0.005",
-                "initialMargin": "0.01",
-                "side": "BUY_OPEN"
-            }
- ]
-```
-### Parameters
-| Name    | Type  |    Mandatory           | Description |
-| ----------------- | ---- | ------- |-------------|
-| symbol | STRING | YES | symbol      |
-| recvWindow | LONG | NO | recv window |
-| timestamp | LONG | YES |    timestamp         |
+[//]: # ()
+[//]: # (``` json)
+
+[//]: # ([)
+
+[//]: # (            {)
+
+[//]: # (                "riskLimitId": "200000133", )
+
+[//]: # (                "riskLimitAmount": "1000000.0", //risk limit&#40;Maximum position&#41;)
+
+[//]: # (                "maintainMargin": "0.005", //maintenance margin rate)
+
+[//]: # (                "initialMargin": "0.01", //initial margin rate)
+
+[//]: # (                "side": "SELL_OPEN" )
+
+[//]: # (            },)
+
+[//]: # (            {)
+
+[//]: # (                "riskLimitId": "200000133",)
+
+[//]: # (                "riskLimitAmount": "1000000.0",)
+
+[//]: # (                "maintainMargin": "0.005",)
+
+[//]: # (                "initialMargin": "0.01",)
+
+[//]: # (                "side": "BUY_OPEN")
+
+[//]: # (            })
+
+[//]: # ( ])
+
+[//]: # (```)
+
+[//]: # (### Parameters)
+
+[//]: # (| Name    | Type  |    Mandatory           | Description |)
+
+[//]: # (| ----------------- | ---- | ------- |-------------|)
+
+[//]: # (| symbol | STRING | YES | symbol      |)
+
+[//]: # (| recvWindow | LONG | NO | recv window |)
+
+[//]: # (| timestamp | LONG | YES |    timestamp         |)
+
+[//]: # ()
 
 ## User Commission Rate (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
