@@ -2326,7 +2326,8 @@ Returns the current position information, this API requires a request signature.
         "marginRate": "0.4992", 
         "unrealizedPnL": "0", //The unrealized profit and loss of the current position
         "profitRate": "0", //Profit rate of current position
-        "realizedPnL": "-0.018" //Realized profit and loss
+        "realizedPnL": "-0.018", //Realized profit and loss
+        "maxNotionalValue": "60000" //maximum volume of positions at current leverage
     }
 ]
 ```
@@ -2867,7 +2868,6 @@ Will push when there is a deal
         "c": "1668693440093",             // clientOrderId 
         "O": "1291354087841869312",       // matchOrderId 
         "a": "1286424214388204801",       // accountId 
-        "A": "1270447370291795457",       // matchAccountId 
         "m": false,                       // isMaker 
         "S": "SELL"                       // side  
     }
