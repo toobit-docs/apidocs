@@ -2428,9 +2428,7 @@ The average price can be found by dividing Z by z.
         "T": "1291488620385157122",       // ticketId
         "o": "1291488620167835136",       // orderId 
         "c": "1668693440093",             // clientOrderId 
-        "O": "1291354087841869312",       // matchOrderId 
         "a": "1286424214388204801",       // accountId 
-        "A": "1270447370291795457",       // matchAccountId 
         "m": false,                       // isMaker 
         "S": "SELL"                       // side  SELL or BUY
     }
