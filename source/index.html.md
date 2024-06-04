@@ -2406,9 +2406,7 @@ accountType：
         "T": "1291488620385157122",       // ticketId
         "o": "1291488620167835136",       // orderId 订单id
         "c": "1668693440093",             // clientOrderId 客户订单id
-        "O": "1291354087841869312",       // matchOrderId 对手方订单ID
         "a": "1286424214388204801",       // accountId 账户id
-        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
         "m": false,                       // isMaker 
         "S": "SELL"                       // side  SELL or BUY
     }
