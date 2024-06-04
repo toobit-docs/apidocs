@@ -2286,7 +2286,8 @@ curl  -H "Content-Type:application/json"
         "marginRate": "0.4992", //当前仓位的保证金率
         "unrealizedPnL": "0", //当前仓位的未实现盈亏
         "profitRate": "0", //当前仓位的盈利率
-        "realizedPnL": "-0.018" //当前 合约 的已实现盈亏
+        "realizedPnL": "-0.018", //当前 合约 的已实现盈亏
+        "maxNotionalValue": "60000" // 当前杠杆倍数最大可持仓张数
     }
 ]
 ```
@@ -2821,7 +2822,6 @@ curl  -H "Content-Type:application/json"
         "c": "1668693440093",             // clientOrderId 客户订单id
         "O": "1291354087841869312",       // matchOrderId 对手方订单ID
         "a": "1286424214388204801",       // accountId 账户id
-        "A": "1270447370291795457",       // matchAccountId 对手方账户ID
         "m": false,                       // isMaker 
         "S": "SELL"                       // side  
     }
