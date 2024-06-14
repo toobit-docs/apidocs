@@ -2497,7 +2497,6 @@ Get trades for a specific account and symbol.
         "time": "1668425281370", //create time
         "id": "1289239136943831296", //Trade Id
         "orderId": "1289239134670518528", 
-        "matchOrderId": "1287169326781135104", //Counterparty order ID
         "symbol": "BTC-SWAP-USDT", 
         "price": "24000",
         "qty": "9", //quantity
