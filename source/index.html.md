@@ -2470,16 +2470,16 @@ curl  -H "Content-Type:application/json"
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
-| fromId | LONG | NO | 从TradeId开始（用来查询成交订单） |
-| toId | LONG | NO | 到TradeId结束（用来查询成交订单） |
-| startTime | LONG | NO  | 开始时间戳 |
-| endTime | LONT | NO | 截止时间戳 |
-| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`  |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| 名称    | 类型  | 是否必须 | 描述           |
+| ----------------- | ---- |------| ------------- |
+| symbol | STRING | YES  | 交易对 |
+| fromId | LONG | NO   | 从TradeId开始（用来查询成交订单） |
+| toId | LONG | NO   | 到TradeId结束（用来查询成交订单） |
+| startTime | LONG | NO   | 开始时间戳 |
+| endTime | LONT | NO   | 截止时间戳 |
+| limit | INT | NO   | 返回条数 默认`20` 最小`1` 最大`1000`  |
+| timestamp | LONG | YES  | 时间戳 |
+| recvWindow | LONG | NO   | recv窗口 |
 
 
 ## 查询合约账户流水 (USER_DATA)
