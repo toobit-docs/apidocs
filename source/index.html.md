@@ -2097,16 +2097,16 @@ Get all account orders; active, canceled, or filled.
 ```
 
 ### Parameters
-| Name     | Type      | Mandatory      | Description                        |
-| ----------- | ------- | ------------- |------------------------------------|
-| symbol | STRING | NO | symbol                             |
-| startTime | LONG | NO | start timestamp                    |
-| endTime | LONG | NO | end timestamp                      |
-| fromId | LONG | NO  | from id                            |
-| toId | LONG | NO | end id                             |
-| limit | INT | NO | Number of items displayed per page |
-| recvWindow | LONG | NO | recv window                        |
-| timestamp | LONG | YES |       timestamp                             |
+| Name     | Type      | Mandatory | Description                        |
+| ----------- | ------- |-----------|------------------------------------|
+| symbol | STRING | YES       | symbol                             |
+| startTime | LONG | NO        | start timestamp                    |
+| endTime | LONG | NO        | end timestamp                      |
+| fromId | LONG | NO        | from id                            |
+| toId | LONG | NO        | end id                             |
+| limit | INT | NO        | Number of items displayed per page |
+| recvWindow | LONG | NO        | recv window                        |
+| timestamp | LONG | YES       |       timestamp                             |
 
 Notes：
 
