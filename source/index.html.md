@@ -2512,16 +2512,16 @@ Get trades for a specific account and symbol.
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description                                              |
-| ----------------- | ---- | ------- |----------------------------------------------------------|
-| symbol | STRING | NO | symbol                                                   |
-| startTime | LONG | NO | start timestamp                                          |
-| endTime | LONG | NO | end timestamp                                            |
-| limit | INT | NO | Default `20` Min `1` Max `1000`                          |
-| fromId | LONG | NO | Start from TradeId (used to query transaction orders)    |
-| toId | LONG | NO | To the end of TradeId (used to query transaction orders) |
-| recvWindow | LONG | NO | recv window                                              |
-| timestamp | LONG | YES |     timestamp                                                     |
+| Name    | Type  | Mandatory | Description                                              |
+| ----------------- | ---- |-----------|----------------------------------------------------------|
+| symbol | STRING | YES       | symbol                                                   |
+| startTime | LONG | NO        | start timestamp                                          |
+| endTime | LONG | NO        | end timestamp                                            |
+| limit | INT | NO        | Default `20` Min `1` Max `1000`                          |
+| fromId | LONG | NO        | Start from TradeId (used to query transaction orders)    |
+| toId | LONG | NO        | To the end of TradeId (used to query transaction orders) |
+| recvWindow | LONG | NO        | recv window                                              |
+| timestamp | LONG | YES       |     timestamp                                                     |
 
 
 ## Get Futures Account Transaction History List (USER_DATA)
