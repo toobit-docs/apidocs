@@ -2090,16 +2090,16 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述     |
-| ----------- | ------- | ------------- |--------|
-| symbol | STRING | NO | 交易对    |
-| startTime | LONG | NO | 开始时间戳  |
-| endTime | LONG | NO | 结束时间戳  |
-| fromId | LONG | NO  | 起始id   |
-| toId | LONG | NO | 结束id   |
-| limit | INT | NO | 每页显示条数 |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳    |
+| 参数名称     | 类型      | 是否必需 | 描述     |
+| ----------- | ------- |------|--------|
+| symbol | STRING | YES  | 交易对    |
+| startTime | LONG | NO   | 开始时间戳  |
+| endTime | LONG | NO   | 结束时间戳  |
+| fromId | LONG | NO   | 起始id   |
+| toId | LONG | NO   | 结束id   |
+| limit | INT | NO   | 每页显示条数 |
+| recvWindow | LONG | NO   | recv窗口 |
+| timestamp | LONG | YES  | 时间戳    |
 
 注意：
 
