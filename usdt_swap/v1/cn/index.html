@@ -444,10 +444,7 @@
                     <a href="#user_data-8" class="toc-h2 toc-link" data-title="查询合约账户流水 (USER_DATA)">查询合约账户流水 (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user_data-9" class="toc-h2 toc-link" data-title="风险限额查询 (USER_DATA)">风险限额查询 (USER_DATA)</a>
-                  </li>
-                  <li>
-                    <a href="#user_data-10" class="toc-h2 toc-link" data-title="用户手续费率 (USER_DATA)">用户手续费率 (USER_DATA)</a>
+                    <a href="#user_data-9" class="toc-h2 toc-link" data-title="用户手续费率 (USER_DATA)">用户手续费率 (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -3790,10 +3787,9 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
 </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668425281370"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单生成是的时间戳</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668425281370"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交时间</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1289239136943831296"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交ID</span><span class="w">
         </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1289239134670518528"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单ID</span><span class="w">
-        </span><span class="nl">"matchOrderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1287169326781135104"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交对手订单ID</span><span class="w">
         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC-SWAP-USDT"</span><span class="p">,</span><span class="w"> </span><span class="err">//交易对</span><span class="w">
         </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24000"</span><span class="p">,</span><span class="err">//成交价格</span><span class="w">
         </span><span class="nl">"qty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w"> </span><span class="err">//成交数量</span><span class="w">
@@ -3818,7 +3814,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <tr>
 <td>symbol</td>
 <td>STRING</td>
-<td>NO</td>
+<td>YES</td>
 <td>交易对</td>
 </tr>
 <tr>
@@ -3952,65 +3948,21 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>时间戳</td>
 </tr>
 </tbody></table>
-<h2 id='user_data-9'>风险限额查询 (USER_DATA)</h2>
-<ul>
-<li><code>GET /api/v1/futures/riskLimit</code></li>
-</ul>
 
-<p>查询风险限额，这个API端点需要请求签名。</p>
-<h3 id='5-10'>权重：5</h3>
-<blockquote>
-<p>响应：</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000133"</span><span class="p">,</span><span class="w"> </span><span class="err">//风险限额id</span><span class="w">
-                </span><span class="nl">"riskLimitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w"> </span><span class="err">//风险限额(最大持仓量)</span><span class="w">
-                </span><span class="nl">"maintainMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="p">,</span><span class="w"> </span><span class="err">//维持保证金率</span><span class="w">
-                </span><span class="nl">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w"> </span><span class="err">//起始保证金率</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL_OPEN"</span><span class="w"> </span><span class="err">//订单方向（BUY_OPEN、SELL_OPEN）</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"riskLimitId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000133"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"riskLimitAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000.0"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"maintainMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.005"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"initialMargin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
- </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-34'>参数</h3>
-<table><thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>是否必须</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>STRING</td>
-<td>YES</td>
-<td>交易对</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>LONG</td>
-<td>YES</td>
-<td>时间戳</td>
-</tr>
-<tr>
-<td>recvWindow</td>
-<td>LONG</td>
-<td>NO</td>
-<td>recv窗口</td>
-</tr>
-</tbody></table>
-<h2 id='user_data-10'>用户手续费率 (USER_DATA)</h2>
+<p><a href="#" title="| recvWindow | LONG | NO | recv窗口 |">//</a>: # ()</p>
+
+<p><a href="#" title="| recvWindow | LONG | NO | recv窗口 |">//</a>: # ()</p>
+
+<p><a href="#" title="| recvWindow | LONG | NO | recv窗口 |">//</a>: # ()</p>
+
+<p><a href="#" title="| recvWindow | LONG | NO | recv窗口 |">//</a>: # ()</p>
+
+<p><a href="#" title="| recvWindow | LONG | NO | recv窗口 |">//</a>: # ()</p>
+<h2 id='user_data-9'>用户手续费率 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/commissionRate</code></li>
 </ul>
-<h3 id='5-11'>权重：5</h3>
+<h3 id='5-10'>权重：5</h3>
 <blockquote>
 <p>响应：</p>
 </blockquote>
@@ -4020,7 +3972,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//平仓挂单的手续费费率</span><span class="w">
     </span><span class="nl">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//平仓吃单的手续费费率</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-35'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-34'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -4072,7 +4024,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-36'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-35'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -4106,7 +4058,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-37'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-36'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -4144,7 +4096,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='749d765242-38'>参数</h3>
+</span></code></pre></div><h3 id='749d765242-37'>参数</h3>
 <table><thead>
 <tr>
 <th>名称</th>
@@ -4264,7 +4216,8 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"O"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499405658657</span><span class="p">,</span><span class="w">            </span><span class="err">//</span><span class="w"> </span><span class="err">Order</span><span class="w"> </span><span class="err">creation</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">创建时间</span><span class="w">
     </span><span class="nl">"Z"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000000"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">Cumulative</span><span class="w"> </span><span class="err">quote</span><span class="w"> </span><span class="err">asset</span><span class="w"> </span><span class="err">transacted</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">交易金额</span><span class="w">
     </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span><span class="w">                     </span><span class="err">//</span><span class="w"> </span><span class="err">leverage</span><span class="w"> </span><span class="err">杠杆倍数</span><span class="w">
-    </span><span class="nl">"U"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499332119813</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">订单更新时间</span><span class="w"> </span><span class="err">毫秒级时间戳</span><span class="w">
+    </span><span class="nl">"U"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499332119813</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">订单更新时间</span><span class="w"> </span><span class="err">毫秒级时间戳</span><span class="w">
+    </span><span class="nl">"rp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-4.3058"</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">平仓订单累计已实现盈亏</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
@@ -4335,7 +4288,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
         </span><span class="nl">"T"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620385157122"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">ticketId</span><span class="w">
         </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291488620167835136"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">orderId</span><span class="w"> </span><span class="err">订单id</span><span class="w">
         </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1668693440093"</span><span class="p">,</span><span class="w">             </span><span class="err">//</span><span class="w"> </span><span class="err">clientOrderId</span><span class="w"> </span><span class="err">客户订单id</span><span class="w">
-        </span><span class="nl">"O"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291354087841869312"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">matchOrderId</span><span class="w"> </span><span class="err">对手方订单ID</span><span class="w">
         </span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1286424214388204801"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">accountId</span><span class="w"> </span><span class="err">账户id</span><span class="w">
         </span><span class="nl">"m"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">isMaker</span><span class="w"> 
         </span><span class="nl">"S"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="w">                       </span><span class="err">//</span><span class="w"> </span><span class="err">side</span><span class="w">  
