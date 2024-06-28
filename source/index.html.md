@@ -2775,7 +2775,8 @@ curl  -H "Content-Type:application/json"
     "O": 1499405658657,            // Order creation time 创建时间
     "Z": "0.00000000",             // Cumulative quote asset transacted quantity 交易金额
     "v": "20",                     // leverage 杠杆倍数
-    "U": 1499332119813             // 订单更新时间 毫秒级时间戳
+    "U": 1499332119813,             // 订单更新时间 毫秒级时间戳
+    "rp": "-4.3058"             // 平仓订单累计已实现盈亏
   }
 ]
 ```
