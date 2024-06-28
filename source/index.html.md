@@ -2820,7 +2820,8 @@ This type of event will be pushed when a new order is created, an order has a ne
     "O": 1499405658657,            // Order creation time 
     "Z": "0.00000000",             // Cumulative quote asset transacted quantity 
     "v": "20",                     // leverage 
-    "U": 1499405658658             // update order time
+    "U": 1499405658658,             // update order time
+    "rp": "-4.3058"             // Clos Order Cumulative realisedPnl
   }
 ]
 ```
