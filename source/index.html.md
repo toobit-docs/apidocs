@@ -2464,7 +2464,8 @@ curl  -H "Content-Type:application/json"
         "type": "LIMIT", //订单类型（LIMIT、MARKET)
         "isMaker": false, // 是否是maker
         "side": "BUY_OPEN", //订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-        "realizedPnl": "0" //成交盈亏
+        "realizedPnl": "0", //成交盈亏
+        "ticketId": "1185465136943458745" // ticketId
     }
 ]
 ```
