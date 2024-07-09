@@ -3830,13 +3830,37 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>NO</td>
 <td>到TradeId结束（用来查询成交订单）</td>
 </tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td>开始时间戳</td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONT</td>
+<td>NO</td>
+<td>截止时间戳</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv窗口</td>
+</tr>
 </tbody></table>
-
-<p>| startTime | LONG | NO   | 开始时间戳 |
-| endTime | LONT | NO   | 截止时间戳 |
-| limit | INT | NO   | 返回条数 默认<code>20</code> 最小<code>1</code> 最大<code>1000</code>  |
-| timestamp | LONG | YES  | 时间戳 |
-| recvWindow | LONG | NO   | recv窗口 |</p>
 <h2 id='user_data-8'>查询合约账户流水 (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/balanceFlow</code></li>
