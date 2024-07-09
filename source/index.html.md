@@ -2083,7 +2083,8 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
         },
         "feeCoinId": "USDT",
         "feeAmount": "0.22430000308",
-        "makerRebate": "0"
+        "makerRebate": "0",
+        "ticketId": "1185465136943458745" // ticketId
     }
 ]
 ```
