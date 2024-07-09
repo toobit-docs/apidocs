@@ -2069,7 +2069,6 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
         "symbol": "BTCUSDT",
         "symbolName": "BTCUSDT",
         "orderId": "1290805676579237376",
-        "matchOrderId": "1291291745191996928",
         "price": "314",
         "qty": "0.71433122",
         "commission": "0.22430000308",
