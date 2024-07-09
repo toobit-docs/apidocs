@@ -2506,7 +2506,8 @@ Get trades for a specific account and symbol.
         "type": "LIMIT", 
         "isMaker": false, // isMaker
         "side": "BUY_OPEN", //BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE
-        "realizedPnl": "0" 
+        "realizedPnl": "0",
+        "ticketId": "1185465136943458745" // ticketId
     }
 ]
 ```
