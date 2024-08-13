@@ -2409,16 +2409,16 @@ Set the take profit, stop loss
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description                        |
-| ----------------- | ---- | ------- |------------------------------------|
-| symbol | STRING | NO | symbol                             |
-| orderId | LONG | NO | order id                           |
-| type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP` |
-| startTime | LONG | NO | start timestamp                    |
-| endTime | LONG | NO | end timestamp                      |
-| limit | INT | NO | Default `20` Min `1` Max `1000`    |
-| timestamp | LONG | YES | timestamp                          |
-| recvWindow | LONG | NO | recv window                        |
+| Name    | Type  |    Mandatory           | Description                                     |
+| ----------------- | ---- | ------- |-------------------------------------------------|
+| symbol | STRING | NO | symbol                                          |
+| orderId | LONG | NO | order id                                        |
+| type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP`              |
+| startTime | LONG | NO | start timestamp.   Default value three days ago |
+| endTime | LONG | NO | end timestamp                                   |
+| limit | INT | NO | Default `20` Min `1` Max `1000`                 |
+| timestamp | LONG | YES | timestamp                                       |
+| recvWindow | LONG | NO | recv window                                     |
 
 Notes：
 
