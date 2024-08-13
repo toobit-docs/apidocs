@@ -181,7 +181,7 @@ handle_deploy_files() {
   if [ -d "$gh_pages_directory/$version/$language" ]; then
     rm -rf $gh_pages_directory/$version/$language
   fi
-  cp -r $build_directory/spot/vremotes/origin/v1/en/* $gh_pages_directory/spot/v1/en/
+  cp -r $build_directory/spot/v1/en/* $gh_pages_directory/spot/v1/en/
 }
 
 check_diff() {
