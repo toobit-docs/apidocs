@@ -2017,15 +2017,15 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 ```
 
 ### 参数
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| orderId | LONG | NO | 订单ID |
-| symbol | STRING | NO | 交易对 |
-| startTime | LONG | NO | 开始时间戳 |
-| endTime | LONG| NO | 结束时间戳 |
+| 参数名称     | 类型      | 是否必需      | 描述               |
+| ----------- | ------- | ------------- |------------------|
+| orderId | LONG | NO | 订单ID             |
+| symbol | STRING | NO | 交易对              |
+| startTime | LONG | NO | 开始时间戳, 默认值:三天前   |
+| endTime | LONG| NO | 结束时间戳            |
 | limit | INT | NO | 默认 500; 最多 1000. |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口           |
+| timestamp | LONG | YES | 时间戳              |
 
 ## 账户信息 (USER_DATA)
 - `GET /api/v1/account`
