@@ -2368,16 +2368,16 @@ curl  -H "Content-Type:application/json"
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | NO | 交易对 |
-| orderId | LONG | NO | 订单ID |
+| 名称    | 类型  |    是否必须           | 描述                             |
+| ----------------- | ---- | ------- |--------------------------------|
+| symbol | STRING | NO | 交易对                            |
+| orderId | LONG | NO | 订单ID                           |
 | type | ENUM | NO | 默认`LIMIT` 订单类型（`LIMIT`、`STOP`） |
-| startTime | LONG | NO  | 开始时间戳 |
-| endTime | LONT | NO | 截止时间戳 |
-| limit | INT | NO |返回条数 默认`20` 最小`1` 最大`1000`  |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| startTime | LONG | NO  | 开始时间戳 默认值:三天前                  |
+| endTime | LONT | NO | 截止时间戳                          |
+| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`     |
+| timestamp | LONG | YES | 时间戳                            |
+| recvWindow | LONG | NO | recv窗口                         |
 
 注意：
 
