@@ -2028,11 +2028,11 @@ Get all account orders; active, canceled, or filled.
 | ----------- | ------- | ------------- |------------------------|
 | orderId | LONG | NO | order id               |
 | symbol | STRING | NO | symbol                 |
-| startTime | LONG | NO | start timestamp        |
+| startTime | LONG | NO | start timestamp.Default value three days ago       |
 | endTime | LONG| NO | end timestamp          |
 | limit | INT | NO | Default 500; Max 1000. |
 | recvWindow | LONG | NO | recv window            |
-| timestamp | LONG | YES |        timestamp                |
+| timestamp | LONG | YES | timestamp              |
 
 ## Account Information (USER_DATA)
 - `GET /api/v1/account`
