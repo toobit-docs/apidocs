@@ -2523,68 +2523,17 @@ curl  -H "Content-Type:application/json"
 | recvWindow | LONG | NO | recv窗口 |
 | timestamp | LONG | YES | 时间戳    |
 
-[//]: # ()
-[//]: # (## 风险限额查询 &#40;USER_DATA&#41;)
+`flowType`枚举
 
-[//]: # (- `GET /api/v1/futures/riskLimit`)
+| 类型  | 值    | 
+|-----|------|  
+| 手续费 | 10   | 
+| 资金费 | 32   | 
+| PNL | 28   | 
+| 爆仓  | 700  | 
+| ADL | 701  |  
 
-[//]: # ()
-[//]: # (查询风险限额，这个API端点需要请求签名。)
 
-[//]: # ()
-[//]: # (### 权重：5)
-
-[//]: # ()
-[//]: # (> 响应：)
-
-[//]: # ()
-[//]: # (``` json)
-
-[//]: # ([)
-
-[//]: # (            {)
-
-[//]: # (                "riskLimitId": "200000133", //风险限额id)
-
-[//]: # (                "riskLimitAmount": "1000000.0", //风险限额&#40;最大持仓量&#41;)
-
-[//]: # (                "maintainMargin": "0.005", //维持保证金率)
-
-[//]: # (                "initialMargin": "0.01", //起始保证金率)
-
-[//]: # (                "side": "SELL_OPEN" //订单方向（BUY_OPEN、SELL_OPEN）)
-
-[//]: # (            },)
-
-[//]: # (            {)
-
-[//]: # (                "riskLimitId": "200000133",)
-
-[//]: # (                "riskLimitAmount": "1000000.0",)
-
-[//]: # (                "maintainMargin": "0.005",)
-
-[//]: # (                "initialMargin": "0.01",)
-
-[//]: # (                "side": "BUY_OPEN")
-
-[//]: # (            })
-
-[//]: # ( ])
-
-[//]: # (```)
-
-[//]: # (### 参数)
-
-[//]: # (| 名称    | 类型  |    是否必须           | 描述           |)
-
-[//]: # (| ----------------- | ---- | ------- | ------------- |)
-
-[//]: # (| symbol | STRING | YES | 交易对 |)
-
-[//]: # (| timestamp | LONG | YES | 时间戳 |)
-
-[//]: # (| recvWindow | LONG | NO | recv窗口 |)
 
 ## 用户手续费率 (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
