@@ -2540,7 +2540,8 @@ Get trades for a specific account and symbol.
         "coin": "BTC",
         "coinId": "BTC",
         "coinName": "BTC",
-        "symbol": "BTC-SWAP-USDT",
+        "symbol": "BTCUSDT", // symbol name
+        "symbolId": "BTC-SWAP-USDT",
         "flowTypeValue": 51, 
         "flowType": "USER_ACCOUNT_TRANSFER", 
         "flowName": "Transfer",
