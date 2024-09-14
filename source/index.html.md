@@ -2499,7 +2499,8 @@ curl  -H "Content-Type:application/json"
         "coin": "BTC",
         "coinId": "BTC",
         "coinName": "BTC",
-        "symbol": "BTC-SWAP-USDT",
+        "symbol": "BTCUSDT", // 交易对名称
+        "symbolId": "BTC-SWAP-USDT",
         "flowTypeValue": 51, // 流水类型
         "flowType": "USER_ACCOUNT_TRANSFER", // 流水类型名称
         "flowName": "Transfer", // 流水类型说明
