@@ -2706,6 +2706,7 @@ curl  -H "Content-Type:application/json"
     "E": 1499405658658,            // Event time 事件时间
     "s": "ETHBTC",                 // Symbol 币对
     "c": 1000087761,               // Client order ID 客户订单id
+    "C": true,                     // is close order 是否平仓单
     "S": "BUY",                    // Side 订单方向
     "o": "LIMIT",                  // type 订单类型
     "f": "GTC",                    // Time in force 有效方式
