@@ -2802,6 +2802,7 @@ This type of event will be pushed when a new order is created, an order has a ne
     "E": 1499405658658,            // Event time 
     "s": "ETHBTC",                 // Symbol 
     "c": 1000087761,               // Client order ID 
+    "C": true,                     // Is close order 
     "S": "BUY",                    // Side 
     "o": "LIMIT",                  // Order type 
     "f": "GTC",                    // Time in force 
