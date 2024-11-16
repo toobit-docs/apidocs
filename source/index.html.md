@@ -1095,9 +1095,9 @@ Get the mark price of a trading pair.
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | symbol |
+| Name    | Type  | Mandatory | Description           |
+| ----------------- | ---- |-----------| ------------- |
+| symbol | STRING | NO        | symbol |
 
 ## Get Funding Rate History
 
