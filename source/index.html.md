@@ -1811,6 +1811,7 @@ Execute the transfer between the spot account and the contract account
 accountType：
 `MAIN`: spot account
 `FUTURES`:  U-contract account
+`COPY_TRADING`:  copy trading leader account
 
 
 
