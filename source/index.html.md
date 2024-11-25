@@ -1771,6 +1771,7 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 accountType：
 `MAIN`: 现货
 `FUTURES`:  U本位合约
+`COPY_TRADING`: 带单账户
 
 
 
