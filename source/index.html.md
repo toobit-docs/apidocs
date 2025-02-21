@@ -2566,6 +2566,18 @@ Get trades for a specific account and symbol.
 | recvWindow | LONG | NO | recv window     |
 | timestamp | LONG | YES | timestamp       |
 
+
+`flowType` enum
+
+| Description       | flowType value | 
+|-------------------|----------------|  
+| Fee               | 10             | 
+| Fund Fee          | 32             | 
+| Realized PNL      | 28             | 
+| Force liquidation | 700            | 
+| ADL               | 701            |  
+
+
 [//]: # ()
 [//]: # (## Query Risk Limit &#40;USER_DATA&#41;)
 
