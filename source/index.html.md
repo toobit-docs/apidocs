@@ -2104,7 +2104,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 注意：
 
 - 如果只有fromId，会返回订单号小于fromId的，倒序排列。
-- 如果只有toId，会返回订单号小于toId的，升序排列。
+- 如果只有toId，会返回订单号大于toId的，升序排列。
 - 如果同时有fromId和toId, 会返回订单号在fromId和toId的，倒序排列。
 - 如果fromId和toId都没有，会返回最新的成交记录，倒序排列。
 
