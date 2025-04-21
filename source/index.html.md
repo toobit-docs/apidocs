@@ -314,14 +314,17 @@ Submit a withdraw request.
 
 ### Parameters
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- | -------------- |
-| coin | STRING | YES | asset |
-| clientOrderId | LONG | YES | 	client id for withdraw |
+| Name     | Type      | Mandatory      | Description                                                                                                                                           |
+| ----------- | ------- | ------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| coin | STRING | YES | asset                                                                                                                                                 |
+| clientOrderId | LONG | YES | 	client id for withdraw                                                                                                                               |
 | address | STRING  | YES | Withdrawal address (Note: the withdrawal address must be maintained in the PC terminal or APP terminal in the common address list inside the address) |
-| addressExt | STRING | NO | tag |
-| quantity  | DECIMAL | YES | Number of coin withdrawals |
-| chainType | STRING | NO | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI |
+| addressExt | STRING | NO | tag                                                                                                                                                   |
+| quantity  | DECIMAL | YES | Number of coin withdrawals                                                                                                                            |
+| chainType | STRING | NO | chain type, The chainType of USDT is OMNI ERC20 TRC20 respectively, and the default is OMNI                                                           |
+| vaspCode              | STRING | NO | vasp code                                                                                                                                             |
+| targetPersonFirstName | STRING | NO | target person first name                                                                                                                              |
+| targetPersonLastName  | STRING | NO | target person last name                                                                                                                               |
 
 
 ##  Withdrawal records (USER_DATA)
