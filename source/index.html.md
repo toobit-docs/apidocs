@@ -308,14 +308,17 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ### 参数
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| coin | STRING | YES | 资产 |
-| clientOrderId | LONG | YES | 	自定义提币ID |
-| address | STRING  | YES | 提币地址(注意：提现地址必须是在PC端或者APP端维护在常用地址列表里面的地址) |
-| addressExt | STRING | NO | tag |
-| quantity  | DECIMAL | YES | 提币数量 |
-| chainType | STRING | NO | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
+| 参数名称                  | 类型      | 是否必需      | 描述          |
+|-----------------------| ------- | ------------- | ------------- |
+| coin                  | STRING | YES | 资产 |
+| clientOrderId         | LONG | YES | 	自定义提币ID |
+| address               | STRING  | YES | 提币地址(注意：提现地址必须是在PC端或者APP端维护在常用地址列表里面的地址) |
+| addressExt            | STRING | NO | tag |
+| quantity              | DECIMAL | YES | 提币数量 |
+| chainType             | STRING | NO | chain type, USDT的chainType分别是OMNI ERC20 TRC20，默认OMNI |
+| vaspCode              | STRING | NO | vasp码 |
+| targetPersonFirstName | STRING | NO | 提币目标人姓 |
+| targetPersonLastName  | STRING | NO | 提币目标人名 |
 
 
 ## 获取提币记录 (USER_DATA)
