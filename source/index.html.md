@@ -237,6 +237,7 @@ These terms will be used throughout the documentation, so it is recommended espe
 ### ENUM definitions
 
 #### Order status (status):
+- PENDING_NEW - Order request received successfully
 - NEW - New order, no deal yet
 - PARTIALLY_FILLED - Partial Sale
 - FILLED - Full Deal
