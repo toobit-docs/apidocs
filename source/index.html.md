@@ -188,6 +188,7 @@ Note that the signature is different in example 3.There is no & between "GTC" an
 - MARGIN 
 
 #### Order status (status):
+- PENDING_NEW - Order request received successfully
 - NEW 
 - PARTIALLY_FILLED 
 - FILLED 
