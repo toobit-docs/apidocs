@@ -231,6 +231,7 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 ### 枚举定义
 
 #### 订单状态:
+- PENDING_NEW - 下单请求接收成功
 - NEW - 新订单，暂无成交
 - PARTIALLY_FILLED - 部分成交
 - FILLED - 完全成交
