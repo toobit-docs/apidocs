@@ -2327,9 +2327,9 @@ Returns the current position information, this API requires a request signature.
         "margin": "11.9825", 
         "marginRate": "0.4992", 
         "unrealizedPnL": "0", //The unrealized profit and loss of the current position
-        "profitRate": "0", //Profit rate of current position
-        "realizedPnL": "-0.018", //Realized profit and loss
-        "maxNotionalValue": "60000", //maximum volume of positions at current leverage
+        "profitRate": "0", // Profit rate of current position
+        "realizedPnL": "-0.018", // Realized profit and loss
+        "maxNotionalValue": "60000", // maximum volume of positions at current leverage
         "markPrice": "16854.2"
     }
 ]
