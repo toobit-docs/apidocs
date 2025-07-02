@@ -2289,7 +2289,8 @@ curl  -H "Content-Type:application/json"
         "unrealizedPnL": "0", //当前仓位的未实现盈亏
         "profitRate": "0", //当前仓位的盈利率
         "realizedPnL": "-0.018", //当前 合约 的已实现盈亏
-        "maxNotionalValue": "60000" // 当前杠杆倍数最大可持仓张数
+        "maxNotionalValue": "60000", // 当前杠杆倍数最大可持仓张数
+        "markPrice": "16854.2" // 标记价格
     }
 ]
 ```
