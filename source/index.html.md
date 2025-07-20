@@ -2289,14 +2289,14 @@ Note: `code` returns 200 to indicate that the order cancellation request has bee
 
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description                        |
-| ----------------- | ---- | ------- |------------------------------------|
-| symbol | STRING | NO | symbol                             |
-| orderId | LONG | NO | orderId                            |
-| type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP` |
-| limit | INT | NO | Default `20` Min `1` Max `1000`    |
-| timestamp | LONG | YES | timestamp                          |
-| recvWindow | LONG | NO | recv window                        |
+| Name    | Type  |    Mandatory           | Description                         |
+| ----------------- | ---- | ------- |-------------------------------------|
+| symbol | STRING | NO | symbol                              |
+| orderId | LONG | NO | orderId                             |
+| type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP`、`STOP_PROFIT_LOSS` |
+| limit | INT | NO | Default `20` Min `1` Max `1000`     |
+| timestamp | LONG | YES | timestamp                           |
+| recvWindow | LONG | NO | recv window                         |
 
 Notes：
 
