@@ -2249,14 +2249,14 @@ curl  -H "Content-Type:application/json"
 
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述                   |
-| ----------------- | ---- | ------- |----------------------|
-| symbol | STRING | NO | 交易对                  |
-| orderId | LONG | NO | 订单ID                 |
-| type | ENUM | NO | 默认`LIMIT` 订单类型（`LIMIT`、`STOP`） |
-| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`         |
-| timestamp | LONG | YES | 时间戳                  |
-| recvWindow | LONG | NO | recv窗口               |
+| 名称    | 类型  |    是否必须           | 描述                              |
+| ----------------- | ---- | ------- |---------------------------------|
+| symbol | STRING | NO | 交易对                             |
+| orderId | LONG | NO | 订单ID                            |
+| type | ENUM | NO | 默认`LIMIT` 订单类型（`LIMIT`、`STOP`、`STOP_PROFIT_LOSS`） |
+| limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`      |
+| timestamp | LONG | YES | 时间戳                             |
+| recvWindow | LONG | NO | recv窗口                          |
 
 注意：
 
