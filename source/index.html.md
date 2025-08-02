@@ -2562,6 +2562,30 @@ curl  -H "Content-Type:application/json"
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
+
+
+
+## 今日盈亏 (USER_DATA)
+- `GET /api/v1/futures/todayPnl`
+
+### 权重：5
+
+> 响应：
+
+``` json
+{
+    "dayProfit": "100", // 今日盈亏 UTC+0 时区
+    "dayProfitRate": "0.01" // 今日盈亏 UTC+0 时区
+}
+```
+
+### 参数
+| 名称    | 类型  |    是否必须           | 描述           |
+| ----------------- | ---- | ------- | ------------- |
+| timestamp | LONG | YES | 时间戳 |
+| recvWindow | LONG | NO | recv窗口 |
+
+
 # Websocket 账户信息推送
 
 公共WSS说明
