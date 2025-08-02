@@ -2645,7 +2645,7 @@ Get trades for a specific account and symbol.
 
 [//]: # ()
 
-## User Commission Rate (USER_DATA)
+## User Trade Fee Rate (USER_DATA)
 - `GET /api/v1/futures/commissionRate`
 
 ### Weight：5
@@ -2654,10 +2654,10 @@ Get trades for a specific account and symbol.
 
 ``` json
 {
-    "openMakerFee": "0.000006", //The commission rate for opening pending orders
-    "openTakerFee": "0.0001", //The commission rate for open position taker
-    "closeMakerFee": "0.0002", //The commission rate for closing pending orders
-    "closeTakerFee": "0.0004" //The commission rate for closing a taker order
+    "openMakerFee": "0.000006", //The trade fee rate for opening pending orders
+    "openTakerFee": "0.0001", //The trade fee rate for open position taker
+    "closeMakerFee": "0.0002", //The trade fee rate for closing pending orders
+    "closeTakerFee": "0.0004" //The trade fee rate for closing a taker order
 }
 ```
 
@@ -2667,6 +2667,30 @@ Get trades for a specific account and symbol.
 | symbol | STRING | YES | symbol      |
 | recvWindow | LONG | NO | recv window |
 | timestamp | LONG | YES |   timestamp          |
+
+
+
+## Today Pnl (USER_DATA)
+- `GET /api/v1/futures/todayPnl`
+
+### Weight：5
+
+> Response：
+
+``` json
+{
+    "dayProfit": "100", // UTC+0 time zone
+    "dayProfitRate": "0.01" // UTC+0 time zone
+}
+```
+
+### Parameters
+| Name    | Type  |    Mandatory           | Description |
+| ----------------- | ---- | ------- | ------------- |
+| recvWindow | LONG | NO | recv window |
+| timestamp | LONG | YES |   timestamp          |
+
+
 
 # User Data Streams
 
