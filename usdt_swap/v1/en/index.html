@@ -447,7 +447,10 @@
                     <a href="#get-futures-account-transaction-history-list-user_data" class="toc-h2 toc-link" data-title="Get Futures Account Transaction History List (USER_DATA)">Get Futures Account Transaction History List (USER_DATA)</a>
                   </li>
                   <li>
-                    <a href="#user-commission-rate-user_data" class="toc-h2 toc-link" data-title="User Commission Rate (USER_DATA)">User Commission Rate (USER_DATA)</a>
+                    <a href="#user-trade-fee-rate-user_data" class="toc-h2 toc-link" data-title="User Trade Fee Rate (USER_DATA)">User Trade Fee Rate (USER_DATA)</a>
+                  </li>
+                  <li>
+                    <a href="#today-pnl-user_data" class="toc-h2 toc-link" data-title="Today Pnl (USER_DATA)">Today Pnl (USER_DATA)</a>
                   </li>
               </ul>
           </li>
@@ -4032,7 +4035,7 @@ Execute the transfer between the spot account and the contract account</p>
 <p><a href="#" title="| timestamp | LONG | YES |    timestamp         |">//</a>: # ()</p>
 
 <p><a href="#" title="| timestamp | LONG | YES |    timestamp         |">//</a>: # ()</p>
-<h2 id='user-commission-rate-user_data'>User Commission Rate (USER_DATA)</h2>
+<h2 id='user-trade-fee-rate-user_data'>User Trade Fee Rate (USER_DATA)</h2>
 <ul>
 <li><code>GET /api/v1/futures/commissionRate</code></li>
 </ul>
@@ -4041,10 +4044,10 @@ Execute the transfer between the spot account and the contract account</p>
 <p>Response：</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"openMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000006"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
-    </span><span class="nl">"openTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">open</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="err">taker</span><span class="w">
-    </span><span class="nl">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
-    </span><span class="nl">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">commission</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">taker</span><span class="w"> </span><span class="err">order</span><span class="w">
+    </span><span class="nl">"openMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000006"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">fee</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">opening</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
+    </span><span class="nl">"openTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0001"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">fee</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">open</span><span class="w"> </span><span class="err">position</span><span class="w"> </span><span class="err">taker</span><span class="w">
+    </span><span class="nl">"closeMakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0002"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">fee</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">pending</span><span class="w"> </span><span class="err">orders</span><span class="w">
+    </span><span class="nl">"closeTakerFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004"</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">trade</span><span class="w"> </span><span class="err">fee</span><span class="w"> </span><span class="err">rate</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">closing</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">taker</span><span class="w"> </span><span class="err">order</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='parameters-38'>Parameters</h3>
 <table><thead>
@@ -4061,6 +4064,40 @@ Execute the transfer between the spot account and the contract account</p>
 <td>YES</td>
 <td>symbol</td>
 </tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>recv window</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td>timestamp</td>
+</tr>
+</tbody></table>
+<h2 id='today-pnl-user_data'>Today Pnl (USER_DATA)</h2>
+<ul>
+<li><code>GET /api/v1/futures/todayPnl</code></li>
+</ul>
+<h3 id='weight-5-11'>Weight：5</h3>
+<blockquote>
+<p>Response：</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"dayProfit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">UTC+</span><span class="mi">0</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">zone</span><span class="w">
+    </span><span class="nl">"dayProfitRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">UTC+</span><span class="mi">0</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">zone</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='parameters-39'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>recvWindow</td>
 <td>LONG</td>
@@ -4099,7 +4136,7 @@ Execute the transfer between the spot account and the contract account</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"listenKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1A9LWJjuMwKWYP4QQPw34GRm8gz3x5AephXSuqcDef1RnzoBVhEeGE963CoS1Sgj"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-39'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-40'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4133,7 +4170,7 @@ Execute the transfer between the spot account and the contract account</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-40'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-41'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4170,7 +4207,7 @@ Execute the transfer between the spot account and the contract account</p>
 <p>Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
-</span></code></pre></div><h3 id='parameters-41'>Parameters</h3>
+</span></code></pre></div><h3 id='parameters-42'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
