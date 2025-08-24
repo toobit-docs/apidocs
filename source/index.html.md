@@ -967,7 +967,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 
 ## 价格指数K线数据 
 
-- `GET /api/quote/v1/index/klines`
+- `GET /quote/v1/index/klines`
 
 获取某个交易对的价格指数K线
 
