@@ -978,7 +978,7 @@ Notes: If startTime and endTime are not sent, only the latest K line will be ret
 
 ## Index Price Kline/Candlestick Data 
 
-- `GET /api/quote/v1/index/klines`
+- `GET /quote/v1/index/klines`
 
 Kline/candlestick bars for the index price of a pair.
 
