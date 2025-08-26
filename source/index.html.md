@@ -1075,13 +1075,13 @@ Klines are uniquely identified by their open time.
 
 ### Parameters
 
-| Name     | Type      | Mandatory      | Description           |
-| ----------- | ------- | ------------- |-----------------------|
-| symbol | STRING| YES | symbol                |
-| interval | ENUM | YES | interval              |
-| startTime | LONG | NO | start timestamp           |
-| endTime | LONG | NO | end timestamp              |
-| limit | INT | NO | Default 100; Max 100. |
+| Name     | Type      | Mandatory      | Description             |
+| ----------- | ------- | ------------- |-------------------------|
+| symbol | STRING| YES | symbol                  |
+| interval | ENUM | YES | interval                |
+| startTime | LONG | NO | start timestamp         |
+| endTime | LONG | NO | end timestamp           |
+| limit | INT | NO | Default 1000; Max 1000. |
 
 - If `startTime` and `endTime` are not sent, only the latest K line will be returned.
 
