@@ -1066,13 +1066,13 @@ NONE
 
 ### 参数
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING| YES | |
-| interval | ENUM | YES | |
-| startTime | LONG | NO | |
+| 参数名称     | 类型      | 是否必需      | 描述                |
+| ----------- | ------- | ------------- |-------------------|
+| symbol | STRING| YES |                   |
+| interval | ENUM | YES |                   |
+| startTime | LONG | NO |                   |
 | endTime | LONG | NO |
-| limit | INT | NO | 默认 100; 最大 100. |
+| limit | INT | NO | 默认 1000; 最大 1000. |
 
 - 如果`startTime`和`endTime`没有发送，只有最新的K线会被返回。
 
