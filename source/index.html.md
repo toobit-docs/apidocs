@@ -954,13 +954,13 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | 交易对 |
-| interval | ENUM | YES | 时间间隔 |
-| startTime | LONG | NO | 开始时间 |
-| endTime | LONG | NO | 结束时间|
-| limit | INT | NO | 默认 100; 最大 1000|
+| 名称    | 类型  |    是否必须           | 描述               |
+| ----------------- | ---- | ------- |------------------|
+| symbol | STRING | YES | 交易对              |
+| interval | ENUM | YES | 时间间隔             |
+| startTime | LONG | NO | 开始时间             |
+| endTime | LONG | NO | 结束时间             |
+| limit | INT | NO | 默认 1000; 最大 1000 |
 
 注意: 如果startTime和endTime没有发送，只有最新的K线会被返回。
 
