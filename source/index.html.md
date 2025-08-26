@@ -965,13 +965,13 @@ Kline/candlestick bars for a symbol. Klines are uniquely identified by their ope
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |symbol  |
-| interval | ENUM | YES | interval |
-| startTime | LONG | NO | start timestamp |
-| endTime | LONG | NO | en d timestamp|
-| limit | INT | NO | Default 100; Max 1000|
+| Name    | Type  |    Mandatory           | Description            |
+| ----------------- | ---- | ------- |------------------------|
+| symbol | STRING | YES | symbol                 |
+| interval | ENUM | YES | interval               |
+| startTime | LONG | NO | start timestamp        |
+| endTime | LONG | NO | en d timestamp         |
+| limit | INT | NO | Default 1000; Max 1000 |
 
 Notes: If startTime and endTime are not sent, only the latest K line will be returned.
 
