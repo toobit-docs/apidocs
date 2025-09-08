@@ -42,7 +42,7 @@ A `SPOT` account is provided by default upon creation of a Account.
 
 ## General API Information
 
-- ome endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>this page</a>
+- some endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>this page</a>
 - The base endpoint is: **https://api.toobit.com**
 - All endpoints return either a JSON object or array.
 - All time and timestamp related fields are in milliseconds.
