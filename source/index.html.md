@@ -2330,6 +2330,7 @@ Returns the current position information, this API requires a request signature.
         "profitRate": "0", // Profit rate of current position
         "realizedPnL": "-0.018", // Realized profit and loss
         "maxNotionalValue": "60000", // maximum volume of positions at current leverage
+        "marginType": "ISOLATED", // ISOLATED or CROSSED
         "markPrice": "16854.2"
     }
 ]
