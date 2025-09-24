@@ -1867,6 +1867,7 @@ Obtain the history of fund transfers between the spot account and the contract a
 | startTime | LONG | NO | start timestamp                             |
 | endTime | LONG | NO | end timestamp                               |
 | limit | INT | NO | Default `20` Min `1` Max `1000`             |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO |   recv window                                          |
 | timestamp | LONG | YES |    Timestamp                                         |
 
@@ -1892,6 +1893,7 @@ Change the user's margin mode on the specified symbol contract: isolated margin 
 | ----------------- | ---- | ------- |--------------------|
 | symbol | STRING | YES | symbol             |
 | marginType | ENUM | YES | `CROSS` `ISOLATED` |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO |   recv window                 |
 | timestamp | LONG | YES |     Timestamp               |
 
@@ -1918,6 +1920,7 @@ Adjust the user's opening leverage in the specified symbol contract.
 | ----------------- | ---- | ------- |-------------|
 | symbol | STRING | YES | symbol      |
 | leverage | INT | YES | leverage            |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO |   recv window           |
 | timestamp | LONG | YES |      timestamp       |
 
@@ -1942,6 +1945,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- |-------------|
 | symbol | STRING | YES | symbol      |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO | recv window |
 | timestamp | LONG | YES |  timestamp           |
 
@@ -1992,6 +1996,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | slTriggerBy      | ENUM | NO | The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE`                              |
 | slLimitPrice     | STRING | NO | The limit order price when take profit price is triggered. Only works when slOrderType=LIMI                            |
 | slOrderType      | ENUM | NO | The order type when take profit is triggered. `MARKET`(default), `LIMIT`.                                                  |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp        | LONG | YES | timestamp                                                                                                              |
 | recvWindow       | LONG | NO | recv window                                                                                                            |
 
@@ -2018,7 +2023,7 @@ A maximum of 10 orders at a time, must be the same `symbol`.
 
 ### Weight: 2
 
-> Example:
+> USDT-M Futures. Example:
 
 ``` shell
 curl  -H "Content-Type:application/json" 
@@ -2042,6 +2047,33 @@ curl  -H "Content-Type:application/json"
        "quantity": 10,     
        "priceType": "INPUT"   
    } ]' '#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'
+```
+
+
+> USDC-M Futures. Example:
+
+``` shell
+curl  -H "Content-Type:application/json" 
+-H "X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs" 
+-X POST -d '[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]' '#HOST/api/v1/futures/batchOrders?category=USDC&timestamp=1673062952473&signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'
 ```
 
 > Response：
@@ -2139,6 +2171,7 @@ Notes：
 | orderId | LONG | NO | order id          |
 | origClientOrderId | STRING | NO | client order id   |
 | type | ENUM | NO | `LIMIT` or `STOP` |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES |     timestamp              |
 | recvWindow | LONG | NO |     recvWindow              |
  
@@ -2183,6 +2216,7 @@ Notes:
 | origClientOrderId | STRING | NO | User defined order ID |
 | type | ENUM | NO | `LIMIT` or `STOP`     |
 | symbol | STRING | NO | symbol                |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp             |
 | recvWindow | LONG | NO | recv window           |
 
@@ -2212,6 +2246,7 @@ Notes：
 | ----------------- | ---- | ------- |-----------------|
 | symbol | STRING | YES | symbol          |
 | side | ENUM | YES | `BUY` or `SELL` |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp       |
 | recvWindow | LONG | NO | recv window     |
 
@@ -2252,6 +2287,7 @@ Cancel orders in bulk. A maximum of `100` entries at a time.
 | Name    | Type  |    Mandatory           | Description                          |
 | ----------------- | ---- | ------- |--------------------------------------|
 | ids | STRING | YES | Order id (multiple separated by `,`) |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp                            |
 | recvWindow | LONG | NO | recv window                          |
 
@@ -2294,6 +2330,7 @@ Note: `code` returns 200 to indicate that the order cancellation request has bee
 | symbol | STRING | NO | symbol                              |
 | orderId | LONG | NO | orderId                             |
 | type | ENUM | NO | Default `LINIT`  `LIMIT` or `STOP`、`STOP_PROFIT_LOSS` |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | limit | INT | NO | Default `20` Min `1` Max `1000`     |
 | timestamp | LONG | YES | timestamp                           |
 | recvWindow | LONG | NO | recv window                         |
@@ -2340,6 +2377,7 @@ Returns the current position information, this API requires a request signature.
 | ----------------- | ---- | ------- |--------------------------------------|
 | symbol | STRING | NO | symbol                               |
 | side | ENUM | NO | position direction `LONG` or `SHORT` |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO | recv window                          |
 | timestamp | LONG | YES |   timestamp                                   |
 
@@ -2378,6 +2416,7 @@ Set the take profit, stop loss
 | stopLoss | ENUM   | NO   | stop loss price                                                                                               |
 | tpTriggerBy | ENUM   | NO   | take profit The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  ` |
 | slTriggerBy | ENUM   | NO   | stop loss The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  `   |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG   | YES  | timestamp                                                                                                           |
 | recvWindow | LONG   | NO   | recv window                                                                                                             |
 
@@ -2421,6 +2460,7 @@ Set the take profit, stop loss
 | startTime | LONG | NO | start timestamp.   Default value three days ago |
 | endTime | LONG | NO | end timestamp                                   |
 | limit | INT | NO | Default `20` Min `1` Max `1000`                 |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp                                       |
 | recvWindow | LONG | NO | recv window                                     |
 
@@ -2454,6 +2494,7 @@ Notes：
 ### Parameters
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- |-------------|
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp   |
 | recvWindow | LONG | NO | recv window |
 
@@ -2482,6 +2523,7 @@ Notes：
 | symbol | STRING | YES | symbol                                                                                                                                                                                                                 |
 | side | ENUM | YES | `LONG` or `SHORT`                                                                                                                                                                                                      |
 | amount | DECIMAL | YES | Increase (positive value) or decrease (negative value) the amount of margin. Please note that this quantity refers to the underlying pricing asset of the contract (that is, the underlying of the contract settlement) |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO | recv window                                                                                                                                                                                                            |
 | timestamp | LONG | YES |      timestamp                                                                                                                                                                                                                  |
 
@@ -2525,6 +2567,7 @@ Get trades for a specific account and symbol.
 | limit | INT | NO        | Default `20` Min `1` Max `1000`                          |
 | fromId | LONG | NO        | Start from TradeId (used to query transaction orders)    |
 | toId | LONG | NO        | To the end of TradeId (used to query transaction orders) |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO        | recv window                                              |
 | timestamp | LONG | YES       |     timestamp                                                     |
 
@@ -2566,6 +2609,7 @@ Get trades for a specific account and symbol.
 | startTime | LONG | NO | start timestamp |
 | endTime | LONG | NO | end timestamp   |
 | limit | INT | NO | limit           |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO | recv window     |
 | timestamp | LONG | YES | timestamp       |
 
@@ -2688,6 +2732,7 @@ Get trades for a specific account and symbol.
 ### Parameters
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- | ------------- |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | recvWindow | LONG | NO | recv window |
 | timestamp | LONG | YES |   timestamp          |
 
@@ -2723,6 +2768,7 @@ Start a new user data stream. The stream will close after 60 minutes unless a ke
 ### Parameters
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- |-------------|
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp   |
 | recvWindow | LONG | NO | recv window |
 
@@ -2744,6 +2790,7 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- |-------------|
 | listenKey | STRING | YES | listenKey   |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp   |
 | recvWindow | LONG | NO | recv window |
 
@@ -2763,6 +2810,7 @@ Keepalive a user data stream to prevent a time out. User data streams will close
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- |-------------|
 | listenKey | STRING | YES | listenKey   |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG | YES | timestamp   |
 | recvWindow | LONG | NO | recv window |
 
