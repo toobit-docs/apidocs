@@ -2665,6 +2665,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
@@ -2712,6 +2718,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>ENUM</td>
 <td>YES</td>
 <td><code>CROSS</code> <code>ISOLATED</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -2763,6 +2775,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>leverage</td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
@@ -2806,6 +2824,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>STRING</td>
 <td>YES</td>
 <td>symbol</td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -2956,6 +2980,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>The order type when take profit is triggered. <code>MARKET</code>(default), <code>LIMIT</code>.</td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
@@ -2991,7 +3021,7 @@ Execute the transfer between the spot account and the contract account</p>
 <p>A maximum of 10 orders at a time, must be the same <code>symbol</code>.</p>
 <h3 id='weight-2'>Weight: 2</h3>
 <blockquote>
-<p>Example:</p>
+<p>USDT-M Futures. Example:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-H</span> <span class="s2">"Content-Type:application/json"</span> 
 <span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs"</span> 
@@ -3014,6 +3044,31 @@ Execute the transfer between the spot account and the contract account</p>
        "quantity": 10,     
        "priceType": "INPUT"   
    } ]'</span> <span class="s1">'#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&amp;signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'</span>
+</code></pre></div>
+<blockquote>
+<p>USDC-M Futures. Example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-H</span> <span class="s2">"Content-Type:application/json"</span> 
+<span class="nt">-H</span> <span class="s2">"X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs"</span> 
+<span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]'</span> <span class="s1">'#HOST/api/v1/futures/batchOrders?category=USDC&amp;timestamp=1673062952473&amp;signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'</span>
 </code></pre></div>
 <blockquote>
 <p>Response：</p>
@@ -3197,6 +3252,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td><code>LIMIT</code> or <code>STOP</code></td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
@@ -3277,6 +3338,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>symbol</td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
@@ -3328,6 +3395,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>ENUM</td>
 <td>YES</td>
 <td><code>BUY</code> or <code>SELL</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3386,6 +3459,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>STRING</td>
 <td>YES</td>
 <td>Order id (multiple separated by <code>,</code>)</td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3456,6 +3535,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>ENUM</td>
 <td>NO</td>
 <td>Default <code>LINIT</code>  <code>LIMIT</code> or <code>STOP</code>、<code>STOP_PROFIT_LOSS</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -3533,6 +3618,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>ENUM</td>
 <td>NO</td>
 <td>position direction <code>LONG</code> or <code>SHORT</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -3616,6 +3707,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>ENUM</td>
 <td>NO</td>
 <td>stop loss The price type to trigger take profit: <code>MARK_PRICE</code>, <code>CONTRACT_PRICE</code>. Default <code>CONTRACT_PRICE</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -3704,6 +3801,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>Default <code>20</code> Min <code>1</code> Max <code>1000</code></td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
@@ -3750,6 +3853,12 @@ Execute the transfer between the spot account and the contract account</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
 <tr>
 <td>timestamp</td>
 <td>LONG</td>
@@ -3804,6 +3913,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>DECIMAL</td>
 <td>YES</td>
 <td>Increase (positive value) or decrease (negative value) the amount of margin. Please note that this quantity refers to the underlying pricing asset of the contract (that is, the underlying of the contract settlement)</td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -3893,6 +4008,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>To the end of TradeId (used to query transaction orders)</td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
@@ -3980,6 +4101,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>INT</td>
 <td>NO</td>
 <td>limit</td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>recvWindow</td>
@@ -4100,6 +4227,12 @@ Execute the transfer between the spot account and the contract account</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
@@ -4147,6 +4280,12 @@ Execute the transfer between the spot account and the contract account</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
@@ -4187,6 +4326,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>listenKey</td>
 </tr>
 <tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
+</tr>
+<tr>
 <td>timestamp</td>
 <td>LONG</td>
 <td>YES</td>
@@ -4222,6 +4367,12 @@ Execute the transfer between the spot account and the contract account</p>
 <td>STRING</td>
 <td>YES</td>
 <td>listenKey</td>
+</tr>
+<tr>
+<td>category</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>USDC-M Futures=<code>USDC</code>, Default=USDT-M Futures.</td>
 </tr>
 <tr>
 <td>timestamp</td>
