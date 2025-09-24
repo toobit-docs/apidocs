@@ -1935,27 +1935,28 @@ accountType：
 ```
 
 ### 参数
-| 名称             | 类型      |    是否必须           | 描述                                                                        |
-|----------------|---------| ------- |---------------------------------------------------------------------------|
-| symbol         | STRING  | YES | 交易对                                                                       |
-| side           | ENUM    | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                |
-| type           | ENUM    | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                               |
-| quantity       | LONG    | YES | 订单的合约数量（张）                                                                |
-| price          | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                         |
-| priceType      | ENUM    | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                  |
-| stopPrice      | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                      |
-| timeInForce    | ENUM    | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER`     |
-| newClientOrderId | STRING  | YES | 订单的ID，用户自己定义                                                              |
-| takeProfit     | STRING  | NO | 止盈价格                                                                      |
+| 名称             | 类型      |    是否必须           | 描述                                                                              |
+|----------------|---------| ------- |---------------------------------------------------------------------------------|
+| symbol         | STRING  | YES | 交易对                                                                             |
+| side           | ENUM    | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                      |
+| type           | ENUM    | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                                     |
+| quantity       | LONG    | YES | 订单的合约数量（张）                                                                      |
+| price          | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                               |
+| priceType      | ENUM    | NO | 价格类型，支持的价格类型为 `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                        |
+| stopPrice      | DECIMAL | NO | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                            |
+| timeInForce    | ENUM    | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER`           |
+| newClientOrderId | STRING  | YES | 订单的ID，用户自己定义                                                                    |
+| takeProfit     | STRING  | NO | 止盈价格                                                                            |
 | tpTriggerBy    | ENUM    | NO | 止盈条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
-| tpLimitPrice   | STRING  | NO | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                      |
-| tpOrderType    | ENUM    | NO | 止盈触发后的订单类型. `MARKET`(默认), `LIMIT`.                                            |
-| stopLoss       | STRING  | NO | 止损价格                                                                      |
+| tpLimitPrice   | STRING  | NO | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                            |
+| tpOrderType    | ENUM    | NO | 止盈触发后的订单类型. `MARKET`(默认), `LIMIT`.                                              |
+| stopLoss       | STRING  | NO | 止损价格                                                                            |
 | slTriggerBy    | ENUM  | NO | 止损条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
-| slLimitPrice   | STRING  | NO | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                       |
-| slOrderType      | ENUM  | NO | 止损触发后的订单类型. `MARKET`(默认), `LIMIT`.                                            |
-| timestamp      | LONG    | YES | 时间戳                                                                       |
-| recvWindow     | LONG    | NO | recv窗口                                                                    |
+| slLimitPrice   | STRING  | NO | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                             |
+| slOrderType      | ENUM  | NO | 止损触发后的订单类型. `MARKET`(默认), `LIMIT`.                                              |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
+| timestamp      | LONG    | YES | 时间戳                                                                             |
+| recvWindow     | LONG    | NO | recv窗口                                                                          |
 
 ### 订单方向 (side):
 - BUY_OPEN   开多买单开仓买入
@@ -1978,7 +1979,7 @@ accountType：
 
 ### 权重: 2
 
-> 例子：
+> USDT合约例子：
 
 ``` json
 curl  -H "Content-Type:application/json" 
@@ -2003,6 +2004,33 @@ curl  -H "Content-Type:application/json"
        "priceType": "INPUT"   
    } ]' '#HOST/api/v1/futures/batchOrders?timestamp=1673062952473&signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'
 ```
+
+> USDC合约例子：
+
+``` json
+curl  -H "Content-Type:application/json" 
+-H "X-BB-APIKEY: 3jIF0QWOFAA64MnaFJz1pMvVFNaLyMThHUvhii1eyYBw4saPs9ocLasp45pqeGRs" 
+-X POST -d '[   
+   {     
+      "newClientOrderId": "pl2023010712345678900",     
+      "symbol": "BTC-SWAP-USDT",     
+      "side": "BUY_OPEN",     
+      "type": "LIMIT",     
+      "price": 16500,     
+      "quantity": 10,     
+      "priceType": "INPUT"   
+   },   
+   {  
+       "newClientOrderId": "pl2023010712345678901",     
+       "symbol": "BTC-SWAP-USDT",     
+       "side": "BUY_OPEN",     
+       "type": "LIMIT",     
+       "price": 16000,     
+       "quantity": 10,     
+       "priceType": "INPUT"   
+   } ]' '#HOST/api/v1/futures/batchOrders?category=USDC&timestamp=1673062952473&signature=f746cebecf9cf53601d2ab69b2f88f426a1c93a5f7bcc8bbdc5a2ce95c3fa976'
+```
+
 
 > 响应：
 
@@ -2098,6 +2126,7 @@ curl  -H "Content-Type:application/json"
 | orderId | LONG | NO | 订单ID |
 | origClientOrderId | STRING | NO | 用户定义的订单ID |
 | type | ENUM | NO | 订单类型（LIMIT和STOP） |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
  
@@ -2143,6 +2172,7 @@ curl  -H "Content-Type:application/json"
 | origClientOrderId | STRING | NO | 用户定义的订单ID |
 | type | ENUM | NO | 订单类型（LIMIT和STOP） |
 | symbol | STRING | NO | 交易对 |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2172,6 +2202,7 @@ curl  -H "Content-Type:application/json"
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | YES | 交易对 （或者用,分割的交易对的list）|
 | side | ENUM | YES | `BUY`或`SELL` |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2212,6 +2243,7 @@ curl  -H "Content-Type:application/json"
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
 | ids | STRING | YES | 订单id（多个用`,`隔开）|
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2255,6 +2287,7 @@ curl  -H "Content-Type:application/json"
 | orderId | LONG | NO | 订单ID                            |
 | type | ENUM | NO | 默认`LIMIT` 订单类型（`LIMIT`、`STOP`、`STOP_PROFIT_LOSS`） |
 | limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`      |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳                             |
 | recvWindow | LONG | NO | recv窗口                          |
 
@@ -2300,6 +2333,7 @@ curl  -H "Content-Type:application/json"
 | ----------------- | ---- | ------- | ------------- |
 | symbol | STRING | NO | 交易对 |
 | side | ENUM | NO | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓）。 |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2337,6 +2371,7 @@ curl  -H "Content-Type:application/json"
 | stopLoss | ENUM   | NO   | 止损价格。                                                                           |
 | tpTriggerBy | ENUM   | NO   | 止盈条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
 | slTriggerBy | ENUM   | NO   | 止损条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG   | YES  | 时间戳                                                                             |
 | recvWindow | LONG   | NO   | recv窗口                                                                          |
 
@@ -2380,6 +2415,7 @@ curl  -H "Content-Type:application/json"
 | startTime | LONG | NO  | 开始时间戳 默认值:三天前                  |
 | endTime | LONT | NO | 截止时间戳                          |
 | limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000`     |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳                            |
 | recvWindow | LONG | NO | recv窗口                         |
 
@@ -2440,6 +2476,7 @@ curl  -H "Content-Type:application/json"
 | symbol | STRING | YES | 交易对 |
 | side | ENUM | YES | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓） |
 | amount | DECIMAL | YES | 增加（正值）或者减少（负值）保证金的数量。请注意这个数量指的是合约标的定价资产（即合约结算的标的） |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2483,6 +2520,7 @@ curl  -H "Content-Type:application/json"
 | startTime | LONG | NO   | 开始时间戳 |
 | endTime | LONT | NO   | 截止时间戳 |
 | limit | INT | NO   | 返回条数 默认`20` 最小`1` 最大`1000`  |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES  | 时间戳 |
 | recvWindow | LONG | NO   | recv窗口 |
 
@@ -2525,6 +2563,7 @@ curl  -H "Content-Type:application/json"
 | startTime | LONG | NO | 开始时间   |
 | endTime | LONG | NO | 结束时间   |
 | limit | INT | NO | 每页记录数  |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | recvWindow | LONG | NO | recv窗口 |
 | timestamp | LONG | YES | 时间戳    |
 
@@ -2583,6 +2622,7 @@ curl  -H "Content-Type:application/json"
 ### 参数
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2616,6 +2656,7 @@ curl  -H "Content-Type:application/json"
 ### 参数
 | 名称    | 类型  |    是否必须           | 描述           |
 | ----------------- | ---- | ------- | ------------- |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳 |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2637,6 +2678,7 @@ curl  -H "Content-Type:application/json"
 | 名称    | 类型  |    是否必须           | 描述     |
 | ----------------- | ---- | ------- |--------|
 | listenKey | STRING | YES | listenKey       |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳    |
 | recvWindow | LONG | NO | recv窗口 |
 
@@ -2657,6 +2699,7 @@ curl  -H "Content-Type:application/json"
 | 名称    | 类型  |    是否必须           | 描述         |
 | ----------------- | ---- | ------- |------------|
 | listenKey | STRING | YES | listenKey  |
+| category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
 | timestamp | LONG | YES | 时间戳        |
 | recvWindow | LONG | NO | recv窗口     |
 
