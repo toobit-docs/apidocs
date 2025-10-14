@@ -756,9 +756,6 @@ HMAC SHA256 signature:
 <h4 id='price-type-pricetype'>Price Type (priceType):</h4>
 <ul>
 <li>INPUT  The system will match the order with the price you entered.</li>
-<li>OPPONENT  The order will be matched at the best price of the counterparty.</li>
-<li>QUEUE  Orders will be matched at the best price in the same direction.</li>
-<li>OVER The order will be matched at the best price of the counterparty + over-price (floating).</li>
 <li>MARKET Orders will be matched at the latest transaction price * (1 ± 5%).</li>
 </ul>
 <h4 id='time-in-force-timeinforce'>Time in force (timeInForce):</h4>
@@ -2866,7 +2863,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">GTC、FOK、IOC、LIMIT_MAKER</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、OPPONENT、QUEUE、OVER、MARKET</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、MARKET</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='parameters-23'>Parameters</h3>
 <table><thead>
@@ -2911,7 +2908,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>priceType</td>
 <td>ENUM</td>
 <td>NO</td>
-<td><code>INPUT</code>、<code>OPPONENT</code>、<code>QUEUE</code>、<code>OVER</code>、<code>MARKET</code></td>
+<td><code>INPUT</code>、<code>MARKET</code></td>
 </tr>
 <tr>
 <td>stopPrice</td>
@@ -2929,7 +2926,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>newClientOrderId</td>
 <td>STRING</td>
 <td>YES</td>
-<td>The ID of the order, defined by the user</td>
+<td>The ID of the order, defined by the user. Automatically generated if not sent</td>
 </tr>
 <tr>
 <td>takeProfit</td>
@@ -3094,7 +3091,7 @@ Execute the transfer between the spot account and the contract account</p>
                     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
                     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force</span><span class="w"> </span><span class="err">(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
                     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//status（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-                    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//price</span><span class="w"> </span><span class="err">type（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+                    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//price</span><span class="w"> </span><span class="err">type（INPUT、MARKET）</span><span class="w">
                     </span><span class="p">}</span><span class="w">        
         </span><span class="p">},</span><span class="w"> 
         </span><span class="p">{</span><span class="w">
@@ -3176,7 +3173,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>priceType</td>
 <td>ENUM</td>
 <td>NO</td>
-<td>price type <code>INPUT</code>、<code>OPPONENT</code>、<code>QUEUE</code>、<code>OVER</code>、<code>MARKET</code></td>
+<td>price type <code>INPUT</code>、<code>MARKET</code></td>
 </tr>
 <tr>
 <td>timeInForce</td>
@@ -3188,7 +3185,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>newClientOrderId</td>
 <td>STRING</td>
 <td>YES</td>
-<td>The ID of the order, defined by the user</td>
+<td>The ID of the order, defined by the user. Automatically generated if not sent</td>
 </tr>
 </tbody></table>
 
@@ -3222,7 +3219,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">GTC、FOK、IOC、LIMIT_MAKER</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、OPPONENT、QUEUE、OVER、MARKET</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、MARKET</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='parameters-25'>Parameters</h3>
 <table><thead>
