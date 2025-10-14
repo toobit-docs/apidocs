@@ -233,10 +233,11 @@ Note that the signature is different in example 3.There is no & between "GTC" an
 #### Price Type (priceType):
 
 - INPUT  The system will match the order with the price you entered.
-- OPPONENT  The order will be matched at the best price of the counterparty.
-- QUEUE  Orders will be matched at the best price in the same direction.
-- OVER The order will be matched at the best price of the counterparty + over-price (floating).
 - MARKET Orders will be matched at the latest transaction price * (1 ± 5%).
+
+[//]: # (- OPPONENT  The order will be matched at the best price of the counterparty.)
+[//]: # (- QUEUE  Orders will be matched at the best price in the same direction.)
+[//]: # (- OVER The order will be matched at the best price of the counterparty + over-price &#40;floating&#41;.)
 
 #### Time in force (timeInForce):
 - GTC - Good Till Cancel 
@@ -1972,7 +1973,7 @@ Obtain the leverage multiples and position types of all contract trading pairs o
     "side": "BUY_OPEN", // side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
     "timeInForce": "GTC", // GTC、FOK、IOC、LIMIT_MAKER
     "status": "NEW", //NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED
-    "priceType": "INPUT" //INPUT、OPPONENT、QUEUE、OVER、MARKET
+    "priceType": "INPUT" //INPUT、MARKET
 }
 ```
 
@@ -1984,10 +1985,10 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 | type             | ENUM | YES | `LIMIT` or `STOP`                                                                                                      |
 | quantity         | LONG | YES | Numbers of orders (volume)                                                                                             |
 | price            | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need**                                                                                     |
-| priceType        | ENUM | NO | `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET`                                                                             |
+| priceType        | ENUM | NO | `INPUT`、`MARKET`                                                                             |
 | stopPrice        | DECIMAL | NO | `type` = `STOP` order **Mandatory need**                                                                               |
 | timeInForce      | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
-| newClientOrderId | STRING | YES | The ID of the order, defined by the user                                                                               |
+| newClientOrderId | STRING | YES | The ID of the order, defined by the user. Automatically generated if not sent                                                                               |
 | takeProfit       | STRING | NO | Take profit price                                                                                                      |
 | tpTriggerBy      | ENUM | NO | The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  `                            |
 | tpLimitPrice     | STRING | NO | The limit order price when take profit price is triggered. Only works when tpOrderType=LIMIT                           |
@@ -2100,7 +2101,7 @@ curl  -H "Content-Type:application/json"
                     "side": "BUY_OPEN", // side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
                     "timeInForce": "GTC",  //Time in Force (GTC、FOK、IOC、LIMIT_MAKER)
                     "status": "NEW", //status（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
-                    "priceType": "INPUT"  //price type（INPUT、OPPONENT、QUEUE、OVER、MARKET）
+                    "priceType": "INPUT"  //price type（INPUT、MARKET）
                     }        
         }, 
         {
@@ -2120,16 +2121,16 @@ curl  -H "Content-Type:application/json"
 
 The batchOrders in RequestBody should fill in the order parameters in list of JSON format
 
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES |  |
-| side | ENUM | YES | side `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`|
-| type | ENUM | YES | type `LIMIT` or `STOP` |
-| quantity | LONG | YES |  Numbers of orders (volume) |
-| price | DECIMAL | NO | price (`LIMIT`&`INPUT`)订单 **Mandatory need** |
-| priceType | ENUM | NO | price type `INPUT`、`OPPONENT`、`QUEUE`、`OVER`、`MARKET` |
+| Name    | Type  |    Mandatory           | Description                                                                                                             |
+| ----------------- | ---- | ------- |-------------------------------------------------------------------------------------------------------------------------|
+| symbol | STRING | YES |                                                                                                                         |
+| side | ENUM | YES | side `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                    |
+| type | ENUM | YES | type `LIMIT` or `STOP`                                                                                                  |
+| quantity | LONG | YES | Numbers of orders (volume)                                                                                              |
+| price | DECIMAL | NO | price (`LIMIT`&`INPUT`)订单 **Mandatory need**                                                                            |
+| priceType | ENUM | NO | price type `INPUT`、`MARKET`                                                                                             |
 | timeInForce | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
-| newClientOrderId | STRING | YES |  The ID of the order, defined by the user |
+| newClientOrderId | STRING | YES | The ID of the order, defined by the user. Automatically generated if not sent                                                                                |
 
 Notes：
 
@@ -2161,7 +2162,7 @@ Notes：
     "side": "BUY_OPEN", // BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE
     "timeInForce": "GTC", // GTC、FOK、IOC、LIMIT_MAKER
     "status": "NEW", //NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED
-    "priceType": "INPUT" //INPUT、OPPONENT、QUEUE、OVER、MARKET
+    "priceType": "INPUT" //INPUT、MARKET
 }
 ```
 
