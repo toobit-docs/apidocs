@@ -752,9 +752,6 @@ HMAC SHA256 签名:
 <h4 id='pricetype'>价格类型 (priceType):</h4>
 <ul>
 <li>INPUT 系统将会用你输入的价格来撮合订单。</li>
-<li>OPPONENT 订单会以对手盘最优价格撮合。</li>
-<li>QUEUE 订单会以相同方向的最优价格撮合。</li>
-<li>OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。</li>
 <li>MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。</li>
 </ul>
 <h4 id='timeinforce'>有效方式(timeInForce):</h4>
@@ -2800,7 +2797,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='749d765242-20'>参数</h3>
 <table><thead>
@@ -2845,7 +2842,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>priceType</td>
 <td>ENUM</td>
 <td>NO</td>
-<td>价格类型，支持的价格类型为 <code>INPUT</code>、<code>OPPONENT</code>、<code>QUEUE</code>、<code>OVER</code>、<code>MARKET</code></td>
+<td>价格类型，支持的价格类型为 <code>INPUT</code>、<code>MARKET</code></td>
 </tr>
 <tr>
 <td>stopPrice</td>
@@ -2863,7 +2860,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>newClientOrderId</td>
 <td>STRING</td>
 <td>YES</td>
-<td>订单的ID，用户自己定义</td>
+<td>订单的ID，用户自己定义,不可以重复出现在挂单中</td>
 </tr>
 <tr>
 <td>takeProfit</td>
@@ -2942,9 +2939,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <h3 id='pricetype-2'>价格类型 (priceType):</h3>
 <ul>
 <li>INPUT 系统将会用你输入的价格来撮合订单。</li>
-<li>OPPONENT 订单会以对手盘最优价格撮合。</li>
-<li>QUEUE 订单会以相同方向的最优价格撮合。</li>
-<li>OVER 订单会以对手盘的最优价格 + 超价（浮动）撮合。</li>
 <li>MARKET 订单会以 最新成交价 * (1 ± 5%) 撮合。</li>
 </ul>
 <h2 id='trade-4'>批量下单 (TRADE)</h2>
@@ -3028,7 +3022,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
                     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
                     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
                     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-                    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+                    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
                     </span><span class="p">}</span><span class="w">        
         </span><span class="p">},</span><span class="w"> 
         </span><span class="p">{</span><span class="w">
@@ -3110,7 +3104,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>priceType</td>
 <td>ENUM</td>
 <td>NO</td>
-<td>价格类型，支持的价格类型为 <code>INPUT</code>、<code>OPPONENT</code>、<code>QUEUE</code>、<code>OVER</code>、<code>MARKET</code></td>
+<td>价格类型，支持的价格类型为 <code>INPUT</code>、<code>MARKET</code></td>
 </tr>
 <tr>
 <td>timeInForce</td>
@@ -3122,7 +3116,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>newClientOrderId</td>
 <td>STRING</td>
 <td>YES</td>
-<td>订单的ID，用户自己定义</td>
+<td>订单的ID，用户自己定义 ,不可以重复出现在挂单中</td>
 </tr>
 </tbody></table>
 
@@ -3156,7 +3150,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='749d765242-22'>参数</h3>
 <table><thead>
@@ -3235,7 +3229,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
@@ -3441,7 +3435,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h3 id='749d765242-26'>参数</h3>
@@ -3687,7 +3681,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
     </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
-    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、OPPONENT、QUEUE、OVER、MARKET）</span><span class="w">
+    </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h3 id='749d765242-29'>参数</h3>
