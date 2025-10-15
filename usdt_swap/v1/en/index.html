@@ -2926,7 +2926,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>newClientOrderId</td>
 <td>STRING</td>
 <td>YES</td>
-<td>The ID of the order, defined by the user. Automatically generated if not sent</td>
+<td>A unique id among open orders. The ID of the order, defined by the user.</td>
 </tr>
 <tr>
 <td>takeProfit</td>
@@ -3005,9 +3005,6 @@ Execute the transfer between the spot account and the contract account</p>
 <h3 id='price-type'>Price Type:</h3>
 <ul>
 <li>INPUT  The system will match the order with the price you entered.</li>
-<li>OPPONENT  The order will be matched at the best price of the counterparty.</li>
-<li>QUEUE  Orders will be matched at the best price in the same direction.</li>
-<li>OVER The order will be matched at the best price of the counterparty + over-price (floating).</li>
 <li>MARKET Orders will be matched at the latest transaction price * (1 ± 5%).</li>
 </ul>
 <h2 id='place-multiple-orders-trade'>Place Multiple Orders (TRADE)</h2>
@@ -3185,7 +3182,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>newClientOrderId</td>
 <td>STRING</td>
 <td>YES</td>
-<td>The ID of the order, defined by the user. Automatically generated if not sent</td>
+<td>A unique id among open orders. The ID of the order, defined by the user.</td>
 </tr>
 </tbody></table>
 
