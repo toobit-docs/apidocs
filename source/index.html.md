@@ -1786,15 +1786,15 @@ fail :
 
 **The batchOrders in RequestBody should fill in the order parameters in list of JSON format**
 
-| Name     | Type      | Mandatory      | Description                                           |
-| ----------- | ------- | ------------- |-------------------------------------------------------|
-| symbol | STRING | YES | symbol                                                |
-| side | ENUM | YES | `BUY` or `SELL `                                      |
-| type | ENUM | YES | See enumeration definition for details: `orderType`   |
-| timeInForce | ENUM | NO | See enumeration definition for details: `timeInForce` |
-| quantity | DECIMAL | YES |       quantity                                                |
-| price | DECIMAL | NO |           price                                            |
-| newClientOrderId | STRING | YES | The ID of the order, defined by the user              |
+| Name     | Type      | Mandatory      | Description                                                             |
+| ----------- | ------- | ------------- |-------------------------------------------------------------------------|
+| symbol | STRING | YES | symbol                                                                  |
+| side | ENUM | YES | `BUY` or `SELL `                                                        |
+| type | ENUM | YES | See enumeration definition for details: `orderType`                     |
+| timeInForce | ENUM | NO | See enumeration definition for details: `timeInForce`                   |
+| quantity | DECIMAL | YES | quantity                                                                |
+| price | DECIMAL | NO | price                                                                   |
+| newClientOrderId | STRING | YES | A unique id among open orders. The ID of the order, defined by the user |
 
 Depending on the order `type`, certain parameters are mandatory:
 
