@@ -1650,20 +1650,20 @@ Symbol的深度信息。
 
 ### 参数
 
-| 参数名称     | 类型      | 是否必需      | 描述           |
-| ----------- | ------- | ------------- | -------------- |
-| symbol | STRING | YES | 交易对 |
-| assetType | ENUM | NO | `CASH`、`MARGIN`，只支持`CASH` |
-| side | ENUM | YES | `BUY`或`SELL `|
-| type | ENUM | YES | 详见枚举定义：订单类型 |
-| timeInForce | ENUM | NO | 详见枚举定义：有效方式 |
-| quantity | DECIMAL | YES | 数量 |
-| price | DECIMAL | NO | 价格 |
-| newClientOrderId | STRING | NO | 一个自己给订单定义的ID，如果没有发送会自动生成。 |
+| 参数名称     | 类型      | 是否必需      | 描述                                                                                      |
+| ----------- | ------- | ------------- |-----------------------------------------------------------------------------------------|
+| symbol | STRING | YES | 交易对                                                                                     |
+| assetType | ENUM | NO | `CASH`、`MARGIN`，只支持`CASH`                                                               |
+| side | ENUM | YES | `BUY`或`SELL `                                                                           |
+| type | ENUM | YES | 详见枚举定义：订单类型                                                                             |
+| timeInForce | ENUM | NO | 详见枚举定义：有效方式                                                                             |
+| quantity | DECIMAL | YES | 数量                                                                                      |
+| price | DECIMAL | NO | 价格                                                                                      |
+| newClientOrderId | STRING | NO | 一个自己给订单定义的ID，不可以重复出现在挂单中 如果没有发送会自动生成。                                                   |
 | stopPrice | DECIMAL | NO | 与 `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, 和`TAKE_PROFIT_LIMIT` 订单一起使用. **当前不可用** |
-| icebergQty | DECIMAL | NO | 与 `LIMIT`, `STOP_LOSS_LIMIT`, 和` TAKE_PROFIT_LIMIT` 来创建冰山订单. **当前不可用** |
-| recvWindow | LONG | NO | recv窗口 |
-| timestamp | LONG | YES | 时间戳 |
+| icebergQty | DECIMAL | NO | 与 `LIMIT`, `STOP_LOSS_LIMIT`, 和` TAKE_PROFIT_LIMIT` 来创建冰山订单. **当前不可用**                  |
+| recvWindow | LONG | NO | recv窗口                                                                                  |
+| timestamp | LONG | YES | 时间戳                                                                                     |
 
 基于订单 `type`不同，强制要求某些参数:
 
@@ -1785,7 +1785,7 @@ curl  -H "Content-Type:application/json" -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm3
 | timeInForce | ENUM | NO | 详见枚举定义：有效方式 |
 | quantity | DECIMAL | YES | 数量 |
 | price | DECIMAL | NO | 价格 |
-| newClientOrderId | STRING | YES | 用户自定义订单ID。 |
+| newClientOrderId | STRING | YES | 用户自定义订单ID。不可以重复出现在挂单中 |
 
 
 基于订单 `type`不同，强制要求某些参数:
