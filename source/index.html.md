@@ -1014,7 +1014,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 
 ## 标记价格K线数据
 
-- `GET /api/quote/v1/markPrice/klines`
+- `GET /quote/v1/markPrice/klines`
 
 > 响应：
 
