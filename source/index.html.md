@@ -1025,7 +1025,7 @@ Kline/candlestick bars for the index price of a pair.
 
 ## Mark Price Kline/Candlestick Data
 
-- `GET /api/quote/v1/markPrice/klines`
+- `GET /quote/v1/markPrice/klines`
 
 Kline/candlestick bars for the mark price of a symbol.
 
