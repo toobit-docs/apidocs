@@ -2085,6 +2085,7 @@ curl  -H "Content-Type:application/json"
 | side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`            |
 | type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                           |
 | quantity | LONG | YES | 订单的合约数量（张）                                                            |
+| valueQuantity       | LONG    | NO   | 订单的价值数量（USDT）例如购买2个BTC，价格=1000, 订单价值=2*1000=2000 。valueQuantity和quantity同时存在优先使用quantity |
 | price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                     |
 | priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`MARKET`                                        |
 | timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER` |
