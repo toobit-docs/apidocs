@@ -1978,28 +1978,29 @@ Obtain the leverage multiples and position types of all contract trading pairs o
 ```
 
 ### Parameters
-| Name             | Type  |    Mandatory           | Description                                                                                                            |
-|------------------| ---- | ------- |------------------------------------------------------------------------------------------------------------------------|
-| symbol           | STRING | YES | symbol                                                                                                                 |
-| side             | ENUM | YES | `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                        |
-| type             | ENUM | YES | `LIMIT` or `STOP`                                                                                                      |
-| quantity         | LONG | YES | Numbers of orders (volume)                                                                                             |
-| price            | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need**                                                                                     |
-| priceType        | ENUM | NO | `INPUT`、`MARKET`                                                                                                       |
-| stopPrice        | DECIMAL | NO | `type` = `STOP` order **Mandatory need**                                                                               |
-| timeInForce      | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
-| newClientOrderId | STRING | YES | A unique id among open orders. The ID of the order, defined by the user.                                               |
-| takeProfit       | STRING | NO | Take profit price                                                                                                      |
-| tpTriggerBy      | ENUM | NO | The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  `                      |
-| tpLimitPrice     | STRING | NO | The limit order price when take profit price is triggered. Only works when tpOrderType=LIMIT                           |
-| tpOrderType      | ENUM | NO | The order type when take profit is triggered. `MARKET`(default), `LIMIT`.                                              |
-| stopLoss         | STRING | NO | Stop loss price,                                                                                                       |
-| slTriggerBy      | ENUM | NO | The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE`                        |
-| slLimitPrice     | STRING | NO | The limit order price when take profit price is triggered. Only works when slOrderType=LIMI                            |
-| slOrderType      | ENUM | NO | The order type when take profit is triggered. `MARKET`(default), `LIMIT`.                                              |
-| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                                         |
-| timestamp        | LONG | YES | timestamp                                                                                                              |
-| recvWindow       | LONG | NO | recv window                                                                                                            |
+| Name             | Type  |    Mandatory           | Description                                                                                                                                                                                           |
+|------------------| ---- | ------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| symbol           | STRING | YES | symbol                                                                                                                                                                                                |
+| side             | ENUM | YES | `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                                                                                                       |
+| type             | ENUM | YES | `LIMIT` or `STOP`                                                                                                                                                                                     |
+| quantity         | LONG | YES | Numbers of orders (volume)                                                                                                                                                                            |
+| valueQuantity       | LONG    | NO   | Order value quantity (USDT). For example, purchasing 2 BTC at a price of 1000 USDT: Order value = 2 × 1000 = 2000 USDT When both valueQuantity and quantity are specified, quantity takes precedence. |
+| price            | DECIMAL | NO | `LIMIT`&`INPUT` **Mandatory need**                                                                                                                                                                    |
+| priceType        | ENUM | NO | `INPUT`、`MARKET`                                                                                                                                                                                      |
+| stopPrice        | DECIMAL | NO | `type` = `STOP` order **Mandatory need**                                                                                                                                                              |
+| timeInForce      | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER`                                                                               |
+| newClientOrderId | STRING | YES | A unique id among open orders. The ID of the order, defined by the user.                                                                                                                              |
+| takeProfit       | STRING | NO | Take profit price                                                                                                                                                                                     |
+| tpTriggerBy      | ENUM | NO | The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  `                                                                                                     |
+| tpLimitPrice     | STRING | NO | The limit order price when take profit price is triggered. Only works when tpOrderType=LIMIT                                                                                                          |
+| tpOrderType      | ENUM | NO | The order type when take profit is triggered. `MARKET`(default), `LIMIT`.                                                                                                                             |
+| stopLoss         | STRING | NO | Stop loss price,                                                                                                                                                                                      |
+| slTriggerBy      | ENUM | NO | The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE`                                                                                                       |
+| slLimitPrice     | STRING | NO | The limit order price when take profit price is triggered. Only works when slOrderType=LIMI                                                                                                           |
+| slOrderType      | ENUM | NO | The order type when take profit is triggered. `MARKET`(default), `LIMIT`.                                                                                                                             |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                                                                                                                        |
+| timestamp        | LONG | YES | timestamp                                                                                                                                                                                             |
+| recvWindow       | LONG | NO | recv window                                                                                                                                                                                           |
 
 
 ### Order Side :
@@ -2130,6 +2131,7 @@ The batchOrders in RequestBody should fill in the order parameters in list of JS
 | side | ENUM | YES | side `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                                                                   |
 | type | ENUM | YES | type `LIMIT` or `STOP`                                                                                                 |
 | quantity | LONG | YES | Numbers of orders (volume)                                                                                             |
+| valueQuantity       | LONG    | NO   | Order value quantity (USDT). For example, purchasing 2 BTC at a price of 1000 USDT: Order value = 2 × 1000 = 2000 USDT When both valueQuantity and quantity are specified, quantity takes precedence. |
 | price | DECIMAL | NO | price (`LIMIT`&`INPUT`)订单 **Mandatory need**                                                                           |
 | priceType | ENUM | NO | price type `INPUT`、`MARKET`                                                                                            |
 | timeInForce | ENUM | NO | The time command (Time in Force) of `LIMIT` order, the currently supported types are `GTC`, `FOK`, `IOC`, `LIMIT_MAKER` |
