@@ -2422,6 +2422,8 @@ Set the take profit, stop loss
 | stopLoss | ENUM   | NO   | stop loss price                                                                                               |
 | tpTriggerBy | ENUM   | NO   | take profit The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  ` |
 | slTriggerBy | ENUM   | NO   | stop loss The price type to trigger take profit: `MARK_PRICE`, `CONTRACT_PRICE`. Default `CONTRACT_PRICE  `   |
+| tpSize        | LONG   | NO   | Take-profit quantity must be used in conjunction with `tpTriggerBy` and `takeProfit`.                                         |
+| slSize        | LONG   | NO   | Stop Loss Quantity Must be used in conjunction with `slTriggerBy` and `stopLoss`.                                                                           |
 | category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
 | timestamp | LONG   | YES  | timestamp                                                                                                           |
 | recvWindow | LONG   | NO   | recv window                                                                                                             |
