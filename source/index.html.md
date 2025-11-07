@@ -2367,17 +2367,19 @@ curl  -H "Content-Type:application/json"
 }
 ```
 ### 参数
-| 名称    | 类型     | 是否必须 | 描述                                                                              |
-| ----------------- |--------|------|---------------------------------------------------------------------------------|
-| symbol | STRING | YES  | 交易对                                                                             |
-| side | ENUM   | YES  | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓）。                                                   |
-| takeProfit | STRING | NO   | 止盈价格。                                                                           |
-| stopLoss | ENUM   | NO   | 止损价格。                                                                           |
-| tpTriggerBy | ENUM   | NO   | 止盈条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
-| slTriggerBy | ENUM   | NO   | 止损条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
+| 名称            | 类型     | 是否必须 | 描述                                                                              |
+|---------------|--------|------|---------------------------------------------------------------------------------|
+| symbol        | STRING | YES  | 交易对                                                                             |
+| side          | ENUM   | YES  | 仓位方向，`LONG`（多仓）或者`SHORT`（空仓）。                                                   |
+| takeProfit    | STRING | NO   | 止盈价格。                                                                           |
+| stopLoss      | ENUM   | NO   | 止损价格。                                                                           |
+| tpTriggerBy   | ENUM   | NO   | 止盈条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
+| slTriggerBy   | ENUM   | NO   | 止损条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE` |
+| tpSize        | LONG   | NO   | 止盈数量 必须配合 `tpTriggerBy`和  `takeProfit`使用                                        |
+| slSize        | LONG   | NO   | 止损数量 必须配合 `slTriggerBy`和  `stopLoss`使用                                                                           |
 | category      | ENUM  | NO | USDC合约=`USDC`, 默认=USDT合约.                                                       |
-| timestamp | LONG   | YES  | 时间戳                                                                             |
-| recvWindow | LONG   | NO   | recv窗口                                                                          |
+| timestamp     | LONG   | YES  | 时间戳                                                                             |
+| recvWindow    | LONG   | NO   | recv窗口                                                                          |
 
 
 ## 查询历史订单 (USER_DATA)
