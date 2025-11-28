@@ -24,7 +24,7 @@ Create a document
 
 ## General API Information
 
-- Some endpoints will require an API Key. Please refer to<a href='https://www.toobit.com/support/toobit-api-key-creation-guide'>this page</a>
+- Some endpoints will require an API Key. Please refer to <a href='https://www.toobit.com/support/toobit-api-key-creation-guide'>this page</a>
 - The base endpoint is: **https://api.toobit.com**
 - All endpoints return either a JSON object or array.
 - All time and timestamp related fields are in milliseconds.
