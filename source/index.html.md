@@ -20,7 +20,7 @@ search: true
 
 ## API Key Setup
 
-- Some endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'> this page </a> regarding API key creation.
+- Some endpoints will require an API Key. Please refer to<a href='https://www.toobit.com/support/toobit-api-key-creation-guide'> this page </a> regarding API key creation.
 - Once API key is created, it is recommended to set IP restrictions on the key for security reasons.
 - **Never share your API key/secret key to ANYONE.**
 
@@ -42,7 +42,7 @@ A `SPOT` account is provided by default upon creation of a Account.
 
 ## General API Information
 
-- some endpoints will require an API Key. Please refer to<a href='https://toobit.zendesk.com/hc/en-001/articles/13445077851545-How-to-Create-Your-API-Key'>this page</a>
+- some endpoints will require an API Key. Please refer to<a href='https://www.toobit.com/support/toobit-api-key-creation-guide'>this page</a>
 - The base endpoint is: **https://api.toobit.com**
 - All endpoints return either a JSON object or array.
 - All time and timestamp related fields are in milliseconds.
