@@ -181,8 +181,8 @@ handle_deploy_files() {
   if [ -d "$gh_pages_directory/$version/$language" ]; then
     rm -rf $gh_pages_directory/$version/$language
   fi
-#  cp -r $build_directory/spot/vremotes/origin/usdt/en/* $gh_pages_directory/usdt_swap/v1/en/
-  cp -r $build_directory/usdt_swap/v1/en/* $gh_pages_directory/usdt_swap/v1/en/
+  cp -r $build_directory/spot/vremotes/origin/usdt/en/* $gh_pages_directory/usdt_swap/v1/en/
+#  cp -r $build_directory/usdt_swap/v1/en/* $gh_pages_directory/usdt_swap/v1/en/
 
 }
 
