@@ -1572,14 +1572,15 @@ HMAC SHA256 签名:
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669155300000</span><span class="p">,</span><span class="err">//时间戳</span><span class="w">
-            </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="err">//币对</span><span class="w">
-            </span><span class="nl">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="err">//币对名称</span><span class="w">
-            </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
-            </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130.81"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
-            </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1126.17"</span><span class="p">,</span><span class="err">//最低价</span><span class="w">
-            </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130.8"</span><span class="p">,</span><span class="err">//开盘价</span><span class="w">
-            </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//成交量</span><span class="w">
+            </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669155300000</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">时间戳</span><span class="w">
+            </span><span class="nl">"s"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">币对</span><span class="w">
+            </span><span class="nl">"sn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETHUSDT"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">币对名称</span><span class="w">
+            </span><span class="nl">"c"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">收盘价</span><span class="w">
+            </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130.81"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">最高价</span><span class="w">
+            </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1126.17"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">最低价</span><span class="w">
+            </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130.8"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">开盘价</span><span class="w">
+            </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="err">//</span><span class="w"> </span><span class="err">成交量</span><span class="w">
+            </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669156800000</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">接口响应时间戳</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669156200000</span><span class="p">,</span><span class="w">
@@ -1590,8 +1591,9 @@ HMAC SHA256 签名:
             </span><span class="nl">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"o"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1127.1"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+            </span><span class="nl">"st"</span><span class="p">:</span><span class="w"> </span><span class="mi">1669156800000</span><span class="w">
         </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='749d765242-5'>参数</h3>
 <table><thead>
@@ -1630,7 +1632,7 @@ HMAC SHA256 签名:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>限制条数</td>
+<td>限制条数,默认值:2000 最大值:2000</td>
 </tr>
 </tbody></table>
 <h2 id='k-4'>标记价格K线数据</h2>
@@ -1652,7 +1654,9 @@ HMAC SHA256 签名:
             </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16996.30641"</span><span class="p">,</span><span class="err">//最高价</span><span class="w">
             </span><span class="nl">"close"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16996.30641"</span><span class="p">,</span><span class="err">//收盘价</span><span class="w">
             </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="err">//成交量</span><span class="w">
-            </span><span class="nl">"curId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670157900000</span><span class="w">
+            </span><span class="nl">"curId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670157900000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"klineType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1m"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">k线类型，比如</span><span class="w"> </span><span class="mi">1</span><span class="err">m</span><span class="p">,</span><span class="mi">5</span><span class="err">m....</span><span class="w">
+            </span><span class="nl">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0008"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">标记价格偏离百分比(指数价格-标记价格)/标记价格</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1693,7 +1697,7 @@ HMAC SHA256 签名:
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>限制条数</td>
+<td>限制条数, 默认值:2000 最大值:2000</td>
 </tr>
 </tbody></table>
 <h2 id='2feac0b7e2'>最新标记价格</h2>
@@ -1864,7 +1868,7 @@ HMAC SHA256 签名:
 </ul>
 <h2 id='8ff46b58de'>最新价格</h2>
 <ul>
-<li><code>GET /quote/v1/ticker/price</code></li>
+<li><code>GET /quote/v1/contract/ticker/price</code></li>
 </ul>
 
 <p>返回最近价格</p>
@@ -2103,7 +2107,6 @@ HMAC SHA256 签名:
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="err">//symbol</span><span class="w">
             </span><span class="nl">"markPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16792.28"</span><span class="p">,</span><span class="err">//当前指数价</span><span class="w">
-            </span><span class="nl">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(16792.28[HUOBI])/1"</span><span class="p">,</span><span class="err">//来源</span><span class="w">
             </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1668754084000</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
@@ -2250,7 +2253,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
             </span><span class="nl">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTCUSDT"</span><span class="p">,</span><span class="w">  </span><span class="err">//币对</span><span class="w">
             </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42992.432"</span><span class="p">,</span><span class="w"> </span><span class="err">//指数价格</span><span class="w">
             </span><span class="nl">"edp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43000.95379"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="mi">10</span><span class="err">分钟内指数平均值</span><span class="w">
-            </span><span class="nl">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(42988.52[BYBIT]*0.2+42986.43[HUOBI]*0.2+42991.52[BINANCE]*0.2+42991.8[OKEX]*0.2+43003.89[COINBASE]*0.2)"</span><span class="p">,</span><span class="w"> </span><span class="err">//加权平均值公式</span><span class="w">
+            </span><span class="nl">"formula"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OKEX.BTCUSDT*1.0,KUCOIN.BTCUSDT*1.0,BINANCE.BTCUSDT*1.0,BITGET.BTCUSDT*1.0,COINBASE.BTCUSDT*1.0,BYBIT.BTCUSDT*1.0"</span><span class="p">,</span><span class="err">//</span><span class="w"> </span><span class="err">加权平均值公式</span><span class="w">
             </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1703692663000</span><span class="w">  </span><span class="err">//时间戳</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
