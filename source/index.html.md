@@ -998,6 +998,7 @@ Kline/candlestick bars for the index price of a pair.
             "l": "1126.17",//Low price
             "o": "1130.8",//Open price
             "v": "0"//Volume
+            "st": 1669156800000 //interface response time
         },
         {
             "t": 1669156200000,
@@ -1008,19 +1009,20 @@ Kline/candlestick bars for the index price of a pair.
             "l": "1127.1",
             "o": "1127.1",
             "v": "0"
+            "st": 1669156800000
         }
-]
+  ]
 }
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | symbol |
-| interval | ENUM | YES | interval |
-| from | LONG | YES | start timestamp |
-| to | LONG | YES | end timestamp|
-| limit | INT | NO | limit |
+| Name    | Type  |    Mandatory           | Description                  |
+| ----------------- | ---- | ------- |------------------------------|
+| symbol | STRING | YES | symbol                       |
+| interval | ENUM | YES | interval                     |
+| from | LONG | YES | start timestamp              |
+| to | LONG | YES | end timestamp                |
+| limit | INT | NO | limit, DEFAULT:2000 MAX:2000 |
 
 
 ## Mark Price Kline/Candlestick Data
@@ -1044,19 +1046,21 @@ Kline/candlestick bars for the mark price of a symbol.
             "close": "16996.30641",// Close price
             "volume": "0",// Volume
             "curId": 1670157900000
+            "klineType": "1m", // kline type,such as 1m,5m....
+            "change": "0.0008", //(index price-mark price)/mark price
         }
     ]
 }
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
-| symbol | STRING | YES | symbol |
-| interval | ENUM | YES | interval |
+| Name    | Type  |    Mandatory           | Description     |
+| ----------------- | ---- | ------- |-----------------|
+| symbol | STRING | YES | symbol          |
+| interval | ENUM | YES | interval        |
 | from | LONG | YES | start timestamp |
-| to | LONG | YES | end timestamp|
-| limit | INT | NO | limit |
+| to | LONG | YES | end timestamp   |
+| limit | INT | NO | limit,DEFAULT 2000 MAX 2000          |
 
 
 ## Mark Price
@@ -1169,7 +1173,7 @@ Get the mark price of a trading pair.
 
 
 ## Symbol Price Ticker
-- `GET /quote/v1/ticker/price`
+- `GET /quote/v1/contract/ticker/price`
 
 Latest price for a symbol or symbols.
 
@@ -1400,7 +1404,6 @@ Contract mark price.
         {
             "symbol": "BTCUSDT",//symbol
             "markPrice": "16792.28",// mark price 
-            "formula": "(16792.28[HUOBI])/1",// source
             "time": 1668754084000
         }
     ],
@@ -1570,7 +1573,7 @@ symbol index price
             "symbol": "BTCUSDT",  // symbol
             "index": "42992.432", // index price
             "edp": "43000.95379", // average of indices over 10 minutes
-            "formula": "(42988.52[BYBIT]*0.2+42986.43[HUOBI]*0.2+42991.52[BINANCE]*0.2+42991.8[OKEX]*0.2+43003.89[COINBASE]*0.2)", // weighted average formula
+            "formula": "OKEX.BTCUSDT*1.0,KUCOIN.BTCUSDT*1.0,BINANCE.BTCUSDT*1.0,BITGET.BTCUSDT*1.0,COINBASE.BTCUSDT*1.0,BYBIT.BTCUSDT*1.0",// weighted average formula
             "time": 1703692663000  // time
         }
     ],
