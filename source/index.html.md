@@ -1012,7 +1012,7 @@ NONE
 | Name     | Type      | Mandatory      | Description          |
 | ----------- | ------- | ------------- |----------------------|
 | symbol | STRING| YES | symbol               |
-| limit | INT | NO | Default 100; Max 200. |
+| limit | INT | NO | Default 100; |
 
 Notes:
 If you set `limit=0`, a lot of data will be returned.
