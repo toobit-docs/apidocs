@@ -1220,7 +1220,7 @@ Index price for a symbol or symbols.
 
 ## Symbol Order Book Ticker
 
-- `GET /quote/v1/ticker/bookTicker`
+- `GET /quote/v1/contract/ticker/bookTicker`
 
 Best price/qty on the order book for a symbol or symbols.
 
