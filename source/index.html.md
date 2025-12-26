@@ -1200,7 +1200,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 - 如果symbol没有发送，所有symbol的指数价都会被返回。
 
 ## 当前最优挂单
-- `GET /quote/v1/ticker/bookTicker`
+- `GET /quote/v1/contract/ticker/bookTicker`
 
 单个或者多个symbol的最佳买单卖单价格。
 
