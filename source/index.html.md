@@ -849,10 +849,10 @@ Adjusted based on the limit:
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description           |
-| ----------------- | ---- | ------- | ------------- |
+| Name    | Type  |    Mandatory           | Description          |
+| ----------------- | ---- | ------- | ------------ |
 | symbol | STRING | YES | symbol |
-| limit | INT | NO | Default 100; Max 100|
+| limit | INT | NO | Default 100;|
 
 Notes：If `limit=0` is set, a lot of data will be returned.
 
