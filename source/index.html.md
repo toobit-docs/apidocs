@@ -1362,7 +1362,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
     "data": [
         {
             "symbol": "BTCUSDT",//symbol
-            "markPrice": "16792.28",//当前指数价
+            "markPrice": "16792.28",//当前标记价格
             "time": 1668754084000
         }
     ],
