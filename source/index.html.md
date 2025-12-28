@@ -28,6 +28,12 @@ search: true
 - 所有数据类型采用JAVA的数据类型定义
 
 
+## 接口的基本信息
+- `GET`方法的接口, 参数必须在query string中发送.
+- `POST`, `PUT`, 和 `DELETE` 方法的接口, 参数可以在 `query string`中发送，也可以在 `request body`中发送(content type application/x-www-form-urlencoded)。允许混合这两种方式发送参数。不建议同一个参数名在`query string`和`request body`中都有，若存在，那么`query string`中的会被优先采用。
+- 对参数的顺序不做要求。
+
+
 ## Websocket 基本信息
 - Base Url: **wss://stream.toobit.com**
 
