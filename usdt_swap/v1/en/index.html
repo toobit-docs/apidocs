@@ -279,6 +279,9 @@
                     <a href="#general-api-information" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
                   </li>
                   <li>
+                    <a href="#general-api-information-2" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
+                  </li>
+                  <li>
                     <a href="#websocket-information" class="toc-h2 toc-link" data-title="Websocket Information">Websocket Information</a>
                   </li>
                   <li>
@@ -511,6 +514,17 @@
 <li>All endpoints return either a JSON object or array.</li>
 <li>All time and timestamp related fields are in milliseconds.</li>
 <li>All data types adopt definition in JAVA.</li>
+</ul>
+<h2 id='general-api-information-2'>General API Information</h2>
+<ul>
+<li><strong>GET Requests</strong>: Parameters must be sent exclusively via the <strong>query string</strong>.</li>
+<li><strong>POST, PUT, and DELETE Requests</strong>: Parameters can be sent in the <strong>query string</strong>, the <strong>request body</strong> (with <code>Content-Type: application/x-www-form-urlencoded</code>), or both.
+
+<ul>
+<li><strong>Hybrid Mode</strong>: Combining both methods is permitted.</li>
+<li><strong>Conflict Resolution</strong>: Including the same parameter name in both the query string and the request body is <strong>not recommended</strong>. If a conflict occurs, the value in the <strong>query string</strong> will take precedence and be processed first.</li>
+</ul></li>
+<li><strong>Parameter Order</strong>: The sequence of parameters is not required and does not affect request processing.</li>
 </ul>
 <h2 id='websocket-information'>Websocket Information</h2>
 <ul>
