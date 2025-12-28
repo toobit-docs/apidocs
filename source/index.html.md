@@ -28,15 +28,6 @@ search: true
  If the API keys were accidentally shared, please delete them immediately and create a new key.
 </aside>
 
-## General API Information
-
-- **GET Requests**: Parameters must be sent exclusively via the **query string**.
-- **POST, PUT, and DELETE Requests**: Parameters can be sent in the **query string**, the **request body** (with `Content-Type: application/x-www-form-urlencoded`), or both.
-  - **Hybrid Mode**: Combining both methods is permitted.
-  - **Conflict Resolution**: Including the same parameter name in both the query string and the request body is **not recommended**. If a conflict occurs, the value in the **query string** will take precedence and be processed first.
-- **Parameter Order**: The sequence of parameters is not required and does not affect request processing.
-
-
 ## API Key Restrictions
 
 - After creating the API key, the default restrictions is `Enable Reading`.
@@ -55,6 +46,13 @@ A `SPOT` account is provided by default upon creation of a Account.
 - The base endpoint is: **https://api.toobit.com**
 - All endpoints return either a JSON object or array.
 - All time and timestamp related fields are in milliseconds.
+
+## General API Information
+- **GET Requests**: Parameters must be sent exclusively via the **query string**.
+- **POST, PUT, and DELETE Requests**: Parameters can be sent in the **query string**, the **request body** (with `Content-Type: application/x-www-form-urlencoded`), or both.
+  - **Hybrid Mode**: Combining both methods is permitted.
+  - **Conflict Resolution**: Including the same parameter name in both the query string and the request body is **not recommended**. If a conflict occurs, the value in the **query string** will take precedence and be processed first.
+- **Parameter Order**: The sequence of parameters is not required and does not affect request processing.
 
 ### HTTP  Return Codes
 
