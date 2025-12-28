@@ -279,6 +279,9 @@
                     <a href="#rest" class="toc-h2 toc-link" data-title="Rest 基本信息">Rest 基本信息</a>
                   </li>
                   <li>
+                    <a href="#2be91f451e" class="toc-h2 toc-link" data-title="接口的基本信息">接口的基本信息</a>
+                  </li>
+                  <li>
                     <a href="#websocket" class="toc-h2 toc-link" data-title="Websocket 基本信息">Websocket 基本信息</a>
                   </li>
                   <li>
@@ -508,6 +511,12 @@
 <li>所有接口的响应都是JSON格式</li>
 <li>所有时间、时间戳均为UNIX时间，单位为毫秒</li>
 <li>所有数据类型采用JAVA的数据类型定义</li>
+</ul>
+<h2 id='2be91f451e'>接口的基本信息</h2>
+<ul>
+<li><code>GET</code>方法的接口, 参数必须在query string中发送.</li>
+<li><code>POST</code>, <code>PUT</code>, 和 <code>DELETE</code> 方法的接口, 参数可以在 <code>query string</code>中发送，也可以在 <code>request body</code>中发送(content type application/x-www-form-urlencoded)。允许混合这两种方式发送参数。不建议同一个参数名在<code>query string</code>和<code>request body</code>中都有，若存在，那么<code>query string</code>中的会被优先采用。</li>
+<li>对参数的顺序不做要求。</li>
 </ul>
 <h2 id='websocket'>Websocket 基本信息</h2>
 <ul>
