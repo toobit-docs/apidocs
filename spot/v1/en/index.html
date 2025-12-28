@@ -279,9 +279,6 @@
                     <a href="#api-key-setup" class="toc-h2 toc-link" data-title="API Key Setup">API Key Setup</a>
                   </li>
                   <li>
-                    <a href="#general-api-information" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
-                  </li>
-                  <li>
                     <a href="#api-key-restrictions" class="toc-h2 toc-link" data-title="API Key Restrictions">API Key Restrictions</a>
                   </li>
                   <li>
@@ -292,6 +289,9 @@
           <li>
             <a href="#general-info" class="toc-h1 toc-link" data-title="General Info">General Info</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#general-api-information" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
+                  </li>
                   <li>
                     <a href="#general-api-information-2" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
                   </li>
@@ -494,7 +494,20 @@
 <aside class="warning">
  If the API keys were accidentally shared, please delete them immediately and create a new key.
 </aside>
-<h2 id='general-api-information'>General API Information</h2>
+<h2 id='api-key-restrictions'>API Key Restrictions</h2>
+<ul>
+<li>After creating the API key, the default restrictions is <code>Enable Reading</code>.</li>
+</ul>
+<h2 id='enabling-accounts'>Enabling Accounts</h2><h3 id='spot-account'>Spot Account</h3>
+<p>A <code>SPOT</code> account is provided by default upon creation of a Account.</p>
+<h1 id='general-info'>General Info</h1><h2 id='general-api-information'>General API Information</h2>
+<ul>
+<li>some endpoints will require an API Key. Please refer to<a href='https://www.toobit.com/support/toobit-api-key-creation-guide'>this page</a></li>
+<li>The base endpoint is: <strong>https://api.toobit.com</strong></li>
+<li>All endpoints return either a JSON object or array.</li>
+<li>All time and timestamp related fields are in milliseconds.</li>
+</ul>
+<h2 id='general-api-information-2'>General API Information</h2>
 <ul>
 <li><strong>GET Requests</strong>: Parameters must be sent exclusively via the <strong>query string</strong>.</li>
 <li><strong>POST, PUT, and DELETE Requests</strong>: Parameters can be sent in the <strong>query string</strong>, the <strong>request body</strong> (with <code>Content-Type: application/x-www-form-urlencoded</code>), or both.
@@ -504,19 +517,6 @@
 <li><strong>Conflict Resolution</strong>: Including the same parameter name in both the query string and the request body is <strong>not recommended</strong>. If a conflict occurs, the value in the <strong>query string</strong> will take precedence and be processed first.</li>
 </ul></li>
 <li><strong>Parameter Order</strong>: The sequence of parameters is not required and does not affect request processing.</li>
-</ul>
-<h2 id='api-key-restrictions'>API Key Restrictions</h2>
-<ul>
-<li>After creating the API key, the default restrictions is <code>Enable Reading</code>.</li>
-</ul>
-<h2 id='enabling-accounts'>Enabling Accounts</h2><h3 id='spot-account'>Spot Account</h3>
-<p>A <code>SPOT</code> account is provided by default upon creation of a Account.</p>
-<h1 id='general-info'>General Info</h1><h2 id='general-api-information-2'>General API Information</h2>
-<ul>
-<li>some endpoints will require an API Key. Please refer to<a href='https://www.toobit.com/support/toobit-api-key-creation-guide'>this page</a></li>
-<li>The base endpoint is: <strong>https://api.toobit.com</strong></li>
-<li>All endpoints return either a JSON object or array.</li>
-<li>All time and timestamp related fields are in milliseconds.</li>
 </ul>
 <h3 id='http-return-codes'>HTTP  Return Codes</h3>
 <ul>
