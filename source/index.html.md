@@ -47,6 +47,13 @@ search: true
 - 所有接口的响应都是 JSON 格式。
 - 所有时间、时间戳均为UNIX时间，单位为毫秒。
 
+
+## 接口的基本信息
+- `GET`方法的接口, 参数必须在query string中发送.
+- `POST`, `PUT`, 和 `DELETE` 方法的接口, 参数可以在 `query string`中发送，也可以在 `request body`中发送(content type application/x-www-form-urlencoded)。允许混合这两种方式发送参数。不建议同一个参数名在`query string`和`request body`中都有，若存在，那么`query string`中的会被优先采用。
+- 对参数的顺序不做要求。
+
+
 ### HTTP 返回代码
 
 - HTTP `4XX` 错误码用于指示错误的请求内容、行为、格式。问题在于请求者。
