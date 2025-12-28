@@ -293,9 +293,6 @@
                     <a href="#general-api-information" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
                   </li>
                   <li>
-                    <a href="#general-api-information-2" class="toc-h2 toc-link" data-title="General API Information">General API Information</a>
-                  </li>
-                  <li>
                     <a href="#limits" class="toc-h2 toc-link" data-title="LIMITS">LIMITS</a>
                   </li>
                   <li>
@@ -505,25 +502,12 @@
 <li>some endpoints will require an API Key. Please refer to<a href='https://www.toobit.com/support/toobit-api-key-creation-guide'>this page</a></li>
 <li>The base endpoint is: <strong>https://api.toobit.com</strong></li>
 <li>All endpoints return either a JSON object or array.</li>
-<li>All time and timestamp related fields are in milliseconds.</li>
-</ul>
-<h2 id='general-api-information-2'>General API Information</h2>
-<ul>
-<li><strong>GET Requests</strong>: Parameters must be sent exclusively via the <strong>query string</strong>.</li>
-<li><strong>POST, PUT, and DELETE Requests</strong>: Parameters can be sent in the <strong>query string</strong>, the <strong>request body</strong> (with <code>Content-Type: application/x-www-form-urlencoded</code>), or both.
-
-<ul>
-<li><strong>Hybrid Mode</strong>: Combining both methods is permitted.</li>
-<li><strong>Conflict Resolution</strong>: Including the same parameter name in both the query string and the request body is <strong>not recommended</strong>. If a conflict occurs, the value in the <strong>query string</strong> will take precedence and be processed first.</li>
-</ul></li>
-<li><strong>Parameter Order</strong>: The sequence of parameters is not required and does not affect request processing.</li>
-</ul>
-<h3 id='http-return-codes'>HTTP  Return Codes</h3>
-<ul>
-<li>HTTP <code>4XX</code> return codes are used for malformed requests; the issue is on the sender&#39;s side.</li>
-<li>HTTP <code>403</code> return code is used when the WAF Limit (Web Application Firewall) has been violated.</li>
-<li>HTTP <code>429</code> return code is used when breaking a request rate limit.</li>
-<li>HTTP <code>5XX</code> return codes are used for internal errors; the issue is on TooBit&#39;s side. It is important to NOT treat this as a failure operation; the execution status is UNKNOWN and could have been a success.</li>
+<li><p>All time and timestamp related fields are in milliseconds.</p>
+<h3 id='http-return-codes'>HTTP  Return Codes</h3></li>
+<li><p>HTTP <code>4XX</code> return codes are used for malformed requests; the issue is on the sender&#39;s side.</p></li>
+<li><p>HTTP <code>403</code> return code is used when the WAF Limit (Web Application Firewall) has been violated.</p></li>
+<li><p>HTTP <code>429</code> return code is used when breaking a request rate limit.</p></li>
+<li><p>HTTP <code>5XX</code> return codes are used for internal errors; the issue is on TooBit&#39;s side. It is important to NOT treat this as a failure operation; the execution status is UNKNOWN and could have been a success.</p></li>
 </ul>
 <h3 id='general-information-on-endpoints'>General Information on Endpoints</h3>
 <ul>
