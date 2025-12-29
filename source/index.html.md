@@ -203,7 +203,6 @@ $ curl -H "X-BB-APIKEY: SRQGN9M8Sr87nbfKsaSxm33Y6CmGVtUu9Erz73g9vHFNn36VROOKSaWB
 #### 订单类型 (type):
 - LIMIT - 限价单
 - MARKET - 市价单
-- LIMIT_MAKER - maker限价单
 - STOP 计划委托
 - STOP_SHORT_PROFIT 止盈
 - STOP_LONG_PROFIT 止盈
@@ -1938,36 +1937,36 @@ accountType：
     "marginLocked": "9.5", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
     "type": "LIMIT", // 订单类型（LIMIT和STOP）
     "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC)
     "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     "priceType": "INPUT" //价格类型（INPUT、MARKET）
 }
 ```
 
 ### 参数
-| 名称             | 类型      | 是否必须 | 描述                                                                                       |
-|----------------|---------|------|------------------------------------------------------------------------------------------|
-| symbol         | STRING  | YES  | 交易对                                                                                      |
-| side           | ENUM    | YES  | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                               |
-| type           | ENUM    | YES  | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                                              |
-| quantity       | LONG    | YES  | 订单的合约数量（张）                                                                               |
+| 名称             | 类型      | 是否必须 | 描述                                                                                     |
+|----------------|---------|------|----------------------------------------------------------------------------------------|
+| symbol         | STRING  | YES  | 交易对                                                                                    |
+| side           | ENUM    | YES  | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`                             |
+| type           | ENUM    | YES  | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                                            |
+| quantity       | LONG    | YES  | 订单的合约数量（张）                                                                             |
 | valueQuantity       | LONG    | NO   | 订单的价值数量（USDT）例如购买2个BTC，价格=1000, 订单价值=2*1000=2000 。valueQuantity和quantity同时存在优先使用quantity |
-| price          | DECIMAL | NO   | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                       .                                |
-| priceType      | ENUM    | NO   | 价格类型，支持的价格类型为 `INPUT`、`MARKET`                                                           |
-| stopPrice      | DECIMAL | NO   | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                                     |
-| timeInForce    | ENUM    | NO   | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER`                    |
-| newClientOrderId | STRING  | YES  | 订单的ID，用户自己定义,不可以重复出现在挂单中                                                                 |
-| takeProfit     | STRING  | NO   | 止盈价格                                                                                     |
-| tpTriggerBy    | ENUM    | NO   | 止盈条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE`          |
-| tpLimitPrice   | STRING  | NO   | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                                     |
-| tpOrderType    | ENUM    | NO   | 止盈触发后的订单类型. `MARKET`(默认), `LIMIT`.                                                       |
-| stopLoss       | STRING  | NO   | 止损价格                                                                                     |
-| slTriggerBy    | ENUM  | NO   | 止损条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE`          |
-| slLimitPrice   | STRING  | NO   | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                                      |
-| slOrderType      | ENUM  | NO   | 止损触发后的订单类型. `MARKET`(默认), `LIMIT`.                                                       |
-| category      | ENUM  | NO   | USDC合约=`USDC`, 默认=USDT合约.                                                                |
-| timestamp      | LONG    | YES  | 时间戳                                                                                      |
-| recvWindow     | LONG    | NO   | recv窗口                                                                                   |
+| price          | DECIMAL | NO   | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                       .                              |
+| priceType      | ENUM    | NO   | 价格类型，支持的价格类型为 `INPUT`、`MARKET`                                                         |
+| stopPrice      | DECIMAL | NO   | 计划委托的触发价格。`type` = `STOP`订单 **强制需要**                                                   |
+| timeInForce    | ENUM    | NO   | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`                    |
+| newClientOrderId | STRING  | YES  | 订单的ID，用户自己定义,不可以重复出现在挂单中                                                               |
+| takeProfit     | STRING  | NO   | 止盈价格                                                                                   |
+| tpTriggerBy    | ENUM    | NO   | 止盈条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE`        |
+| tpLimitPrice   | STRING  | NO   | 触发止盈后转换为限价单的价格, tpOrderType=LIMIT时有效                                                   |
+| tpOrderType    | ENUM    | NO   | 止盈触发后的订单类型. `MARKET`(默认), `LIMIT`.                                                     |
+| stopLoss       | STRING  | NO   | 止损价格                                                                                   |
+| slTriggerBy    | ENUM  | NO   | 止损条件单参数. 触发类型: `MARK_PRICE`(标记价格), `CONTRACT_PRICE`(合约最新价). 默认 `CONTRACT_PRICE`        |
+| slLimitPrice   | STRING  | NO   | 触发止损后转换为限价单的价格,slOrderType=LIMIT时有效                                                    |
+| slOrderType      | ENUM  | NO   | 止损触发后的订单类型. `MARKET`(默认), `LIMIT`.                                                     |
+| category      | ENUM  | NO   | USDC合约=`USDC`, 默认=USDT合约.                                                              |
+| timestamp      | LONG    | YES  | 时间戳                                                                                    |
+| recvWindow     | LONG    | NO   | recv窗口                                                                                 |
 
 ### 订单方向 (side):
 - BUY_OPEN   开多买单开仓买入
@@ -2066,7 +2065,7 @@ curl  -H "Content-Type:application/json"
                     "marginLocked": "0", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
                     "type": "LIMIT", // 订单类型（LIMIT和STOP）
                     "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-                    "timeInForce": "GTC",  // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+                    "timeInForce": "GTC",  // 时效单（Time in Force)类型(GTC、FOK、IOC)
                     "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
                     "priceType": "INPUT"  //价格类型（INPUT、MARKET）
                     }        
@@ -2088,17 +2087,17 @@ curl  -H "Content-Type:application/json"
 
 其中RequestBody中batchOrders应以list of JSON格式填写订单参数
 
-| 名称    | 类型  |    是否必须           | 描述                                                                    |
-| ----------------- | ---- | ------- |-----------------------------------------------------------------------|
-| symbol | STRING | YES | 交易对                                                                   |
-| side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`            |
-| type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                           |
-| quantity | LONG | YES | 订单的合约数量（张）                                                            |
+| 名称    | 类型  |    是否必须           | 描述                                                                 |
+| ----------------- | ---- | ------- |--------------------------------------------------------------------|
+| symbol | STRING | YES | 交易对                                                                |
+| side | ENUM | YES | 下单方向，方向类型为 `BUY_OPEN`、`SELL_OPEN`、`BUY_CLOSE`、`SELL_CLOSE`         |
+| type | ENUM | YES | 订单类型，支持订单类型为 `LIMIT`和`STOP`                                        |
+| quantity | LONG | YES | 订单的合约数量（张）                                                         |
 | valueQuantity       | LONG    | NO   | 订单的价值数量（USDT）例如购买2个BTC，价格=1000, 订单价值=2*1000=2000 。valueQuantity和quantity同时存在优先使用quantity |
-| price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                     |
-| priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`MARKET`                                        |
-| timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC`、`LIMIT_MAKER` |
-| newClientOrderId | STRING | YES | 订单的ID，用户自己定义 ,不可以重复出现在挂单中                                                         |
+| price | DECIMAL | NO | 订单价格 (`LIMIT`&`INPUT`)订单 **强制需要**                                  |
+| priceType | ENUM | NO | 价格类型，支持的价格类型为 `INPUT`、`MARKET`                                     |
+| timeInForce | ENUM | NO | `LIMIT`订单的时间指令（Time in Force），目前支持的类型为`GTC`、`FOK`、`IOC` |
+| newClientOrderId | STRING | YES | 订单的ID，用户自己定义 ,不可以重复出现在挂单中                                                      |
 
 注意：
 
@@ -2127,7 +2126,7 @@ curl  -H "Content-Type:application/json"
     "marginLocked": "9.5", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
     "type": "LIMIT", // 订单类型（LIMIT和STOP）
     "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC)
     "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     "priceType": "INPUT" //价格类型（INPUT、MARKET）
 }
@@ -2170,7 +2169,7 @@ curl  -H "Content-Type:application/json"
     "marginLocked": "9.5", //该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
     "type": "LIMIT", // 订单类型（LIMIT和STOP）
     "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "timeInForce": "GTC", // 时效单（Time in Force)类型(GTC、FOK、IOC)
     "status": "NEW", //订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     "priceType": "INPUT" //价格类型（INPUT、MARKET）
 }
@@ -2285,7 +2284,7 @@ curl  -H "Content-Type:application/json"
     "marginLocked": "0.00130552", // 该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
     "type": "LIMIT", // 订单类型（LIMIT和STOP）
     "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    "timeInForce": "GTC", //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "timeInForce": "GTC", //时效单（Time in Force)类型(GTC、FOK、IOC)
     "status": "NEW", // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     "priceType": "INPUT" //价格类型（INPUT、MARKET）
   }
@@ -2414,7 +2413,7 @@ curl  -H "Content-Type:application/json"
     "marginLocked": "0.00130552", // 该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。
     "type": "LIMIT", // 订单类型（LIMIT和STOP）
     "side": "BUY_OPEN", // 订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）
-    "timeInForce": "GTC", //时效单（Time in Force)类型(GTC、FOK、IOC、LIMIT_MAKER)
+    "timeInForce": "GTC", //时效单（Time in Force)类型(GTC、FOK、IOC)
     "status": "CANCELED", // 订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）
     "priceType": "INPUT" //价格类型（INPUT、MARKET）
   }
@@ -2830,7 +2829,6 @@ curl  -H "Content-Type:application/json"
 
 ### 订单类型
 - LIMIT 限价单
-- LIMIT_MAKER  maker限价单
 - STOP_LIMIT 计划委托
 
 ### 价格类型
