@@ -727,7 +727,6 @@ HMAC SHA256 签名:
 <ul>
 <li>LIMIT - 限价单</li>
 <li>MARKET - 市价单</li>
-<li>LIMIT_MAKER - maker限价单</li>
 <li>STOP 计划委托</li>
 <li>STOP_SHORT_PROFIT 止盈</li>
 <li>STOP_LONG_PROFIT 止盈</li>
@@ -2807,7 +2806,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2872,7 +2871,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timeInForce</td>
 <td>ENUM</td>
 <td>NO</td>
-<td><code>LIMIT</code>订单的时间指令（Time in Force），目前支持的类型为<code>GTC</code>、<code>FOK</code>、<code>IOC</code>、<code>LIMIT_MAKER</code></td>
+<td><code>LIMIT</code>订单的时间指令（Time in Force），目前支持的类型为<code>GTC</code>、<code>FOK</code>、<code>IOC</code></td>
 </tr>
 <tr>
 <td>newClientOrderId</td>
@@ -3038,7 +3037,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
                     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
                     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
                     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC)</span><span class="w">
                     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
                     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
                     </span><span class="p">}</span><span class="w">        
@@ -3134,7 +3133,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <td>timeInForce</td>
 <td>ENUM</td>
 <td>NO</td>
-<td><code>LIMIT</code>订单的时间指令（Time in Force），目前支持的类型为<code>GTC</code>、<code>FOK</code>、<code>IOC</code>、<code>LIMIT_MAKER</code></td>
+<td><code>LIMIT</code>订单的时间指令（Time in Force），目前支持的类型为<code>GTC</code>、<code>FOK</code>、<code>IOC</code></td>
 </tr>
 <tr>
 <td>newClientOrderId</td>
@@ -3172,7 +3171,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3251,7 +3250,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3457,7 +3456,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00130552"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -3715,7 +3714,7 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00130552"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">该订单锁定的保证金。这包括实际需要的保证金外加开仓和平仓所需的费用。</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单类型（LIMIT和STOP）</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单方向（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//时效单（Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force)类型(GTC、FOK、IOC)</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CANCELED"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">订单状态（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//价格类型（INPUT、MARKET）</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4448,7 +4447,6 @@ m -&gt; 分钟; h -&gt; 小时; d -&gt; 天; w -&gt; 周; M -&gt; 月</p>
 <h3 id='a1d4eaf18c'>订单类型</h3>
 <ul>
 <li>LIMIT 限价单</li>
-<li>LIMIT_MAKER  maker限价单</li>
 <li>STOP_LIMIT 计划委托</li>
 </ul>
 <h3 id='1229008509'>价格类型</h3>
