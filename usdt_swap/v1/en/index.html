@@ -736,7 +736,6 @@ HMAC SHA256 signature:
 <ul>
 <li>MARKET </li>
 <li>LIMIT </li>
-<li>LIMIT_MAKER<br></li>
 <li>STOP </li>
 <li>STOP_SHORT_PROFIT </li>
 <li>STOP_LONG_PROFIT </li>
@@ -2878,7 +2877,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">locked</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order.</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">type（LIMIT</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">STOP）</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">GTC、FOK、IOC、LIMIT_MAKER</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">GTC、FOK、IOC</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、MARKET</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2943,7 +2942,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>timeInForce</td>
 <td>ENUM</td>
 <td>NO</td>
-<td>The time command (Time in Force) of <code>LIMIT</code> order, the currently supported types are <code>GTC</code>, <code>FOK</code>, <code>IOC</code>, <code>LIMIT_MAKER</code></td>
+<td>The time command (Time in Force) of <code>LIMIT</code> order, the currently supported types are <code>GTC</code>, <code>FOK</code>, <code>IOC</code></td>
 </tr>
 <tr>
 <td>newClientOrderId</td>
@@ -3109,7 +3108,7 @@ Execute the transfer between the spot account and the contract account</p>
                     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">locked</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order.</span><span class="w">
                     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">type（LIMIT</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">STOP）</span><span class="w">
                     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">side（BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE）</span><span class="w">
-                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force</span><span class="w"> </span><span class="err">(GTC、FOK、IOC、LIMIT_MAKER)</span><span class="w">
+                    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w">  </span><span class="err">//Time</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">Force</span><span class="w"> </span><span class="err">(GTC、FOK、IOC)</span><span class="w">
                     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//status（NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED）</span><span class="w">
                     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w">  </span><span class="err">//price</span><span class="w"> </span><span class="err">type（INPUT、MARKET）</span><span class="w">
                     </span><span class="p">}</span><span class="w">        
@@ -3205,7 +3204,7 @@ Execute the transfer between the spot account and the contract account</p>
 <td>timeInForce</td>
 <td>ENUM</td>
 <td>NO</td>
-<td>The time command (Time in Force) of <code>LIMIT</code> order, the currently supported types are <code>GTC</code>, <code>FOK</code>, <code>IOC</code>, <code>LIMIT_MAKER</code></td>
+<td>The time command (Time in Force) of <code>LIMIT</code> order, the currently supported types are <code>GTC</code>, <code>FOK</code>, <code>IOC</code></td>
 </tr>
 <tr>
 <td>newClientOrderId</td>
@@ -3243,7 +3242,7 @@ Execute the transfer between the spot account and the contract account</p>
     </span><span class="nl">"marginLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.5"</span><span class="p">,</span><span class="w"> </span><span class="err">//The</span><span class="w"> </span><span class="err">margin</span><span class="w"> </span><span class="err">locked</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">order.</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LIMIT"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">LIMIT</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">STOP</span><span class="w">
     </span><span class="nl">"side"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY_OPEN"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">BUY_OPEN、SELL_OPEN、BUY_CLOSE、SELL_CLOSE</span><span class="w">
-    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">GTC、FOK、IOC、LIMIT_MAKER</span><span class="w">
+    </span><span class="nl">"timeInForce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GTC"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">GTC、FOK、IOC</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW"</span><span class="p">,</span><span class="w"> </span><span class="err">//NEW、PARTIALLY_FILLED、FILLED、CANCELED、REJECTED</span><span class="w">
     </span><span class="nl">"priceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INPUT"</span><span class="w"> </span><span class="err">//INPUT、MARKET</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4533,7 +4532,6 @@ Execute the transfer between the spot account and the contract account</p>
 <ul>
 <li>MARKET </li>
 <li>LIMIT </li>
-<li>LIMIT_MAKER<br></li>
 <li>STOP_LIMIT Plan entrusted</li>
 </ul>
 <h3 id='price-type-2'>Price Type</h3>
