@@ -1030,7 +1030,7 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
     "code": 200,
     "data": [
         {
-            "symbol": "BTCUSDT",//币对
+            "symbol": "BTC-SWAP-USDT",//币对
             "time": 1670157900000,//时间戳
             "low": "16991.14096",//最低价
             "open": "16991.78288",//开盘价
@@ -1358,15 +1358,15 @@ symbol的k线/烛线图数据,K线会根据开盘时间而辨别。
 
 ``` json
 {
-    "symbol": "BTCUSDT",
-    "symbolName": "BTCUSDT",
+    "symbol": "BTC-SWAP-USDT",
+    "symbolName": "BTC-SWAP-USDT",
     "topic": "markPrice",
     "params": {
         "realtimeInterval": "24h"
     },
     "data": [
         {
-            "symbol": "BTCUSDT",//symbol
+            "symbol": "BTC-SWAP-USDT",//symbol
             "markPrice": "16792.28",//当前标记价格
             "time": 1668754084000
         }
