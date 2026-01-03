@@ -1045,7 +1045,7 @@ Kline/candlestick bars for the mark price of a symbol.
     "code": 200,
     "data": [
         {
-            "symbol": "BTCUSDT",// Symbol
+            "symbol": "BTC-SWAP-USDT",// Symbol
             "time": 1670157900000,// time
             "low": "16991.14096",//Low price
             "open": "16991.78288",//Open price
@@ -1401,15 +1401,15 @@ Contract mark price.
 
 ``` json
 {
-    "symbol": "BTCUSDT",
-    "symbolName": "BTCUSDT",
+    "symbol": "BTC-SWAP-USDT",
+    "symbolName": "BTC-SWAP-USDT",
     "topic": "markPrice",
     "params": {
         "realtimeInterval": "24h"
     },
     "data": [
         {
-            "symbol": "BTCUSDT",//symbol
+            "symbol": "BTC-SWAP-USDT",//symbol
             "markPrice": "16792.28",// mark price 
             "time": 1668754084000
         }
