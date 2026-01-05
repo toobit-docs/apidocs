@@ -1752,12 +1752,12 @@ Considering the possible data latency from RESTful endpoints during an extremely
 
 ### Parameters
 
-| Name    | Type  |    Mandatory           | Description |
-| ----------------- | ---- | ------- |-------------|
-| userId | LONG | NO    | userId      |
-| email | LONG | NO | email       |
-| recvWindow | LONG | NO | recv window |
-| timestamp | LONG | YES | timestamp   |
+| Name    | Type   |    Mandatory           | Description |
+| ----------------- |--------| ------- |-------------|
+| userId | LONG   | NO    | userId      |
+| email | String | NO | email       |
+| recvWindow | LONG   | NO | recv window |
+| timestamp | LONG   | YES | timestamp   |
 
 
 > Response：
