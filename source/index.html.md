@@ -1754,27 +1754,58 @@ Considering the possible data latency from RESTful endpoints during an extremely
 
 | Name    | Type  |    Mandatory           | Description |
 | ----------------- | ---- | ------- |-------------|
+| userId | LONG | NO    | userId      |
+| email | LONG | NO | email       |
 | recvWindow | LONG | NO | recv window |
-| timestamp | LONG | YES |   timestamp          |
+| timestamp | LONG | YES | timestamp   |
+
 
 > Response：
 
 ``` json
 [
     {
-        "uid":"122216245228131",  // sub-account uid
-        "email":"c123456_mo3nXl@spyzn8.com", // sub-account email
-        "createTime":154443332212,  // Sub-account creation time
-        "status": 1  // 1: Enabled . 2:Disable
+        "userId": "879141111", // subUserId
+        "email": "aaa@rpbsho.com",  
+        "remark": "", 
+        "accountList": [ // all account
+            {
+                "accountId": "1795119090857208832", 
+                "userId": "879145609", 
+                "accountType": "MAIN" 
+            },
+            {
+                "accountId": "1795119090857208834",
+                "userId": "879145609",
+                "accountType": "FUTURES"
+            }
+        ]
     },
     {
-        "uid":"122216245228132",   //  sub-account uid
-        "email":"c12345_mo3nXl@spyzn8.com",  // sub-account email
-        "createTime":1544433328002, // Sub-account creation time
-        "status": 1  // 1: Enabled . 2:Disable
+        "userId": "935651111",
+        "email": "qwdqwd123_na5626@08rrkf.com",
+        "remark": "",
+        "accountList": [
+            {
+                "accountId": "1974746191561298944",
+                "userId": "935650120",
+                "accountType": "MAIN"
+            },
+            {
+                "accountId": "1974746191561298945",
+                "userId": "935650120",
+                "accountType": "FUTURES"
+            }
+        ]
     }
 ]
 ```
+accountType：
+`MAIN`: spot account
+`FUTURES`:  U-contract account
+`COPY_TRADING`:  copy trading leader account
+
+
 
 
 
@@ -1807,16 +1838,16 @@ Execute the transfer between the spot account and the contract account
 ```
 
 ### Parameters
-| 名称              | 类型      |    是否必须           | 描述                |
-|-----------------|---------| ------- |-------------------|
-| fromUid         | LONG    | YES | from uid          |
-| toUid           | LONG    | YES | to uid            |
-| fromAccountType | String  | YES | from account type |
-| toAccountType   | String    | YES | to account type   |
-| asset           | String  | YES | asset             |
-| quantity        | DECIMAL | YES | transfer quantity         |
-| timestamp       | LONG    | YES | timestamp               |
-| recvWindow      | LONG    | NO | recv window            |
+| 名称              | 类型      | 是否必须 | 描述                |
+|-----------------|---------|------|-------------------|
+| fromUid         | LONG    | NO   | from uid   The default is your own user ID.       |
+| toUid           | LONG    | NO  | to uid     The default is your own user ID.       |
+| fromAccountType | String  | YES  | from account type |
+| toAccountType   | String    | YES  | to account type   |
+| asset           | String  | YES  | asset             |
+| quantity        | DECIMAL | YES  | transfer quantity         |
+| timestamp       | LONG    | YES  | timestamp               |
+| recvWindow      | LONG    | NO   | recv window            |
 
 
 
