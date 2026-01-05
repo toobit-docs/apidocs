@@ -1708,36 +1708,64 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ## 查询子账户
 
-- `GET /api/v1/subAccount`
+- `GET /api/v1/subAccount/list`
 
 
 ### 权重：5
 
 ### 参数
 
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| 名称    | 类型  | 是否必须  | 描述        |
+| ----------------- | ---- |-------|-----------|
+| userId | LONG | FALSE | 子用户userId |
+| email | LONG | FALSE   | 子用户邮箱     |
+| timestamp | LONG | YES   | 时间戳       |
+| recvWindow | LONG | NO    | recv窗口    |
 
 > 响应：
 
 ``` json
 [
     {
-        "uid":"122216245228131",  // 子账户uid
-        "email":"c123456_mo3nXl@spyzn8.com", // 子账户的邮箱
-        "createTime":154443332212,  // 子账户创建时间
-        "status": 1  // 1:启用 2:禁用
+        "userId": "879141111", // 子用户userId
+        "email": "aaa@rpbsho.com",  // 子用户邮箱
+        "remark": "", // 子用户备注
+        "accountList": [ // 所有账户
+            {
+                "accountId": "1795119090857208832", // 账户id
+                "userId": "879145609", // userId
+                "accountType": "MAIN" // 账户类型
+            },
+            {
+                "accountId": "1795119090857208834",
+                "userId": "879145609",
+                "accountType": "FUTURES"
+            }
+        ]
     },
     {
-        "uid":"122216245228132",   // 子账户uid
-        "email":"c12345_mo3nXl@spyzn8.com",  // 子账户的邮箱
-        "createTime":1544433328002, // 子账户创建时间
-        "status": 1  // 1:启用 2:禁用
+        "userId": "935651111",
+        "email": "qwdqwd123_na5626@08rrkf.com",
+        "remark": "",
+        "accountList": [
+            {
+                "accountId": "1974746191561298944",
+                "userId": "935650120",
+                "accountType": "MAIN"
+            },
+            {
+                "accountId": "1974746191561298945",
+                "userId": "935650120",
+                "accountType": "FUTURES"
+            }
+        ]
     }
 ]
 ```
+accountType：
+`MAIN`: 现货
+`FUTURES`:  U本位合约
+`COPY_TRADING`: 带单账户
 
 
 
