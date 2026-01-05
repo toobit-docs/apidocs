@@ -2463,6 +2463,18 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </tr>
 </thead><tbody>
 <tr>
+<td>userId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>userId</td>
+</tr>
+<tr>
+<td>email</td>
+<td>LONG</td>
+<td>NO</td>
+<td>email</td>
+</tr>
+<tr>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
@@ -2481,19 +2493,46 @@ Considering the possible data latency from RESTful endpoints during an extremely
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"uid"</span><span class="p">:</span><span class="s2">"122216245228131"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">sub-account</span><span class="w"> </span><span class="err">uid</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"c123456_mo3nXl@spyzn8.com"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">sub-account</span><span class="w"> </span><span class="err">email</span><span class="w">
-        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="mi">154443332212</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">Sub-account</span><span class="w"> </span><span class="err">creation</span><span class="w"> </span><span class="err">time</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="err">Enabled</span><span class="w"> </span><span class="err">.</span><span class="w"> </span><span class="mi">2</span><span class="err">:Disable</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"879141111"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">subUserId</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaa@rpbsho.com"</span><span class="p">,</span><span class="w">  
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"accountList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">account</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1795119090857208832"</span><span class="p">,</span><span class="w"> 
+                </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"879145609"</span><span class="p">,</span><span class="w"> 
+                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAIN"</span><span class="w"> 
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1795119090857208834"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"879145609"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FUTURES"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"uid"</span><span class="p">:</span><span class="s2">"122216245228132"</span><span class="p">,</span><span class="w">   </span><span class="err">//</span><span class="w">  </span><span class="err">sub-account</span><span class="w"> </span><span class="err">uid</span><span class="w">
-        </span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"c12345_mo3nXl@spyzn8.com"</span><span class="p">,</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">sub-account</span><span class="w"> </span><span class="err">email</span><span class="w">
-        </span><span class="nl">"createTime"</span><span class="p">:</span><span class="mi">1544433328002</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">Sub-account</span><span class="w"> </span><span class="err">creation</span><span class="w"> </span><span class="err">time</span><span class="w">
-        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="mi">1</span><span class="err">:</span><span class="w"> </span><span class="err">Enabled</span><span class="w"> </span><span class="err">.</span><span class="w"> </span><span class="mi">2</span><span class="err">:Disable</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"935651111"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwdqwd123_na5626@08rrkf.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"remark"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1974746191561298944"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"935650120"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAIN"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1974746191561298945"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"935650120"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FUTURES"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h2 id='new-future-account-transfer'>New Future Account Transfer</h2>
+</span></code></pre></div>
+<p>accountType：
+<code>MAIN</code>: spot account
+<code>FUTURES</code>:  U-contract account
+<code>COPY_TRADING</code>:  copy trading leader account</p>
+<h2 id='new-future-account-transfer'>New Future Account Transfer</h2>
 <ul>
 <li><code>POST /api/v1/subAccount/transfer</code></li>
 </ul>
@@ -2531,14 +2570,14 @@ Execute the transfer between the spot account and the contract account</p>
 <tr>
 <td>fromUid</td>
 <td>LONG</td>
-<td>YES</td>
-<td>from uid</td>
+<td>NO</td>
+<td>from uid   The default is your own user ID.</td>
 </tr>
 <tr>
 <td>toUid</td>
 <td>LONG</td>
-<td>YES</td>
-<td>to uid</td>
+<td>NO</td>
+<td>to uid     The default is your own user ID.</td>
 </tr>
 <tr>
 <td>fromAccountType</td>
