@@ -1715,12 +1715,12 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 ### 参数
 
-| 名称    | 类型  | 是否必须  | 描述        |
-| ----------------- | ---- |-------|-----------|
-| userId | LONG | NO    | 子用户userId |
-| email | LONG | NO | 子用户邮箱     |
-| timestamp | LONG | YES   | 时间戳       |
-| recvWindow | LONG | NO    | recv窗口    |
+| 名称    | 类型     | 是否必须  | 描述        |
+| ----------------- |--------|-------|-----------|
+| userId | LONG   | NO    | 子用户userId |
+| email | String | NO | 子用户邮箱     |
+| timestamp | LONG   | YES   | 时间戳       |
+| recvWindow | LONG   | NO    | recv窗口    |
 
 > 响应：
 
