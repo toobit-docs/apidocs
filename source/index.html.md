@@ -1717,8 +1717,8 @@ m -> 分钟; h -> 小时; d -> 天; w -> 周; M -> 月
 
 | 名称    | 类型  | 是否必须  | 描述        |
 | ----------------- | ---- |-------|-----------|
-| userId | LONG | FALSE | 子用户userId |
-| email | LONG | FALSE   | 子用户邮箱     |
+| userId | LONG | NO    | 子用户userId |
+| email | LONG | NO | 子用户邮箱     |
 | timestamp | LONG | YES   | 时间戳       |
 | recvWindow | LONG | NO    | recv窗口    |
 
@@ -1794,16 +1794,16 @@ accountType：
 ```
 
 ### 参数
-| 名称              | 类型      |    是否必须           | 描述       |
-|-----------------|---------| ------- |----------|
-| fromUid         | LONG    | YES | 源账户id    |
-| toUid           | LONG    | YES | 目标账户id   |
-| fromAccountType | String  | YES | 源账户类型    |
-| toAccountType   | String    | YES | 目标账户类型   |
-| asset           | String  | YES | 币种       |
-| quantity        | DECIMAL | YES | 转账数量     |
-| timestamp       | LONG    | YES | 时间戳      |
-| recvWindow      | LONG    | NO | recv窗口   |
+| 名称              | 类型      | 是否必须 | 描述                     |
+|-----------------|---------|------|------------------------|
+| fromUid         | LONG    | NO   | 转出方的userId，默认自己的userId |
+| toUid           | LONG    | NO  | 转入方的userId，默认自己的userId            |
+| fromAccountType | String  | YES  | 源账户类型                  |
+| toAccountType   | String    | YES  | 目标账户类型                 |
+| asset           | String  | YES  | 币种                     |
+| quantity        | DECIMAL | YES  | 转账数量                   |
+| timestamp       | LONG    | YES  | 时间戳                    |
+| recvWindow      | LONG    | NO   | recv窗口                 |
 
 
 accountType：
