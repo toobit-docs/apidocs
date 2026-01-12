@@ -2216,7 +2216,7 @@ accountType：
 | ----------- | ------- | ------------- |---------------------|
 | accountType | INT | NO | 账户对应的`account_type` |
 | coin | STRING | NO | 资产                  |
-| flowType | INT | NO | 划转：3                |
+| flowType | INT | NO | 划转：51               |
 | fromId | LONT | NO  | 顺向查询数据              |
 | endId | LONG | NO | 反向查询数据              |
 | startTime | LONG | NO | 开始时间                |
