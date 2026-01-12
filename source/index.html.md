@@ -2241,14 +2241,14 @@ accountType：
 | ----------------- | ---- | ------- |-----------------------------------------|
 | accountType | INT | NO | Account corresponding to `account_type` |
 | coin | STRING | NO | coin                                    |
-| flowType | INT | NO | transfer：3                              |
+| flowType | INT | NO | transfer：51                             |
 | fromId | LONG | NO | from id                                 |
 | endId | LONG | NO | end id                                  |
 | startTime | LONG | NO | start timestamp                         |
 | endTime | LONG | NO | end timestamp                           |
 | limit | INT | NO | limit                                   |
-| recvWindow | LONG | NO |       recv window                                  |
-| timestamp | LONG | YES |       timestamp                                  |
+| recvWindow | LONG | NO | recv window                             |
+| timestamp | LONG | YES | timestamp                               |
 
 ## Get API KEY Type (USER_DATA)
 
