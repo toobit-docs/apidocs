@@ -1854,18 +1854,18 @@ accountType：
 ```
 
 ### 参数
-| 名称    | 类型  |    是否必须           | 描述           |
-| ----------------- | ---- | ------- | ------------- |
-| accountType | INT | NO | 账户对应的account_type |
-| coin | STRING | NO | tokenID |
-| flowType | INT | NO | 划转：3 |
-| fromId | LONG | NO | 顺向查询数据 |
-| endId | LONG | NO | 反向查询数据 |
-| startTime | LONG | NO | 开始时间 |
-| endTime | LONG | NO | 结束时间 |
+| 名称    | 类型  |    是否必须           | 描述                         |
+| ----------------- | ---- | ------- |----------------------------|
+| accountType | INT | NO | 账户对应的account_type          |
+| coin | STRING | NO | tokenID                    |
+| flowType | INT | NO | 划转：51                      |
+| fromId | LONG | NO | 顺向查询数据                     |
+| endId | LONG | NO | 反向查询数据                     |
+| startTime | LONG | NO | 开始时间                       |
+| endTime | LONG | NO | 结束时间                       |
 | limit | INT | NO | 返回条数 默认`20` 最小`1` 最大`1000` |
-| timestamp | LONG | YES | 时间戳 |
-| recvWindow | LONG | NO | recv窗口 |
+| timestamp | LONG | YES | 时间戳                        |
+| recvWindow | LONG | NO | recv窗口                     |
 
 
 ## 变换逐全仓模式 (TRADE)
