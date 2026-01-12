@@ -1899,19 +1899,19 @@ Obtain the history of fund transfers between the spot account and the contract a
 ```
 
 ### Parameters
-| Name    | Type  |    Mandatory           | Description                                 |
-| ----------------- | ---- | ------- |---------------------------------------------|
-| accountType | INT | NO | `account_type` corresponding to the account |
-| coin | STRING | NO | coin                                        |
-| flowType | INT | NO | transfer：3                                  |
-| fromId | LONG | NO | from id                                     |
-| endId | LONG | NO | end id                                      |
-| startTime | LONG | NO | start timestamp                             |
-| endTime | LONG | NO | end timestamp                               |
-| limit | INT | NO | Default `20` Min `1` Max `1000`             |
-| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures.                                                       |
-| recvWindow | LONG | NO |   recv window                                          |
-| timestamp | LONG | YES |    Timestamp                                         |
+| Name    | Type  |    Mandatory           | Description                                    |
+| ----------------- | ---- | ------- |------------------------------------------------|
+| accountType | INT | NO | `account_type` corresponding to the account    |
+| coin | STRING | NO | coin                                           |
+| flowType | INT | NO | transfer：51                                    |
+| fromId | LONG | NO | from id                                        |
+| endId | LONG | NO | end id                                         |
+| startTime | LONG | NO | start timestamp                                |
+| endTime | LONG | NO | end timestamp                                  |
+| limit | INT | NO | Default `20` Min `1` Max `1000`                |
+| category      | ENUM  | NO | USDC-M Futures=`USDC`, Default=USDT-M Futures. |
+| recvWindow | LONG | NO | recv window                                    |
+| timestamp | LONG | YES | Timestamp                                      |
 
 ## Change Margin Type (TRADE)
 - `POST /api/v1/futures/marginType `
