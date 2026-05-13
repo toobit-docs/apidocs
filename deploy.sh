@@ -193,7 +193,7 @@ handle_deploy_files() {
 
 check_diff() {
   set +o errexit
-  diff=$(git --work-tree "$gh_pages_directory" diff --exit-code --quiet HEAD --)$?
+  diff=$(git --work-tree "$gh_pages_directory" diff --exit-code --quiet HEAD -- "$document_path")$?
   set -o errexit
   case $diff in
     0) echo No changes to files in $build_directory. Skipping commit.;;
@@ -211,7 +211,7 @@ initial_deploy() {
   git --work-tree "$gh_pages_directory" fetch --force $repo $deploy_branch:$deploy_branch
   git --work-tree "$gh_pages_directory" checkout $deploy_branch
   handle_deploy_files
-  git --work-tree "$gh_pages_directory" add --all
+  git --work-tree "$gh_pages_directory" add --all "$document_path"
   check_diff
 }
 
@@ -222,7 +222,7 @@ incremental_deploy() {
   #put the previously committed contents of deploy_branch into the index
   git --work-tree "$gh_pages_directory" reset --mixed --quiet
   handle_deploy_files
-  git --work-tree "$gh_pages_directory" add --all
+  git --work-tree "$gh_pages_directory" add --all "$document_path"
   check_diff
 }
 
