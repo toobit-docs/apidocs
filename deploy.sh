@@ -21,20 +21,25 @@ Options:
 
 
 run_build() {
-  if [[ $version = dm ]]; then
-    build_dir=$build_directory/dm/v1/$language
-  elif [[ $version = coin ]]; then
-    build_dir=$build_directory/coin_margined_swap/v1/$language
-  elif [[ $version = usdt ]]; then
-    build_dir=$build_directory/usdt_swap/v1/$language
-#  elif [[ $version = option ]]; then
-#    build_dir=$build_directory/option/v1/$language
-  else
-    version="v"${version}
-    build_dir=$build_directory/spot/$version/$language
-  fi
+  set_document_paths
   echo "build_dir="$build_dir
   bundle exec middleman build --clean --build-dir $build_dir
+}
+
+set_document_paths() {
+  if [[ $version = dm ]]; then
+    document_path=dm/v1/$language
+  elif [[ $version = coin ]]; then
+    document_path=coin_margined_swap/v1/$language
+  elif [[ $version = usdt ]]; then
+    document_path=usdt_swap/v1/$language
+#  elif [[ $version = option ]]; then
+#    document_path=option/v1/$language
+  else
+    document_path=spot/v$version/$language
+  fi
+  build_dir=$build_directory/$document_path
+  deploy_dir=$gh_pages_directory/$document_path
 }
 
 parse_args() {
@@ -178,10 +183,12 @@ main() {
 }
 
 handle_deploy_files() {
-  if [ -d "$gh_pages_directory/$version/$language" ]; then
-    rm -rf $gh_pages_directory/$version/$language
+  set_document_paths
+  if [ -d "$deploy_dir" ]; then
+    rm -rf "$deploy_dir"
   fi
-  cp -r $build_directory/spot/vremotes/origin/v1/cn/* $gh_pages_directory/spot/v1/cn/
+  mkdir -p "$deploy_dir"
+  cp -r "$build_dir"/* "$deploy_dir"/
 }
 
 check_diff() {
@@ -295,5 +302,4 @@ else
   run_build
   main
 fi
-
 
