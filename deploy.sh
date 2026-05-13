@@ -21,20 +21,25 @@ Options:
 
 
 run_build() {
-  if [[ $version = dm ]]; then
-    build_dir=$build_directory/dm/v1/$language
-  elif [[ $version = coin ]]; then
-    build_dir=$build_directory/coin_margined_swap/v1/$language
-  elif [[ $version = usdt ]]; then
-    build_dir=$build_directory/usdt_swap/v1/$language
-#  elif [[ $version = option ]]; then
-#    build_dir=$build_directory/option/v1/$language
-  else
-    version="v"${version}
-    build_dir=$build_directory/spot/$version/$language
-  fi
+  set_document_paths
   echo "build_dir="$build_dir
   bundle exec middleman build --clean --build-dir $build_dir
+}
+
+set_document_paths() {
+  if [[ $version = dm ]]; then
+    document_path=dm/v1/$language
+  elif [[ $version = coin ]]; then
+    document_path=coin_margined_swap/v1/$language
+  elif [[ $version = usdt ]]; then
+    document_path=usdt_swap/v1/$language
+#  elif [[ $version = option ]]; then
+#    document_path=option/v1/$language
+  else
+    document_path=spot/v$version/$language
+  fi
+  build_dir=$build_directory/$document_path
+  deploy_dir=$gh_pages_directory/$document_path
 }
 
 parse_args() {
@@ -94,7 +99,7 @@ parse_args() {
 
 check_version_lang() {
   #
-  branch=$(git describe --contains --all HEAD)
+  branch=$(git rev-parse --abbrev-ref HEAD)
   echo "branch="$branch""
   #
   language=$(echo $branch | rev | cut -d '_' -f 1 | rev)
@@ -178,17 +183,17 @@ main() {
 }
 
 handle_deploy_files() {
-  if [ -d "$gh_pages_directory/$version/$language" ]; then
-    rm -rf $gh_pages_directory/$version/$language
+  set_document_paths
+  if [ -d "$deploy_dir" ]; then
+    rm -rf "$deploy_dir"
   fi
-#  cp -r $build_directory/spot/vremotes/origin/usdt/en/* $gh_pages_directory/usdt_swap/v1/en/
-  cp -r $build_directory/usdt_swap/v1/en/* $gh_pages_directory/usdt_swap/v1/en/
-
+  mkdir -p "$deploy_dir"
+  cp -r "$build_dir"/* "$deploy_dir"/
 }
 
 check_diff() {
   set +o errexit
-  diff=$(git --work-tree "$gh_pages_directory" diff --exit-code --quiet HEAD --)$?
+  diff=$(git --work-tree "$gh_pages_directory" diff --exit-code --quiet HEAD -- "$document_path")$?
   set -o errexit
   case $diff in
     0) echo No changes to files in $build_directory. Skipping commit.;;
@@ -206,7 +211,7 @@ initial_deploy() {
   git --work-tree "$gh_pages_directory" fetch --force $repo $deploy_branch:$deploy_branch
   git --work-tree "$gh_pages_directory" checkout $deploy_branch
   handle_deploy_files
-  git --work-tree "$gh_pages_directory" add --all
+  git --work-tree "$gh_pages_directory" add --all "$document_path"
   check_diff
 }
 
@@ -217,7 +222,7 @@ incremental_deploy() {
   #put the previously committed contents of deploy_branch into the index
   git --work-tree "$gh_pages_directory" reset --mixed --quiet
   handle_deploy_files
-  git --work-tree "$gh_pages_directory" add --all
+  git --work-tree "$gh_pages_directory" add --all "$document_path"
   check_diff
 }
 
@@ -297,5 +302,4 @@ else
   run_build
   main
 fi
-
 
