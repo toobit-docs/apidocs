@@ -99,7 +99,7 @@ parse_args() {
 
 check_version_lang() {
   #
-  branch=$(git describe --contains --all HEAD)
+  branch=$(git rev-parse --abbrev-ref HEAD)
   echo "branch="$branch""
   #
   language=$(echo $branch | rev | cut -d '_' -f 1 | rev)
@@ -302,4 +302,3 @@ else
   run_build
   main
 fi
-
